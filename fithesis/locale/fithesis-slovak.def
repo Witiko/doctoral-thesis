@@ -1,0 +1,163 @@
+%%
+%% This is file `fithesis-slovak.def',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% slovak.dtx  (with options: `base')
+%% 
+%% Copyright 1998--2021  Daniel Marek (DM), Jan Pavlovič (JP),
+%%                       Vít Novotný (VN), Tereza Vrabcová (TV),
+%%                       Petr Sojka (PS)
+%% http://www.fi.muni.cz/tech/unix/tex/fithesis.xhtml
+%% Faculty of Informatics, Masaryk University (Brno, Czech Republic)
+%% 
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version
+%% 1.3 of this license or (at your option) any later version.
+%% The latest version of this license is available at
+%% 
+%%   http://www.latex-project.org/lppl.txt
+%% 
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 2005/12/01 or later.
+%% 
+%% This work has the LPPL maintenance status `maintained'.
+%% 
+%% The Current Maintainer of this work is Vít Novotný (VN).
+%% Send bug reports, requests for additions and questions
+%% either to the fithesis discussion forum at
+%% 
+%%   http://is.muni.cz/auth/df/fithesis-sazba/
+%% 
+%% or to the e-mail address <witiko@mail.muni.cz>.
+%% 
+%% 
+%% MODIFICATION ADVICE:
+%% 
+%% If you want to customize this file, it is best to make a copy of
+%% the source file(s) from which it was produced.  Use a different
+%% name for your copy(ies) and modify the copy(ies); this will ensure
+%% that your modifications do not get overwritten when you install a
+%% new release of the standard system.  You should also ensure that
+%% your modified source file does not generate any modified file with
+%% the same name as a standard file.
+%% 
+%% You will also need to produce your own, suitably named, .ins file to
+%% control the generation of files from your source file; this file
+%% should contain your own preambles for the files it generates, not
+%% those in the standard .ins files.
+%% 
+%% The names of the source files used are shown above.
+%% 
+\ProvidesFile{fithesis/locale/fithesis-slovak.def}[2021/02/26]
+
+\gdef\thesis@slovak@gender@koncovka{%
+  \ifthesis@woman a\fi}
+
+\gdef\thesis@slovak@csquotesStyle{german}
+
+\gdef\thesis@slovak@universityName{Názov univerzity}
+\gdef\thesis@slovak@facultyName{Názov fakulty}
+\gdef\thesis@slovak@assignment{%
+  Na tomto mieste sa v~tlačenej práci nachádza oficiálne
+  podpísané zadanie práce.}
+\gdef\thesis@slovak@declaration{Text vyhlásenie ...}
+
+\gdef\thesis@slovak@spring{jar}
+\gdef\thesis@slovak@fall{jeseň}
+\gdef\thesis@slovak@semester{%
+  \thesis@{slovak@\thesis@season} \thesis@seasonYear}
+\gdef\thesis@slovak@formattedDate{{%
+  \thesis@day.
+  \newcount\@month\expandafter\@month\thesis@month\relax
+  \ifnum\@month=1%
+    januára
+  \else\ifnum\@month=2%
+    februára
+  \else\ifnum\@month=3%
+    marca
+  \else\ifnum\@month=4%
+    apríla
+  \else\ifnum\@month=5%
+    mája
+  \else\ifnum\@month=6%
+    júna
+  \else\ifnum\@month=7%
+    júla
+  \else\ifnum\@month=8%
+    augusta
+  \else\ifnum\@month=9%
+    septembra
+  \else\ifnum\@month=10%
+    októbra
+  \else\ifnum\@month=11%
+    novembra
+  \else\ifnum\@month=12%
+    decembra
+  \else
+    <<neznámy mesiac (\the\@month)>>
+  \fi\fi\fi\fi\fi\fi
+  \fi\fi\fi\fi\fi\fi
+  \thesis@year}}
+
+\gdef\thesis@slovak@authorSignature{%
+  Podpis autor\ifthesis@woman ky\else a\fi}
+\gdef\thesis@slovak@advisorSignature{Podpis vedúceho}
+\gdef\thesis@slovak@fieldTitle{Odbor}
+\gdef\thesis@slovak@advisorTitle{Vedúci práce}
+\gdef\thesis@slovak@authorTitle{Autor}
+\gdef\thesis@slovak@abstractTitle{Zhrnutie}
+\gdef\thesis@slovak@keywordsTitle{Kľúčové slová}
+\gdef\thesis@slovak@thanksTitle{Poďakovanie}
+\gdef\thesis@slovak@declarationTitle{Vyhlásenie}
+\gdef\thesis@slovak@summaryTitle{Resumé}
+\gdef\thesis@slovak@idTitle{ID}
+\gdef\thesis@slovak@typeName@sempaper{Seminárna práca}
+\gdef\thesis@slovak@typeName@bachelors{Bakalárska práca}
+\gdef\thesis@slovak@typeName@masters{Diplomová práca}
+\gdef\thesis@slovak@typeName@proposal{Tézy záverečnej práce}
+\gdef\thesis@slovak@typeName@doctoral{Dizertačná práca}
+\gdef\thesis@slovak@typeName@rigorous{Rigorózna práca}
+\gdef\thesis@slovak@typeName{%
+  \ifx\thesis@type\thesis@sempaper
+    \thesis@slovak@typeName@sempaper
+  \else\ifx\thesis@type\thesis@bachelors
+    \thesis@slovak@typeName@bachelors
+  \else\ifx\thesis@type\thesis@masters
+    \thesis@slovak@typeName@masters
+  \else\ifx\thesis@type\thesis@proposal
+    \thesis@slovak@typeName@proposal
+  \else\ifx\thesis@type\thesis@doctoral
+    \thesis@slovak@typeName@doctoral
+  \else\ifx\thesis@type\thesis@rigorous
+    \thesis@slovak@typeName@rigorous
+  \else
+    <<Neznámy typ práce (\thesis@type)>>%
+  \fi\fi\fi\fi\fi\fi}
+\gdef\thesis@slovak@typeName@akuzativ@sempaper{Seminárnu prácu}
+\gdef\thesis@slovak@typeName@akuzativ@bachelors{Bakalársku prácu}
+\gdef\thesis@slovak@typeName@akuzativ@masters{Diplomovú prácu}
+\gdef\thesis@slovak@typeName@akuzativ@proposal{Tézy záverečnej práce}
+\gdef\thesis@slovak@typeName@akuzativ@doctoral{Dizertačnú prácu}
+\gdef\thesis@slovak@typeName@akuzativ@rigorous{Rigoróznu prácu}
+\gdef\thesis@slovak@typeName@akuzativ{%
+  \ifx\thesis@type\thesis@sempaper
+    \thesis@slovak@typeName@akuzativ@sempaper
+  \else\ifx\thesis@type\thesis@bachelors
+    \thesis@slovak@typeName@akuzativ@bachelors
+  \else\ifx\thesis@type\thesis@masters
+    \thesis@slovak@typeName@akuzativ@masters
+  \else\ifx\thesis@type\thesis@proposal
+    \thesis@slovak@typeName@akuzativ@proposal
+  \else\ifx\thesis@type\thesis@doctoral
+    \thesis@slovak@typeName@akuzativ@doctoral
+  \else\ifx\thesis@type\thesis@rigorous
+    \thesis@slovak@typeName@akuzativ@rigorous
+  \else
+    <<Neznámy typ práce (\thesis@type)>>%
+  \fi\fi\fi\fi\fi\fi}
+
+\endinput
+%%
+%% End of file `fithesis-slovak.def'.

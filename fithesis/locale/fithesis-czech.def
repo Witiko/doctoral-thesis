@@ -1,0 +1,162 @@
+%%
+%% This is file `fithesis-czech.def',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% czech.dtx  (with options: `base')
+%% 
+%% Copyright 1998--2021  Daniel Marek (DM), Jan Pavlovič (JP),
+%%                       Vít Novotný (VN), Tereza Vrabcová (TV),
+%%                       Petr Sojka (PS)
+%% http://www.fi.muni.cz/tech/unix/tex/fithesis.xhtml
+%% Faculty of Informatics, Masaryk University (Brno, Czech Republic)
+%% 
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version
+%% 1.3 of this license or (at your option) any later version.
+%% The latest version of this license is available at
+%% 
+%%   http://www.latex-project.org/lppl.txt
+%% 
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 2005/12/01 or later.
+%% 
+%% This work has the LPPL maintenance status `maintained'.
+%% 
+%% The Current Maintainer of this work is Vít Novotný (VN).
+%% Send bug reports, requests for additions and questions
+%% either to the fithesis discussion forum at
+%% 
+%%   http://is.muni.cz/auth/df/fithesis-sazba/
+%% 
+%% or to the e-mail address <witiko@mail.muni.cz>.
+%% 
+%% 
+%% MODIFICATION ADVICE:
+%% 
+%% If you want to customize this file, it is best to make a copy of
+%% the source file(s) from which it was produced.  Use a different
+%% name for your copy(ies) and modify the copy(ies); this will ensure
+%% that your modifications do not get overwritten when you install a
+%% new release of the standard system.  You should also ensure that
+%% your modified source file does not generate any modified file with
+%% the same name as a standard file.
+%% 
+%% You will also need to produce your own, suitably named, .ins file to
+%% control the generation of files from your source file; this file
+%% should contain your own preambles for the files it generates, not
+%% those in the standard .ins files.
+%% 
+%% The names of the source files used are shown above.
+%% 
+\ProvidesFile{fithesis/locale/fithesis-czech.def}[2021/02/26]
+
+\gdef\thesis@czech@gender@koncovka{%
+  \ifthesis@woman a\fi}
+
+\gdef\thesis@czech@csquotesStyle{german}
+
+\gdef\thesis@czech@universityName{Název univerzity}
+\gdef\thesis@czech@facultyName{Název fakulty}
+\gdef\thesis@czech@assignment{%
+  Na tomto místě se v~tištěné práci nachází oficiální podepsané
+  zadání práce.}
+\gdef\thesis@czech@declaration{Text prohlášení ...}
+
+\gdef\thesis@czech@spring{jaro}
+\gdef\thesis@czech@fall{podzim}
+\gdef\thesis@czech@semester{%
+  \thesis@{czech@\thesis@season} \thesis@seasonYear}
+\gdef\thesis@czech@formattedDate{{%
+  \thesis@day.
+  \newcount\@month\expandafter\@month\thesis@month\relax
+  \ifnum\@month=1%
+    ledna
+  \else\ifnum\@month=2%
+    února
+  \else\ifnum\@month=3%
+    března
+  \else\ifnum\@month=4%
+    dubna
+  \else\ifnum\@month=5%
+    května
+  \else\ifnum\@month=6%
+    června
+  \else\ifnum\@month=7%
+    července
+  \else\ifnum\@month=8%
+    srpna
+  \else\ifnum\@month=9%
+    září
+  \else\ifnum\@month=10%
+    října
+  \else\ifnum\@month=11%
+    listopadu
+  \else\ifnum\@month=12%
+    prosince
+  \else
+    <<neznámý měsíc (\the\@month)>>
+  \fi\fi\fi\fi\fi\fi
+  \fi\fi\fi\fi\fi\fi
+  \thesis@year}}
+
+\gdef\thesis@czech@authorSignature{%
+  Podpis autor\ifthesis@woman ky\else a\fi}
+\gdef\thesis@czech@advisorSignature{Podpis vedoucího}
+\gdef\thesis@czech@fieldTitle{Obor}
+\gdef\thesis@czech@advisorTitle{Vedoucí práce}
+\gdef\thesis@czech@authorTitle{Autor}
+\gdef\thesis@czech@abstractTitle{Shrnutí}
+\gdef\thesis@czech@keywordsTitle{Klíčová slova}
+\gdef\thesis@czech@thanksTitle{Poděkování}
+\gdef\thesis@czech@declarationTitle{Prohlášení}
+\gdef\thesis@czech@summaryTitle{Resumé}
+\gdef\thesis@czech@idTitle{ID}
+\gdef\thesis@czech@typeName@sempaper{Seminární práce}
+\gdef\thesis@czech@typeName@bachelors{Bakalářská práce}
+\gdef\thesis@czech@typeName@masters{Diplomová práce}
+\gdef\thesis@czech@typeName@proposal{Teze závěrečné práce}
+\gdef\thesis@czech@typeName@doctoral{Disertační práce}
+\gdef\thesis@czech@typeName@rigorous{Rigorózní práce}
+\gdef\thesis@czech@typeName{%
+  \ifx\thesis@type\thesis@sempaper
+    \thesis@czech@typeName@sempaper
+  \else\ifx\thesis@type\thesis@bachelors
+    \thesis@czech@typeName@bachelors
+  \else\ifx\thesis@type\thesis@masters
+    \thesis@czech@typeName@masters
+  \else\ifx\thesis@type\thesis@proposal
+    \thesis@czech@typeName@proposal
+  \else\ifx\thesis@type\thesis@doctoral
+    \thesis@czech@typeName@doctoral
+  \else\ifx\thesis@type\thesis@rigorous
+    \thesis@czech@typeName@rigorous
+  \else
+    <<Neznámý typ práce (\thesis@type)>>%
+  \fi\fi\fi\fi\fi\fi}
+\gdef\thesis@czech@typeName@akuzativ@sempaper{Seminární práci}
+\gdef\thesis@czech@typeName@akuzativ@bachelors{Bakalářskou práci}
+\gdef\thesis@czech@typeName@akuzativ@masters{Diplomovou práci}
+\gdef\thesis@czech@typeName@akuzativ@proposal{Tezi závěrečné práce}
+\gdef\thesis@czech@typeName@akuzativ@doctoral{Disertační práci}
+\gdef\thesis@czech@typeName@akuzativ@rigorous{Rigorózní práci}
+\gdef\thesis@czech@typeName@akuzativ{%
+  \ifx\thesis@type\thesis@sempaper
+    \thesis@czech@typeName@akuzativ@sempaper
+  \else\ifx\thesis@type\thesis@bachelors
+    \thesis@czech@typeName@akuzativ@bachelors
+  \else\ifx\thesis@type\thesis@masters
+    \thesis@czech@typeName@akuzativ@masters
+  \else\ifx\thesis@type\thesis@proposal
+    \thesis@czech@typeName@akuzativ@proposal
+  \else\ifx\thesis@type\thesis@doctoral
+    \thesis@czech@typeName@akuzativ@doctoral
+  \else\ifx\thesis@type\thesis@rigorous
+    \thesis@czech@typeName@akuzativ@rigorous
+  \else
+    <<Neznámý typ práce (\thesis@type)>>%
+  \fi\fi\fi\fi\fi\fi}
+\endinput
+%%
+%% End of file `fithesis-czech.def'.
