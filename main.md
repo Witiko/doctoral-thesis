@@ -43,15 +43,15 @@
 
 # Accuracy {#accuracy}
 There are many advanced features we may wish from a math information retrieval
-system, including the ability to reveal relationships between different pieces of
-information, to visualize the information, and to use the information as a
-basis for computation. However, all these advanced features are predicated on a
-much more basic and fundamental feature: the ability of the math information
+system: the ability to reveal relationships between different pieces of
+information, to visualize the information, or to use the information as a basis
+for computation. However, all these advanced features are predicated on a much
+more basic and fundamental feature: the ability of the math information
 retrieval system to *accurately* retrieve the information that satisfy the
 needs of its users.
 
-In this chapter, I will report the results of my research of document
-representations that enable accurate math information retrieval:
+In this chapter, I will report the results of my research of representations
+that enable accurate math information retrieval:
 
 - In sections~\ref{sec:topological-math-representations} and
   \ref{sec:representation-learning-accuracy}, I will describe our new
@@ -103,8 +103,8 @@ information retrieval system are fundamentally limited by the *speed* at which
 we can deploy the system, store new information in it, and recall information
 that satisfy the needs of its users.
 
-In this chapter, I will report the results of my research of document
-representations and techniques that enable fast math information retrieval:
+In this chapter, I will report the results of my research of representations
+and techniques that enable fast math information retrieval:
 
 - In Section~\ref{sec:fast-and-reproducible-deployment}, I will describe our
   work in making math information retrieval search engines easier to build and
