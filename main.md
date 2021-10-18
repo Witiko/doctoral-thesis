@@ -66,7 +66,7 @@ that enable accurate math information retrieval:
 
 - In sections~\ref{sec:weighted-zone-scoring} and
   \ref{sec:approximate-nearest-neighbor-search-accuracy}, I will describe our
-  work in making fast approximate search techniques seem accurate for users.
+  work in making fast approximate search techniques more accurate.
 
 ## Topological Math Representations for Accurate Math Information Retrieval
 \label{sec:topological-math-representations}
