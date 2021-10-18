@@ -47,8 +47,8 @@ system, including the ability to reveal relationships between different pieces o
 information, to visualize the information, and to use the information as a
 basis for computation. However, all these advanced features are predicated on a
 much more basic and fundamental feature: the ability of the math information
-retrieval system to *accurately* retrieve the information that satisfies the
-needs of a user.
+retrieval system to *accurately* retrieve the information that satisfy the
+needs of its users.
 
 In this chapter, I will report the results of my research of document
 representations that enable accurate math information retrieval:
@@ -61,16 +61,13 @@ representations that enable accurate math information retrieval:
 
 - In sections~\ref{sec:ensembling-semantic-text-similarity-measures} and
   \ref{sec:rank-based-fusion}, I will describe our work in overcoming the
-  weaknesses of different information retrieval techniques by using score
-  aggregation, rank-based fusion, and learning-to-rank techniques.
+  weaknesses of different document representations by using score aggregation,
+  rank-based fusion, and learning-to-rank techniques.
 
-- In Section~\ref{sec:weighted-zone-scoring}, I will describe our work in
-  dividing retrieval units into smaller zones of varying importance for the
-  purpose of more accurate information retrieval.
-
-- In Section~\ref{sec:approximate-nearest-neighbor-search-accuracy}, I will
-  describe our work in making fast approximate search techniques seem accurate
-  from the viewpoint of a user.
+- In sections~\ref{sec:weighted-zone-scoring} and
+  \ref{sec:approximate-nearest-neighbor-search-accuracy}, I will describe our
+  work in making fast approximate search techniques seem accurate from the
+  viewpoint of a user.
 
 ## Topological Math Representations for Accurate Math Information Retrieval
 \label{sec:topological-math-representations}
@@ -104,15 +101,15 @@ representations that enable accurate math information retrieval:
 # Speed {#speed}
 The accuracy as well as the availability of more advanced features in a math
 information retrieval system are fundamentally limited by the *speed* at which
-we can deploy the system, store new information in it, and recall the
-information that satisfies the needs of a user.
+we can deploy the system, store new information in it, and recall information
+that satisfy the needs of its users.
 
 In this chapter, I will report the results of my research of document
-representations that enable fast math information retrieval:
+representations and techniques that enable fast math information retrieval:
 
 - In Section~\ref{sec:fast-and-reproducible-deployment}, I will describe our
   work in making math information retrieval search engines easier to build and
-  deploy using Docker.
+  deploy.
 
 - In Section~\ref{sec:representation-learning-speed}, I will describe our
   work in making neural representations of natural language words and math
@@ -137,11 +134,39 @@ representations that enable fast math information retrieval:
 ### Sparse Retrieval in Inverted Indices and Vector Databases
 
 # Interpretability {#interpretability}
-## Formal Concept Analysis with Quantized Word Embeddings
-## Interactive Visualization of Math Information Retrieval Collections Using Semantic Text Similarity Measures
+In math information retrieval, accuracy and speed ensure that we can recall
+information that a user needs when she needs them. However, the ability of a
+system to explain the information to its users is fundamentally limited by the
+*interpretability* of its internal representations.
+
+In this chapter, I will report the results of my research of interpretable
+representations that enable explainable information retrieval:
+
+- In Section~\ref{sec:representation-learning-interpretability}, I will
+  describe our work in making neural representations of natural language words
+  and math symbols more interpretable.
+
+- In Section~\ref{sec:strengths-and-weaknesses}, I will describe our work in
+  explaining the roles played by different math information retrieval systems
+  when using rank-based fusion and learning-to-rank techniques.
+
+- In Section~\ref{sec:interactive-visualizations}, I will describe our work in
+  producing interactive visualizations of math information retrieval using
+  interpretable document representations.
+
+## Representation Learning of Words and Symbols for Sparse Retrieval
+\label{sec:representation-learning-interpretability}
+
+### Formal Concept Analysis with Quantized Word Embeddings
+### Measuring Language Distances with Subword Language Models
+### Position-Independent Word Embeddings
+
 ## Strengths and Weaknesses of Math Information Retrieval Systems
-## Measuring Language Distances with Subword Language Models
-## Position-Independent Word Embeddings
+\label{sec:strengths-and-weaknesses}
+
+## Interactive Visualizations of Math Information Retrieval Collections
+\label{sec:interactive-visualizations}
+
 # Conclusion {#conclusion}
 ## Thesis Summary
 ### Research Questions
