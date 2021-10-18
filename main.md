@@ -69,7 +69,7 @@
 ## Interactive Visualization of Math Information Retrieval Collections Using Semantic Text Similarity Measures
 ## Strengths and Weaknesses of Math Information Retrieval Systems
 ## Measuring Language Distances with Subword Language Models
-### Position-Independent Word Embeddings
+## Position-Independent Word Embeddings
 # Conclusion {#conclusion}
 ## Thesis Summary
 ### Research Questions
