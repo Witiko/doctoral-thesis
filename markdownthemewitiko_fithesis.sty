@@ -6,5 +6,13 @@
   footnotes,
   hybrid,
   html,
-  tightLists = false,
+}
+\markdownSetupSnippet{unnumbered-chapter}{
+  renderers = {
+    headingOne = {%
+      \chapter*{#1}
+      \markright{\textsc{#1}}
+      \addcontentsline{toc}{chapter}{#1}
+    },
+  },
 }

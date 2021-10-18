@@ -36,17 +36,22 @@
     author      = Vít Novotný,
     gender      = m,
     advisor     = {Doc. RNDr. Petr Sojka, Ph.\,D.},
-    title       = {Interpretable Document Representations for Fast and
+    title       = {Interpretable Representations for Fast and
                    Accurate Retrieval of Mathematical Information},
-    TeXtitle    = {Interpretable Document Representations\\ for Fast and
-                   Accurate Retrieval\\ of Mathematical Information},
+    TeXtitle    = {Interpretable Representations \\ for Fast and
+                   Accurate Retrieval \\ of Mathematical Information},
     bib         = main.bib,
+    %% Remove the following line to use the JVS 2018 faculty logo.
+    facultyLogo = fithesis-fi,
 }
 
 %% Author and term index
 \usepackage{imakeidx}
 \makeindex[name = author, title = {Author Index}, intoc]
 \makeindex[name = term, title = {Term Index}, intoc]
+
+
+\usepackage[babel]{csquotes} %% Context-sensitive quotation marks
 
 \thesisload
 
@@ -65,18 +70,23 @@
 
 %% Table of contents
 \setcounter{secnumdepth}{4}
-\setcounter{tocdepth}{1}
+\setcounter{tocdepth}{2}
 
 \usepackage{grffile} %% Graphics
 \usepackage{xurl} %% Breaking of URLs
-\usepackage[theme=witiko/fithesis,theme=witiko/dot]{markdown} % Markup
-\usepackage[babel]{csquotes} %% Context-sensitive quotation marks
+\usepackage[nospace]{varioref} %% Intelligent references
+
+%% Markup
+\let\lll\relax
+\usepackage[
+  tightLists = false,
+  theme=witiko/fithesis,
+  theme=witiko/dot,
+]{markdown}
 
 \begin{document}
 
-\chapter*{Introduction}
-\markright{\textsc{Introduction}}
-\addcontentsline{toc}{chapter}{Introduction}
+\markdownInput{main.md}
 
 \appendix %% Start the appendices.
 \chapter{An appendix}
