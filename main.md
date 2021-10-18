@@ -48,7 +48,7 @@ information, to visualize the information, and to use the information as a
 basis for computation. However, all these advanced features are predicated on a
 much more basic and fundamental feature: the ability of the math information
 retrieval system to *accurately* retrieve the information that satisfies the
-need of a user.
+needs of a user.
 
 In this chapter, I will report the results of my research of document
 representations that enable accurate math information retrieval:
@@ -102,13 +102,40 @@ representations that enable accurate math information retrieval:
 ### Sparse Retrieval in Inverted Indices and Vector Databases
 
 # Speed {#speed}
+The accuracy as well as the availability of more advanced features in a math
+information retrieval system are fundamentally limited by the *speed* at which
+we can deploy the system, store new information in it, and recall the
+information that satisfies the needs of a user.
+
+In this chapter, I will report the results of my research of document
+representations that enable fast math information retrieval:
+
+- In Section~\ref{sec:fast-and-reproducible-deployment}, I will describe our
+  work in making math information retrieval search engines easier to build and
+  deploy using Docker.
+
+- In Section~\ref{sec:representation-learning-speed}, I will describe our
+  work in making neural representations of natural language words and math
+  symbols both faster to learn and faster to use.
+
+- In Section~\ref{sec:approximate-nearest-neighbor-search-speed}, I will
+  describe our work in developing fast approximate search techniques.
+
 ## Fast and Reproducible Deployment of Math Information Retrieval Systems Using Docker
+\label{sec:fast-and-reproducible-deployment}
+
 ## Representation Learning of Words and Symbols for Sparse Retrieval
+\label{sec:representation-learning-speed}
+
 ### Quantized Word Embeddings with Fast Bitwise Arithmetic
 ### Constrained Positional Weighting of Word Embeddings
+
 ## Approximate Nearest-Neighbor Search in Vector Spaces
+\label{sec:approximate-nearest-neighbor-search-speed}
+
 ### Dense Retrieval in Inverted Indices
 ### Sparse Retrieval in Inverted Indices and Vector Databases
+
 # Interpretability {#interpretability}
 ## Formal Concept Analysis with Quantized Word Embeddings
 ## Interactive Visualization of Math Information Retrieval Collections Using Semantic Text Similarity Measures
