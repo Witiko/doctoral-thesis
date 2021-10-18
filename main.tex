@@ -48,7 +48,7 @@
 %% Author and term index
 \usepackage{imakeidx}
 \makeindex[name = author, title = {Author Index}, intoc]
-\makeindex[name = term, title = {Term Index}, intoc]
+\makeindex[name = subject, title = {Subject Index}, intoc]
 
 
 \usepackage[babel]{csquotes} %% Context-sensitive quotation marks
@@ -86,7 +86,16 @@
 
 \begin{document}
 
-\markdownInput{main.md}
+\markdownInput[slice=introduction]{main.md}
+\markdownInput[slice=background]{main.md}
+\markdownInput[slice=state-of-the-art]{main.md}
+\markdownInput[slice=accuracy]{main.md}
+\markdownInput[slice=speed]{main.md}
+\markdownInput[slice=interpretability]{main.md}
+\markdownInput[slice=conclusion]{main.md}
+
+\printindex[subject]
+\printindex[author]
 
 \appendix %% Start the appendices.
 \chapter{An appendix}
