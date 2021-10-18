@@ -54,7 +54,7 @@ In this chapter, I will report the results of my research of document
 representations that enable accurate math information retrieval:
 
 - In sections~\ref{sec:topological-math-representations} and
-  section~\ref{sec:representation-learning-accuracy}, I will describe our new
+  \ref{sec:representation-learning-accuracy}, I will describe our new
   representation of math that we have developed for the ARQMath labs and our
   experiments in learning neural representations of natural language words and
   math symbols.
@@ -66,8 +66,7 @@ representations that enable accurate math information retrieval:
 
 - In sections~\ref{sec:weighted-zone-scoring} and
   \ref{sec:approximate-nearest-neighbor-search-accuracy}, I will describe our
-  work in making fast approximate search techniques seem accurate from the
-  viewpoint of a user.
+  work in making fast approximate search techniques seem accurate for users.
 
 ## Topological Math Representations for Accurate Math Information Retrieval
 \label{sec:topological-math-representations}
