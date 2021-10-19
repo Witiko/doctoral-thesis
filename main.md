@@ -13,7 +13,7 @@
 ## Math Information Retrieval
 ### Sparse Retrieval
 ### Dense Retrieval
-### Structural and Semantic matching
+### Structural and Semantic Matching
 ### Learning to rank
 ## Objectives and Evaluation
 ### Accuracy
@@ -54,18 +54,17 @@ In this chapter, I will report the results of my research of representations
 that enable accurate math information retrieval:
 
 - In sections~\ref{sec:topological-math-representations} and
-  \ref{sec:representation-learning-accuracy}, I will describe our new
-  representation of math that we have developed for the ARQMath labs and our
-  experiments in learning neural representations of natural language words and
-  math symbols.
+  \ref{sec:representation-learning-accuracy}, I will describe my work in
+  developing new representation of math and my experiments in learning neural
+  representations of natural language words and math symbols.
 
 - In sections~\ref{sec:ensembling-semantic-text-similarity-measures} and
-  \ref{sec:rank-based-fusion}, I will describe our work in overcoming the
+  \ref{sec:rank-based-fusion}, I will describe my work in overcoming the
   weaknesses of different document representations by using score aggregation,
   rank-based fusion, and learning-to-rank techniques.
 
 - In sections~\ref{sec:weighted-zone-scoring} and
-  \ref{sec:approximate-nearest-neighbor-search-accuracy}, I will describe our
+  \ref{sec:approximate-nearest-neighbor-search-accuracy}, I will describe my
   work in making fast approximate search techniques more accurate.
 
 ## Topological Math Representations for Accurate Math Information Retrieval
@@ -74,13 +73,54 @@ that enable accurate math information retrieval:
 ## Representation Learning of Words and Symbols for Sparse Retrieval
 \label{sec:representation-learning-accuracy}
 
-### Variable Control in Word Embedding Evaluation
+Math information retrieval techniques for structural and semantic matching rely
+on accurate neural representations (token embeddings) of natural language words
+and math symbols. In this section, I will report the results of my experiments
+in learning accurate token embeddings:
+
+- In Section~\ref{sec:variable-control-in-token-embedding-evaluation}, I will
+  describe my survey of methodology in previous token embedding experiments
+  and show that a lack of variable control makes some previous experiments
+  difficult to reproduce.
+
+- In Section~\ref{sec:heuristical-hyperparameter-optimization-in-subword-language-models},
+  I will report the optimal hyperparameters for the fastText subword language
+  model on nine word analogy tasks. I will also show that expensive
+  hyperparameter optimization can be replaced by a simple n-gram coverage model
+  that consistently improves the accuracy compared to the default
+  hyperparameters.
+
+- In sections~\ref{sec:position-independent-token-embeddings-accuracy} through
+  \ref{sec:decontextualized-token-embeddings}, I will show that constraining,
+  quantization, disambiguation, and decontextualization of token word embeddings
+  improves their accuracy on word analogy, word similarity, language modeling,
+  part-of-speech tagging, and machine translation evaluation tasks.
+
+- In Section~\ref{sec:joint-token-embeddings-of-text-and-math}, I will show
+  that using a single language model to produce token embeddings of both
+  natural language words and math symbols improves accuracy on math information
+  retrieval.
+
+### Variable Control in Token Embedding Evaluation
+\label{sec:variable-control-in-token-embedding-evaluation}
+
 ### Heuristical Hyperparameter Optimization in Subword Language Models
-### Position-Independent Word Embeddings
-### Quantized Word Embeddings
+\label{sec:heuristical-hyperparameter-optimization-in-subword-language-models}
+
+### Position-Independent Token Embeddings
+\label{sec:position-independent-token-embeddings-accuracy}
+
+### Quantized Token Embeddings
+\label{sec:quantized-token-embeddings}
+
 ### Autoregressive Word Sense Disambiguation
-### Decontextualized Word Embeddings
-### Joint Word Embeddings of Text and Math
+\label{sec:autoregressive-word-sense-disambiguation}
+
+### Decontextualized Token Embeddings
+\label{sec:decontextualized-token-embeddings}
+
+### Joint Token Embeddings of Text and Math
+\label{sec:joint-token-embeddings-of-text-and-math}
 
 ## Ensembling Semantic Text Similarity Measures
 \label{sec:ensembling-semantic-text-similarity-measures}
@@ -106,16 +146,16 @@ that satisfy the needs of its users.
 In this chapter, I will report the results of my research of representations
 and techniques that enable fast math information retrieval:
 
-- In Section~\ref{sec:fast-and-reproducible-deployment}, I will describe our
+- In Section~\ref{sec:fast-and-reproducible-deployment}, I will describe my
   work in making math information retrieval search engines easier to build and
   deploy.
 
-- In Section~\ref{sec:representation-learning-speed}, I will describe our
+- In Section~\ref{sec:representation-learning-speed}, I will describe my
   work in making neural representations of natural language words and math
   symbols both faster to learn and faster to use.
 
 - In Section~\ref{sec:approximate-nearest-neighbor-search-speed}, I will
-  describe our work in developing fast approximate search techniques.
+  describe my work in developing fast approximate search techniques.
 
 ## Fast and Reproducible Deployment of Math Information Retrieval Systems Using Docker
 \label{sec:fast-and-reproducible-deployment}
@@ -123,8 +163,8 @@ and techniques that enable fast math information retrieval:
 ## Representation Learning of Words and Symbols for Sparse Retrieval
 \label{sec:representation-learning-speed}
 
-### Quantized Word Embeddings with Fast Bitwise Arithmetic
-### Constrained Positional Weighting of Word Embeddings
+### Quantized Token Embeddings with Fast Bitwise Arithmetic
+### Position-Independent Token Embeddings
 
 ## Approximate Nearest-Neighbor Search in Vector Spaces
 \label{sec:approximate-nearest-neighbor-search-speed}
@@ -142,23 +182,23 @@ In this chapter, I will report the results of my research of interpretable
 representations that enable explainable information retrieval:
 
 - In Section~\ref{sec:representation-learning-interpretability}, I will
-  describe our work in making neural representations of natural language words
+  describe my work in making neural representations of natural language words
   and math symbols more interpretable.
 
-- In Section~\ref{sec:strengths-and-weaknesses}, I will describe our work in
+- In Section~\ref{sec:strengths-and-weaknesses}, I will describe my work in
   explaining the roles played by different math information retrieval systems
   when using rank-based fusion and learning-to-rank techniques.
 
-- In Section~\ref{sec:interactive-visualizations}, I will describe our work in
+- In Section~\ref{sec:interactive-visualizations}, I will describe my work in
   producing interactive visualizations of math information retrieval using
   interpretable document representations.
 
 ## Representation Learning of Words and Symbols for Sparse Retrieval
 \label{sec:representation-learning-interpretability}
 
-### Formal Concept Analysis with Quantized Word Embeddings
+### Formal Concept Analysis with Quantized Token Embeddings
 ### Measuring Language Distances with Subword Language Models
-### Position-Independent Word Embeddings
+### Position-Independent Token Embeddings
 
 ## Strengths and Weaknesses of Math Information Retrieval Systems
 \label{sec:strengths-and-weaknesses}
