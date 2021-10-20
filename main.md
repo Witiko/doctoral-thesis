@@ -273,11 +273,8 @@ interpretable token embeddings:
 ### Formal Concept Analysis with Quantized Token Embeddings
 \label{sec:formal-concept-analysis-with-quantized-token-embeddings}
 
-### Measuring Language Distances with Subword Language Models
-\label{sec:measuring-language-distances-with-subword-language-models}
-
 ### Position-Independent Token Embeddings
-\label{sec:position-independent-token-embeddings-speed}
+\label{sec:position-independent-token-embeddings-interpretability}
 
 ## Strengths and Weaknesses of Math Information Retrieval Systems
 \label{sec:strengths-and-weaknesses}
