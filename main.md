@@ -70,6 +70,28 @@ that enable accurate math information retrieval:
 ## Topological Math Representations for Accurate Math Information Retrieval
 \label{sec:topological-math-representations}
 
+Although tree-structured math representations for the exchange of presentation
+and content math are well-established, transforming these representations into
+a linear stream of tokens for math information retrieval is an open problem.
+
+In 2019, @lample2019deep have linearized a tree-structured content math
+representation using its topological ordering (also known as the prefix
+notation, or the normal Polish notation). To give an example, the formula $x!!
+- y^2 = 0$ would be represented as the following comma-separated list of math
+symbols: $=$, $-$, $!!$, $x$, $◌^◌$, $y$, $2$, $0$.  Using this representation,
+they trained a Transformer model to solve integrals, first-order differential
+equations, and second-order differential equations with significantly better
+results than commercial CAS such as 
+
+In 2020, we have used the representation of @lample2019deep in our submissions
+to the ARQMath-1 lab to see if the representation would also be useful for math
+information retrieval. Since @lample2019deep do not specify the precise
+tree-structured content math representation they used, we have used the OPT
+math representation in our systems. To give an example, the formula $x!!- y^2 =
+0$ from the previous paragraph would be represented as the following
+comma-separated list of OPT nodes: `U!eq, O!minus, O!double-factorial V!x O!SUP
+V!y N!2 N!0`.
+
 ## Representation Learning of Words and Symbols for Sparse Retrieval
 \label{sec:representation-learning-accuracy}
 

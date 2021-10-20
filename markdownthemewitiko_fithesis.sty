@@ -9,6 +9,7 @@
   inlineFootnotes,
 }
 
+% A setup snippet for unnumbered chapters
 \markdownSetupSnippet{unnumbered-chapter}{
   renderers = {
     headingOne = {%
@@ -18,3 +19,7 @@
     },
   },
 }
+
+% Definitions of various Unicode characters
+\RequirePackage{newunicodechar}
+\newunicodechar{◌}{\dottedcircle}
