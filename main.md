@@ -100,7 +100,7 @@ comma-separated list of OPT nodes: `U!eq`, `O!minus`, `O!double-factorial`,
 To see if the topological ordering produced by the pre-order traversal of OPT
 trees is meaningful, we have also used a representation produced by the
 in-order traversal of the OPT trees (further known as the *infix* notation) and
-surrounding subtrees by parentheses. To give an example, the formula $x!! - y^2
+by surrounding subtrees by parentheses. To give an example, the formula $x!! - y^2
 = 0$ would be represented as the following comma-separated list of math
 symbols: $($, $($, $!!$, $($, $x$, $)$, $-$, $◌^◌$, $($, $y$, $2$, $)$, $)$,
 $=$, $0$, $)$, and as the following comma-separated list of OPT nodes: `(`,
