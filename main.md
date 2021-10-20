@@ -136,11 +136,11 @@ accurate token embeddings:
 ## Approximate Nearest-Neighbor Search in Vector Spaces
 \label{sec:approximate-nearest-neighbor-search-accuracy}
 
-Until we solve the mystery that is the human mind, the ranking criteria
-implemented by math information retrieval system will always be just an
-approximation of the relevance perceived by the user. Additionally, due
-to the amount of data and time constraints, even this formal ranking criterion
-is usually approximated.
+Until we have solved the mystery that is the human mind, the ranking criteria
+of math information retrieval system will always be just an approximation to
+the relevance perceived by the users. Additionally, due to the amount of data
+and time constraints, even this formal ranking criterion is usually
+approximated.
 
 In this section, I will report the results of my experiments in making
 approximate math information retrieval more accurate:
@@ -209,6 +209,21 @@ token embeddings:
 
 ## Approximate Nearest-Neighbor Search in Vector Spaces
 \label{sec:approximate-nearest-neighbor-search-speed}
+
+The amount of information that a math information retrieval system must store
+is increasing at an exponential rate. At the same time, users are less willing
+to wait for the system to recall information. [@apica2017digital]
+
+In this section, I will report the results of my experiments in making math
+information retrieval faster by using an approximate ranking criterion:
+
+- In Section~\ref{sec:dense-retrieval-in-inverted-indices-speed}, I will
+  show that approximation can greatly improve the speed of dense retrieval with
+  almost no loss in accuracy.
+
+- In Section~\ref{label:sparse-retrieval-in-inverted-indices-and-vector-databases-speed},
+  I will show that sparse retrieval can be approximated in a way that increases
+  both speed and accuracy.
 
 ### Dense Retrieval in Inverted Indices
 ### Sparse Retrieval in Inverted Indices and Vector Databases
