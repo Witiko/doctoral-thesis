@@ -154,7 +154,7 @@ for both natural language text and math.
 The state-of-the-art math information retrieval systems of Approach0 and
 Tangent-L used hard vector space models to model paths in OPT and SLT trees,
 respectively. This indicates that the failure of our soft vector space model
-to exploit longer paths in OPT and SLT trees may be caused by insufficient
+to exploit longer paths in OPT and SLT trees may be caused by the insufficient
 capacity of our fastText model. Future experiments should test this hypothesis
 by performing an end-to-end hyperparameter optimization of fastText using
 relevance judgements from the ARQMath-1 and ARQMath-2 labs.
@@ -204,6 +204,11 @@ accurate token embeddings:
 ### Variable Control in Token Embedding Evaluation
 \label{sec:variable-control-in-token-embedding-evaluation}
 
+#### Experiments
+#### Results
+#### Future Work
+#### Reproducibility
+
 ### Heuristical Hyperparameter Optimization in Subword Language Models
 \label{sec:heuristical-hyperparameter-optimization-in-subword-language-models}
 
@@ -235,7 +240,7 @@ accurate token embeddings:
 \label{sec:approximate-nearest-neighbor-search-accuracy}
 
 Until we have solved the mystery that is the human mind, the ranking criteria
-of math information retrieval system will always be just an approximation to
+of math information retrieval systems will always be just an approximation to
 the relevance perceived by the users. Additionally, due to the amount of data
 and time constraints, even this formal ranking criterion is usually
 approximated.
