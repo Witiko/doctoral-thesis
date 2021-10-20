@@ -20,6 +20,19 @@
   },
 }
 
+% Non-teletype links
+\def\markdownRendererLinkPrototype{%
+  \begingroup
+  \catcode`\#=12
+  \def\next##1##2##3##4{%
+    ##1\footnote{%
+      \ifx\empty##4\empty See \else##4: \fi\url{##3}%
+    }%
+    \endgroup
+  }%
+  \next
+}
+
 % Definitions of various Unicode characters
 \RequirePackage{newunicodechar}
 \newunicodechar{◌}{\dottedcircle}

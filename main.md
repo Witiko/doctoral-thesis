@@ -159,7 +159,7 @@ of fastText using relevance judgements from the ARQMath-1 and -2 labs.
 
 ### Reproducibility
 
-The experimental code for both [MIRMU-SCM][1], [MIRMU-CompuBERT][2], and their
+The experimental code for both [MIRMU-SCM,][1] [MIRMU-CompuBERT,][2] and their
 [hyperparameter optimization on the train dataset][3] is available online.
 
  [1]: https://github.com/MIR-MU/SCM-at-ARQMath
