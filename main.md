@@ -255,7 +255,7 @@ distribution of weights for the input and positional vectors. I described three
 different initial weight distributions and I showed that up to 24\% of word
 analogy accuracy can depend on them. I also showed that simpler weight
 distributions suffered from numerical instability when the vector
-dimensionality $D$ was high. I suggest using either the square-root normal
+dimensionality $D$ was high. I suggested using either the square-root normal
 distribution $\mathcal{N}^{0.5}(0, \nicefrac{1}{3D^2})$ of @pinelis2018exp
 or the continuous uniform $\mathcal{U}(\pm\nicefrac{\sqrt\[4\]{3}}{\sqrt{D}})$,
 see also my follow-up work [@novotny2021when, Appendix A].
