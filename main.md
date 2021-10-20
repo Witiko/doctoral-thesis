@@ -120,7 +120,7 @@ modeled both text and math:
 In both systems, we have compared the prefix and infix notations to other math
 representations on our train dataset. For the MIRMU-SCM system, we have used
 the following math representations for comparison: none (math tokens were
-removed), \LaTeX (every math formula becomes one token), adjacent pairs of OPT
+removed), \LaTeX{} (every math formula becomes one token), adjacent pairs of OPT
 nodes, and adjacent pairs of SLT nodes. [@novotny2020three, Section 4.3] For
 the MIRMU-CompuBERT system, we have used the \LaTeX{} math representation for
 comparison. [@novotny2020three, Table 2]
