@@ -154,10 +154,10 @@ approximate math information retrieval more accurate:
   both speed and accuracy.
 
 ### Dense Retrieval in Inverted Indices
-\ref{label:dense-retrieval-in-inverted-indices-accuracy}
+\label{label:dense-retrieval-in-inverted-indices-accuracy}
 
 ### Sparse Retrieval in Inverted Indices and Vector Databases
-\ref{label:sparse-retrieval-in-inverted-indices-and-vector-databases-accuracy}
+\label{label:sparse-retrieval-in-inverted-indices-and-vector-databases-accuracy}
 
 # Speed {#speed}
 The accuracy as well as the availability of more advanced features in a math
@@ -221,12 +221,15 @@ information retrieval faster by using an approximate ranking criterion:
   show that approximation can greatly improve the speed of dense retrieval with
   almost no loss in accuracy.
 
-- In Section~\ref{label:sparse-retrieval-in-inverted-indices-and-vector-databases-speed},
+- In Section~\ref{sec:sparse-retrieval-in-inverted-indices-and-vector-databases-speed},
   I will show that sparse retrieval can be approximated in a way that increases
   both speed and accuracy.
 
 ### Dense Retrieval in Inverted Indices
+\label{sec:dense-retrieval-in-inverted-indices-speed}
+
 ### Sparse Retrieval in Inverted Indices and Vector Databases
+\label{sec:sparse-retrieval-in-inverted-indices-and-vector-databases-speed}
 
 # Interpretability {#interpretability}
 In math information retrieval, accuracy and speed ensure that we can recall
