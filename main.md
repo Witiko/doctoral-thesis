@@ -75,8 +75,10 @@ that enable accurate math information retrieval:
 
 Math information retrieval techniques for structural and semantic matching rely
 on accurate neural representations (token embeddings) of natural language words
-and math symbols. In this section, I will report the results of my experiments
-in learning accurate token embeddings:
+and math symbols.
+
+In this section, I will report the results of my experiments in learning
+accurate token embeddings:
 
 - In Section~\ref{sec:variable-control-in-token-embedding-evaluation}, I will
   describe my survey of methodology in previous token embedding experiments
@@ -134,8 +136,28 @@ in learning accurate token embeddings:
 ## Approximate Nearest-Neighbor Search in Vector Spaces
 \label{sec:approximate-nearest-neighbor-search-accuracy}
 
+Until we solve the mystery that is the human mind, the ranking criteria
+implemented by math information retrieval system will always be just an
+approximation of the relevance perceived by the user. Additionally, due
+to the amount of data and time constraints, even this formal ranking criterion
+is usually approximated.
+
+In this section, I will report the results of my experiments in making
+approximate math information retrieval more accurate:
+
+- In Section~\ref{sec:dense-retrieval-in-inverted-indices-accuracy}, I will
+  show that dense retrieval can be approximated with almost no loss in
+  accuracy.
+
+- In Section~\ref{label:sparse-retrieval-in-inverted-indices-and-vector-databases-accuracy},
+  I will show that sparse retrieval can be approximated in a way that increases
+  both speed and accuracy.
+
 ### Dense Retrieval in Inverted Indices
+\ref{label:dense-retrieval-in-inverted-indices-accuracy}
+
 ### Sparse Retrieval in Inverted Indices and Vector Databases
+\ref{label:sparse-retrieval-in-inverted-indices-and-vector-databases-accuracy}
 
 # Speed {#speed}
 The accuracy as well as the availability of more advanced features in a math
@@ -165,9 +187,10 @@ and techniques that enable fast math information retrieval:
 
 Math information retrieval techniques for structural and semantic matching rely
 on neural representations (token embeddings) of natural language words and math
-symbols that not only accurate, but also fast to train and use. In this
-section, I will report the results of my experiments in learning fast token
-embeddings:
+symbols that not only accurate, but also fast to train and use.
+
+In this section, I will report the results of my experiments in learning fast
+token embeddings:
 
 - In Section~\ref{sec:quantized-token-embeddings-with-fast-bitwise-arithmetic},
   I will show that quantizing the Word2Vec language model makes it possible to
