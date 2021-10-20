@@ -111,10 +111,10 @@ In the answer retrieval task of ARQMath-1, we have used the prefix and infix
 notations in two of our primary math information retrieval systems that jointly
 modeled both text and math:
 
-- MIRMU-SCM [@novotny2020three, Section 4], which was based on a soft vector
+- *MIRMU-SCM* [@novotny2020three, Section 4], which was based on a soft vector
   space model with token embeddings from a fastText subword shallow
   log-bilinear language model,
-- MIRMU-CompuBERT [@novotny2020three, Section 6], which was based on the sentence
+- *MIRMU-CompuBERT* [@novotny2020three, Section 6], which was based on the sentence
   embeddings of the Sentence BERT deep neural network language model.
 
 In both systems, we have compared the prefix and infix notations to other math
