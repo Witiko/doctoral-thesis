@@ -163,8 +163,26 @@ and techniques that enable fast math information retrieval:
 ## Representation Learning of Words and Symbols for Sparse Retrieval
 \label{sec:representation-learning-speed}
 
+Math information retrieval techniques for structural and semantic matching rely
+on neural representations (token embeddings) of natural language words and math
+symbols that not only accurate, but also fast to train and use. In this
+section, I will report the results of my experiments in learning fast token
+embeddings:
+
+- In Section~\ref{sec:quantized-token-embeddings-with-fast-bitwise-arithmetic},
+  I will show that quantizing the Word2Vec language model makes it possible to
+  compute a fast and accurate bitwise approximation of the cosine similarity
+  between two token embeddings.
+
+- In Section~\ref{sec:position-independent-token-embeddings-speed}, I will show
+  that constraining the fastText positional language model improves its
+  training speed.
+
 ### Quantized Token Embeddings with Fast Bitwise Arithmetic
+\label{sec:quantized-token-embeddings-with-fast-bitwise-arithmetic}
+
 ### Position-Independent Token Embeddings
+\label{sec:position-independent-token-embeddings-speed}
 
 ## Approximate Nearest-Neighbor Search in Vector Spaces
 \label{sec:approximate-nearest-neighbor-search-speed}
