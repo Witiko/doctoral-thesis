@@ -81,11 +81,11 @@ notation). To give an example, the formula $x!! - y^2 = 0$ would be represented
 as the following comma-separated list of math symbols: $=$, $-$, $!!$, $x$,
 $◌^◌$, $y$, $2$, $0$.
 
-Using this representation, @lample2019deep trained a Transformer model to solve
-integrals, first-order differential equations, and second-order differential
-equations with significantly better results than commercial CAS such as
-Mathematica, MatLab, and Maple. Would the representation be equally successful
-in math information retrieval?
+Using their representation, @lample2019deep trained a Transformer model to
+solve integrals, first-order differential equations, and second-order
+differential equations with significantly better results than commercial CAS
+such as Mathematica, MatLab, and Maple. Would the representation be equally
+successful in math information retrieval?
 
 ### Experiments
 
