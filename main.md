@@ -84,8 +84,7 @@ $◌^◌$, $y$, $2$, $0$.
 Using their representation, @lample2019deep trained a Transformer model to
 solve integrals, first-order differential equations, and second-order
 differential equations with significantly better results than commercial CAS
-such as Mathematica, MatLab, and Maple. Would the representation be equally
-successful in math information retrieval?
+such as Mathematica, MatLab, and Maple.
 
 ### Experiments
 
@@ -204,10 +203,82 @@ accurate token embeddings:
 ### Variable Control in Token Embedding Evaluation
 \label{sec:variable-control-in-token-embedding-evaluation}
 
+Although the usefulness of token embeddings for transfer learning is rarely
+disputed, their theoretical foundations were only recently addressed by
+@levy2014neural in 2014. In 2015, @levy2015improving have shown that several
+pre-processing steps and fixed parameters can have a significant impact on
+experimental results.
+
+The accuracy of token embeddings is commonly evaluated on the intrinsic word
+analogy task of @mikolov2013efficient, which measures the ability of word
+vectors to answer the question ``Which word $b'$ is to $a'$ as $a$ is to $b$?''
+In their 2017 paper, @rogers2017too discuss the limitations of the word analogy
+task, including the selection of word pairs, the significant impact of
+including/excluding the words $a, b,$ and $a'$ in the candidates for $b'$, and
+the assumption that word relations are unique or even symmetric.
+
 #### Experiments
+
+In 2020, I conducted a survey of methodology in token embedding experiments.
+[@novotny2020art] In my survey, I attempted to reproduce well-known
+experimental results from the literature:
+
+- @mikolov2013distributed @mikolov2018advances introduce a phrasing algorithm
+  for merging commonly co-occurring words into multi-word expressions and they
+  report state-of-the-art results on the English word analogy task with their
+  model.
+
+- @mikolov2018advances @grave2018learning introduce the fastText positional
+  language model and they report state-of-the-art results on the English word
+  analogy task with their model.
+
+- All papers by Google and Facebook that introduce and improve the Word2Vec and
+  fastText language models [@mikolov2013efficient; @mikolov2013distributed;
+  @bojanowski2017enriching; @mikolov2018advances; @grave2018learning] use
+  the word analogy task to evaluate their models.
+
+I reported undisclosed variables that made the experiments difficult to
+reproduce. Whereever applicable, I suggested default parameter values and
+ways to make future experiments easier to reproduce.
+
 #### Results
-#### Future Work
+
+The phrasing algorithm contains three undisclosed parameters: the bigram
+merging threshold $\delta$, the incremental threshold decay, and the maximum
+dictionary size $n$. For the threshold and the decay, only the parameter values
+were withheld. For the maximum dictionary size, the parameter only appears in
+the reference implementation. I suggested the following default parameter
+values: $\delta = 100, n = 5\cdot 10^8$.
+
+The fastText positional language model does not disclose the initial
+distribution of weights for the input and positional vectors. I described three
+different initial weight distributions and I showed that up to 24\% of word
+analogy accuracy can depend on them. I also showed that simpler weight
+distributions suffered from numerical instability when the vector
+dimensionality $D$ was high. I suggest using either the square-root normal
+distribution $\mathcal{N}^{0.5}(0, \nicefrac{1}{3D^2})$ of @pinelis2018exp
+or the continuous uniform $\mathcal{U}(\pm\nicefrac{\sqrt\[4\]{3}}{\sqrt{D}})$,
+see also my follow-up work [@novotny2021when, Appendix A].
+
+The word analogy task contains three undisclosed parameters: the maximum
+dictionary size $n$, the case transformation applied to words $a, b, a',$ and
+$b'$, and the Unicode locale used for the case transformation. For the maximum
+dictionary size, only the parameter values were withheld. For the case
+transformations, the parameter only appears in the reference implementation.
+The Unicode locale appears in neither the published works nor in the reference
+implementation. I showed that up to 4\% of word analogy accuracy can depend on
+the Unicode locale and up to 18\% on the case transformation and the locale.
+I suggested the following default parameter values: $n = 3\cdot 10^5,$ Unicode
+case-folding, and the Unicode locale that corresponds to the language of the
+word analogy task.
+
 #### Reproducibility
+
+[The experimental code for all my experiments is available online.][4] I have
+also released [the only public implementation of the fastText positional model.][5]
+
+ [4]: https://github.com/MIR-MU/reproducible-ml
+ [5]: https://github.com/MIR-MU/pine
 
 ### Heuristical Hyperparameter Optimization in Subword Language Models
 \label{sec:heuristical-hyperparameter-optimization-in-subword-language-models}
