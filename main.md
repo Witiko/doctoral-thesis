@@ -243,12 +243,16 @@ ways to make future experiments easier to reproduce.
 
 #### Results
 
-The phrasing algorithm contains three undisclosed parameters: the bigram
-merging threshold $\delta$, the incremental threshold decay, and the maximum
-dictionary size $n$. For the threshold and the decay, only the parameter values
-were withheld. For the maximum dictionary size, the parameter only appears in
-the reference implementation. I suggested the following default parameter
-values: $\delta = 100, n = 5\cdot 10^8$.
+The phrasing algorithm contains three undisclosed parameters:
+
+1. the bigram merging threshold $\delta$,
+2. the incremental threshold decay, and
+3. the maximum dictionary size $n$.
+
+For the threshold and the decay, only the parameter values were withheld. For
+the maximum dictionary size, the parameter only appears in the reference
+implementation. I suggested the following default parameter values: $\delta =
+100, n = 5\cdot 10^8$.
 
 The fastText positional language model does not disclose the initial
 distribution of weights for the input and positional vectors. I described three
@@ -260,17 +264,20 @@ distribution $\mathcal{N}^{0.5}(0, \nicefrac{1}{3D^2})$ of @pinelis2018exp
 or the continuous uniform $\mathcal{U}(\pm\nicefrac{\sqrt\[4\]{3}}{\sqrt{D}})$,
 see also my follow-up work [@novotny2021when, Appendix A].
 
-The word analogy task contains three undisclosed parameters: the maximum
-dictionary size $n$, the case transformation applied to words $a, b, a',$ and
-$b'$, and the Unicode locale used for the case transformation. For the maximum
-dictionary size, only the parameter values were withheld. For the case
-transformations, the parameter only appears in the reference implementation.
-The Unicode locale appears in neither the published works nor in the reference
-implementation. I showed that up to 4\% of word analogy accuracy can depend on
-the Unicode locale and up to 18\% on the case transformation and the locale.
-I suggested the following default parameter values: $n = 3\cdot 10^5,$ Unicode
-case-folding, and the Unicode locale that corresponds to the language of the
-word analogy task.
+The word analogy task contains three undisclosed parameters:
+
+1. the maximum dictionary size $n$,
+2. the case transformation applied to words $a, b, a'$, and $b'$, and
+3. the Unicode locale used for the case transformation.
+
+For the maximum dictionary size, only the parameter values were withheld. For
+the case transformations, the parameter only appears in the reference
+implementation.  The Unicode locale appears in neither the published works nor
+in the reference implementation. I showed that up to 4\% of word analogy
+accuracy can depend on the Unicode locale and up to 18\% on the case
+transformation and the locale.  I suggested the following default parameter
+values: $n = 3\cdot 10^5,$ Unicode case-folding, and the Unicode locale that
+corresponds to the language of the word analogy task.
 
 #### Reproducibility
 
