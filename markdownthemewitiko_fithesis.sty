@@ -7,12 +7,18 @@
   html,
   hybrid,
   inlineFootnotes,
+}
+
+%% Margin notes
+\RequirePackage{marginnote,ragged2e}
+\setlength{\marginparwidth}{2.5cm}
+\markdownSetup{
   renderers = {
-  
+    inlineHtmlComment = {\marginnote{\footnotesize\RaggedRight#1}},
   },
 }
 
-% A setup snippet for unnumbered chapters
+%% A setup snippet for unnumbered chapters
 \markdownSetupSnippet{unnumbered-chapter}{
   renderers = {
     headingOne = {%
@@ -23,7 +29,7 @@
   },
 }
 
-% Non-teletype links
+%% Non-teletype links
 \def\markdownRendererLinkPrototype{%
   \begingroup
   \catcode`\#=12
@@ -36,6 +42,6 @@
   \next
 }
 
-% Definitions of various Unicode characters
+%% Definitions of various Unicode characters
 \RequirePackage{newunicodechar}
 \newunicodechar{◌}{\dottedcircle}

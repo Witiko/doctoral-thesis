@@ -262,8 +262,10 @@ analogy accuracy can depend on them. I also showed that simpler weight
 distributions suffered from numerical instability when the vector
 dimensionality $D$ was high. I suggested using either the square-root normal
 distribution $\mathcal{N}^{0.5}(0, \nicefrac{1}{3D^2})$ of @pinelis2018exp
-or the continuous uniform $\mathcal{U}(\pm\nicefrac{\sqrt\[4\]{3}}{\sqrt{D}})$,
-see also my follow-up work [@novotny2021when, Appendix A].
+or the continuous uniform $\mathcal{U}(\pm\nicefrac{\sqrt\[4\]{3}}{\sqrt{D}})$.
+<!-- See also Section~\vref{sec:position-independent-token-embeddings-accuracy},
+where I discuss my further experiments with the fastText positional language
+model. -->
 
 The word analogy task contains three undisclosed parameters:
 
@@ -277,7 +279,7 @@ the case transformations, the parameter only appears in the reference
 implementation.  The Unicode locale appears in neither the published works nor
 in the reference implementation. I showed that up to 4\% of word analogy
 accuracy can depend on the Unicode locale and up to 18\% on the case
-transformation and the locale.  I suggested the following default parameter
+transformation and the locale. I suggested the following default parameter
 values: $n = 3\cdot 10^5,$ Unicode case-folding, and the locale of the word
 analogy task.
 
