@@ -58,6 +58,36 @@
 %% Bibliography
 \renewcommand\multinamedelim{\addcomma\addspace}
 \renewcommand\finalnamedelim{\addspace and\addspace}
+\makeatletter
+\newbibmacro*{textcite}{%
+  \iffieldequals{namehash}{\cbx@lasthash}
+    {\setunit{\multicitedelim}}
+    {\ifnameundef{labelname}
+       {\printfield[citetitle]{labeltitle}}
+       {\printnames{labelname}}%
+     \setunit*{\printdelim{namelabeldelim}}%
+     \ifciteseen  % Omit brackets from repeated citations
+       {}
+       {%
+         \printtext{\bibopenbracket}\global\booltrue{cbx:parens}%
+       }%
+     \stepcounter{textcitecount}%
+     \savefield{namehash}{\cbx@lasthash}}%
+  \ifciteseen  % Omit citation number from repeated citations
+    {}
+    {%
+      \ifnumequal{\value{citecount}}{1}
+        {\usebibmacro{prenote}}
+        {}%
+      \usebibmacro{cite}%
+      \setunit{%
+        \ifbool{cbx:parens}
+          {\bibclosebracket\global\boolfalse{cbx:parens}}
+          {}%
+        \textcitedelim}%
+    }%
+}
+\makeatother
 
 %% Typesetting
 \emergencystretch=1em
@@ -95,6 +125,7 @@
 \markdownInput[slice=interpretability]{main.md}
 \markdownInput[slice=conclusion]{main.md}
 
+\chapter{Acronyms}
 {\sloppy\printbibliography[heading=bibintoc]}
 \printindex[subject]
 \chapter{Glossary of Research Groups}
