@@ -151,13 +151,13 @@ for both natural language text and math.
 
 ### Future Work
 
-The state-of-the-art math information retrieval systems of Approach0 and
-Tangent-L used hard vector space models to model paths in OPT and SLT trees,
-respectively. This indicates that the failure of our soft vector space model
-to exploit longer paths in OPT and SLT trees may be caused by the insufficient
-capacity of our fastText model. Future experiments should test this hypothesis
-by performing an end-to-end hyperparameter optimization of fastText using
-relevance judgements from the ARQMath-1 and ARQMath-2 labs.
+The state-of-the-art Approach0 and Tangent-L systems use hard vector space
+models to model paths in OPT and SLT trees, respectively. This indicates that
+the failure of our soft vector space model to exploit longer paths in OPT and
+SLT trees may be caused by the insufficient capacity of our fastText model.
+Future experiments should test this hypothesis by performing an end-to-end
+hyperparameter optimization of fastText using relevance judgements from the
+ARQMath-1 and ARQMath-2 labs.
 
 ### Reproducibility
 

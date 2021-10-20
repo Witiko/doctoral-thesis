@@ -26,7 +26,7 @@
   \catcode`\#=12
   \def\next##1##2##3##4{%
     ##1\footnote{%
-      \ifx\empty##4\empty See \else##4: \fi\href{##3}{##2}.%
+      \ifx\empty##4\empty See \else##4: \fi\href{##3}{{\sffamily\color{thesis@color@secondary}##2}}.%
     }%
     \endgroup
   }%
