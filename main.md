@@ -149,15 +149,15 @@ approximate math information retrieval more accurate:
   show that dense retrieval can be approximated with almost no loss in
   accuracy.
 
-- In Section~\ref{label:sparse-retrieval-in-inverted-indices-and-vector-databases-accuracy},
+- In Section~\ref{sec:sparse-retrieval-in-inverted-indices-and-vector-databases-accuracy},
   I will show that sparse retrieval can be approximated in a way that increases
   both speed and accuracy.
 
 ### Dense Retrieval in Inverted Indices
-\label{label:dense-retrieval-in-inverted-indices-accuracy}
+\label{sec:dense-retrieval-in-inverted-indices-accuracy}
 
 ### Sparse Retrieval in Inverted Indices and Vector Databases
-\label{label:sparse-retrieval-in-inverted-indices-and-vector-databases-accuracy}
+\label{sec:sparse-retrieval-in-inverted-indices-and-vector-databases-accuracy}
 
 # Speed {#speed}
 The accuracy as well as the availability of more advanced features in a math
@@ -187,7 +187,7 @@ and techniques that enable fast math information retrieval:
 
 Math information retrieval techniques for structural and semantic matching rely
 on neural representations (token embeddings) of natural language words and math
-symbols that not only accurate, but also fast to train and use.
+symbols that are not only accurate, but also fast to train and use.
 
 In this section, I will report the results of my experiments in learning fast
 token embeddings:
@@ -234,7 +234,7 @@ information retrieval faster by using an approximate ranking criterion:
 # Interpretability {#interpretability}
 In math information retrieval, accuracy and speed ensure that we can recall
 information that a user needs when she needs them. However, the ability of a
-system to explain the information to its users is fundamentally limited by the
+system to explain the information to the user is fundamentally limited by the
 *interpretability* of its internal representations.
 
 In this chapter, I will report the results of my research of interpretable
@@ -255,9 +255,29 @@ representations that enable explainable information retrieval:
 ## Representation Learning of Words and Symbols for Sparse Retrieval
 \label{sec:representation-learning-interpretability}
 
+Math information retrieval techniques for structural and semantic matching rely
+on neural representations (token embeddings) of natural language words and math
+symbols that are not only accurate, but also interpretable.
+
+In this section, I will report the results of my experiments in learning
+interpretable token embeddings:
+
+- In Section~\ref{sec:formal-concept-analysis-with-quantized-token-embeddings},
+  I will show that quantizing the Word2Vec language model makes it possible to
+  determine hyperonymy and hyponymy relations between tokens.
+
+- In Section~\ref{sec:position-independent-token-embeddings-interpretability},
+  I will show that the fastText positional language model makes it possible to
+  determine grammatical properties of tokens.
+
 ### Formal Concept Analysis with Quantized Token Embeddings
+\label{sec:formal-concept-analysis-with-quantized-token-embeddings}
+
 ### Measuring Language Distances with Subword Language Models
+\label{sec:measuring-language-distances-with-subword-language-models}
+
 ### Position-Independent Token Embeddings
+\label{sec:position-independent-token-embeddings-speed}
 
 ## Strengths and Weaknesses of Math Information Retrieval Systems
 \label{sec:strengths-and-weaknesses}
