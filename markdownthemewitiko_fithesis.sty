@@ -26,7 +26,7 @@
   \catcode`\#=12
   \def\next##1##2##3##4{%
     ##1\footnote{%
-      \ifx\empty##4\empty See \else##4: \fi\url{##3}%
+      \ifx\empty##4\empty See \else##4: \fi\href{##3}{##2}.%
     }%
     \endgroup
   }%
