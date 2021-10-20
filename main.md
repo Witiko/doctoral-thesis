@@ -249,6 +249,7 @@ The phrasing algorithm contains three undisclosed parameters:
 2. the incremental threshold decay, and
 3. the maximum dictionary size $n$.
 
+\noindent
 For the threshold and the decay, only the parameter values were withheld. For
 the maximum dictionary size, the parameter only appears in the reference
 implementation. I suggested the following default parameter values: $\delta =
@@ -270,14 +271,15 @@ The word analogy task contains three undisclosed parameters:
 2. the case transformation applied to words $a, b, a'$, and $b'$, and
 3. the Unicode locale used for the case transformation.
 
+\noindent
 For the maximum dictionary size, only the parameter values were withheld. For
 the case transformations, the parameter only appears in the reference
 implementation.  The Unicode locale appears in neither the published works nor
 in the reference implementation. I showed that up to 4\% of word analogy
 accuracy can depend on the Unicode locale and up to 18\% on the case
 transformation and the locale.  I suggested the following default parameter
-values: $n = 3\cdot 10^5,$ Unicode case-folding, and the Unicode locale that
-corresponds to the language of the word analogy task.
+values: $n = 3\cdot 10^5,$ Unicode case-folding, and the locale of the word
+analogy task.
 
 #### Reproducibility
 
