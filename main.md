@@ -75,7 +75,7 @@ and content math are well-established, how to transform them into a linear
 stream of tokens for math information retrieval is an open problem.
 
 In 2019, @lample2019deep have linearized a tree-structured content math
-representation using pre-order traversal, producing a topologically-orderer
+representation using pre-order traversal, producing a topologically-ordered
 sequence of tokens (also known as the prefix notation or the normal Polish
 notation). To give an example, the formula $x!! - y^2 = 0$ would be represented
 as the following comma-separated list of math symbols: $=$, $-$, $!!$, $x$,
@@ -86,7 +86,7 @@ solve integrals, first-order differential equations, and second-order
 differential equations with significantly better results than commercial CAS
 such as Mathematica, MatLab, and Maple.
 
-### Experiments
+#### Experiments
 
 In 2020, we have used the representation of @lample2019deep (further known as
 the *prefix* notation) in our submissions to the ARQMath-1 lab to see if the
@@ -126,7 +126,7 @@ nodes, and adjacent pairs of SLT nodes. [@novotny2020three, Section 4.3] For
 the MIRMU-CompuBERT system, we have used the \LaTeX{} math representation for
 comparison. [@novotny2020three, Table 2]
 
-### Results
+#### Results
 
 In the MIRMU-SCM system, both the prefix and the infix notations received the
 best results on the train dataset. The prefix and infix notations received
@@ -148,7 +148,7 @@ on natural language text. In \LaTeX{}, commands have descriptive names in
 natural language, which makes it more appropriate to use the same tokenizer
 for both natural language text and math.
 
-### Future Work
+#### Future Work
 
 The state-of-the-art Approach0 and Tangent-L systems use hard vector space
 models to model paths in OPT and SLT trees, respectively. This indicates that
@@ -158,7 +158,7 @@ Future experiments should test this hypothesis by performing an end-to-end
 hyperparameter optimization of fastText using relevance judgements from the
 ARQMath-1 and ARQMath-2 labs.
 
-### Reproducibility
+#### Reproducibility
 
 The experimental code for both [MIRMU-SCM,][1] [MIRMU-CompuBERT,][2] and their
 [hyperparameter optimization on the train dataset][3] is available online.

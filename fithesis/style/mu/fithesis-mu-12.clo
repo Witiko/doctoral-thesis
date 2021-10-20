@@ -210,7 +210,7 @@
   \reset@font\normalsize\sffamily\color{thesis@color@secondary}}}
 \def\paragraph{\@startsection{paragraph}{4}{\z@}{%
   3.25ex plus1ex minus.2ex}{-1em}{%
-  \reset@font\normalsize\bfseries}}
+  \reset@font\normalsize\sffamily\color{thesis@color@secondary}}}
 \def\subparagraph{\@startsection{subparagraph}{4}{\parindent}{%
   3.25ex plus1ex minus.2ex}{-1em}{%
   \reset@font\normalsize\bfseries}}
