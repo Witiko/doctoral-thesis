@@ -10,11 +10,15 @@
 }
 
 %% Margin notes
-\RequirePackage{marginnote,ragged2e}
+\RequirePackage{ragged2e}
 \setlength{\marginparwidth}{2.75cm}
 \markdownSetup{
   renderers = {
-    inlineHtmlComment = {\marginnote{\footnotesize\RaggedRight#1}},
+    inlineHtmlComment = {%
+      \marginpar
+        [\footnotesize\RaggedLeft#1]%
+        {\footnotesize\RaggedRight#1}%
+    },
   },
 }
 \let\markdownRendererFootnote=\markdownRendererInlineHtmlComment
