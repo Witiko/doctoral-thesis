@@ -74,24 +74,24 @@ Although tree-structured math representations for the exchange of presentation
 and content math are well-established, how to transform them into a linear
 stream of tokens for math information retrieval is an open problem.
 
-In 2019, @lample2019deep have linearized a tree-structured content math
+In 2019, @lample2020deep have linearized a tree-structured content math
 representation using pre-order traversal, producing a topologically-ordered
 sequence of tokens (also known as the prefix notation or the normal Polish
 notation). To give an example, the formula $x!! - y^2 = 0$ would be represented
 as the following comma-separated list of math symbols: $=$, $-$, $!!$, $x$,
 $◌^◌$, $y$, $2$, $0$.
 
-Using their representation, @lample2019deep trained a Transformer model to
+Using their representation, @lample2020deep trained a Transformer model to
 solve integrals, first-order differential equations, and second-order
 differential equations with significantly better results than commercial CAS
 such as Mathematica, MatLab, and Maple.
 
 #### Experiments
 
-In 2020, we have used the representation of @lample2019deep (further known as
+In 2020, we have used the representation of @lample2020deep (further known as
 the *prefix* notation) in our submissions to the ARQMath-1 lab to see if the
 representation would also be useful for math information retrieval. Since
-@lample2019deep do not specify the precise tree-structured content math
+@lample2020deep do not specify the precise tree-structured content math
 representation they used, we have used the OPT math representation in our
 systems. [@novotny2020three, Section 2.1] To give an example, the formula $x!!-
 y^2 = 0$ from the previous paragraph would be represented as the following
@@ -140,10 +140,10 @@ longer paths in OPT and SLT trees.
 
 In the MIRMU-CompuBERT system, the prefix notation has received better results
 than the infix notation, showing that the topological ordering of
-@lample2019deep is significant in deep neural language models. Surprisingly,
+@lample2020deep is significant in deep neural language models. Surprisingly,
 the \LaTeX{} representation has received better results that both prefix and
 infix notations. We believe that this is due to tokenization: Unlike
-@lample2019deep, we fine-tuned a language model whose tokenizer was pre-trained
+@lample2020deep, we fine-tuned a language model whose tokenizer was pre-trained
 on natural language text. In \LaTeX{}, commands have descriptive names in
 natural language, which makes it more appropriate to use the same tokenizer
 for both natural language text and math.
@@ -161,7 +161,7 @@ ARQMath-1 and ARQMath-2 labs.
 #### Reproducibility
 
 The experimental code for both [MIRMU-SCM,][1] [MIRMU-CompuBERT,][2] and their
-[hyperparameter optimization on the train dataset][3] is available online.
+[hyperparameter optimization on the train dataset][3] is available on GitHub.
 
  [1]: https://github.com/MIR-MU/SCM-at-ARQMath
  [2]: https://github.com/MIR-MU/CompuBERT
@@ -283,7 +283,7 @@ analogy task.
 
 #### Reproducibility
 
-[The experimental code for all my experiments is available online.][4] I have
+[The experimental code for all my experiments is available GitHub.][4] I have
 also released [the only public implementation of the fastText positional model.][5]
 
  [4]: https://github.com/MIR-MU/reproducible-ml
@@ -353,7 +353,7 @@ and byte-pair models for subword selection in fastText.
 
 #### Reproducibility
 
-The experimental code for [the $n$-gram coverage model][7] is available online.
+The experimental code for [the $n$-gram coverage model][7] is available on GitHub.
 
  [7]: https://github.com/MIR-MU/fasttext-optimizer
 
@@ -411,8 +411,8 @@ positional models on languages other than English.
 
 #### Reproducibility
 
-The experimental code for all our experiments is [available online][5] together
-with the only public implementation of the positional and constrained
+The experimental code for all our experiments is [available on GitHub][5]
+together with the only public implementation of the positional and constrained
 positional models.
 
 ### Quantized Token Embeddings
@@ -489,17 +489,59 @@ Compared to previous work in training sense embeddings using sense inventories
 and other lexical resources, our sense embeddings achived state-of-the-art
 results on five out of six word sense disambiguation tasks.
 
-Our pretrained sense embeddings are [available online.][9]
-
- [9]: https://mir.fi.muni.cz/EDS-MEMBED.zip
-
 #### Future Work
 
 Future work should investigate how our word sense disambiguation algorithm
 can be used to disambiguate content math symbols into semantic math senses.
 
+#### Reproducibility
+
+Our sense embeddings are [available online.][9]
+
+ [9]: https://mir.fi.muni.cz/EDS-MEMBED.zip
+
 ### Decontextualized Token Embeddings
 \label{sec:decontextualized-token-embeddings}
+
+Math information retrieval techniques for structural and semantic matching such
+as the soft vector space model and the word mover's distance rely on global
+token embeddings of shallow log-bilinear language models.
+
+In 2019, @zhao2019moverscore showed that using contextual embeddings of deep
+neural language models improves the accuracy of the word mover's distance on
+machine translation evaluation tasks compared to using global embeddings.
+However, using contextual embeddings in a math information retrieval system
+requires expensive query-time inference.
+
+#### Experiments
+
+In 2021, we developed an algorithm that *decontextualized* contextual token
+embeddings into global token embeddings by averaging across all contexts of a
+token. [@stefanik2021regressive, Section 3.2]
+
+We evaluated the soft vector space model and the word mover's distance with our
+decontextualized embeddings and with the global embeddings of a shallow
+log-bilinear fastText subword language model on six machine translation
+evaluation tasks. [@stefanik2021regressive, Section 4]
+
+#### Results
+
+We showed that the soft vector space model and the word mover's distance were
+more accurate with our decontextualized embeddings than with the global
+embeddings of a fastText model on most tasks.
+
+#### Future Work
+
+Future work should evaluate decontextualized embeddings on math information
+retrieval.
+
+#### Reproducibility
+
+The experimental code for all our experiments is [available on GitHub][10]
+and as [a Docker image.][11]
+
+ [10]: https://github.com/MIR-MU/regemt
+ [11]: https://hub.docker.com/r/miratmu/regemt
 
 ### Joint Token Embeddings of Text and Math
 \label{sec:joint-token-embeddings-of-text-and-math}
