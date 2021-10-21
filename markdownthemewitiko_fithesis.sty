@@ -11,12 +11,13 @@
 
 %% Margin notes
 \RequirePackage{marginnote,ragged2e}
-\setlength{\marginparwidth}{2.5cm}
+\setlength{\marginparwidth}{2.75cm}
 \markdownSetup{
   renderers = {
     inlineHtmlComment = {\marginnote{\footnotesize\RaggedRight#1}},
   },
 }
+\let\markdownRendererFootnote=\markdownRendererInlineHtmlComment
 
 %% A setup snippet for unnumbered chapters
 \markdownSetupSnippet{unnumbered-chapter}{
@@ -30,7 +31,7 @@
 }
 
 %% Non-teletype links
-\def\markdownRendererLinkPrototype{%
+\def\markdownRendererLink{%
   \begingroup
   \catcode`\#=12
   \def\next##1##2##3##4{%

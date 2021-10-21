@@ -154,7 +154,7 @@ The state-of-the-art Approach0 and Tangent-L systems use hard vector space
 models to model paths in OPT and SLT trees, respectively. This indicates that
 the failure of our soft vector space model to exploit longer paths in OPT and
 SLT trees may be caused by the insufficient capacity of our fastText model.
-Future experiments should test this hypothesis by performing an end-to-end
+Future work should test this hypothesis by performing an end-to-end
 hyperparameter optimization of fastText using relevance judgements from the
 ARQMath-1 and ARQMath-2 labs.
 
@@ -293,6 +293,71 @@ also released [the only public implementation of the fastText positional model.]
 
 ### Heuristical Hyperparameter Optimization in Subword Language Models
 \label{sec:heuristical-hyperparameter-optimization-in-subword-language-models}
+
+In 2017, @bojanowski2017enriching developed the fastText subword language model
+and showed that it was more accurate than the Word2Vec language model on the
+English, German, Czech, and Italian word analogy tasks. They also showed the
+optimal subword sizes of fastText on the English and German word analogy tasks.
+However, they did not optimize the subword sizes of fastText on the Czech and
+Italian word analogy tasks and used subwords of size 3--6[^6], which they
+described as ``an arbitrary choice'' [@bojanowski2017enriching].
+
+ [^6]: For subword sizes, we adopt the notation of @bojanowski2017enriching and
+       @grave2018learning. For example, subwords of size 3–6 are all subwords
+       whose size is 3, 4, 5, or 6.
+
+In 2018, @grave2018learning produced the French and Hindi word analogy tasks.
+Furthermore, they also trained and publicly released fastText language models
+for 157 languages.  Like @bojanowski2017enriching, they also neglected to
+optimize the subword sizes.  Unlike @bojanowski2017enriching, they used
+subwords of size 5--5 for all languages, noting that ``using character
+$n$-grams of size 5, instead of using the default range of 3--6, does not
+significantly decrease the accuracy (except for Czech).'' [@grave2018learning]
+
+#### Experiments
+
+In 2021, we attempted to reproduce the optimal subword sizes of fastText
+on the English (4--5) and German (6--6) word analogy tasks reported by
+@bojanowski2017enriching. Additionally, we reported the optimal subword sizes
+of fastText on the Czech, Italian, Spanish, French, Hindi, Turkish, and Russian
+word analogy tasks. [@novotny2021one]
+
+Furthermore, we produced a simple $n$-gram coverage model that can suggest
+subword sizes for under-resourced languages, where optimal subword sizes are
+unknown.
+
+#### Results
+
+We reproduced the optimal subword sizes of @bojanowski2017enriching and we
+reported the optimal subword sizes on the Czech (1--4), Italian (2--5), Spanish
+(5--5), French (6--6), Hindi (2--2), Turkish (3--3), and Russian (5--6) word
+analogy tasks. We showed that using the optimal subword sizes can result in up
+to 14\% improvement in word analogy accuracy.
+
+We also showed that using the suggested subword sizes of the $n$-gram coverage
+model was never worse than the default subword sizes of
+@bojanowski2017enriching @grave2018learning on our test dataset, improved the
+word analogy accuracy by up to 3\% compared to the default subword sizes, and
+was within 2\% word analogy accuracy of the optimal subword sizes.
+
+#### Future Work
+
+Although the word analogy task is a convenient proxy for the accuracy of
+fastText, @ghannay2016word @chiu2016intrinsic @rogers2018whats
+@kuchar2021evaluation show that it does not always correlate with extrinsic end
+tasks. Future work should also evaluate our $n$-gram coverage model on
+extrinsic tasks.
+
+In recent machine translation models [@vaswani2017attention], text is tokenized
+into words and subwords using word-piece [@yonghui2016google] and byte-pair
+[@sennrich2016neural] models. Future work should evaluate the use of word-piece
+and byte-pair models for subword selection in fastText.
+
+#### Reproducibility
+
+The experimental code for [the $n$-gram coverage model][7] is available online.
+
+ [7]: https://github.com/MIR-MU/fasttext-optimizer
 
 ### Position-Independent Token Embeddings
 \label{sec:position-independent-token-embeddings-accuracy}
