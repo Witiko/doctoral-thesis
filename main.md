@@ -53,17 +53,17 @@ needs of its users.
 In this chapter, I will report the results of my research of representations
 that enable accurate math information retrieval:
 
-- In sections~\ref{sec:topological-math-representations} and
+- In sections \ref{sec:topological-math-representations} and
   \ref{sec:representation-learning-accuracy}, I will describe my work in
   developing new representation of math and my experiments in learning neural
   representations of natural language words and math symbols.
 
-- In sections~\ref{sec:ensembling-semantic-text-similarity-measures} and
+- In sections \ref{sec:ensembling-semantic-text-similarity-measures} and
   \ref{sec:rank-based-fusion}, I will describe my work in overcoming the
   weaknesses of different document representations by using score aggregation,
   rank-based fusion, and learning-to-rank techniques.
 
-- In sections~\ref{sec:weighted-zone-scoring} and
+- In sections \ref{sec:weighted-zone-scoring} and
   \ref{sec:approximate-nearest-neighbor-search-accuracy}, I will describe my
   work in making fast approximate search techniques more accurate.
 
@@ -177,25 +177,25 @@ and math symbols.
 In this section, I will report the results of my experiments in learning
 accurate token embeddings:
 
-- In Section~\ref{sec:variable-control-in-token-embedding-evaluation}, I will
+- In Section \ref{sec:variable-control-in-token-embedding-evaluation}, I will
   describe my survey of methodology in previous token embedding experiments
   and show that a lack of variable control makes some previous experiments
   difficult to reproduce.
 
-- In Section~\ref{sec:heuristical-hyperparameter-optimization-in-subword-language-models},
+- In Section \ref{sec:heuristical-hyperparameter-optimization-in-subword-language-models},
   I will report the optimal hyperparameters for the fastText subword language
   model on nine word analogy tasks. I will also show that expensive
   hyperparameter optimization can be replaced by a simple n-gram coverage model
   that consistently improves the accuracy compared to the default
   hyperparameters.
 
-- In sections~\ref{sec:position-independent-token-embeddings-accuracy} through
+- In sections \ref{sec:position-independent-token-embeddings-accuracy} through
   \ref{sec:decontextualized-token-embeddings}, I will show that constraining,
   quantization, disambiguation, and decontextualization of token word embeddings
   improves their accuracy on word analogy, word similarity, language modeling,
   part-of-speech tagging, and machine translation evaluation tasks.
 
-- In Section~\ref{sec:joint-token-embeddings-of-text-and-math}, I will show
+- In Section \ref{sec:joint-token-embeddings-of-text-and-math}, I will show
   that using a single language model to produce token embeddings of both
   natural language words and math symbols improves accuracy on math information
   retrieval.
@@ -262,8 +262,8 @@ distributions suffered from numerical instability when the vector
 dimensionality $D$ was high. I suggested using either the square-root normal
 distribution $\mathcal{N}^{0.5}(0, \nicefrac{1}{3D^2})$ of @pinelis2018exp
 or the continuous uniform $\mathcal{U}(\pm\nicefrac{\sqrt\[4\]{3}}{\sqrt{D}})$.
-<!-- See also Section~\vref{sec:position-independent-token-embeddings-accuracy},
-where I discuss my further experiments with the fastText positional language
+<!-- See also Section \vref{sec:position-independent-token-embeddings-accuracy},
+where I discuss our further experiments with the fastText positional language
 model. -->
 
 The word analogy task contains three undisclosed parameters:
@@ -396,6 +396,7 @@ constrained positional models on an English language modeling task
 
 We showed that with $D = 300$ features, using $D' = 60$
 narrow-context-dependent features is optimal on the English word analogy task.
+
 We also showed that the positional model is more accurate than the subword
 model and that the constrained positional model is more accurate than the
 positional model on the English language modeling task.
@@ -410,12 +411,44 @@ positional models on languages other than English.
 
 #### Reproducibility
 
-[The experimental code for all our experiments is available online][5] together
+The experimental code for all our experiments is [available online][5] together
 with the only public implementation of the positional and constrained
 positional models.
 
 ### Quantized Token Embeddings
 \label{sec:quantized-token-embeddings}
+
+In 2018, @lam2018word2bits developed the Word2Bits quantized language model
+technique and showed that it was more accurate than the Word2Vec language model
+on the English word similarity and open-domain question answering tasks and
+equally as accurate on the English word analogy task. However, word analogy
+accuracies for the different categories of analogical reasoning were not
+reported, only total word analogy accuracies.
+
+#### Experiments
+
+In 2019, I consulted the master's thesis of @stefanik2019semantic.
+<!-- See also sections \vref{sec:quantized-token-embeddings-with-fast-bitwise-arithmetic}
+and \vref{sec:formal-concept-analysis-with-quantized-token-embeddings}, where I
+discuss our further experiments with the quantized language model. -->
+In the thesis, we aimed to reproduce the word analogy experiment of @lam2018word2bits
+and analyze the word analogy accuracies for the different categories of
+analogical reasoning. [@stefanik2019semantic, Section 3.1]
+
+#### Results
+
+We reproduced the total accuracy on the English word analogy task.
+Additionally, we showed that although the quantized model way equally
+as accurate as the Word2Vec language model in total accuracies, it was
+significantly more accurate on the semantic categories of analogical
+reasoning and significantly less accurate on the syntactic categories
+of analogical reasoning.
+
+#### Reproducibility
+
+The experimental code for all our experiments is [available online.][8]
+
+ [8]: https://is.muni.cz/th/bqz8u/attachments.zip
 
 ### Autoregressive Word Sense Disambiguation
 \label{sec:autoregressive-word-sense-disambiguation}
@@ -447,11 +480,11 @@ approximated.
 In this section, I will report the results of my experiments in making
 approximate math information retrieval more accurate:
 
-- In Section~\ref{sec:dense-retrieval-in-inverted-indices-accuracy}, I will
+- In Section \ref{sec:dense-retrieval-in-inverted-indices-accuracy}, I will
   show that dense retrieval can be approximated with almost no loss in
   accuracy.
 
-- In Section~\ref{sec:sparse-retrieval-in-inverted-indices-and-vector-databases-accuracy},
+- In Section \ref{sec:sparse-retrieval-in-inverted-indices-and-vector-databases-accuracy},
   I will show that sparse retrieval can be approximated in a way that increases
   both speed and accuracy.
 
@@ -470,15 +503,15 @@ that satisfy the needs of its users.
 In this chapter, I will report the results of my research of representations
 and techniques that enable fast math information retrieval:
 
-- In Section~\ref{sec:fast-and-reproducible-deployment}, I will describe my
+- In Section \ref{sec:fast-and-reproducible-deployment}, I will describe my
   work in making math information retrieval search engines easier to build and
   deploy.
 
-- In Section~\ref{sec:representation-learning-speed}, I will describe my
+- In Section \ref{sec:representation-learning-speed}, I will describe my
   work in making neural representations of natural language words and math
   symbols both faster to learn and faster to use.
 
-- In Section~\ref{sec:approximate-nearest-neighbor-search-speed}, I will
+- In Section \ref{sec:approximate-nearest-neighbor-search-speed}, I will
   describe my work in developing fast approximate search techniques.
 
 ## Fast and Reproducible Deployment of Math Information Retrieval Systems Using Docker
@@ -494,12 +527,12 @@ symbols that are not only accurate, but also fast to train and use.
 In this section, I will report the results of my experiments in learning fast
 token embeddings:
 
-- In Section~\ref{sec:quantized-token-embeddings-with-fast-bitwise-arithmetic},
+- In Section \ref{sec:quantized-token-embeddings-with-fast-bitwise-arithmetic},
   I will show that quantizing the Word2Vec language model makes it possible to
   compute a fast and accurate bitwise approximation of the cosine similarity
   between two token embeddings.
 
-- In Section~\ref{sec:position-independent-token-embeddings-speed}, I will show
+- In Section \ref{sec:position-independent-token-embeddings-speed}, I will show
   that constraining the fastText positional language model improves its
   training speed.
 
@@ -519,11 +552,11 @@ to wait for the system to recall information. [@apica2017digital]
 In this section, I will report the results of my experiments in making math
 information retrieval faster by using an approximate ranking criterion:
 
-- In Section~\ref{sec:dense-retrieval-in-inverted-indices-speed}, I will
+- In Section \ref{sec:dense-retrieval-in-inverted-indices-speed}, I will
   show that approximation can greatly improve the speed of dense retrieval with
   almost no loss in accuracy.
 
-- In Section~\ref{sec:sparse-retrieval-in-inverted-indices-and-vector-databases-speed},
+- In Section \ref{sec:sparse-retrieval-in-inverted-indices-and-vector-databases-speed},
   I will show that sparse retrieval can be approximated in a way that increases
   both speed and accuracy.
 
@@ -542,15 +575,15 @@ system to explain the information to the user is fundamentally limited by the
 In this chapter, I will report the results of my research of interpretable
 representations that enable explainable information retrieval:
 
-- In Section~\ref{sec:representation-learning-interpretability}, I will
+- In Section \ref{sec:representation-learning-interpretability}, I will
   describe my work in making neural representations of natural language words
   and math symbols more interpretable.
 
-- In Section~\ref{sec:strengths-and-weaknesses}, I will describe my work in
+- In Section \ref{sec:strengths-and-weaknesses}, I will describe my work in
   explaining the roles played by different math information retrieval systems
   when using rank-based fusion and learning-to-rank techniques.
 
-- In Section~\ref{sec:interactive-visualizations}, I will describe my work in
+- In Section \ref{sec:interactive-visualizations}, I will describe my work in
   producing interactive visualizations of math information retrieval using
   interpretable document representations.
 
@@ -564,16 +597,54 @@ symbols that are not only accurate, but also interpretable.
 In this section, I will report the results of my experiments in learning
 interpretable token embeddings:
 
-- In Section~\ref{sec:formal-concept-analysis-with-quantized-token-embeddings},
+- In Section \ref{sec:formal-concept-analysis-with-quantized-token-embeddings},
   I will show that quantizing the Word2Vec language model makes it possible to
   determine hyperonymy and hyponymy relations between tokens.
 
-- In Section~\ref{sec:position-independent-token-embeddings-interpretability},
+- In Section \ref{sec:position-independent-token-embeddings-interpretability},
   I will show that the fastText positional language model makes it possible to
   determine grammatical properties of tokens.
 
 ### Formal Concept Analysis with Quantized Token Embeddings
 \label{sec:formal-concept-analysis-with-quantized-token-embeddings}
+
+In 1982, @wille1982restructuring proposed the formal concept analysis as a
+reformulation of the lattice theory that focused on objects and their binary
+attributes. The binary features of the Word2Bits quantized language model
+of @lam2018word2bits can be studied using the formal concept analysis.
+
+In 2015, @priss2005linguistic has noted that formal concept analysis can be
+used to encode and analyze type-of (hyponymy-hyperonymy) word relations.
+Parts of speech are a type-of relation. However, the quantized language model
+has not been evaluated on a part-of-speech tagging task.
+
+#### Experiments
+
+In 2019, I consulted the master's thesis of @stefanik2019semantic.
+<!-- See also sections \vref{sec:quantized-token-embeddings}
+and \vref{sec:quantized-token-embeddings-with-fast-bitwise-arithmetic}, where I
+discuss our further experiments with the quantized language model. -->
+In the thesis, we evaluated the quantized model on an English part-of-speech
+tagging task: For each part-of-speech tag, we reported the most well-correlated
+token embedding feature. To see if the part-of-speech relation would be
+eventually distributed between different features, we repeated the experiment
+for different vector dimensionalities $D$. [@stefanik2019semantic, Section 3.3]
+
+#### Results
+
+We showed that for vector dimensionality $D = 30$, nouns, verbs, and
+adjectives are significantly correlated with their token embedding feature.
+The correlations decrease as the vector dimensionality $D$ increases and become
+they insignificant for $D\geq 600$, which indicates that the part-of-speech
+relation has been distributed between different token embedding features.
+
+#### Future Work
+
+#### Reproducibility
+
+The experimental code for all our experiments is [available online.][8]
+
+ [8]: https://is.muni.cz/th/bqz8u/attachments.zip
 
 ### Position-Independent Token Embeddings
 \label{sec:position-independent-token-embeddings-interpretability}
