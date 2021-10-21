@@ -193,7 +193,7 @@ accurate token embeddings:
   \ref{sec:decontextualized-token-embeddings}, I will show that constraining,
   quantization, disambiguation, and decontextualization of token word embeddings
   improves their accuracy on word analogy, word similarity, language modeling,
-  part-of-speech tagging, and machine translation evaluation tasks.
+  and machine translation evaluation tasks.
 
 - In Section \ref{sec:joint-token-embeddings-of-text-and-math}, I will show
   that using a single language model to produce token embeddings of both
@@ -450,8 +450,53 @@ The experimental code for all our experiments is [available online.][8]
 
  [8]: https://is.muni.cz/th/bqz8u/attachments.zip
 
-### Autoregressive Word Sense Disambiguation
-\label{sec:autoregressive-word-sense-disambiguation}
+### Word Sense Disambiguation with Sense Embeddings
+\label{sec:word-sense-disambiguation-with-sense-embeddings}
+
+In both natural language and in content math, words and symbols can have
+several possible senses. The accuracy of token embeddings can be improved
+by accurate disambiguation of the word and symbol tokens into senses.
+
+Previous work in training sense embeddings relies on sense-annotated training
+corpora. These corpora have been manually disambiguated by human annotators and
+are prohibitively small, a condition known as *the knowledge acquisition
+bottleneck*.
+
+Additionally, previous work in training sense embeddings only evaluates the
+embeddings on word similarity tasks, where the sense representations are not
+directly used, and not on sense-specific tasks such as word sense
+disambiguation.
+
+#### Experiments
+
+In our work, we have developed an algorithm for enlarging sense-annotated
+training corpora using a sense inventory. [@ayetiran2021eds, Section 4] We
+used the enlarged corpora to train our sense embeddings without the knowledge
+acquisition bottleneck.
+
+We evaluated our sense embeddings on five English word similarity tasks.
+[@ayetiran2021eds, Section 5.4] Additionally, we have developed a word sense
+disambiguation algorithm for sense embeddings and used it to evaluate our sense
+embeddings on six English word sense disambiguation tasks. [@ayetiran2021eds,
+Section 5.3]
+
+#### Results
+
+Our sense embeddings achieved state-of-the-art results on three out of five
+word similarity tasks.
+
+Compared to previous work in training sense embeddings using sense inventories
+and other lexical resources, our sense embeddings achived state-of-the-art
+results on five out of six word sense disambiguation tasks.
+
+Our pretrained sense embeddings are [available online.][9]
+
+ [9]: https://mir.fi.muni.cz/EDS-MEMBED.zip
+
+#### Future Work
+
+Future work should investigate how our word sense disambiguation algorithm
+can be used to disambiguate content math symbols into semantic math senses.
 
 ### Decontextualized Token Embeddings
 \label{sec:decontextualized-token-embeddings}
@@ -599,7 +644,7 @@ interpretable token embeddings:
 
 - In Section \ref{sec:formal-concept-analysis-with-quantized-token-embeddings},
   I will show that quantizing the Word2Vec language model makes it possible to
-  determine hyperonymy and hyponymy relations between tokens.
+  determine type-of relations between tokens.
 
 - In Section \ref{sec:position-independent-token-embeddings-interpretability},
   I will show that the fastText positional language model makes it possible to
