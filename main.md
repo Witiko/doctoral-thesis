@@ -528,7 +528,8 @@ evaluation tasks. [@stefanik2021regressive, Section 4]
 
 We showed that the soft vector space model and the word mover's distance were
 more accurate with our decontextualized embeddings than with the global
-embeddings of a fastText model on most tasks.
+embeddings of a fastText model on most tasks: four out of six for the soft
+vector space model and five out of six for the word mover's distance.
 
 #### Future Work
 
