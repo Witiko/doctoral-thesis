@@ -249,9 +249,8 @@ The phrasing algorithm contains three undisclosed parameters:
 2. the incremental threshold decay, and
 3. the maximum dictionary size $n$.
 
-\noindent
-For the threshold and the decay, only the parameter values were withheld. For
-the maximum dictionary size, the parameter only appears in the reference
+← For the threshold and the decay, only the parameter values were withheld.
+For the maximum dictionary size, the parameter only appears in the reference
 implementation. I suggested the following default parameter values: $\delta =
 100, n = 5\cdot 10^8$.
 
@@ -273,8 +272,7 @@ The word analogy task contains three undisclosed parameters:
 2. the case transformation applied to words $a, b, a'$, and $b'$, and
 3. the Unicode locale used for the case transformation.
 
-\noindent
-For the maximum dictionary size, only the parameter values were withheld. For
+← For the maximum dictionary size, only the parameter values were withheld. For
 the case transformations, the parameter only appears in the reference
 implementation.  The Unicode locale appears in neither the published works nor
 in the reference implementation. I showed that up to 4\% of word analogy
@@ -361,6 +359,60 @@ The experimental code for [the $n$-gram coverage model][7] is available online.
 
 ### Position-Independent Token Embeddings
 \label{sec:position-independent-token-embeddings-accuracy}
+
+In 2018, @mikolov2018advances developed the fastText positional language model
+and showed that it was more accurate than the fastText subword language model
+on the English word analogy task. However, the positional model has only been
+evaluated on the intrinsic word analogy task and not on extrinsic tasks.
+
+In the subword model, tokens are represented by the parts of their meaning that
+are *fixed* or dependent on the *broader context* that includes the
+conversational setting, the time and location of an utterance, and the salient
+common ground. [@bach2012context] Unlike in the positional model, they are
+*not* represented by the parts of the meaning that are dependent the *narrow
+context* of a paragraph, which makes the subword model less accurate than the
+positional model. However, in the positional model, tokens are *only*
+represented by the parts of their meaning that are dependent on the narrow
+context of a paragraph and not the other parts, which can also make the
+positional model less accurate.
+
+#### Experiments
+
+In 2021, we produced the fastText constrained positional model, which models
+the parts of the meaning that are dependent on the narrow context of a
+paragraph as well as the parts of the meaning that are fixed or dependent on
+the broader context. [@novotny2021when, Section 2.2.4] We achieved this by
+dividing the $D = 300$ input vector features into $D'$ narrow-context-dependent
+features that would interact with positional embeddings, and the remaining $D -
+D'$ fixed and broader-context-dependent features that would not interact with
+positional embeddings.
+
+We reported the optimal value of $D'$ on the English word analogy task
+[@novotny2021when, Section 4.1] and we compared the subword, positional, and
+constrained positional models on an English language modeling task
+[@novotny2021when, Section 4.4].
+
+#### Results
+
+We showed that with $D = 300$ features, using $D' = 60$
+narrow-context-dependent features is optimal on the English word analogy task.
+We also showed that the positional model is more accurate than the subword
+model and that the constrained positional model is more accurate than the
+positional model on the English language modeling task.
+
+#### Future Work
+
+@grave2018learning used the positional language model to produce token
+embeddings for 157 languages, but prior work has only shown that the positional
+and constrained positional models outperform the subword model on English
+tasks. Future work should compare the subword, positional, and constrained
+positional models on languages other than English.
+
+#### Reproducibility
+
+[The experimental code for all our experiments is available online][5] together
+with the only public implementation of the positional and constrained
+positional models.
 
 ### Quantized Token Embeddings
 \label{sec:quantized-token-embeddings}
