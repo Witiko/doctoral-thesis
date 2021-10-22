@@ -108,13 +108,14 @@ $=$, $0$, $)$, and as the following comma-separated list of OPT nodes: `(`,
 `(`, `O!double-factorial`, `(`, `V!x`, `)`, `O!minus`, `O!SUP`, `(`, `V!y`,
 `N!2`, `)`, `)`, `U!eq`, `N!0`, `)`.
 
-In the answer retrieval task of ARQMath-1, we have used the prefix and infix
-notations in two of our primary math information retrieval systems that jointly
-modeled both text and math:
+In the *answer retrieval* math information retrieval task of the ARQMath-1 lab,
+we have used the prefix and infix notations in two of our primary math
+information retrieval systems that jointly modeled both text and math:
 
 - *MIRMU-SCM* [@novotny2020three, Section 4], which was based on a soft vector
   space model with token embeddings from a fastText subword shallow
-  log-bilinear language model,
+  log-bilinear language model, and
+
 - *MIRMU-CompuBERT* [@novotny2020three, Section 6], which was based on the sentence
   embeddings of the Sentence BERT deep neural network language model.
 
@@ -225,11 +226,11 @@ experimental results from the literature:
 
 - @mikolov2013distributed @mikolov2018advances introduce a phrasing algorithm
   for merging commonly co-occurring words into multi-word expressions and they
-  report state-of-the-art results on the English word analogy task with their
+  report state-of-the-art accuracy on the English word analogy task with their
   model.
 
 - @mikolov2018advances @grave2018learning introduce the fastText positional
-  language model and they report state-of-the-art results on the English word
+  language model and they report state-of-the-art accuracy on the English word
   analogy task with their model.
 
 - All papers by Google and Facebook that introduce and improve the Word2Vec and
@@ -482,12 +483,12 @@ Section 5.3]
 
 #### Results
 
-Our sense embeddings achieved state-of-the-art results on three out of five
+Our sense embeddings achieved state-of-the-art accuracy on three out of five
 word similarity tasks.
 
 Compared to previous work in training sense embeddings using sense inventories
-and other lexical resources, our sense embeddings achived state-of-the-art
-results on five out of six word sense disambiguation tasks.
+and other lexical resources, our sense embeddings achieved state-of-the-art
+accuracy on five out of six word sense disambiguation tasks.
 
 #### Future Work
 
@@ -544,8 +545,82 @@ and as [a Docker image.][11]
  [10]: https://github.com/MIR-MU/regemt
  [11]: https://hub.docker.com/r/miratmu/regemt
 
-### Joint Token Embeddings of Text and Math
+### Joint Token and Sentence Embeddings of Text and Math
 \label{sec:joint-token-embeddings-of-text-and-math}
+
+In 2018, @krstowski2018equation used the general shallow log-bilinear language
+model of @rudolph2016exponential to train joint token embeddings of text and
+math. They showed that they their embeddings were more accurate than the token
+embeddings of other general shallow log-bilinear language models on a language
+modeling task. However, their token embeddings have never been evaluated on
+math information retrieval.
+
+In 2017, @bojanowski2017enriching developed the fastText subword shallow
+log-bilinear language model and showed that it was more accurate than general
+shallow log-bilinear language models on word analogy tasks. However,
+@krstowski2018equation have not used a subword language model to train their
+token embeddings and they did not compare their token embeddings to subword
+language models.
+
+In 2019, @reimers2019sentencebert developed the Sentence BERT deep neural
+network language model and achieved state-of-the-art accuracy with its sentence
+embeddings on semantic text similarity tasks.  However, they have not evaluated
+their sentence embeddings on information retrieval, because the Sentence BERT
+uses dense attention and therefore can only embed short sentences, not the
+full-length documents that are commonly used in information retrieval tasks.
+Additionally, Sentence BERT has never been used to train joint sentence
+embeddings of text and math or evaluated on math information retrieval.
+
+#### Experiments
+
+In 2020 and 2021, we have developed two primary math information retrieval
+systems[^12] using joint token and sentence embeddings of text and math for
+the *answer retrieval* math information retrieval task of the ARQMath-1 and
+ARQMath-2 labs:
+
+- *MIRMU-SCM* [@novotny2020three, Section 4; @novotny2021ensembling, Section
+  3.3], which was based on a soft vector space model with token embeddings from
+  a fastText subword shallow log-bilinear language model, and
+
+- *MIRMU-CompuBERT* [@novotny2020three, Section 6; @novotny2021ensembling, Section
+  3.4], which was based on the sentence embeddings[^13] of the Sentence BERT deep
+  neural network language model.
+
+ [^12]: See Section \vref{sec:topological-math-representations} for a
+        discussion of the math representation that we have developed for our
+        systems.
+
+ [^13]: The questions and answers in the answer retrieval task are short,
+        which made it feasible to use the Sentence BERT model despite its
+        dense attention.
+
+#### Results
+
+At ARQMath-1, we showed that MIRMU-SCM was more accurate than any other
+individual information retrieval system from the MIRMU research group,
+including MIaS from the European digital mathematical library, which is based
+on the hard vector space model and does not use token embeddings. This shows
+that using joint token embeddings of text and math from subword language models
+improves accuracy on math information retrieval. We also showed that MIRMU-SCM
+was among the top three most accurate primary systems in the competition.
+MIRMU-CompuBERT suffered from a lack of accurate training data and failed to
+reach accuracy that would be significantly better than zero at ARQMath-1.
+
+At ARQMath-2, we showed that with accurate training data, MIRMU-CompuBERT
+was more accurate than MIRMU-SCM. @mansouri2021dprl [Section 3] also used
+sentence embeddings of the Sentence BERT in their math information retrieval
+system, which was the second most accurate system in the competition. This
+shows that using joint sentence embeddings of text and math from deep neural
+network language models is well-motivated and improved accuracy on math
+information retrieval.
+
+#### Reproducibility
+
+The experimental code for both [MIRMU-SCM][1] and [MIRMU-CompuBERT][2] from the
+ARQMath-1 lab is available on GitHub. The experimental code for all our systems
+is [available online.][14]
+
+ [14]: https://mir.fi.muni.cz/arqmath-2021
 
 ## Ensembling Semantic Text Similarity Measures
 \label{sec:ensembling-semantic-text-similarity-measures}

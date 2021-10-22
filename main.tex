@@ -40,7 +40,8 @@
                    Accurate Retrieval of Mathematical Information},
     TeXtitle    = {Interpretable Representations \\ for Fast and
                    Accurate Retrieval \\ of Mathematical Information},
-    bib         = main.bib,
+%    bib         = main.bib,
+    bib         = ../thesis-outline/main.bib,
     %% Remove the following line to use the JVS 2018 faculty logo.
     facultyLogo = fithesis-fi,
 }
@@ -50,12 +51,18 @@
 \makeindex[name = author, title = {Author Index}, intoc]
 \makeindex[name = subject, title = {Subject Index}, intoc]
 
-
-\usepackage[babel]{csquotes} %% Context-sensitive quotation marks
-
-\thesisload
+%% Context-sensitive quotation marks
+\usepackage[babel]{csquotes}
 
 %% Bibliography
+\PassOptionsToPackage{
+  citetracker=true,
+  trackfloats=true,
+  citereset=subsection+,
+  mincitenames=2,
+  maxcitenames=3,
+}{biblatex}
+\thesisload
 \renewcommand\multinamedelim{\addcomma\addspace}
 \renewcommand\finalnamedelim{\addspace and\addspace}
 \makeatletter
@@ -91,6 +98,8 @@
 
 %% Typesetting
 \emergencystretch=1em
+
+%% Lists
 \usepackage{enumitem}
 \setlist[itemize]{
   leftmargin = \parindent,
@@ -106,6 +115,9 @@
   topsep     = 0.15cm,
   partopsep  = 0pt,
 }
+
+%% Footnotes
+\usepackage[para]{footmisc}
 
 %% Table of contents
 \setcounter{secnumdepth}{3}
