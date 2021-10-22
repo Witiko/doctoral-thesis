@@ -53,17 +53,17 @@ needs of its users.
 In this chapter, I will report the results of my research of representations
 that enable accurate math information retrieval:
 
-- In sections \ref{sec:topological-math-representations} and
-  \ref{sec:representation-learning-accuracy}, I will describe my work in
+- In sections \vref{sec:topological-math-representations} and
+  \vref{sec:representation-learning-accuracy}, I will describe my work in
   developing new representation of math and my experiments in learning neural
   representations of natural language words and math symbols.
 
-- In sections \ref{sec:score-aggregation-of-structural-and-semantic-matching-techniques} and
-  \ref{sec:rank-based-fusion}, I will describe my work in overcoming the
+- In sections \vref{sec:score-aggregation-of-structural-and-semantic-matching-techniques} and
+  \vref{sec:rank-based-fusion}, I will describe my work in overcoming the
   weaknesses of different document representations by using learning-to-rank techniques.
 
-- In sections \ref{sec:weighted-zone-scoring} and
-  \ref{sec:approximate-nearest-neighbor-search-accuracy}, I will describe my
+- In sections \vref{sec:weighted-zone-scoring} and
+  \vref{sec:approximate-nearest-neighbor-search-accuracy}, I will describe my
   work in making fast approximate search techniques more accurate.
 
 ## Topological Math Representations for Accurate Math Information Retrieval
@@ -177,25 +177,25 @@ and math symbols.
 In this section, I will report the results of my experiments in learning
 accurate token embeddings:
 
-- In Section \ref{sec:variable-control-in-token-embedding-evaluation}, I will
+- In Section~\vref{sec:variable-control-in-token-embedding-evaluation}, I will
   describe my survey of methodology in previous token embedding experiments
   and show that a lack of variable control makes some previous experiments
   difficult to reproduce.
 
-- In Section \ref{sec:heuristical-hyperparameter-optimization-in-subword-language-models},
+- In Section~\vref{sec:heuristical-hyperparameter-optimization-in-subword-language-models},
   I will report the optimal hyperparameters for the fastText subword language
   model on nine word analogy tasks. I will also show that expensive
   hyperparameter optimization can be replaced by a simple n-gram coverage model
   that consistently improves the accuracy compared to the default
   hyperparameters.
 
-- In sections \ref{sec:position-independent-token-embeddings-accuracy} through
-  \ref{sec:decontextualized-token-embeddings}, I will show that constraining,
+- In sections \vref{sec:position-independent-token-embeddings-accuracy} through
+  \vref{sec:decontextualized-token-embeddings}, I will show that constraining,
   quantization, disambiguation, and decontextualization of token word embeddings
   improves their accuracy on word analogy, word similarity, language modeling,
   and machine translation evaluation tasks.
 
-- In Section \ref{sec:joint-token-embeddings-of-text-and-math}, I will show
+- In Section~\vref{sec:joint-token-embeddings-of-text-and-math}, I will show
   that using a single language model to produce token or sentence embeddings of
   both natural language words and math symbols improves accuracy on math
   information retrieval.
@@ -262,7 +262,7 @@ distributions suffered from numerical instability when the vector
 dimensionality $D$ was high. I suggested using either the square-root normal
 distribution $\mathcal{N}^{0.5}(0, \nicefrac{1}{3D^2})$ of @pinelis2018exp
 or the continuous uniform $\mathcal{U}(\pm\nicefrac{\sqrt\[4\]{3}}{\sqrt{D}})$.
-<!-- See also Section \vref{sec:position-independent-token-embeddings-accuracy},
+<!-- See also Section~\vref{sec:position-independent-token-embeddings-accuracy},
 where I discuss our further experiments with the fastText positional language
 model. -->
 
@@ -521,20 +521,32 @@ token. [@stefanik2021regressive, Section 3.2]
 
 We evaluated the soft vector space model and the word mover's distance with our
 decontextualized embeddings and with the global embeddings of a shallow
-log-bilinear fastText subword language model on eight[^15] machine translation
-evaluation tasks. [@stefanik2021regressive, Table 1]
+log-bilinear fastText subword language model on eight machine translation
+evaluation tasks.
 
- [^15]: The eight tasks were MQM-ref (zh-en, zh-en-X, en-de, and en-de-X) and
-        DA 2016-src (cs-en, de-en, fi-en, and ru-en).
-
- <!-- **TODO: Vytvořit tabulku.** -->
+|             |         | SCM-tf | SCM-dec-tf | WMD    | WMD-dec |
+|-------------|---------|--------|------------|--------|---------|
+| MQM-ref     | zh→en   | *0.35* |  0.26      | *0.29* |  0.27   |
+| MQM-ref     | zh→en-X | *0.35* |  0.25      | *0.29* |  0.27   |
+| MQM-ref     | en→de   |  0.14  | *0.18*     |  0.13  | *0.32*  |
+| MQM-ref     | en→de-X |  0.14  | *0.17*     |  0.13  | *0.32*  |
+| DA 2016-src | cs→en   | *0.67* |  0.53      |  0.63  | *0.71*  |
+| DA 2016-src | de→en   |  0.40  | *0.45*     |  0.36  | *0.51*  |
+| DA 2016-src | fi→en   |  0.44  | *0.63*     |  0.45  | *0.58*  |
+| DA 2016-src | ru→en   |  0.30  | *0.43*     |  0.33  | *0.48*  |
+%
+: The accuracies of the soft vector space (SCM) and the word mover's distance (WMD) %
+  with and without our decontextualized token embeddings on eight machine %
+  translation evaluation tasks. [@stefanik2021regressive, Table 1]%
+  \label{tab:decontextualized-token-embeddings}
 
 #### Results
 
 We showed that the soft vector space model and the word mover's distance were
 more accurate with our decontextualized embeddings than with the global
 embeddings of a fastText model on most tasks: five out of eight for the soft
-vector space model and six out of eight for the word mover's distance.
+vector space model and six out of eight for the word mover's distance, see
+Table~\vref{tab:decontextualized-token-embeddings}.
 
 #### Future Work
 
@@ -590,7 +602,7 @@ ARQMath-2 labs:
   3.4], which was based on the sentence embeddings[^13] of the Sentence BERT deep
   neural network language model.
 
- [^12]: See Section \vref{sec:topological-math-representations} for a
+ [^12]: See Section~\vref{sec:topological-math-representations} for a
         discussion of the math representation that we have developed for our
         systems.
 
@@ -641,21 +653,45 @@ and decrease accuracy on machine translation evaluation tasks.
 In 2021, we used score aggregation to ensemble 16 diverse structural and
 semantic matching techniques in order to avoid the systematic errors of any
 individual technique. [@stefanik2021regressive, Section 3.3] We trained and
-evaluated our ensemble on 20[^16] machine translation evaluation tasks.
-[@stefanik2021regressive, Section 3.3]
+evaluated our ensemble on 20 machine translation evaluation tasks.
 
  [^16]: The twenty tasks were MQM-src (zh-en, zh-en-X, en-de, and en-de-X), MQM-ref
         (dtto), DA 2016-src (cs-en, de-en, fi-en, and ru-en), DA 2016-tgt (dtto),
         and catastrophic-src (en-cs, en-de, en-ja, and en-zh).
 
- <!-- **TODO: Vytvořit tabulku.** -->
+|                  |         | RegEMT | Best individual system     |
+|------------------|---------|--------|----------------------------|
+| MQM-src          | zh→en   | *0.59* |  0.44  (BERTScr, WMD-cont) |
+| MQM-src          | zh→en-X | *0.49* |  0.44  (BERTScr, WMD-cont) |
+| MQM-src          | en→de   | *0.36* |  0.28  (Reg-base)          |
+| MQM-src          | en→de-X | *0.31* |  0.28  (Reg-base)          |
+| MQM-ref          | zh→en   | *0.62* |  0.51  (Comet)             |
+| MQM-ref          | zh→en-X | *0.62* |  0.51  (Comet)             |
+| MQM-ref          | en→de   | *0.60* |  0.48  (Comet)             |
+| MQM-ref          | en→de-X |  0.38  | *0.48  (Comet)*            |
+| DA 2016-src      | cs→en   |  0.86  | *0.89  (Comet)*            |
+| DA 2016-src      | de→en   | *0.84* |  0.80  (BLEUrt)            |
+| DA 2016-src      | fi→en   | *0.87* |  0.85  (Comet)             |
+| DA 2016-src      | ru→en   | *0.79* |  0.78  (Comet)             |
+| DA 2016-tgt      | cs→en   | *0.77* | *0.77  (Prism)*            |
+| DA 2016-tgt      | de→en   |  0.45  | *0.58  (Prism)*            |
+| DA 2016-tgt      | fi→en   | *0.76* | *0.76  (Prism)*            |
+| DA 2016-tgt      | ru→en   | *0.74* |  0.70  (Prism)             |
+| catastrophic-src | en→cs   | *0.45* |  0.35  (Prism)             |
+| catastrophic-src | en→de   |  0.34  | *0.43  (Prism)*            |
+| catastrophic-src | en→ja   | *0.20* |  0.18  (Reg-base)          |
+| catastrophic-src | en→zh   |  0.16  | *0.27  (SCM-dec)*          |
+%                                              
+: The accuracies of the our ensemble (RegEMT) and the best individual systems %
+  on 20 machine translation evaluation tasks. [@stefanik2021regressive, Table 1]%
+  \label{tab:regemt}
 
 #### Results
 
-We showed that our ensemble was more accurate than any single technique on 15
-out of 20 machine translation evaluation tasks, which confirms that score
-aggregation is a useful technique for avoiding naive assumptions and biases of
-individual semantic matching techniques.
+We showed that our ensemble was more or equally accurate than any single
+technique on 15 out of 20 machine translation evaluation tasks, which confirms
+that score aggregation is a useful technique for avoiding naive assumptions and
+biases of individual semantic matching techniques, see Table~\vref{tab:regemt}.
 
 #### Future Work
 
@@ -832,11 +868,11 @@ approximated.
 In this section, I will report the results of my experiments in making
 approximate math information retrieval more accurate:
 
-- In Section \ref{sec:dense-retrieval-in-inverted-indices-accuracy}, I will
+- In Section~\vref{sec:dense-retrieval-in-inverted-indices-accuracy}, I will
   show that dense retrieval can be approximated with almost no loss in
   accuracy.
 
-- In Section \ref{sec:sparse-retrieval-in-inverted-indices-and-vector-databases-accuracy},
+- In Section~\vref{sec:sparse-retrieval-in-inverted-indices-and-vector-databases-accuracy},
   I will show that sparse retrieval can be approximated in a way that increases
   both speed and accuracy.
 
@@ -855,15 +891,15 @@ that satisfy the needs of its users.
 In this chapter, I will report the results of my research of representations
 and techniques that enable fast math information retrieval:
 
-- In Section \ref{sec:fast-and-reproducible-deployment}, I will describe my
+- In Section~\vref{sec:fast-and-reproducible-deployment}, I will describe my
   work in making math information retrieval search engines easier to build and
   deploy.
 
-- In Section \ref{sec:representation-learning-speed}, I will describe my
+- In Section~\vref{sec:representation-learning-speed}, I will describe my
   work in making neural representations of natural language words and math
   symbols both faster to learn and faster to use.
 
-- In Section \ref{sec:approximate-nearest-neighbor-search-speed}, I will
+- In Section~\vref{sec:approximate-nearest-neighbor-search-speed}, I will
   describe my work in developing fast approximate search techniques.
 
 ## Fast and Reproducible Deployment of Math Information Retrieval Systems Using Docker
@@ -879,12 +915,12 @@ symbols that are not only accurate, but also fast to train and use.
 In this section, I will report the results of my experiments in learning fast
 token embeddings:
 
-- In Section \ref{sec:quantized-token-embeddings-with-fast-bitwise-arithmetic},
+- In Section~\vref{sec:quantized-token-embeddings-with-fast-bitwise-arithmetic},
   I will show that quantizing the Word2Vec language model makes it possible to
   compute a fast and accurate bitwise approximation of the cosine similarity
   between two token embeddings.
 
-- In Section \ref{sec:position-independent-token-embeddings-speed}, I will show
+- In Section~\vref{sec:position-independent-token-embeddings-speed}, I will show
   that constraining the fastText positional language model improves its
   training speed.
 
@@ -904,11 +940,11 @@ to wait for the system to recall information. [@apica2017digital]
 In this section, I will report the results of my experiments in making math
 information retrieval faster by using an approximate ranking criterion:
 
-- In Section \ref{sec:dense-retrieval-in-inverted-indices-speed}, I will
+- In Section~\vref{sec:dense-retrieval-in-inverted-indices-speed}, I will
   show that approximation can greatly improve the speed of dense retrieval with
   almost no loss in accuracy.
 
-- In Section \ref{sec:sparse-retrieval-in-inverted-indices-and-vector-databases-speed},
+- In Section~\vref{sec:sparse-retrieval-in-inverted-indices-and-vector-databases-speed},
   I will show that sparse retrieval can be approximated in a way that increases
   both speed and accuracy.
 
@@ -927,15 +963,15 @@ system to explain the information to the user is fundamentally limited by the
 In this chapter, I will report the results of my research of interpretable
 representations that enable explainable information retrieval:
 
-- In Section \ref{sec:representation-learning-interpretability}, I will
+- In Section~\vref{sec:representation-learning-interpretability}, I will
   describe my work in making neural representations of natural language words
   and math symbols more interpretable.
 
-- In Section \ref{sec:strengths-and-weaknesses}, I will describe my work in
+- In Section~\vref{sec:strengths-and-weaknesses}, I will describe my work in
   explaining the roles played by different math information retrieval systems
   when using rank-based fusion and learning-to-rank techniques.
 
-- In Section \ref{sec:interactive-visualizations}, I will describe my work in
+- In Section~\vref{sec:interactive-visualizations}, I will describe my work in
   producing interactive visualizations of math information retrieval using
   interpretable document representations.
 
@@ -949,11 +985,11 @@ symbols that are not only accurate, but also interpretable.
 In this section, I will report the results of my experiments in learning
 interpretable token embeddings:
 
-- In Section \ref{sec:formal-concept-analysis-with-quantized-token-embeddings},
+- In Section~\vref{sec:formal-concept-analysis-with-quantized-token-embeddings},
   I will show that quantizing the Word2Vec language model makes it possible to
   determine type-of relations between tokens.
 
-- In Section \ref{sec:position-independent-token-embeddings-interpretability},
+- In Section~\vref{sec:position-independent-token-embeddings-interpretability},
   I will show that the fastText positional language model makes it possible to
   determine grammatical properties of tokens.
 

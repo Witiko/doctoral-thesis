@@ -7,8 +7,13 @@
   html,
   hybrid,
   inlineFootnotes,
+  pipeTables,
+  tableCaptions,
   underscores=false,
 }
+
+%% Tables with booktabs rules
+\RequirePackage{booktabs}
 
 %% Margin notes
 \RequirePackage{ragged2e,marginfix}
@@ -44,3 +49,4 @@
 \RequirePackage{newunicodechar}
 \newunicodechar{◌}{\dottedcircle}
 \newunicodechar{←}{\noindent\ignorespaces}
+\newunicodechar{→}{$\rightarrow$}
