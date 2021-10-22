@@ -636,13 +636,16 @@ on machine translation evaluation tasks.
 
 In 2021, we used score aggregation to ensemble a diverse list of structural and
 semantic matching techniques in order to avoid the systematic errors of any
-single technique. We trained and evaluated our ensemble on 20 machine
-translation evaluation tasks.
+single technique. [@stefanik2021regressive, Section 3.3] We trained and
+evaluated our ensemble on 20 machine translation evaluation tasks.
+[@stefanik2021regressive, Section 3.3]
 
 #### Results
 
 We showed that our ensemble was more accurate than any single technique on 15
-out of 20 machine translation evaluation tasks.
+out of 20 machine translation evaluation tasks, which confirms that score
+aggregation is a useful technique for avoiding naïve assumptions and biases of
+individual semantic matching techniques.
 
 #### Future Work
 
