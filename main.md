@@ -626,7 +626,7 @@ from the ARQMath-2 lab is [available online.][14]
 \label{sec:score-aggregation-of-structural-and-semantic-matching-techniques}
 
 Techniques for structural and semantic matching such as the soft vector space
-model and the word mover's distance make naïve assumptions about the syntax and
+model and the word mover's distance make naive assumptions about the syntax and
 the semantics of the natural language and mathematics. They also often rely on
 token embeddings of language models, which contain human-like biases.
 [@caliskan2017semantics] These assumptions and biases cause systematic errors
@@ -644,12 +644,13 @@ evaluated our ensemble on 20 machine translation evaluation tasks.
 
 We showed that our ensemble was more accurate than any single technique on 15
 out of 20 machine translation evaluation tasks, which confirms that score
-aggregation is a useful technique for avoiding naïve assumptions and biases of
+aggregation is a useful technique for avoiding naive assumptions and biases of
 individual semantic matching techniques.
 
 #### Future Work
 
-Future work should evaluate our ensemble on math information retrieval.
+Future work should evaluate the usefulness of score aggregation on math
+information retrieval.
 
 #### Reproducibility
 
