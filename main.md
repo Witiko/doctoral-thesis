@@ -618,7 +618,7 @@ information retrieval.
 
 The experimental code for both [MIRMU-SCM][1] and [MIRMU-CompuBERT][2] from the
 ARQMath-1 lab is available on GitHub. The experimental code for all our systems
-is [available online.][14]
+from the ARQMath-2 lab is [available online.][14]
 
  [14]: https://mir.fi.muni.cz/arqmath-2021
 
