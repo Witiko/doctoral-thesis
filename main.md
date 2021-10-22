@@ -816,7 +816,7 @@ task of the ARQMath-2 lab:[^17]
   question, where the title of the parent question is given three times as much
   weight as any of the remaining parts.
 
-← To show how important weighted zone scoring is, we compared the MSM-MG,
+← To show how important weighted zone scoring was, we compared the MSM-MG,
 MSM-PZ, and MIRMU-SCM systems to the remaining six systems of the MSM team that
 used similar information retrieval techniques but did not use weighted zone
 scoring.
