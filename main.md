@@ -197,9 +197,9 @@ accurate token embeddings:
   and machine translation evaluation tasks.
 
 - In Section \ref{sec:joint-token-embeddings-of-text-and-math}, I will show
-  that using a single language model to produce token embeddings of both
-  natural language words and math symbols improves accuracy on math information
-  retrieval.
+  that using a single language model to produce token or sentence embeddings of
+  both natural language words and math symbols improves accuracy on math
+  information retrieval.
 
 ### Variable Control in Token Embedding Evaluation
 \label{sec:variable-control-in-token-embedding-evaluation}
