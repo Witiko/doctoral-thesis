@@ -649,7 +649,7 @@ individual semantic matching techniques.
 
 #### Future Work
 
-Future work should evaluate the usefulness of score aggregation on math
+Future work should evaluate the accuracy of score aggregation on math
 information retrieval.
 
 #### Reproducibility
