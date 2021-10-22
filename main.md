@@ -108,7 +108,7 @@ $=$, $0$, $)$, and as the following comma-separated list of OPT nodes: `(`,
 `N!2`, `)`, `)`, `U!eq`, `N!0`, `)`.
 
 In the *answer retrieval* math information retrieval task of the ARQMath-1 lab,
-we have used the prefix and infix notations in two of our primary math
+we used the prefix and infix notations in two of our primary math
 information retrieval systems that jointly modeled both text and math:
 
 - *MIRMU-SCM* [@novotny2020three, Section 4], which was based on a soft vector
@@ -527,6 +527,8 @@ evaluation tasks. [@stefanik2021regressive, Table 1]
  [^15]: The eight tasks were MQM-ref (zh-en, zh-en-X, en-de, and en-de-X) and
         DA 2016-src (cs-en, de-en, fi-en, and ru-en).
 
+ <!-- **TODO: Vytvořit tabulku.** -->
+
 #### Results
 
 We showed that the soft vector space model and the word mover's distance were
@@ -632,11 +634,11 @@ model and the word mover's distance make naive assumptions about the syntax and
 the semantics of the natural language and mathematics. They also often rely on
 token embeddings of language models, which contain human-like biases.
 [@caliskan2017semantics] These assumptions and biases cause systematic errors
-on machine translation evaluation tasks.
+and decrease accuracy on machine translation evaluation tasks.
 
 #### Experiments
 
-In 2021, we used score aggregation to ensemble a diverse list of structural and
+In 2021, we used score aggregation to ensemble 16 diverse structural and
 semantic matching techniques in order to avoid the systematic errors of any
 individual technique. [@stefanik2021regressive, Section 3.3] We trained and
 evaluated our ensemble on 20[^16] machine translation evaluation tasks.
@@ -645,6 +647,8 @@ evaluated our ensemble on 20[^16] machine translation evaluation tasks.
  [^16]: The twenty tasks were MQM-src (zh-en, zh-en-X, en-de, and en-de-X), MQM-ref
         (dtto), DA 2016-src (cs-en, de-en, fi-en, and ru-en), DA 2016-tgt (dtto),
         and catastrophic-src (en-cs, en-de, en-ja, and en-zh).
+
+ <!-- **TODO: Vytvořit tabulku.** -->
 
 #### Results
 
@@ -708,7 +712,7 @@ out of all our ten systems at the ARQMath-2 lab.
 At ARQMath-1, we showed that MIRMU-Ensemble was more accurate than any
 individual information retrieval system from our MIRMU team. When we used
 MIRMU-Ensemble to ensemble all non-baseline primary systems, we received the
-highest accuracy in the competition, which indicates that MIRMU-Ensemble can
+best accuracy in the competition, which indicates that MIRMU-Ensemble can
 benefit from a large number of systems.
 
 At ARQMath-2, we showed that all our four rank-based fusion techniques were
@@ -717,8 +721,8 @@ and MSM teams. We also showed that our MIRMU-WIBC can be more accurate than the
 MIRMU-RRF of @cormack2009reciprocal.
 
 When we used the unsupervised MIRMU-IBC and MIRMU-RRF to ensemble all
-non-baseline primary systems, we received the highest (MIRMU-RRF) and the
-second highest (MIRMU-IBC) accuracies in the competition, which indicates that
+non-baseline primary systems, we received the best (MIRMU-RRF) and the
+second best(MIRMU-IBC) accuracies in the competition, which indicates that
 both techniques can benefit from a large number of systems. Ensembling only six
 selected systems out of all our ten systems increased the accuracy of three out
 of our four techniques, which indicates that all our techniques can benefit
@@ -734,6 +738,87 @@ ARQMath-2 lab is [available online.][14]
 
 ## Weighted Zone Scoring Across Different Domains
 \label{sec:weighted-zone-scoring}
+
+In information retrieval, retrieval units are usually structured and contain
+zones that are more important than the body text, such as the title, abstract,
+and keywords, and zones that are less important than the body text, such as the
+appendices, footnotes, and comments. Weighted zone scoring techniques can be
+used to inform an information retrieval system about the importance of
+different zones and improve its accuracy. [@manning2008introduction, Section 6.1]
+
+#### Experiments
+
+In 2018, we analyzed the datasets and the relevance judgements from the
+*community question answering* information retrieval task of the SemEval-2016
+and SemEval-2017 competitions. [@novotny2018weighting]
+The datasets consist of questions and threads of comments. The relevance
+judgements show how relevant the individual comments (subtask A) and the whole
+threads (subtask A) are to a question.
+
+Following the empirical law of @godwin1991re, we investigated whether later
+comments in a thread were less likely to be relevant. We used the results of
+our investigation to develop an information retrieval system that retrieved
+threads using weighted zone scoring and we evaluated the system on the subtask
+B of the *community question answering* information retrieval task of
+SemEval-2016 and SemEval-2017.
+
+In 2021, we developed three primary math information retrieval systems using
+weighted zone scoring for the *answer retrieval* math information retrieval
+task of the ARQMath-2 lab:[^17]
+
+- *MSM-MG* [@novotny2021ensembling, Section 3.1], which represents every answer
+  as its body text and the title, the body text, and the tags of its parent
+  question, all with equal weights,
+
+- *MSM-PZ* [@novotny2021ensembling, Section 3.2], which represents every answer
+  as its body text and the title and the tags of its parent question, where the
+  title and the tags of the parent question are given three times as much
+  weight as the body text of the answer, and
+
+- *MIRMU-SCM* [@novotny2021ensembling, Section 3.3], which represents every
+  as its body text and the title, the body text, and the tags of its parent
+  question, where the title of the parent question is given three times as much
+  weight as any of the remaining parts.
+
+← To show how important weighted zone scoring is, we compared the MSM-MG,
+MSM-PZ, and MIRMU-SCM systems to the remaining six systems of the MSM team that
+used similar information retrieval techniques but did not use weighted zone
+scoring.
+
+#### Results
+
+We showed that in the datasets from the *community question answering*
+information retrieval task of the SemEval-2016 and SemEval-2017 competitions,
+later comments were significantly less likely to be relevant and that their
+relevance followed a Zipf distribution. [@novotny2018weighting, Figure 2]
+We then developed three information retrieval systems: one that used weighted
+zone scoring to place smaller weight to later comments in a thread, one that
+did not use zoned weighting but continuously decreased the weights of later
+tokens in a thread, and one that used neither [@novotny2018weighting, Figure 3]
+We showed that our system that used zoned weighting achieved the
+state-of-the-art accuracy on both datasets, whereas our two systems that did
+not use zoned weighting achieved worse-than-baseline accuracy on both datasets.
+[@novotny2018weighting, tables 1 and 2] This shows that weighted zone scoring
+can be important for information retrieval.
+
+We also showed that our three math information retrieval systems that used
+weighted zone scoring all achieved better accuracy than our six systems that
+did not use weighted zone scoring on the *answer retrieval* math information
+retrieval task of the ARQMath-2 lab. This shows that weighted zone scoring can
+be important for math information retrieval.
+
+#### Future Work
+
+Future work should study in more detail the impact of weighted zone scoring on
+math information retrieval.
+
+#### Reproducibility
+
+The code for [our SemEval experiments][19] is available on GitHub.
+The experimental code for all our systems from the ARQMath-2 lab is [available
+online.][14]
+
+ [19]: https://github.com/witiko-masters-thesis/segmentation
 
 ## Approximate Nearest-Neighbor Search in Vector Spaces
 \label{sec:approximate-nearest-neighbor-search-accuracy}
