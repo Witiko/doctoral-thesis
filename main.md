@@ -58,7 +58,7 @@ that enable accurate math information retrieval:
   developing new representation of math and my experiments in learning neural
   representations of natural language words and math symbols.
 
-- In sections \ref{sec:ensembling-semantic-text-similarity-measures} and
+- In sections \ref{sec:score-aggregation-of-structural-and-semantic-matching-techniques} and
   \ref{sec:rank-based-fusion}, I will describe my work in overcoming the
   weaknesses of different document representations by using score aggregation,
   rank-based fusion, and learning-to-rank techniques.
@@ -522,15 +522,15 @@ token. [@stefanik2021regressive, Section 3.2]
 
 We evaluated the soft vector space model and the word mover's distance with our
 decontextualized embeddings and with the global embeddings of a shallow
-log-bilinear fastText subword language model on six machine translation
+log-bilinear fastText subword language model on eight machine translation
 evaluation tasks. [@stefanik2021regressive, Section 4]
 
 #### Results
 
 We showed that the soft vector space model and the word mover's distance were
 more accurate with our decontextualized embeddings than with the global
-embeddings of a fastText model on most tasks: four out of six for the soft
-vector space model and five out of six for the word mover's distance.
+embeddings of a fastText model on most tasks: five out of eight for the soft
+vector space model and six out of eight for the word mover's distance.
 
 #### Future Work
 
@@ -539,7 +539,7 @@ retrieval.
 
 #### Reproducibility
 
-The experimental code for all our experiments is [available on GitHub][10]
+The experimental code for our experiments is [available on GitHub][10]
 and as [a Docker image.][11]
 
  [10]: https://github.com/MIR-MU/regemt
@@ -622,8 +622,36 @@ from the ARQMath-2 lab is [available online.][14]
 
  [14]: https://mir.fi.muni.cz/arqmath-2021
 
-## Ensembling Semantic Text Similarity Measures
-\label{sec:ensembling-semantic-text-similarity-measures}
+## Score Aggregation of Structural and Semantic Matching Techniques
+\label{sec:score-aggregation-of-structural-and-semantic-matching-techniques}
+
+Techniques for structural and semantic matching such as the soft vector space
+model and the word mover's distance make naïve assumptions about the syntax and
+the semantics of the natural language and mathematics. They also often rely on
+token embeddings of language models, which contain human-like biases.
+[@caliskan2017semantics] These assumptions and biases cause systematic errors
+on machine translation evaluation tasks.
+
+#### Experiments
+
+In 2021, we used score aggregation to ensemble a diverse list of structural and
+semantic matching techniques in order to avoid the systematic errors of any
+single technique. We trained and evaluated our ensemble on 20 machine
+translation evaluation tasks.
+
+#### Results
+
+We showed that our ensemble was more accurate than any single technique on 15
+out of 20 machine translation evaluation tasks.
+
+#### Future Work
+
+Future work should evaluate our ensemble on math information retrieval.
+
+#### Reproducibility
+
+The experimental code for our experiments is [available on GitHub][10]
+and as [a Docker image.][11]
 
 ## Rank-Based Fusion of Math Information Retrieval Systems
 \label{sec:rank-based-fusion}
