@@ -60,8 +60,7 @@ that enable accurate math information retrieval:
 
 - In sections \ref{sec:score-aggregation-of-structural-and-semantic-matching-techniques} and
   \ref{sec:rank-based-fusion}, I will describe my work in overcoming the
-  weaknesses of different document representations by using score aggregation,
-  rank-based fusion, and learning-to-rank techniques.
+  weaknesses of different document representations by using learning-to-rank techniques.
 
 - In sections \ref{sec:weighted-zone-scoring} and
   \ref{sec:approximate-nearest-neighbor-search-accuracy}, I will describe my
@@ -166,7 +165,7 @@ The experimental code for both [MIRMU-SCM,][1] [MIRMU-CompuBERT,][2] and their
 
  [1]: https://github.com/MIR-MU/SCM-at-ARQMath
  [2]: https://github.com/MIR-MU/CompuBERT
- [3]: https://github.com/MIR-MU/ARQMath-eval/tree/master/task1-votes
+ [3]: https://github.com/MIR-MU/ARQMath-eval (directory task1-votes)
 
 ## Representation Learning of Words and Symbols for Sparse Retrieval
 \label{sec:representation-learning-accuracy}
@@ -363,8 +362,8 @@ The experimental code for [the $n$-gram coverage model][7] is available on GitHu
 
 In 2018, @mikolov2018advances developed the fastText positional language model
 and showed that it was more accurate than the fastText subword language model
-on the English word analogy task. However, the positional model has only been
-evaluated on the intrinsic word analogy task and not on extrinsic tasks.
+on the English word analogy task. However, they only evaluated the positional
+model on the intrinsic word analogy task and not on extrinsic tasks.
 
 In the subword model, tokens are represented by the parts of their meaning that
 are *fixed* or dependent on the *broader context* that includes the
@@ -522,8 +521,11 @@ token. [@stefanik2021regressive, Section 3.2]
 
 We evaluated the soft vector space model and the word mover's distance with our
 decontextualized embeddings and with the global embeddings of a shallow
-log-bilinear fastText subword language model on eight machine translation
-evaluation tasks. [@stefanik2021regressive, Section 4]
+log-bilinear fastText subword language model on eight[^15] machine translation
+evaluation tasks. [@stefanik2021regressive, Table 1]
+
+ [^15]: The eight tasks were MQM-ref (zh-en, zh-en-X, en-de, and en-de-X) and
+        DA 2016-src (cs-en, de-en, fi-en, and ru-en).
 
 #### Results
 
@@ -552,19 +554,19 @@ In 2018, @krstowski2018equation used the general shallow log-bilinear language
 model of @rudolph2016exponential to train joint token embeddings of text and
 math. They showed that they their embeddings were more accurate than the token
 embeddings of other general shallow log-bilinear language models on a language
-modeling task. However, their token embeddings have never been evaluated on
-math information retrieval.
+modeling task. However, they did not evaluate their token embeddings on math
+information retrieval.
 
 In 2017, @bojanowski2017enriching developed the fastText subword shallow
 log-bilinear language model and showed that it was more accurate than general
 shallow log-bilinear language models on word analogy tasks. However,
-@krstowski2018equation have not used a subword language model to train their
+@krstowski2018equation did not use a subword language model to train their
 token embeddings and they did not compare their token embeddings to subword
 language models.
 
 In 2019, @reimers2019sentencebert developed the Sentence BERT deep neural
 network language model and achieved state-of-the-art accuracy with its sentence
-embeddings on semantic text similarity tasks.  However, they have not evaluated
+embeddings on semantic text similarity tasks. However, they did not evaluate
 their sentence embeddings on information retrieval, because the Sentence BERT
 uses dense attention and therefore can only embed short sentences, not the
 full-length documents that are commonly used in information retrieval tasks.
@@ -573,9 +575,9 @@ embeddings of text and math or evaluated on math information retrieval.
 
 #### Experiments
 
-In 2020 and 2021, we have developed two primary math information retrieval
-systems[^12] using joint token and sentence embeddings of text and math for
-the *answer retrieval* math information retrieval task of the ARQMath-1 and
+In 2020 and 2021, we developed two primary math information retrieval
+systems[^12] using joint token and sentence embeddings of text and math for the
+*answer retrieval* math information retrieval task of the ARQMath-1 and
 ARQMath-2 labs:
 
 - *MIRMU-SCM* [@novotny2020three, Section 4; @novotny2021ensembling, Section
@@ -597,12 +599,12 @@ ARQMath-2 labs:
 #### Results
 
 At ARQMath-1, we showed that MIRMU-SCM was more accurate than any other
-individual information retrieval system from the MIRMU research group,
-including MIaS from the European digital mathematical library, which is based
-on the hard vector space model and does not use token embeddings. This shows
-that using joint token embeddings of text and math from subword language models
-improves accuracy on math information retrieval. We also showed that MIRMU-SCM
-was among the top three most accurate primary systems in the competition.
+individual information retrieval system from our MIRMU team, including MIaS
+from the European digital mathematical library, which is based on the hard
+vector space model and does not use token embeddings. This shows that using
+joint token embeddings of text and math from subword language models improves
+accuracy on math information retrieval. We also showed that MIRMU-SCM was among
+the top three most accurate primary systems in the competition.
 MIRMU-CompuBERT suffered from a lack of accurate training data and failed to
 reach accuracy that would be significantly better than zero at ARQMath-1.
 
@@ -636,9 +638,13 @@ on machine translation evaluation tasks.
 
 In 2021, we used score aggregation to ensemble a diverse list of structural and
 semantic matching techniques in order to avoid the systematic errors of any
-single technique. [@stefanik2021regressive, Section 3.3] We trained and
-evaluated our ensemble on 20 machine translation evaluation tasks.
+individual technique. [@stefanik2021regressive, Section 3.3] We trained and
+evaluated our ensemble on 20[^16] machine translation evaluation tasks.
 [@stefanik2021regressive, Section 3.3]
+
+ [^16]: The twenty tasks were MQM-src (zh-en, zh-en-X, en-de, and en-de-X), MQM-ref
+        (dtto), DA 2016-src (cs-en, de-en, fi-en, and ru-en), DA 2016-tgt (dtto),
+        and catastrophic-src (en-cs, en-de, en-ja, and en-zh).
 
 #### Results
 
@@ -649,8 +655,8 @@ individual semantic matching techniques.
 
 #### Future Work
 
-Future work should evaluate the accuracy of score aggregation on math
-information retrieval.
+Future work should evaluate the accuracy of our ensemble on math information
+retrieval.
 
 #### Reproducibility
 
@@ -659,6 +665,72 @@ and as [a Docker image.][11]
 
 ## Rank-Based Fusion of Math Information Retrieval Systems
 \label{sec:rank-based-fusion}
+
+The systematic errors of structural and semantic matching techniques also
+affect the ranking of results in document retrieval systems. As a result,
+different information retrieval systems can agree on a small portion of the
+most relevant documents, but each individual system will miss the great
+majority of relevant documents.
+
+In 2009, @cormack2009reciprocal developed a rank-based fusion technique and
+showed that it achieved better accuracy than any individual system on five out
+of five information retrieval tasks and that it achieved state-of-the-art
+accuracy on three out of five information retrieval tasks. However, they did
+not evaluate their rank-based fusion technique on math information retrieval.
+
+#### Experiments
+
+In 2020, we developed the *MIRMU-Ensemble* rank-based fusion technique for the
+*answer retrieval* math information retrieval task of the ARQMath-1 lab.
+[@novotny2020three, Section 7]. We used our technique to ensemble the primary
+systems of our MIRMU team.
+
+In 2021, we developed two new supervised rank-based fusion techniques
+(*MIRMU-WIBC* and *MIRMU-RBC*) and we used them together with our unsupervised
+MIRMU-Ensemble (further known as *MIRMU-IBC*) and the unsupervised technique of
+@cormack2009reciprocal (further known as *MIRMU-RRF*) for the answer retrieval
+math information task of the ARQMath-2 lab. [@novotny2021ensembling, Section 4]
+We used our technique to ensemble all ten systems of our MIRMU and MSM
+teams.[^17]
+
+ [^17]: We entered the ARQMath-2 lab as two teams: our lab (MIRMU) and the
+        students of the FI:PV211 information retrieval course taught at the
+        Masaryk University (MSM).
+
+To see if our unsupervised techniques can benefit from a large number of
+systems, we also used them to ensemble all non-baseline primary systems at the
+ARQMath-1 and ARQMath-2 labs. To see if our techniques can benefit from a small
+number of diverse systems, we also used them to ensemble six selected systems
+out of all our ten systems at the ARQMath-2 lab.
+
+#### Results
+
+At ARQMath-1, we showed that MIRMU-Ensemble was more accurate than any
+individual information retrieval system from our MIRMU team. When we used
+MIRMU-Ensemble to ensemble all non-baseline primary systems, we received the
+highest accuracy in the competition, which indicates that MIRMU-Ensemble can
+benefit from a large number of systems.
+
+At ARQMath-2, we showed that all our four rank-based fusion techniques were
+more accurate than any individual information retrieval system from our MIRMU
+and MSM teams. We also showed that our MIRMU-WIBC can be more accurate than the
+MIRMU-RRF of @cormack2009reciprocal.
+
+When we used the unsupervised MIRMU-IBC and MIRMU-RRF to ensemble all
+non-baseline primary systems, we received the highest (MIRMU-RRF) and the
+second highest (MIRMU-IBC) accuracies in the competition, which indicates that
+both techniques can benefit from a large number of systems. Ensembling only six
+selected systems out of all our ten systems increased the accuracy of three out
+of our four techniques, which indicates that all our techniques can benefit
+from a small number of diverse systems.
+
+#### Reproducibility
+
+The experimental code for [MIRMU-Ensemble][18] from the ARQMath-1 lab is
+available on GitHub. The experimental code for all our systems from the
+ARQMath-2 lab is [available online.][14]
+
+ [18]: https://github.com/MIR-MU/SCM-at-ARQMath (file combine\\_serps.py)
 
 ## Weighted Zone Scoring Across Different Domains
 \label{sec:weighted-zone-scoring}

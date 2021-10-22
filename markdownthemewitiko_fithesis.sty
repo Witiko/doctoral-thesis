@@ -7,40 +7,33 @@
   html,
   hybrid,
   inlineFootnotes,
+  underscores=false,
 }
 
 %% Margin notes
-\RequirePackage{ragged2e}
+\RequirePackage{ragged2e,marginfix}
 \setlength{\marginparwidth}{2.75cm}
 \markdownSetup{
   renderers = {
     inlineHtmlComment = {%
       \marginpar
-        [\footnotesize\RaggedLeft#1]%
-        {\footnotesize\RaggedRight#1}%
+        [\color{black}\footnotesize\RaggedLeft#1]%
+        {\color{black}\footnotesize\RaggedRight#1}%
     },
   },
 }
 \let\markdownRendererFootnote=\markdownRendererInlineHtmlComment
 
-%% A setup snippet for unnumbered chapters
-\markdownSetupSnippet{unnumbered-chapter}{
-  renderers = {
-    headingOne = {%
-      \chapter*{#1}
-      \markright{\textsc{#1}}
-      \addcontentsline{toc}{chapter}{#1}
-    },
-  },
-}
-
 %% Non-teletype links
+\usepackage[para]{footmisc}
 \def\markdownRendererLink{%
   \begingroup
   \catcode`\#=12
   \def\next##1##2##3##4{%
     ##1\footnote{%
-      \ifx\empty##4\empty\else##4: \fi\href{##3}{{\sffamily\color{thesis@color@secondary}##2}}%
+      \RaggedRight
+      \href{##3}{{\sffamily\color{thesis@color@secondary}##2}}%
+      \ifx\empty##4\empty\else, ##4\fi
     }%
     \endgroup
   }%
