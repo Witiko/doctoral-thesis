@@ -917,10 +917,10 @@ inverted indices for dense vector databases.
 
 In 2017, we showed how dense embeddings can be encoded as sparse vectors.
 [@rygl2017semantic, Section 2.2] Using our encoding, we developed a dense
-information retrieval system that used the ElasticSearch inverted index as its
-sparse vector database, and we evaluated how accurate it was at the retrieval
-of the dense embeddings of words, sentences, and image descriptors.
-[@rygl2017semantic, Section 3.1; @ruzicka2017flexible, Section 3]
+information retrieval system that used an inverted index as its sparse vector
+database, and we evaluated how accurate it was at the retrieval of the dense
+embeddings of words, sentences, and image descriptors. [@rygl2017semantic,
+Section 3.1; @ruzicka2017flexible, Section 3]
 
 #### Results
 
