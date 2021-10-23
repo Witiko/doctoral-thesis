@@ -927,7 +927,8 @@ of the dense embeddings of words, sentences, and image descriptors.
 We showed that our system could perform exact dense retrieval with almost
 perfect accuracy. [@rygl2017semantic, Table 2; @ruzicka2017flexible, Section 4]
 We also showed that both our encoding and our system can be configured to trade
-off accuracy for speed and perform fast approximate dense retrieval, see also
+off accuracy for speed and perform fast approximate dense retrieval
+[@rygl2017semantic, Figure 1; @ruzicka2017flexible, figures 1--14], see also
 Section~\vref{sec:dense-retrieval-in-inverted-indices-speed}.
 
 Our results show that the dilemma of the digital mathematical libraries is
