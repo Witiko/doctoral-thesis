@@ -119,16 +119,16 @@ information retrieval systems that jointly modeled both text and math:
   embeddings of the Sentence BERT deep neural network language model.
 
 In both systems, we have compared the prefix and infix notations to other math
-representations on our train dataset. For the MIRMU-SCM system, we have used
+representations on our train dataset. For the *MIRMU-SCM* system, we have used
 the following math representations for comparison: none (math tokens were
 removed), \LaTeX{} (every math formula becomes one token), adjacent pairs of OPT
 nodes, and adjacent pairs of SLT nodes. [@novotny2020three, Section 4.3] For
-the MIRMU-CompuBERT system, we have used the \LaTeX{} math representation for
+the *MIRMU-CompuBERT* system, we have used the \LaTeX{} math representation for
 comparison. [@novotny2020three, Table 2]
 
 #### Results
 
-In the MIRMU-SCM system, both the prefix and the infix notations received the
+In the *MIRMU-SCM* system, both the prefix and the infix notations received the
 best results on the train dataset. The prefix and infix notations received
 equivalent results, since they mainly differ by ordering (with TF-IDF weighting,
 adding parenthesis tokens is insignificant). Since the soft vector space model
@@ -138,8 +138,8 @@ compared to modeling adjacent pairs of OPT and SLT nodes show that in our soft
 vector space model, modeling individual OPT nodes is better than modeling
 longer paths in OPT and SLT trees.
 
-In the MIRMU-CompuBERT system, the prefix notation has received better results
-than the infix notation, showing that the topological ordering of
+In the *MIRMU-CompuBERT* system, the prefix notation has received better
+results than the infix notation, showing that the topological ordering of
 @lample2020deep is significant in deep neural language models. Surprisingly,
 the \LaTeX{} representation has received better results that both prefix and
 infix notations. We believe that this is due to tokenization: Unlike
@@ -614,23 +614,23 @@ ARQMath-2 labs:
 
 #### Results
 
-At ARQMath-1, we showed that MIRMU-SCM was more accurate than any other
+At ARQMath-1, we showed that *MIRMU-SCM* was more accurate than any other
 individual information retrieval system from our MIRMU team, including MIaS
 from the European digital mathematical library, which is based on the hard
 vector space model and does not use token embeddings. This shows that using
 joint token embeddings of text and math from subword language models improves
-accuracy on math information retrieval. We also showed that MIRMU-SCM was among
-the top three most accurate primary systems in the competition.
-MIRMU-CompuBERT suffered from a lack of accurate training data and failed to
+accuracy on math information retrieval. We also showed that *MIRMU-SCM* was
+among the top three most accurate primary systems in the competition.
+*MIRMU-CompuBERT* suffered from a lack of accurate training data and failed to
 reach accuracy that would be significantly better than zero at ARQMath-1.
 
-At ARQMath-2, we showed that with accurate training data, MIRMU-CompuBERT
-was more accurate than MIRMU-SCM. @mansouri2021dprl [Section 3] also used
-sentence embeddings of the Sentence BERT in their math information retrieval
-system, which was the second most accurate system in the competition. This
-shows that using joint sentence embeddings of text and math from deep neural
-network language models is well-motivated and improved accuracy on math
-information retrieval.
+At ARQMath-2, we showed that with accurate training data, *MIRMU-CompuBERT*
+was more accurate than *MIRMU-SCM*. @mansouri2021dprl [Section 3] also used
+sentence embeddings of the Sentence BERT in two of their three math information
+retrieval systems (*DPRL-RRF* and *DPRL-QASim*) and achieved the second and
+third best accuracies in the competition.  This shows that using joint sentence
+embeddings of text and math from deep neural network language models is
+well-motivated and improved accuracy on math information retrieval.
 
 #### Reproducibility
 
@@ -744,20 +744,20 @@ out of all our ten systems at the ARQMath-2 lab.
 
 #### Results
 
-At ARQMath-1, we showed that MIRMU-Ensemble was more accurate than any
+At ARQMath-1, we showed that *MIRMU-Ensemble* was more accurate than any
 individual information retrieval system from our MIRMU team. When we used
-MIRMU-Ensemble to ensemble all non-baseline primary systems, we received the
-best accuracy in the competition, which indicates that MIRMU-Ensemble can
+*MIRMU-Ensemble* to ensemble all non-baseline primary systems, we received the
+best accuracy in the competition, which indicates that *MIRMU-Ensemble* can
 benefit from a large number of systems.
 
 At ARQMath-2, we showed that all our four rank-based fusion techniques were
 more accurate than any individual information retrieval system from our MIRMU
-and MSM teams. We also showed that our MIRMU-WIBC can be more accurate than the
-MIRMU-RRF of @cormack2009reciprocal.
+and MSM teams. We also showed that our *MIRMU-WIBC* can be more accurate than
+the *MIRMU-RRF* of @cormack2009reciprocal.
 
-When we used the unsupervised MIRMU-IBC and MIRMU-RRF to ensemble all
-non-baseline primary systems, we received the best (MIRMU-RRF) and the
-second best(MIRMU-IBC) accuracies in the competition, which indicates that
+When we used the unsupervised *MIRMU-IBC* and *MIRMU-RRF* to ensemble all
+non-baseline primary systems, we received the best (*MIRMU-RRF*) and the
+second best (*MIRMU-IBC*) accuracies in the competition, which indicates that
 both techniques can benefit from a large number of systems. Ensembling only six
 selected systems out of all our ten systems increased the accuracy of three out
 of our four techniques, which indicates that all our techniques can benefit
@@ -815,10 +815,10 @@ task of the ARQMath-2 lab:[^17]
   question, where the title of the parent question is given three times as much
   weight as any of the remaining parts.
 
-← To show how important weighted zone scoring was, we compared the MSM-MG,
-MSM-PZ, and MIRMU-SCM systems to the remaining six systems of the MSM team that
-used similar information retrieval techniques but did not use weighted zone
-scoring.
+← To show how important weighted zone scoring was, we compared the *MSM-MG*,
+*MSM-PZ*, and *MIRMU-SCM* systems to the remaining six systems of the MSM team
+that used similar information retrieval techniques but did not use weighted
+zone scoring.
 
 #### Results
 
@@ -858,11 +858,10 @@ online.][14]
 ## Approximate Nearest-Neighbor Search in Vector Spaces
 \label{sec:approximate-nearest-neighbor-search-accuracy}
 
-Until we have solved the mystery that is the human mind, the ranking criteria
-of math information retrieval systems will always be just an approximation to
-the relevance perceived by the users. Additionally, due to the amount of data
-and time constraints, even this formal ranking criterion is usually
-approximated.
+Until we have solved the mystery that is the human mind, ranking criteria of
+math information retrieval systems will always be just an approximation to the
+relevance perceived by the users. Additionally, due to the amount of data and
+time constraints, even this formal ranking criteria are usually approximated.
 
 In this section, I will report the results of my experiments in making
 approximate math information retrieval more accurate:
@@ -877,6 +876,63 @@ approximate math information retrieval more accurate:
 
 ### Dense Retrieval in Inverted Indices
 \label{sec:dense-retrieval-in-inverted-indices-accuracy}
+
+Recent results show that dense retrieval techniques can achieve higher accuracy
+than sparse retrieval techniques on information retrieval tasks.
+[@lin2021batch] At the *answer retrieval* math information retrieval task of
+the ARQMath-1 and ARQMath-2 labs, sparse information retrieval techniques still
+achieved the best accuracy, but the gap is closing: Whereas at ARQMath-1, only
+three[^19] out of 23 systems (13\%) used dense retrieval and the best dense
+retrieval system only received the seventh best accuracy in the competition,
+[@zanibbi2020overview, Table A1], at ARQMath-2, nine[^20] out of 40 systems
+(23\%) used dense retrieval and the best dense retrieval systems received the
+second and third best accuracies in the competition. [@behrooz2021overview,
+Table 4]
+
+ [^19]: The three systems were, by decreasing accuracy:
+
+    1. *PSU1*,
+    2. *PSU3*, and
+    3. *MIRMU-CompuBERT*.
+
+ [^20]: The nine systems were, by decreasing accuracy:
+
+    1. *DPRL-MathSE*,
+    2. *DPRL-QASim*,
+    3. *TU\\_DBS\\_P*,
+    4. *TU\\_DBS\\_A2*,
+    5. *TU\\_DBS\\_A3*,
+    6. *TU\\_DBS\\_A1*,
+    7. *MIRMU-CompuBERT*,
+    8. *PSU*, and
+    9. *TU\\_DBS\\_A4*.
+
+Digital mathematical libraries use industry-grade inverted indices such as
+ElasticSearch, Solr, and Lucene for sparse retrieval. However, as dense
+retrieval is becoming more accurate than sparse retrieval, libraries face
+the dilemma of either being inaccurate or replacing their tried-and-tested
+inverted indices for dense vector databases.
+
+#### Experiments
+
+In 2017, we showed how dense embeddings can be encoded as sparse vectors.
+[@rygl2017semantic, Section 2.2] Using our encoding, we developed a dense
+information retrieval system that used the ElasticSearch inverted index as its
+sparse vector database, and we evaluated how accurate it was at the retrieval
+of the dense embeddings of words, sentences, and image descriptors.
+[@rygl2017semantic, Section 3.1; @ruzicka2017flexible, Section 3]
+
+#### Results
+
+We showed that our system could perform exact dense retrieval with almost
+perfect accuracy. [@rygl2017semantic, Table 2; @ruzicka2017flexible, Section 4]
+We also showed that both our encoding and our system can be configured to trade
+off accuracy for speed and perform fast approximate dense retrieval, see also
+Section~\vref{sec:dense-retrieval-in-inverted-indices-speed}.
+
+Our results show that the dilemma of the digital mathematical libraries is
+false: Using our system, libraries can use more accurate dense retrieval
+without replacing their tried-and-tested retrieval architectures.
 
 ### Sparse Retrieval in Inverted Indices and Vector Databases
 \label{sec:sparse-retrieval-in-inverted-indices-and-vector-databases-accuracy}

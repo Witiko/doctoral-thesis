@@ -18,12 +18,34 @@
 %% Margin notes
 \RequirePackage{ragged2e,marginfix}
 \setlength{\marginparwidth}{2.75cm}
+\newcommand\marginparsetlists{%
+  \setlist[itemize]{
+    leftmargin = 0.45cm,
+    itemsep    = 0pt,
+    parsep     = 0pt,
+    topsep     = 0pt,
+    partopsep  = 0pt,
+  }
+  \setlist[enumerate]{
+    leftmargin = 0.45cm,
+    itemsep    = 0pt,
+    parsep     = 0pt,
+    topsep     = 0pt,
+    partopsep  = 0pt,
+  }
+}
 \markdownSetup{
   renderers = {
     inlineHtmlComment = {%
       \marginpar
-        [\color{black}\footnotesize\RaggedLeft#1]%
-        {\color{black}\footnotesize\RaggedRight#1}%
+        [%
+          \marginparsetlists
+          \color{black}\footnotesize\RaggedLeft#1%
+        ]%
+        {%
+          \marginparsetlists
+          \color{black}\footnotesize\RaggedRight#1%
+        }%
     },
   },
 }
