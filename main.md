@@ -524,20 +524,22 @@ decontextualized embeddings and with the global embeddings of a shallow
 log-bilinear fastText subword language model on eight machine translation
 evaluation tasks.
 
-|             |         | SCM-tf | SCM-dec-tf | WMD    | WMD-dec |
-|-------------|---------|--------|------------|--------|---------|
-| MQM-ref     | zh→en   | *0.35* |  0.26      | *0.29* |  0.27   |
-| MQM-ref     | zh→en-X | *0.35* |  0.25      | *0.29* |  0.27   |
-| MQM-ref     | en→de   |  0.14  | *0.18*     |  0.13  | *0.32*  |
-| MQM-ref     | en→de-X |  0.14  | *0.17*     |  0.13  | *0.32*  |
-| DA 2016-src | cs→en   | *0.67* |  0.53      |  0.63  | *0.71*  |
-| DA 2016-src | de→en   |  0.40  | *0.45*     |  0.36  | *0.51*  |
-| DA 2016-src | fi→en   |  0.44  | *0.63*     |  0.45  | *0.58*  |
-| DA 2016-src | ru→en   |  0.30  | *0.43*     |  0.33  | *0.48*  |
+|              |         | SCM-tf | SCM-dec-tf | WMD    | WMD-dec |
+|--------------|---------|--------|------------|--------|---------|
+| MQM, ref     | zh→en   | *0.35* |  0.26      | *0.29* |  0.27   |
+| MQM, ref     | zh→en × | *0.35* |  0.25      | *0.29* |  0.27   |
+| MQM, ref     | en→de   |  0.14  | *0.18*     |  0.13  | *0.32*  |
+| MQM, ref     | en→de × |  0.14  | *0.17*     |  0.13  | *0.32*  |
+| DA 2016, src | cs→en   | *0.67* |  0.53      |  0.63  | *0.71*  |
+| DA 2016, src | de→en   |  0.40  | *0.45*     |  0.36  | *0.51*  |
+| DA 2016, src | fi→en   |  0.44  | *0.63*     |  0.45  | *0.58*  |
+| DA 2016, src | ru→en   |  0.30  | *0.43*     |  0.33  | *0.48*  |
 %
 : The accuracies of the soft vector space (SCM) and the word mover's distance (WMD) %
   with and without our decontextualized token embeddings on eight machine %
-  translation evaluation tasks. [@stefanik2021regressive, Table 1]%
+  translation evaluation tasks. [@stefanik2021regressive] %
+  Language pairs marked with an × were evaluated cross-lingually. %
+  [@stefanik2021regressive, Section 3.4] \label{tab:regemt}
   \label{tab:decontextualized-token-embeddings}
 
 #### Results
@@ -655,36 +657,33 @@ semantic matching techniques in order to avoid the systematic errors of any
 individual technique. [@stefanik2021regressive, Section 3.3] We trained and
 evaluated our ensemble on 20 machine translation evaluation tasks.
 
- [^16]: The twenty tasks were MQM-src (zh-en, zh-en-X, en-de, and en-de-X), MQM-ref
-        (dtto), DA 2016-src (cs-en, de-en, fi-en, and ru-en), DA 2016-tgt (dtto),
-        and catastrophic-src (en-cs, en-de, en-ja, and en-zh).
-
-|                  |         | RegEMT | Best individual system     |
-|------------------|---------|--------|----------------------------|
-| MQM-src          | zh→en   | *0.59* |  0.44  (BERTScr, WMD-cont) |
-| MQM-src          | zh→en-X | *0.49* |  0.44  (BERTScr, WMD-cont) |
-| MQM-src          | en→de   | *0.36* |  0.28  (Reg-base)          |
-| MQM-src          | en→de-X | *0.31* |  0.28  (Reg-base)          |
-| MQM-ref          | zh→en   | *0.62* |  0.51  (Comet)             |
-| MQM-ref          | zh→en-X | *0.62* |  0.51  (Comet)             |
-| MQM-ref          | en→de   | *0.60* |  0.48  (Comet)             |
-| MQM-ref          | en→de-X |  0.38  | *0.48  (Comet)*            |
-| DA 2016-src      | cs→en   |  0.86  | *0.89  (Comet)*            |
-| DA 2016-src      | de→en   | *0.84* |  0.80  (BLEUrt)            |
-| DA 2016-src      | fi→en   | *0.87* |  0.85  (Comet)             |
-| DA 2016-src      | ru→en   | *0.79* |  0.78  (Comet)             |
-| DA 2016-tgt      | cs→en   | *0.77* | *0.77  (Prism)*            |
-| DA 2016-tgt      | de→en   |  0.45  | *0.58  (Prism)*            |
-| DA 2016-tgt      | fi→en   | *0.76* | *0.76  (Prism)*            |
-| DA 2016-tgt      | ru→en   | *0.74* |  0.70  (Prism)             |
-| catastrophic-src | en→cs   | *0.45* |  0.35  (Prism)             |
-| catastrophic-src | en→de   |  0.34  | *0.43  (Prism)*            |
-| catastrophic-src | en→ja   | *0.20* |  0.18  (Reg-base)          |
-| catastrophic-src | en→zh   |  0.16  | *0.27  (SCM-dec)*          |
+|                   |         | RegEMT | Best individual system     |
+|-------------------|---------|--------|----------------------------|
+| MQM, src          | zh→en   | *0.59* |  0.44  (BERTScr, WMD-cont) |
+| MQM, src          | zh→en × | *0.49* |  0.44  (BERTScr, WMD-cont) |
+| MQM, src          | en→de   | *0.36* |  0.28  (Reg-base)          |
+| MQM, src          | en→de × | *0.31* |  0.28  (Reg-base)          |
+| MQM, ref          | zh→en   | *0.62* |  0.51  (Comet)             |
+| MQM, ref          | zh→en × | *0.62* |  0.51  (Comet)             |
+| MQM, ref          | en→de   | *0.60* |  0.48  (Comet)             |
+| MQM, ref          | en→de × |  0.38  | *0.48  (Comet)*            |
+| DA 2016, src      | cs→en   |  0.86  | *0.89  (Comet)*            |
+| DA 2016, src      | de→en   | *0.84* |  0.80  (BLEUrt)            |
+| DA 2016, src      | fi→en   | *0.87* |  0.85  (Comet)             |
+| DA 2016, src      | ru→en   | *0.79* |  0.78  (Comet)             |
+| DA 2016, tgt      | cs→en   | *0.77* | *0.77  (Prism)*            |
+| DA 2016, tgt      | de→en   |  0.45  | *0.58  (Prism)*            |
+| DA 2016, tgt      | fi→en   | *0.76* | *0.76  (Prism)*            |
+| DA 2016, tgt      | ru→en   | *0.74* |  0.70  (Prism)             |
+| Catastrophic, src | en→cs   | *0.45* |  0.35  (Prism)             |
+| Catastrophic, src | en→de   |  0.34  | *0.43  (Prism)*            |
+| Catastrophic, src | en→ja   | *0.20* |  0.18  (Reg-base)          |
+| Catastrophic, src | en→zh   |  0.16  | *0.27  (SCM-dec)*          |
 %                                              
 : The accuracies of the our ensemble (RegEMT) and the best individual systems %
-  on 20 machine translation evaluation tasks. [@stefanik2021regressive, Table 1]%
-  \label{tab:regemt}
+  on 20 machine translation evaluation tasks. [@stefanik2021regressive] %
+  Language pairs marked with an × were evaluated cross-lingually. %
+  [@stefanik2021regressive, Section 3.4] \label{tab:regemt}
 
 #### Results
 
