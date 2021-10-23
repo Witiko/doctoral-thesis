@@ -615,14 +615,15 @@ ARQMath-2 labs:
 #### Results
 
 At ARQMath-1, we showed that *MIRMU-SCM* was more accurate than any other
-individual information retrieval system from our MIRMU team, including MIaS
-from the European digital mathematical library, which is based on the hard
-vector space model and does not use token embeddings. This shows that using
-joint token embeddings of text and math from subword language models improves
-accuracy on math information retrieval. We also showed that *MIRMU-SCM* was
-among the top three most accurate primary systems in the competition.
-*MIRMU-CompuBERT* suffered from a lack of accurate training data and failed to
-reach accuracy that would be significantly better than zero at ARQMath-1.
+individual information retrieval system from our MIRMU team, including
+*MIRMU-MIaS* from the European digital mathematical library, which is based on
+the hard vector space model and does not use token embeddings. This shows that
+using joint token embeddings of text and math from subword language models
+improves accuracy on math information retrieval. We also showed that
+*MIRMU-SCM* was among the top three most accurate primary systems in the
+competition.  *MIRMU-CompuBERT* suffered from a lack of accurate training data
+and failed to reach accuracy that would be significantly better than zero at
+ARQMath-1.
 
 At ARQMath-2, we showed that with accurate training data, *MIRMU-CompuBERT*
 was more accurate than *MIRMU-SCM*. @mansouri2021dprl [Section 3] also used
@@ -645,10 +646,11 @@ from the ARQMath-2 lab is [available online.][14]
 
 Techniques for structural and semantic matching such as the soft vector space
 model and the word mover's distance make naive assumptions about the syntax and
-the semantics of the natural language and mathematics. They also often rely on
-token embeddings of language models, which contain human-like biases.
-[@caliskan2017semantics] These assumptions and biases cause systematic errors
-and decrease accuracy on machine translation evaluation tasks.
+the semantics of the natural language and the language of mathematics. They
+also often rely on token embeddings of language models, which contain
+human-like biases.  [@caliskan2017semantics] These assumptions and biases cause
+systematic errors and decrease accuracy on machine translation evaluation
+tasks.
 
 #### Experiments
 
@@ -909,9 +911,9 @@ Table 4]
 
 Digital mathematical libraries use industry-grade inverted indices such as
 ElasticSearch, Solr, and Lucene for sparse retrieval. However, as dense
-retrieval is becoming more accurate than sparse retrieval, libraries face
-the dilemma of either being inaccurate or replacing their tried-and-tested
-inverted indices for dense vector databases.
+retrieval is becoming more accurate than sparse retrieval, libraries face the
+economic dilemma of either being inaccurate or replacing their tried-and-tested
+sparse retrieval architectures with dense vector databases.
 
 #### Experiments
 
@@ -925,18 +927,118 @@ Section 3.1; @ruzicka2017flexible, Section 3]
 #### Results
 
 We showed that our system could perform exact dense retrieval with almost
-perfect accuracy. [@rygl2017semantic, Table 2; @ruzicka2017flexible, Section 4]
+no loss in accuracy. [@rygl2017semantic, Table 2; @ruzicka2017flexible, Section 4]
 We also showed that both our encoding and our system can be configured to trade
 off accuracy for speed and perform fast approximate dense retrieval
 [@rygl2017semantic, Figure 1; @ruzicka2017flexible, figures 1--14], see also
 Section~\vref{sec:dense-retrieval-in-inverted-indices-speed}.
 
-Our results show that the dilemma of the digital mathematical libraries is
+Our results showed that the dilemma of the digital mathematical libraries is
 false: Using our system, libraries can use more accurate dense retrieval
-without replacing their tried-and-tested retrieval architectures.
+without replacing their tried-and-tested sparse retrieval architectures.
 
 ### Sparse Retrieval in Inverted Indices and Vector Databases
 \label{sec:sparse-retrieval-in-inverted-indices-and-vector-databases-accuracy}
+
+State-of-the-art math information retrieval systems rely on the hard soft
+vector space model of @salton1988termweighting, which is fast and
+interpretable, but whose accuracy is limited by its failure to recognize that
+the meaning of different words and symbols can be similar or related.
+
+In 2014, @sidorov2014soft developed the soft vector space model, which can
+recognize the semantic relatedness of words and symbols. However, the soft
+vector space model was not practically fast. Additionally, the soft vector
+space model required a measure of relatedness between words and symbols.
+Furthermore, the soft vector space model had not been evaluated on math
+information retrieval.
+
+In 2017, @charlet2017simbow developed two approximate measures of relatedness
+between words and symbols based on the edit distance and on token embeddings
+and they achieved state-of-the-art accuracy on a semantic text similarity task.
+
+In 2018, @lam2018word2bits developed the Word2Bits quantized language model
+technique and showed that it was more accurate than the Word2Vec language model
+on the English word similarity and open-domain question answering tasks and
+equally as accurate on the English word analogy task. The token embeddings of
+the quantized model could make the soft vector space model practically fast.
+However, they the soft vector space model with the quantized token embeddings
+had not been never evaluated.
+
+#### Experiments
+
+In 2018, I developed an algorithm for the soft vector space model that achieved
+practical speed[^21] by placing restrictions on the measures of relatedness
+that the soft vector space model could use. [@novotny2018implementation,
+Section 3]
+
+ [^21]: See Section~\vref{sec:sparse-retrieval-in-inverted-indices-and-vector-databases-speed}
+        for a discussion about our improvements to the speed of the soft vector
+        space model.
+
+In 2020, we developed an *orthogonalization* technique for token embeddings and
+we showed that using the measure of @charlet2017simbow with orthogonalized
+embeddings was consistent with the restrictions of my fast algorithm for the
+soft vector space model. [@novotny2020text, Section 4.2] We evaluated the soft
+vector space model with quantized token embeddings and with regularized token
+embeddings on six text classification tasks. [@novotny2020text, Section 5]
+We also reported the optimal hyperparameter values for our orthogonalization
+algorithm on all six tasks. [@novotny2020text, Table 2]
+
+In 2020 and 2021, we evaluated the soft vector space model on the *answer
+retrieval* math information retrieval task of the ARQMath-1 and ARQMath-2 labs
+to see if the soft vector space model would be more accurate than the hard
+vector space model. [@novotny2020three, Section 4; @novotny2021ensembling,
+Section 3.3] We also reported the optimal hyperparameter values for our
+orthogonalization algorithm. [@novotny2020three, Table 1]
+ 
+ [^22]: See Section~\vref{sec:joint-token-embeddings-of-text-and-math} for a
+        discussion about the joint token embeddings of text and math that we
+        developed for soft vector space model in the ARQMath-1 and ARQMath-2 labs.
+
+#### Results
+
+We showed that quantized and (especially) regularized token embeddings not only
+did not decrease the accuracy of the soft vector space, but actually improved
+it on five out of six text classification tasks. We also showed that the soft
+vector space model with any of our token embeddings was more accurate than the
+hard vector space model on all six tasks.
+
+We also showed that the soft vector space can be more accurate than math
+information retrieval systems that used similar information retrieval techniques
+but used the hard vector space model instead of the soft vector space model:
+For example, at ARQMath-1, the soft vector space model (*MIRMU-SCM*) was more
+accurate than *MIRMU-MIaS* from the European digital mathematical library and
+at ARQMath-2, the soft vector space model was more accurate than five systems
+of the MSM team.[^23]
+
+ [^23]: *MIRMU-SCM* is more accurate even when we disable weighted zone scoring,
+        which the five systems of the MSM team did not use, see also
+        Section~\ref{sec:weighted-zone-scoring}.
+
+#### Future Work
+
+At the ARQMath-1 and ARQMath-2 labs, state-of-the-art accuracy was achieved
+by systems that used the BM-25 term weighting scheme, whereas our soft vector
+space model used the TF-IDF term weighting scheme. Future work should study in
+more detail the impact of term weighting schemes on the accuracy of the soft
+vector space model on math information retrieval.
+
+#### Reproducibility
+
+I have released [the only public implementation of the soft vector space model][24]
+in the free open-source Gensim NLP library [@rehurek2010software] through a
+series of pull requests on GitHub. [@novotny2018implementa;
+@novotny2018implementb; @novotny2020reduce; @novotny2021use]
+
+The experimental code for the soft vector space model on the text classification
+tasks is [available on GitHub.][25]
+
+The experimental code for the soft vector space model from the ARQMath-1 lab is
+[available on GitHub.][1] The experimental code for all our systems from the
+ARQMath-2 lab is [available online.][14]
+
+ [24]: https://radimrehurek.com/gensim/similarities/termsim.html
+ [25]: https://github.com/MIR-MU/regularized-embeddings
 
 # Speed {#speed}
 The accuracy as well as the availability of more advanced features in a math
@@ -1009,6 +1111,10 @@ information retrieval faster by using an approximate ranking criterion:
 
 ### Sparse Retrieval in Inverted Indices and Vector Databases
 \label{sec:sparse-retrieval-in-inverted-indices-and-vector-databases-speed}
+
+However, computing the similarity of two texts with the soft vector space model
+has an unpractical time complexity of $\mathcal{O}(D^2)$ for a dictionary of
+$D$ words and symbols. 
 
 # Interpretability {#interpretability}
 In math information retrieval, accuracy and speed ensure that we can recall
