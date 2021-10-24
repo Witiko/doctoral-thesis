@@ -616,7 +616,7 @@ ARQMath-2 labs:
 
 At ARQMath-1, we showed that *MIRMU-SCM* was more accurate than any other
 individual information retrieval system from our MIRMU team, including
-*MIRMU-MIaS* from the European digital mathematical library, which is based on
+*MIRMU-MIaS* of the European Digital Mathematical Library, which is based on
 the hard vector space model and does not use token embeddings. This shows that
 using joint token embeddings of text and math from subword language models
 improves accuracy on math information retrieval. We also showed that
@@ -1007,7 +1007,7 @@ We also showed that the soft vector space can be more accurate than math
 information retrieval systems that used similar information retrieval techniques
 but used the hard vector space model instead of the soft vector space model:
 For example, at ARQMath-1, the soft vector space model (*MIRMU-SCM*) was more
-accurate than *MIRMU-MIaS* from the European digital mathematical library and
+accurate than *MIRMU-MIaS* of the European Digital Mathematical Library and
 at ARQMath-2, the soft vector space model was more accurate than five systems
 of the MSM team.[^23]
 
@@ -1060,8 +1060,57 @@ and techniques that enable fast math information retrieval:
 - In Section~\vref{sec:approximate-nearest-neighbor-search-speed}, I will
   describe my work in developing fast approximate search techniques.
 
-## Fast and Reproducible Deployment of Math Information Retrieval Systems Using Docker
+## Fast and Reproducible Deployment of Math Information Retrieval Systems Using Docker and Continuous Integration
 \label{sec:fast-and-reproducible-deployment}
+
+Docker is a lightweight container-based virtualization tool, which makes it
+possible to distribute software together with all its dependencies as a single
+image. Additionally, processes running in Docker are comparable in speed to
+regular non-virtualized processes.
+
+In software engineering, continuous integration is the practice of merging the
+work of all developers to a shared repository several times a day. To maintain
+code quality, best practices for continuous integration include automating the
+builds and making the builds self-testing.
+
+In 2018, we have publicly released our MIaS search engine of the European
+Digital Mathematical Library [on GitHub.][28] [@sojka2018mias] We have also
+developed a solution for deploying MIaS and we have made it [available on
+GitHub.][26] However, our solution was slow, because we needed to always build
+MIaS. Additionally, our builds would suddenly fail at deployment due to the
+changing code base of MIaS and a lack of code quality control. Furthermore, our
+solution had been written in the GNU Make language, which was difficult to
+maintain.
+
+ [26]: https://github.com/MIR-MU/ntcir-mias-deployment
+ [28]: https://github.com/MIR-MU/WebMIaS
+
+In 2020, we have developed a new solution for deploying MIaS at the ARQMath-1
+lab and we have also made it [available on GitHub.][27] Our new solution had
+been written in Python, which was easier to maintain. However, our new solution
+was still slow and would suddenly fail.
+
+ [27]: https://github.com/MIR-MU/ARQMath-eval (file MIaS-at-ARQMath.ipynb)
+
+#### Experiments
+
+In 2021, we have developed a new solution for deploying MIaS using Docker
+continuous integration. [@luptak2021deploying] [^29] With Docker, our solution
+is no longer slow, because we do not need to always build MIaS, but we can
+download a pre-built Docker image. With continuous integration, our builds
+would no longer suddenly fail at deployment, because any change to the code
+base would immediately build and test MIaS.
+
+ [^29]: For continuous integration, we have used the GitHub Actions service,
+        which offers a free plan to public open-source repositories.
+
+#### Reproducibility
+
+Our fast deployment solution for Docker is [available on GitHub][30] and as [a
+Docker image.][31]
+
+ [30]: https://github.com/MIR-MU/WebMIaS
+ [31]: https://hub.docker.com/r/miratmu/webmias/tags
 
 ## Representation Learning of Words and Symbols for Sparse Retrieval
 \label{sec:representation-learning-speed}
