@@ -378,7 +378,7 @@ positional model less accurate.
 
 #### Experiments
 
-In 2021, we produced the fastText constrained positional model, which models
+In 2021, we developed the fastText constrained positional model, which models
 the parts of the meaning that are dependent on the narrow context of a
 paragraph as well as the parts of the meaning that are fixed or dependent on
 the broader context. [@novotny2021when, Section 2.2.4] We achieved this by
@@ -388,8 +388,9 @@ D'$ fixed and broader-context-dependent features that would not interact with
 positional embeddings.
 
 We reported the optimal value of $D'$ on the English word analogy task
-[@novotny2021when, Section 4.1] and we compared the subword, positional, and
-constrained positional models on an English language modeling task
+[@novotny2021when, Table 1] and we compared the subword, positional, and
+constrained positional models on the English word analogy task
+[@novotny2021when, figures 2 and 3] and an English language modeling task
 [@novotny2021when, Section 4.4].
 
 #### Results
@@ -399,7 +400,7 @@ narrow-context-dependent features is optimal on the English word analogy task.
 
 We also showed that the positional model is more accurate than the subword
 model and that the constrained positional model is more accurate than the
-positional model on the English language modeling task.
+positional model on the word analogy and language modeling tasks.
 
 #### Future Work
 
@@ -1199,6 +1200,44 @@ The experimental code for all our experiments is [available online.][8]
 
 ### Position-Independent Token Embeddings
 \label{sec:position-independent-token-embeddings-speed}
+
+In 2018, @mikolov2018advances developed the fastText positional language model
+and showed that it was more accurate than the fastText subword language model
+on the English word analogy task. However, they did not release a public
+implementation of the positional model or show that the model was practically
+fast to train.
+
+#### Experiments
+
+In 2020, I implemented the positional model[^35] and I evaluated if it can
+achieve better accuracy than the subword language model on the English word
+analogy task when we trained both models for an equal amount of time.
+[@novotny2020art, Table 3]
+
+ [^35]: See Section~\vref{sec:variable-control-in-token-embedding-evaluation}
+        for a discussion of my implementation of the positional model.
+
+In 2021, we developed the fastText constrained positional model,[^36] which was
+less complex than the positional model and which achieved better accuracy than
+the positional model on word analogy and language modeling tasks.
+[@novotny2021when, Section 4] We compated the training time of both models.
+
+ [^36]: See Section~\vref{sec:position-independent-token-embeddings-accuracy}
+        for a discussion of the development and the accuracy of the contrained
+        positional model.
+
+#### Results
+
+We showed that that positional model could achieve 4\% better accuracy than the
+subword language model on the English word analogy task when we trained both
+models for five hours. We also showed that our constrained positional model
+trained 2× faster than the positional model.
+
+#### Reproducibility
+
+[The experimental code for all my experiments is available GitHub.][4] I have
+also released [the only public implementation of the fastText positional model
+and our fastText constrained positional model.][5]
 
 ## Approximate Nearest-Neighbor Search in Vector Spaces
 \label{sec:approximate-nearest-neighbor-search-speed}
