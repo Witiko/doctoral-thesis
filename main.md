@@ -419,21 +419,24 @@ positional models.
 \label{sec:quantized-token-embeddings}
 
 In 2018, @lam2018word2bits developed the Word2Bits quantized language model
-technique and showed that it was more accurate than the Word2Vec language model
-on the English word similarity and open-domain question answering tasks and
-equally as accurate on the English word analogy task. However, word analogy
-accuracies for the different categories of analogical reasoning were not
-reported, only total word analogy accuracies.
+and showed that it was more accurate than the Word2Vec language model on the
+English word similarity and open-domain question answering tasks and equally as
+accurate on the English word analogy task. However, word analogy accuracies for
+the different categories of analogical reasoning were not reported, only total
+word analogy accuracies.
 
 #### Experiments
 
-In 2019, I consulted the master's thesis of @stefanik2019semantic.
-<!-- See also sections \vref{sec:quantized-token-embeddings-with-fast-bitwise-arithmetic}
-and \vref{sec:formal-concept-analysis-with-quantized-token-embeddings}, where I
-discuss our further experiments with the quantized language model. -->
+In 2019, I consulted the master's thesis of @stefanik2019semantic.[^32]
 In the thesis, we aimed to reproduce the word analogy experiment of @lam2018word2bits
 and analyze the word analogy accuracies for the different categories of
 analogical reasoning. [@stefanik2019semantic, Section 3.1]
+
+ [^32]: See also sections
+        \vref{sec:quantized-token-embeddings-with-fast-bitwise-arithmetic} and
+        \vref{sec:formal-concept-analysis-with-quantized-token-embeddings},
+        where I discuss our further experiments with the quantized language
+        model.
 
 #### Results
 
@@ -921,7 +924,7 @@ In 2017, we showed how dense embeddings can be encoded as sparse vectors.
 [@rygl2017semantic, Section 2.2] Using our encoding, we developed a dense
 information retrieval system that used an inverted index as its sparse vector
 database, and we evaluated how accurate it was at the retrieval of the dense
-embeddings of words, sentences, and image descriptors. [@rygl2017semantic,
+embeddings of tokens, sentences, and image descriptors. [@rygl2017semantic,
 Section 3.1; @ruzicka2017flexible, Section 3]
 
 #### Results
@@ -1124,8 +1127,8 @@ token embeddings:
 
 - In Section~\vref{sec:quantized-token-embeddings-with-fast-bitwise-arithmetic},
   I will show that quantizing the Word2Vec language model makes it possible to
-  compute a fast and accurate bitwise approximation of the cosine similarity
-  between two token embeddings.
+  compute a fast and accurate bitwise approximation of the similarity between
+  a pair of token embeddings.
 
 - In Section~\vref{sec:position-independent-token-embeddings-speed}, I will show
   that constraining the fastText positional language model improves its
@@ -1133,6 +1136,54 @@ token embeddings:
 
 ### Quantized Token Embeddings with Fast Bitwise Arithmetic
 \label{sec:quantized-token-embeddings-with-fast-bitwise-arithmetic}
+
+Math information retrieval techniques for structural and semantic matching rely
+on fast measures of similarity between token embeddings of natural language
+words and math symbols. However, common similarity measures such as the cosine
+similarity require expensive floating point multiplication and division.
+
+In 2018, @lam2018word2bits developed the Word2Bits quantized language model and
+showed that it was more accurate than the Word2Vec language model on the
+English word similarity and open-domain question answering tasks and equally as
+accurate on the English word analogy task. With the quantized language mode, we
+can approximate the similarity between a pair of token embeddings using fast
+bitwise arithmetic. However, the speed and the accuracy of these approximations
+had not been evaluated.
+
+#### Experiments
+
+In 2019, I consulted the master's thesis of @stefanik2019semantic.[^33]
+In the thesis, we approximated the cosine similarity between a pair of
+quantized token embeddings as the inverse of their Hamming distance.
+[@stefanik2019semantic, Section 3.8] We evaluated our approximation
+on the English word analogy task.
+
+ [^33]: See also sections \vref{sec:quantized-token-embeddings} and
+        \vref{sec:formal-concept-analysis-with-quantized-token-embeddings},
+        where I discuss our further experiments with the quantized language
+        model.
+
+#### Results
+
+We showed that our bitwise approximation was more than 20× faster than the
+cosine similarity. We also showed that our approximation was within 2\%
+accuracy of the cosine similarity on the word analogy task. This shows that
+quantized token embeddings can be used for fast structural and semantic
+matching.
+
+#### Future Work
+
+Future work should evaluate our approximation on an extrinsic task such as math
+information retrieval.
+
+#### Reproducibility
+
+Our implementation of the word analogy task using fast bitwise arithmetic is
+[available on GitHub.][34]
+
+ [34]: https://github.com/witiko/word2bits (branch non-binary-and-bitwise-compute-accuracy)
+
+The experimental code for all our experiments is [available online.][8]
 
 ### Position-Independent Token Embeddings
 \label{sec:position-independent-token-embeddings-speed}
