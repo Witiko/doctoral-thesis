@@ -1,6 +1,7 @@
 \ProvidesPackage{markdownthemewitiko_fithesis}[2021/10/17]
 \markdownSetup{
   citations,
+  contentBlocks,
   fencedCode,
   footnotes,
   headerAttributes,
@@ -12,11 +13,46 @@
   underscores=false,
 }
 
-%% Tables with booktabs rules
+%% Content blocks
+\markdownSetup{
+  renderers = {
+    contentBlock = {%
+      \catcode`\%=14\relax
+      \input #3\relax
+      \catcode`\%=12\relax
+    },
+  }
+}
+
+%% Tables with booktabs rules and short captions
 \RequirePackage{booktabs}
 \let\markdownLaTeXTopRule\toprule
 \let\markdownLaTeXMidRule\midrule
 \let\markdownLaTeXBottomRule\bottomrule
+\markdownSetup{
+  renderers={
+    table = {%
+      \markdownLaTeXTable={}%
+      \markdownLaTeXTableAlignment={}%
+      \markdownLaTeXTableEnd={%
+        \markdownLaTeXBottomRule
+        \end{tabular}}%
+      \ifx\empty#1\empty\else
+        \addto@hook\markdownLaTeXTable{%
+          \begin{table}
+          \centering}%
+        \addto@hook\markdownLaTeXTableEnd{%
+          \caption#1
+          \end{table}}%
+      \fi
+      \addto@hook\markdownLaTeXTable{\begin{tabular}}%
+      \markdownLaTeXRowCounter=0%
+      \markdownLaTeXRowTotal=#2%
+      \markdownLaTeXColumnTotal=#3%
+      \markdownLaTeXRenderTableRow
+    }
+  }
+}
 
 
 %% Margin notes
@@ -84,9 +120,26 @@
   }
 }
 
+%% Graphics
+\usepackage{graphicx}
+\graphicspath{ {./figures/} }
+\setkeys{Gin}{
+  width = \columnwidth,
+  height = 0.65\paperheight,
+  keepaspectratio,
+}
+
 %% Definitions of various Unicode characters
 \RequirePackage{newunicodechar}
 \newunicodechar{◌}{\dottedcircle}
 \newunicodechar{←}{\noindent\ignorespaces}
 \newunicodechar{→}{$\rightarrow$}
 \newunicodechar{×}{$\times$}
+\usepackage{amsmath,centernot}
+\newunicodechar{⇒}{\implies}
+\newunicodechar{⇏}{\centernot\implies}
+\newunicodechar{∧}{\land}
+\newunicodechar{∨}{\lor}
+\newunicodechar{⊻}{\veebar}
+\newunicodechar{¬}{\neg}
+\newunicodechar{|}{\Vert}

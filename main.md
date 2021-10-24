@@ -301,7 +301,7 @@ Italian word analogy tasks and used subwords of size 3--6[^6], which they
 described as ``an arbitrary choice'' [@bojanowski2017enriching].
 
  [^6]: For subword sizes, we adopt the notation of @bojanowski2017enriching and
-       @grave2018learning. For example, subwords of size 3–6 are all subwords
+       @grave2018learning For example, subwords of size 3–6 are all subwords
        whose size is 3, 4, 5, or 6.
 
 In 2018, @grave2018learning produced the French and Hindi word analogy tasks.
@@ -538,12 +538,14 @@ evaluation tasks.
 | DA 2016, src | fi→en   |  0.44  | *0.63*     |  0.45  | *0.58*  |
 | DA 2016, src | ru→en   |  0.30  | *0.43*     |  0.33  | *0.48*  |
 %
-: The accuracies of the soft vector space (SCM) and the word mover's distance (WMD) %
-  with and without our decontextualized token embeddings on eight machine %
-  translation evaluation tasks. [@stefanik2021regressive] %
-  Language pairs marked with an × were evaluated cross-lingually. %
-  [@stefanik2021regressive, Section 3.4] \label{tab:regemt}
-  \label{tab:decontextualized-token-embeddings}
+: [The accuracies of the soft vector space and the word mover's distance %
+   with and without our decontextualized token embeddings on eight machine %
+   translation tasks]%
+  {The accuracies of the soft vector space (SCM) and the word mover's distance (WMD) %
+   with and without our decontextualized token embeddings on eight machine %
+   translation evaluation tasks. [@stefanik2021regressive] %
+   Language pairs marked with an × were evaluated cross-lingually. %
+   [@stefanik2021regressive, Section 3.4]} \label{tab:decontextualized-token-embeddings}
 
 #### Results
 
@@ -685,10 +687,12 @@ evaluated our ensemble on 20 machine translation evaluation tasks.
 | Catastrophic, src | en→ja   | *0.20* |  0.18  (Reg-base)          |
 | Catastrophic, src | en→zh   |  0.16  | *0.27  (SCM-dec)*          |
 %                                              
-: The accuracies of the our ensemble (RegEMT) and the best individual systems %
-  on 20 machine translation evaluation tasks. [@stefanik2021regressive] %
-  Language pairs marked with an × were evaluated cross-lingually. %
-  [@stefanik2021regressive, Section 3.4] \label{tab:regemt}
+: [The accuracies of the our ensemble and the best individual systems %
+   on 20 machine translation evaluation tasks]%
+  {The accuracies of the our ensemble (RegEMT) and the best individual systems %
+   on 20 machine translation evaluation tasks. [@stefanik2021regressive] %
+   Language pairs marked with an × were evaluated cross-lingually. %
+   [@stefanik2021regressive, Section 3.4]} \label{tab:regemt}
 
 #### Results
 
@@ -774,7 +778,7 @@ The experimental code for [MIRMU-Ensemble][18] from the ARQMath-1 lab is
 available on GitHub. The experimental code for all our systems from the
 ARQMath-2 lab is [available online.][14]
 
- [18]: https://github.com/MIR-MU/SCM-at-ARQMath (file combine\\_serps.py)
+ [18]: https://github.com/MIR-MU/SCM-at-ARQMath (file scripts/combine\\_serps.py)
 
 ## Weighted Zone Scoring Across Different Domains
 \label{sec:weighted-zone-scoring}
@@ -830,7 +834,8 @@ zone scoring.
 We showed that in the datasets from the *community question answering*
 information retrieval task of the SemEval-2016 and SemEval-2017 competitions,
 later comments were significantly less likely to be relevant and that their
-relevance followed a Zipf distribution. [@novotny2018weighting, Figure 2]
+relevance followed a Zipf distribution, see Figure~\vref{fig:weighted-zone-scoring}.
+
 We then developed three information retrieval systems: one that used weighted
 zone scoring to place smaller weight to later comments in a thread, one that
 did not use zoned weighting but continuously decreased the weights of later
@@ -840,6 +845,8 @@ state-of-the-art accuracy on both datasets, whereas our two systems that did
 not use zoned weighting achieved worse-than-baseline accuracy on both datasets.
 [@novotny2018weighting, tables 1 and 2] This shows that weighted zone scoring
 can be important for information retrieval.
+
+ /figures/godwins-law.tex
 
 We also showed that our three math information retrieval systems that used
 weighted zone scoring all achieved better accuracy than our six systems that
@@ -979,7 +986,7 @@ Section 3]
         space model.
 
 In 2020, we developed an *orthogonalization* technique for token embeddings and
-we showed that using the measure of @charlet2017simbow with orthogonalized
+we proved that using the measure of @charlet2017simbow with orthogonalized
 embeddings was consistent with the restrictions of my fast algorithm for the
 soft vector space model. [@novotny2020text, Section 4.2] We evaluated the soft
 vector space model with quantized token embeddings and with regularized token
@@ -1079,10 +1086,10 @@ builds and making the builds self-testing.
 In 2018, we have publicly released our MIaS search engine of the European
 Digital Mathematical Library [on GitHub.][28] [@sojka2018mias] We have also
 developed a solution for deploying MIaS and we have made it [available on
-GitHub.][26] However, our solution was slow, because we needed to always build
-MIaS. Additionally, our builds would suddenly fail at deployment due to the
-changing code base of MIaS and a lack of code quality control. Furthermore, our
-solution had been written in the GNU Make language, which was difficult to
+GitHub.][26] However, our solution was slow, because we always needed to build
+MIaS during the deployment. Additionally, our builds would suddenly fail due to
+the changing code base of MIaS and a lack of code quality control. Furthermore,
+our solution had been written in the GNU Make language, which was difficult to
 maintain.
 
  [26]: https://github.com/MIR-MU/ntcir-mias-deployment
@@ -1090,19 +1097,19 @@ maintain.
 
 In 2020, we have developed a new solution for deploying MIaS at the ARQMath-1
 lab and we have also made it [available on GitHub.][27] Our new solution had
-been written in Python, which was easier to maintain. However, our new solution
-was still slow and would suddenly fail.
+been written in Python, which was easier to maintain than GNU Make. However,
+our new solution was still slow and our builds would suddenly fail.
 
- [27]: https://github.com/MIR-MU/ARQMath-eval (file MIaS-at-ARQMath.ipynb)
+ [27]: https://github.com/MIR-MU/ARQMath-eval (file docs/MIaS-at-ARQMath.ipynb)
 
 #### Experiments
 
 In 2021, we have developed a new solution for deploying MIaS using Docker
 continuous integration. [@luptak2021deploying] [^29] With Docker, our solution
-is no longer slow, because we do not need to always build MIaS, but we can
-download a pre-built Docker image. With continuous integration, our builds
-would no longer suddenly fail at deployment, because any change to the code
-base would immediately build and test MIaS.
+is no longer slow, because we do not need to build MIaS during the deployment,
+but we can download a pre-built Docker image. With continuous integration, our
+builds would no suddenly fail during the deployment, because any change to the
+code base would build and test MIaS immediately.
 
  [^29]: For continuous integration, we have used the GitHub Actions service,
         which offers a free plan to public open-source repositories.
@@ -1152,11 +1159,14 @@ had not been evaluated.
 
 #### Experiments
 
-In 2019, I consulted the master's thesis of @stefanik2019semantic.[^33]
-In the thesis, we approximated the cosine similarity between a pair of
-quantized token embeddings as the inverse of their Hamming distance.
-[@stefanik2019semantic, Section 3.8] We evaluated our approximation
-on the English word analogy task.
+In 2019, I consulted the master's thesis of @stefanik2019semantic.[^33] In the
+thesis, we approximated the cosine similarity $\cos(\vec x, \vec y)$ between a
+pair of quantized token embeddings $\vec x$ and $\vec y$ as the inverse of
+their Hamming distance $|\vec x ⊻ \vec y|\_1$.  [@stefanik2019semantic, Section
+3.8] For our evaluation on the English word analogy task, we also approximated
+the vector addition $\vec{x} + \vec{y}$ as the logical disjunction $\vec x ∨
+\vec y$, and the vector subtraction $\vec x - \vec y$ as the logical
+non-implication $\vec x ⇏ \vec y$.
 
  [^33]: See also sections \vref{sec:quantized-token-embeddings} and
         \vref{sec:formal-concept-analysis-with-quantized-token-embeddings},
@@ -1165,11 +1175,14 @@ on the English word analogy task.
 
 #### Results
 
-We showed that our bitwise approximation was more than 20× faster than the
-cosine similarity. We also showed that our approximation was within 2\%
-accuracy of the cosine similarity on the English word analogy task. This shows
-that quantized token embeddings can be used for fast structural and semantic
-matching.
+We showed that our bitwise approximation can be more than 20× faster than the
+float arithmetic and we also showed that our approximation was within 2\%
+accuracy of the cosine similarity on the English word analogy task, see
+Figure~\vref{fig:quantized-token-embeddings-with-fast-bitwise-arithmetic}. This
+shows that quantized token embeddings can be used for fast structural and
+semantic matching.
+
+ /figures/word2bits-speed.tex
 
 #### Future Work
 
@@ -1212,8 +1225,8 @@ information retrieval faster by using an approximate ranking criterion:
 \label{sec:sparse-retrieval-in-inverted-indices-and-vector-databases-speed}
 
 However, computing the similarity of two texts with the soft vector space model
-has an unpractical time complexity of $\mathcal{O}(D^2)$ for a dictionary of
-$D$ words and symbols. 
+has an unpractical time complexity of $\mathcal{O}(n^2)$ for a vocabulary of
+$n$ words and symbols. 
 
 # Interpretability {#interpretability}
 In math information retrieval, accuracy and speed ensure that we can recall
