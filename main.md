@@ -1106,7 +1106,7 @@ base would immediately build and test MIaS.
 
 #### Reproducibility
 
-Our fast deployment solution for Docker is [available on GitHub][30] and as [a
+Our fast deployment solution for MIaS is [available on GitHub][30] and as [a
 Docker image.][31]
 
  [30]: https://github.com/MIR-MU/WebMIaS
