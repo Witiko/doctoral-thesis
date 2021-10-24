@@ -1167,14 +1167,13 @@ on the English word analogy task.
 
 We showed that our bitwise approximation was more than 20× faster than the
 cosine similarity. We also showed that our approximation was within 2\%
-accuracy of the cosine similarity on the word analogy task. This shows that
-quantized token embeddings can be used for fast structural and semantic
+accuracy of the cosine similarity on the English word analogy task. This shows
+that quantized token embeddings can be used for fast structural and semantic
 matching.
 
 #### Future Work
 
-Future work should evaluate our approximation on an extrinsic task such as math
-information retrieval.
+Future work should evaluate our approximation on math information retrieval.
 
 #### Reproducibility
 
