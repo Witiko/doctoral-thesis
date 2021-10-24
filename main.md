@@ -940,9 +940,12 @@ Section 3.1; @ruzicka2017flexible, Section 3]
 We showed that our system could perform exact dense retrieval with almost
 no loss in accuracy. [@rygl2017semantic, Table 2; @ruzicka2017flexible, Section 4]
 We also showed that both our encoding and our system can be configured to trade
-off accuracy for speed and perform fast approximate dense retrieval
+off accuracy for speed and perform fast approximate dense retrieval[^37]
 [@rygl2017semantic, Figure 1; @ruzicka2017flexible, figures 1--14], see also
 Section \vref{sec:dense-retrieval-in-inverted-indices-speed}.
+
+ [^37]: See Section \vref{sec:dense-retrieval-in-inverted-indices-speed} for a
+        discussion of the trade offs between speed and accuracy.
 
 Our results showed that the dilemma of the digital mathematical libraries is
 false: Using our system, libraries can use more accurate dense retrieval
@@ -1259,6 +1262,35 @@ information retrieval faster by using an approximate ranking criterion:
 
 ### Dense Retrieval in Inverted Indices
 \label{sec:dense-retrieval-in-inverted-indices-speed}
+
+In 2017, we showed how dense embeddings can be encoded as sparse vectors.
+[@rygl2017semantic, Section 2.2] Using our encoding, we developed a dense
+information retrieval system that used an inverted index as its sparse vector
+database, and we showed that it could perform exact dense retrieval with almost
+no loss in accuracy[^38] [@rygl2017semantic, Table 2] and that both our
+encoding and our system could be configured to trade off accuracy for speed and
+perform fast approximate dense retrieval[^37] [@rygl2017semantic, Figure 1;
+@ruzicka2017flexible, figures 1--14] Let us now discuss the speed of our system
+in more detail.
+
+ [^38]: See Section \vref{sec:dense-retrieval-in-inverted-indices-accuracy} for
+        a discussion about the development and the accuracy of our system.
+
+#### Experiments
+
+We proved that our encoding improved the time complexity of the retrieval
+compared to naive search and that removing unimportant features improved both
+time and space complexity of the retrieval.  [@rygl2017semantic, Table 1]
+We also evaluated the speed of several configurations of our encoding and our
+system.
+
+#### Results
+
+We showed that there ways an optimal configuration of our encoding and our
+system, where our system wass both fast and accurate, see Figure
+\ref{fig:scaletext-speed}.
+
+ /figures/scaletext-speed.tex
 
 ### Sparse Retrieval in Inverted Indices and Vector Databases
 \label{sec:sparse-retrieval-in-inverted-indices-and-vector-databases-speed}
