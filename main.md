@@ -1269,7 +1269,7 @@ information retrieval system that used an inverted index as its sparse vector
 database, and we showed that it could perform exact dense retrieval with almost
 no loss in accuracy[^38] [@rygl2017semantic, Table 2] and that both our
 encoding and our system could be configured to trade off accuracy for speed and
-perform fast approximate dense retrieval[^37] [@rygl2017semantic, Figure 1;
+perform fast approximate dense retrieval [@rygl2017semantic, Figure 1;
 @ruzicka2017flexible, figures 1--14] Let us now discuss the speed of our system
 in more detail.
 
