@@ -791,6 +791,8 @@ appendices, footnotes, and comments. Weighted zone scoring techniques can be
 used to inform an information retrieval system about the importance of
 different zones and improve its accuracy. [@manning2008introduction, Section 6.1]
 
+ /figures/godwins-law.tex
+
 #### Experiments
 
 In 2018, we analyzed the datasets and the relevance judgements from the
@@ -847,8 +849,6 @@ not use zoned weighting achieved worse-than-baseline accuracy on both datasets.
 [@novotny2018weighting, tables 1 and 2] This shows that weighted zone scoring
 can be important for information retrieval.
 
- /figures/godwins-law.tex
-
 We also showed that our three math information retrieval systems that used
 weighted zone scoring all achieved better accuracy than our six systems that
 did not use weighted zone scoring on the *answer retrieval* math information
@@ -893,7 +893,7 @@ approximate math information retrieval more accurate:
 Recent results show that dense retrieval techniques can achieve higher accuracy
 than sparse retrieval techniques on information retrieval tasks.
 [@lin2021batch] At the *answer retrieval* math information retrieval task of
-the ARQMath-1 and ARQMath-2 labs, sparse information retrieval techniques still
+the ARQMath-1 and ARQMath-2 labs, sparse information retrieval systems still
 achieved the best accuracy, but the gap is closing: Whereas at ARQMath-1, only
 three[^19] out of 23 systems (13\%) used dense retrieval and the best dense
 retrieval system only received the seventh best accuracy in the competition,
@@ -994,7 +994,7 @@ we proved that using the measure of @charlet2017simbow with orthogonalized
 embeddings was consistent with the restrictions of my fast algorithm for the
 soft vector space model. [@novotny2020text, Section 4.2] We evaluated the soft
 vector space model with quantized token embeddings and with regularized token
-embeddings on six text classification tasks. [@novotny2020text, Section 5]
+embeddings on six text classification tasks. [@novotny2020text, Figure 8]
 We also reported the optimal hyperparameter values for our orthogonalization
 algorithm on all six tasks. [@novotny2020text, Table 2]
 
@@ -1161,6 +1161,8 @@ can approximate the similarity between a pair of token embeddings using fast
 bitwise arithmetic. However, the speed and the accuracy of these approximations
 had not been evaluated.
 
+ /figures/word2bits-speed.tex
+
 #### Experiments
 
 In 2019, I consulted the master's thesis of @stefanik2019semantic.[^33] In the
@@ -1185,8 +1187,6 @@ accuracy of the cosine similarity on the English word analogy task, see
 Figure \vref{fig:quantized-token-embeddings-with-fast-bitwise-arithmetic}. This
 shows that quantized token embeddings can be used for fast structural and
 semantic matching.
-
- /figures/word2bits-speed.tex
 
 #### Future Work
 
@@ -1263,6 +1263,11 @@ information retrieval faster by using an approximate ranking criterion:
 ### Dense Retrieval in Inverted Indices
 \label{sec:dense-retrieval-in-inverted-indices-speed}
 
+Recent results show that dense retrieval techniques can achieve higher accuracy
+than sparse retrieval techniques on information retrieval tasks. However, digital
+mathematical libraries use inverted indices for sparse retrieval and replacing
+them with dense vector databases has many costs.
+
 In 2017, we showed how dense embeddings can be encoded as sparse vectors.
 [@rygl2017semantic, Section 2.2] Using our encoding, we developed a dense
 information retrieval system that used an inverted index as its sparse vector
@@ -1270,11 +1275,13 @@ database, and we showed that it could perform exact dense retrieval with almost
 no loss in accuracy[^38] [@rygl2017semantic, Table 2] and that both our
 encoding and our system could be configured to trade off accuracy for speed and
 perform fast approximate dense retrieval [@rygl2017semantic, Figure 1;
-@ruzicka2017flexible, figures 1--14] Let us now discuss the speed of our system
-in more detail.
+@ruzicka2017flexible, figures 1--14] In this section, I will discuss the speed
+of our system in detail.
 
  [^38]: See Section \vref{sec:dense-retrieval-in-inverted-indices-accuracy} for
         a discussion about the development and the accuracy of our system.
+
+ /figures/scaletext-speed.tex
 
 #### Experiments
 
@@ -1290,14 +1297,100 @@ We showed that there ways an optimal configuration of our encoding and our
 system, where our system wass both fast and accurate, see Figure
 \ref{fig:scaletext-speed}.
 
- /figures/scaletext-speed.tex
-
 ### Sparse Retrieval in Inverted Indices and Vector Databases
 \label{sec:sparse-retrieval-in-inverted-indices-and-vector-databases-speed}
 
-However, computing the similarity of two texts with the soft vector space model
-has an unpractical time complexity of $\mathcal{O}(n^2)$ for a vocabulary of
-$n$ words and symbols. 
+State-of-the-art math information retrieval systems rely on the hard soft
+vector space model of @salton1988termweighting, but the soft vector space model
+of @sidorov2014soft can more accurately model both the natural language and the
+language of mathematics. However, computing the similarity between two
+documents in the soft vector space model had an impractical worst-case time
+complexity of $\mathcal{O}(n^2)$ for a vocabulary of $n$ words and symbols.
+Additionally, converting the soft vector space model to a hard vector space
+model using Gaussian elimination has an impractical worst-case time complexity
+of $\mathcal{O}(n^4)$.
+
+In 2018, I developed an algorithm for the soft vector space model that could
+achieve practical speed by placing restrictions on the measures of relatedness
+that the soft vector space model could use. [@novotny2018implementation,
+Section 3] In 2020, we showed that our restricted model was more accurate[^39]
+than the non-restricted model on five out of six text classification tasks.
+[@novotny2020text, Figure 8] In this section, I will discuss the speed of the
+my restricted soft vector space model in detail.
+
+ [^39]: See Section \ref{sec:sparse-retrieval-in-inverted-indices-and-vector-databases-accuracy}
+        for a discussion about the development and the accuracy of the soft vector space model.
+
+#### Experiments
+
+In 2018, I proved that if we restricted the soft vector space model to measures
+of relatedness that could be represented by a sparse similarity matrix $S$ with
+no more than $C$ non-zero elements in any of its columns, where $C$ is constant,
+then computing the similarity between a query and a document in the soft vector
+space model had a worst-case time complexity of $\mathcal{O}(1)$ if the maximum
+size of a query was constant. [@novotny2018implementation, Algorithm 1]
+
+Additionally, I proved that if $S$ was symmetric and positive definite, the
+soft vector space model could be converted to a hard vector space model using
+Cholesky factorization, which had a more practical worst-case time complexity
+of $\mathcal{O}(n^3)$. [@novotny2018implementation, Section 3]
+
+Furthermore, I developed transformations that allowed the use of the soft
+vector space model in vector databases and inverted indices that only supported
+the hard vector space model and I proved the correctness of my transformations.
+[@novotny2018implementation, Section 4]
+
+In 2020, we compared the query time of the restricted model and the
+non-restricted model on six text classification tasks. [@novotny2020text,
+Figure 9]
+
+In 2021, we evaluated the query time of the restricted model on the *answer
+retrieval* math information retrieval task of the ARQMath-1 and ARQMath-2 labs.
+[@novotny2020three, Table 5; @novotny2021ensembling, Figure 11]
+
+#### Results
+
+We showed that the restricted model was 3× slower than the non-restricted model
+on the six text classification tasks and we theorized that this was because the
+restricted model had been implemented using slower sparse matrix operations
+whereas the non-restricted model had been implemented using faster dense matrix
+operations. We offer further explanation below.
+
+We also showed that the restricted model was the slowest in query time of all
+our systems on the *answer retrieval* math information retrieval task of the
+ARQMath-1 and ARQMath-2 labs.
+
+#### Future Work
+
+My algorithm for computing the similarity $\vec{x}ᵀ \cdot S\cdot \vec{y}$
+between a query $\vec{x}$ and a document $\vec{y}$ in the restricted model with
+$\mathcal{O}(1)$ worst-case time complexity assumed that we would compute the
+similarity as a single operation. This would allow us to eliminate any index
+$i$ and $j$ where $x\_i = 0, y\_i = 0,$ or $s\_{ij} = 0$ in the following
+summation: $$ \vec{x}ᵀ \cdot S\cdot \vec{y} = \sum\_i \sum\_j x\_i\cdot s\_{ij}
+\cdot y\_j. $$
+
+However, my implementation of the restricted model used the SciPy Python
+library, which would separate $\vec{x}ᵀ \cdot S\cdot \vec{y}$ into two
+operations: $\vec{x}ᵀ \cdot S$ and $◌ \cdot \vec{y}$, where the worst-case time
+complexity of both operations was $\mathcal{O}(n)$ if the size of query
+$\vec{x}$ was constant. Future work should investigate how to improve my
+implementation to achieve the $\mathcal{O}(1)$ worst-case time complexity.
+
+#### Reproducibility
+
+I have released [the only public implementation of the restricted soft vector
+space model][24] in the free open-source Gensim NLP library
+[@rehurek2010software] through a series of pull requests on GitHub.
+[@novotny2018implementa; @novotny2018implementb; @novotny2020reduce;
+@novotny2021use]
+
+The experimental code for the soft vector space model on the text classification
+tasks is [available on GitHub.][25]
+
+The experimental code for the soft vector space model from the ARQMath-1 lab is
+[available on GitHub.][1] The experimental code for all our systems from the
+ARQMath-2 lab is [available online.][14]
 
 # Interpretability {#interpretability}
 In math information retrieval, accuracy and speed ensure that we can recall
