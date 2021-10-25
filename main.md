@@ -3,19 +3,58 @@
 ## Research Questions
 ## Thesis Contributions
 ## Thesis Structure
+
 # Background {#background}
+
+In order to understand math information retrieval systems, we have to
+understand their applications, the kinds of information they retrieve, the
+techniques they use for the retrieval, and the different objectives that they
+have to fulfill.
+
+In this chapter, I will describe the following:
+
+1. In Section \vref{sec:digital-mathematical-libraries}, I will describe
+   digital mathematical libraries as the main application of math information
+   retrieval systems.
+
+2. In Section \vref{sec:math-representations}, I will describe the different
+   kinds of math information that focus on different aspects of the language of
+   mathemathics and show how they are represented.
+
+3. In Section \vref{sec:math-information-retrieval}, I will describe the math
+   information retrieval techniques based on sparse data, dense data, and
+   structural and semantic matching.
+
+4. In Section \vref{sec:objectives-and-evaluation}, I will descibe the three
+   major objectives of math information retrieval and how we can evaluate math
+   information retrieval systems on these objectives.
+
 ## Digital Mathematical Libraries
+\label{sec:digital-mathematical-libraries}
+
+According to @bouche2008some, the first actual formulation of the concept of a
+digital mathematical library goes back to the project of the eponymous project
+of the Cornell University [@thomas2004digital]:
+
 ### ArXiv
 ### Mini-DML
 ### The European Digital Mathematical Library
 ### Global Digital Mathematical Library
+
 ## Math Representations
+\label{sec:math-representations}
+
 ## Math Information Retrieval
+\label{sec:math-information-retrieval}
+
 ### Sparse Retrieval
 ### Dense Retrieval
 ### Structural and Semantic Matching
 ### Learning to rank
+
 ## Objectives and Evaluation
+\label{sec:objectives-and-evaluation}
+
 ### Accuracy
 ### Interpretability
 ### Speed
@@ -1170,8 +1209,6 @@ can approximate the similarity between a pair of token embeddings using fast
 bitwise arithmetic. However, the speed and the accuracy of these approximations
 had not been evaluated.
 
- /figures/word2bits-speed.tex
-
 #### Experiments
 
 In 2019, I consulted the master's thesis of @stefanik2019semantic.[^33] In the
@@ -1187,6 +1224,8 @@ non-implication $\vec x ⇏ \vec y$.
         Section \vref{sec:formal-concept-analysis-with-quantized-token-embeddings},
         where I discuss our further experiments with the quantized language
         model.
+
+ /figures/word2bits-speed.tex
 
 #### Results
 
