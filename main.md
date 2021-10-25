@@ -1444,6 +1444,8 @@ used to encode and analyze type-of (hyponymy-hyperonymy) word relations.
 Parts of speech are a type-of relation. However, the quantized language model
 has not been evaluated on a part-of-speech tagging task.
 
+ /figures/word2bits-implications.tex
+
 #### Experiments
 
 In 2019, I consulted the master's thesis of @stefanik2019semantic.
@@ -1456,6 +1458,13 @@ token embedding feature. To see if the part-of-speech relation would be
 eventually distributed between different features, we repeated the experiment
 for different vector dimensionalities $D$. [@stefanik2019semantic, Section 3.3]
 
+We also developed two algorithms for determining if a token embedding feature
+should be negated, so that its value was one if and only if the token had the
+interesting property that was associated with the feature. We used our
+algorithms to show the probabilities $P(i ⇒ j)$ of the implications $i ⇒ j$
+between the interesting properties $i$ and $j$ associated with the token
+embedding features. [@stefanik2019semantic, Section 3.7]
+
 #### Results
 
 We showed that for vector dimensionality $D = 30$, nouns, verbs, and
@@ -1464,10 +1473,13 @@ The correlations decrease as the vector dimensionality $D$ increases and become
 they insignificant for $D\geq 600$, which indicates that the part-of-speech
 relation has been distributed between different token embedding features.
 
+We show the probabilities $P(i ⇒ j)$ produced by one of our algorithms in
+Figure \ref{fig:formal-concept-analysis-with-quantized-token-embeddings}.
+
 #### Future Work
 
 Future work should investigate whether formal concept analysis can be used to
-extract a taxonomy of type-of word relations from quantized token embeddings.
+extract type-of word relations from quantized token embeddings.
 
 #### Reproducibility
 
