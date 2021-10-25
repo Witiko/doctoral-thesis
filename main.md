@@ -660,7 +660,7 @@ Techniques for structural and semantic matching such as the soft vector space
 model and the word mover's distance make naive assumptions about the syntax and
 the semantics of the natural language and the language of mathematics. They
 also often rely on token embeddings of language models, which contain
-human-like biases.  [@caliskan2017semantics] These assumptions and biases cause
+human-like biases. [@caliskan2017semantics] These assumptions and biases cause
 systematic errors and decrease accuracy on machine translation evaluation
 tasks.
 
@@ -671,7 +671,7 @@ semantic matching techniques in order to avoid the systematic errors of any
 individual technique. [@stefanik2021regressive, Section 3.3] We trained and
 evaluated our ensemble on 20 machine translation evaluation tasks.
 
-|                   |         | RegEMT | Best individual system     |
+|                   |         | RegEMT | Best individual technique  |
 |-------------------|---------|--------|----------------------------|
 | MQM, src          | zh→en   | *0.59* |  0.44  (BERTScr, WMD-cont) |
 | MQM, src          | zh→en × | *0.49* |  0.44  (BERTScr, WMD-cont) |
@@ -694,16 +694,16 @@ evaluated our ensemble on 20 machine translation evaluation tasks.
 | Catastrophic, src | en→ja   | *0.20* |  0.18  (Reg-base)          |
 | Catastrophic, src | en→zh   |  0.16  | *0.27  (SCM-dec)*          |
 %                                              
-: [The accuracies of the our ensemble and the best individual systems %
+: [The accuracies of the our ensemble and the best individual techniques %
    on 20 machine translation evaluation tasks]%
-  {The accuracies of the our ensemble (RegEMT) and the best individual systems %
+  {The accuracies of the our ensemble (RegEMT) and the best individual techniques %
    on 20 machine translation evaluation tasks. [@stefanik2021regressive] %
    Language pairs marked with an × were evaluated cross-lingually. %
    [@stefanik2021regressive, Section 3.4]} \label{tab:regemt}
 
 #### Results
 
-We showed that our ensemble was more or equally accurate than any single
+We showed that our ensemble was more or equally accurate than any individual
 technique on 15 out of 20 machine translation evaluation tasks, which confirms
 that score aggregation is a useful technique for avoiding naive assumptions and
 biases of individual semantic matching techniques, see Table \vref{tab:regemt}.
@@ -742,21 +742,24 @@ systems of our MIRMU team.
 
 In 2021, we developed two new supervised rank-based fusion techniques
 (*MIRMU-WIBC* and *MIRMU-RBC*) and we used them together with our unsupervised
-MIRMU-Ensemble (further known as *MIRMU-IBC*) and the unsupervised technique of
-@cormack2009reciprocal (further known as *MIRMU-RRF*) for the answer retrieval
-math information task of the ARQMath-2 lab. [@novotny2021ensembling, Section 4]
-We used our technique to ensemble all ten systems of our MIRMU and MSM
-teams.[^17]
+*MIRMU-Ensemble* (further known as *MIRMU-IBC*) and the unsupervised technique of
+@cormack2009reciprocal (further known as *MIRMU-RRF*) for the *answer retrieval*
+math information retrieval task of the ARQMath-2 lab. [@novotny2021ensembling,
+Section 4] We used our technique to ensemble all ten systems of our MIRMU and
+MSM teams.[^17]
 
  [^17]: We entered the ARQMath-2 lab as two teams: our lab (MIRMU) and the
         students of the FI:PV211 information retrieval course taught at the
         Masaryk University (MSM).
 
-To see if our unsupervised techniques can benefit from a large number of
+To see if our unsupervised techniques could benefit from a large number of
 systems, we also used them to ensemble all non-baseline primary systems at the
-ARQMath-1 and ARQMath-2 labs. To see if our techniques can benefit from a small
-number of diverse systems, we also used them to ensemble six selected systems
-out of all our ten systems at the ARQMath-2 lab.
+ARQMath-1 and ARQMath-2 labs. To see if our techniques could benefit from a small
+number of diverse systems,[^41] we also used them to ensemble five selected
+systems out of all our ten systems at the ARQMath-2 lab.
+
+ [^41]: See Section \vref{sec:strengths-and-weaknesses} for a discussion of how
+        we selected our five diverse systems and their strengths and weaknesses.
 
 #### Results
 
@@ -774,7 +777,7 @@ the *MIRMU-RRF* of @cormack2009reciprocal.
 When we used the unsupervised *MIRMU-IBC* and *MIRMU-RRF* to ensemble all
 non-baseline primary systems, we received the best (*MIRMU-RRF*) and the
 second best (*MIRMU-IBC*) accuracies in the competition, which indicates that
-both techniques can benefit from a large number of systems. Ensembling only six
+both techniques can benefit from a large number of systems. Ensembling only five 
 selected systems out of all our ten systems increased the accuracy of three out
 of our four techniques, which indicates that all our techniques can benefit
 from a small number of diverse systems.
@@ -1468,9 +1471,9 @@ token embedding feature. To see if the part-of-speech relation would be
 eventually distributed between different features, we repeated the experiment
 for different vector dimensionalities $D$. [@stefanik2019semantic, Section 3.3]
 
-We also developed two algorithms for determining if a token embedding feature
-should be negated, so that its value was one if and only if the token had the
-interesting property that was associated with the feature. We used our
+We also developed two algorithms for seciding whether a feature of a token
+embedding should be negated, so that its value was one if and only if the token
+had the interesting property that was associated with the feature. We used our
 algorithms to show the probabilities $P(i ⇒ j)$ of the implications $i ⇒ j$
 between the interesting properties $i$ and $j$ associated with the token
 embedding features. [@stefanik2019semantic, Section 3.7]
@@ -1509,15 +1512,15 @@ In 2018, @mikolov2018advances developed the fastText positional language model
 and showed that it was more accurate[^40] than the fastText subword language
 model on the English word analogy task. In 2021, we showed that the positional
 model was more accurate than the subword model on an English word analogy task.
-This shows that positional embeddings play an important role in the accuracy
-of shallow log-bilinear language models. However, exact function is unclear.
+This showed that positional embeddings played an important role in the accuracy
+of shallow log-bilinear language models. However, their exact function was unclear.
 
  [^40]: See Section \vref{sec:position-independent-token-embeddings-accuracy}
         for a discussion about the accuracy of the positional model.
 
-In 2021, we showed that the positional model could use larger context sizes
-than the subword language model. [@novotny2021when, Table 1] However, the
-reason for this is unclear.
+In 2021, we showed that the positional model could benefit from larger context
+sizes than the subword language model. [@novotny2021when, Table 1] However, the
+reason for this was unclear.
 
 #### Experiments
 
@@ -1561,6 +1564,55 @@ together with the only public implementation of the positional model.
 
 ## Strengths and Weaknesses of Math Information Retrieval Systems
 \label{sec:strengths-and-weaknesses}
+
+In 2021, we used two unsupervised rank-based fusion[^42] techniques for the
+*answer retrieval* math information retrieval task of the ARQMath-2 lab
+[@novotny2021ensembling, Section 4] to ensemble all ten systems of our teams.
+We were also interested if our techniques could benefit from a small number of
+diverse systems. However, it was unclear how to select a small number of
+diverse systems and how to interpret their diversity.
+
+ [^42]: See Section \vref{sec:rank-based-fusion} for the discussion of the
+        development and the accuracy of our rank-based fusion techniques.
+
+#### Experiments
+
+First, we used the correlations between the rankings of results from our
+systems to cluster the systems. Then, we used the Silhouette score to select
+the optimal number of clusters [@novotny2021ensembling, Figure 7] Finally,
+we selected a random representative from each cluster. These representatives
+were our small number of diverse systems.
+
+To interpret the diversity of the systems, we developed two measures of their
+strengths and weaknesses that showed: [@novotny2021ensembling, Figure 8]
+
+1. how capable the systems were at mathematical and textual queries and
+2. how capable the systems were at long and short queries.
+
+ /figures/strengths-and-weaknesses.tex
+
+#### Results
+
+We selected five diverse systems: *MIRMU-CompuBERT*, *MIRMU-SCM*, *MSM-LM*,
+*MSM-MP*, and *MSM-VS*.[^43]
+
+ [^43]: See Section \vref{sec:joint-token-embeddings-of-text-and-math}
+        for a discussion of the *MIRMU-CompuBERT* and *MIRMU-SCM* systems
+        and their accuracy.
+
+We also showed that *MIRMU-CompuBERT* received the most consistent results
+across both textual and mathematical queries, excelled at short queries, but
+its performance deteriorated for long queries that didn't fit into the short
+context window of its dense attention. By contrast, the remaining four systems
+that were based on the vector space model excelled at textual queries, but
+their performance deteriorated for mathematical queries. *MIRMU-SCM*, which
+uses techniques for structural and semantic matching, could exploit both short
+and long queries. See Figure \vref{fig:strengths-and-weaknesses}.
+
+#### Reproducibility
+
+The experimental code for all our systems from the ARQMath-2 lab is [available
+online.][14]
 
 ## Interactive Visualizations of Math Information Retrieval Collections
 \label{sec:interactive-visualizations}
