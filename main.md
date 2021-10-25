@@ -400,7 +400,13 @@ narrow-context-dependent features is optimal on the English word analogy task.
 
 We also showed that the positional model is more accurate than the subword
 model and that the constrained positional model is more accurate than the
-positional model on the word analogy and language modeling tasks.
+positional model on the word analogy and language modeling tasks.[^42]
+
+ [^41]: See Section \vref{sec:position-independent-token-embeddings-speed}
+        for a discussion about the speed of the positional and constrained
+        positional models. See Section
+        \vref{sec:position-independent-token-embeddings-interpretability}
+        for a discussion about the interpretability of the positional model.
 
 #### Future Work
 
@@ -611,7 +617,7 @@ ARQMath-2 labs:
   neural network language model.
 
  [^12]: See Section \vref{sec:topological-math-representations} for a
-        discussion of the math representation that we have developed for our
+        discussion about the math representation that we have developed for our
         systems.
 
  [^13]: The questions and answers in the answer retrieval task are short,
@@ -945,7 +951,7 @@ off accuracy for speed and perform fast approximate dense retrieval[^37]
 Section \vref{sec:dense-retrieval-in-inverted-indices-speed}.
 
  [^37]: See Section \vref{sec:dense-retrieval-in-inverted-indices-speed} for a
-        discussion of the trade offs between speed and accuracy.
+        discussion about the trade-offs between speed and accuracy.
 
 Our results showed that the dilemma of the digital mathematical libraries is
 false: Using our system, libraries can use more accurate dense retrieval
@@ -1218,23 +1224,26 @@ analogy task when we trained both models for an equal amount of time.
 [@novotny2020art, Table 3]
 
  [^35]: See Section \vref{sec:variable-control-in-token-embedding-evaluation}
-        for a discussion of my implementation of the positional model.
+        for a discussion about my implementation of the positional model.
 
 In 2021, we developed the fastText constrained positional model,[^36] which was
 less complex than the positional model and which achieved better accuracy than
 the positional model on word analogy and language modeling tasks.
-[@novotny2021when, Section 4] We compated the training time of both models.
+We compated the training time of both models. [@novotny2021when, Section 4]
 
  [^36]: See Section \vref{sec:position-independent-token-embeddings-accuracy}
-        for a discussion of the development and the accuracy of the contrained
+        for a discussion about the development and the accuracy of the contrained
         positional model.
 
 #### Results
 
-We showed that that positional model could achieve 4\% better accuracy than the
+We showed that the positional model could achieve 4\% better accuracy than the
 subword language model on the English word analogy task when we trained both
 models for five hours. We also showed that our constrained positional model
-trained 2× faster than the positional model.
+could train 2× faster than the positional model.[^41]
+
+ [^41]: See Section \vref{sec:position-independent-token-embeddings-interpretability}
+        for a discussion about the interpretability of the positional model.
 
 #### Reproducibility
 
@@ -1295,7 +1304,7 @@ system.
 
 We showed that there ways an optimal configuration of our encoding and our
 system, where our system wass both fast and accurate, see Figure
-\ref{fig:scaletext-speed}.
+\ref{fig:dense-retrieval-in-inverted-indices-speed}.
 
 ### Sparse Retrieval in Inverted Indices and Vector Databases
 \label{sec:sparse-retrieval-in-inverted-indices-and-vector-databases-speed}
@@ -1375,7 +1384,8 @@ library, which would separate $\vec{x}ᵀ \cdot S\cdot \vec{y}$ into two
 operations: $\vec{x}ᵀ \cdot S$ and $◌ \cdot \vec{y}$, where the worst-case time
 complexity of both operations was $\mathcal{O}(n)$ if the size of query
 $\vec{x}$ was constant. Future work should investigate how to improve my
-implementation to achieve the $\mathcal{O}(1)$ worst-case time complexity.
+implementation to achieve the theoretical $\mathcal{O}(1)$ worst-case time
+complexity.
 
 #### Reproducibility
 
@@ -1474,7 +1484,7 @@ they insignificant for $D\geq 600$, which indicates that the part-of-speech
 relation has been distributed between different token embedding features.
 
 We show the probabilities $P(i ⇒ j)$ produced by one of our algorithms in
-Figure \ref{fig:formal-concept-analysis-with-quantized-token-embeddings}.
+Figure \vref{fig:formal-concept-analysis-with-quantized-token-embeddings}.
 
 #### Future Work
 
@@ -1485,10 +1495,69 @@ extract type-of word relations from quantized token embeddings.
 
 The experimental code for all our experiments is [available online.][8]
 
- [8]: https://is.muni.cz/th/bqz8u/attachments.zip
-
 ### Position-Independent Token Embeddings
 \label{sec:position-independent-token-embeddings-interpretability}
+
+In 2013, @mikolov2013efficient showed that token embeddings of shallow
+log-bilinear language models were useful for analogical reasoning. However,
+the reason for their usefulness was unclear until 2014, when @levy2014neural
+showed that the token embeddings factorized the pointwise mutual information
+matrix. This helped interpret token embeddings of shallow log-bilinear language
+models and demystified their properties.
+
+In 2018, @mikolov2018advances developed the fastText positional language model
+and showed that it was more accurate[^40] than the fastText subword language
+model on the English word analogy task. In 2021, we showed that the positional
+model was more accurate than the subword model on an English word analogy task.
+This shows that positional embeddings play an important role in the accuracy
+of shallow log-bilinear language models. However, exact function is unclear.
+
+ [^40]: See Section \vref{sec:position-independent-token-embeddings-accuracy}
+        for a discussion about the accuracy of the positional model.
+
+In 2021, we showed that the positional model could use larger context sizes
+than the subword language model. [@novotny2021when, Table 1] However, the
+reason for this is unclear.
+
+#### Experiments
+
+In 2021, we developed two measures for the importance of positions and one
+measure for the importance of tokens. [@novotny2021when, Section 3.4]
+We used our measures to explain the role of positional embeddings in the
+positional positional model. [@novotny2021when, Section 4.3]
+
+ /figures/positional-features.tex
+
+#### Results
+
+We showed that the English positional model used the positional embeddings to
+attenuate distant context words. [@novotny2021when, Figure 4] This shows why
+the positional model could use larger context sizes than the subword language
+model.
+
+We also showed that there were three distinct clusters of features in the
+positional embeddings of the English positional model. We called the clusters
+*antepositional*, *postpositional*, and *informational*, see Figure
+\vref{fig:position-independent-token-embeddings-interpretability}.
+For each cluster, we gave examples of tokens whose importance was maximized by
+the positional features in the cluster:
+
+- *antepositional*: in, for, and coca
+- *positional*: ago, else, and cola
+- *informational*: finance, sports, and politics
+
+← This shows that the positional embeddings can be used to classify tokens by
+their grammatical properties.
+
+#### Future Work
+
+Future work should inspect the positional embeddings of the positional model on
+languages other than English.
+
+#### Reproducibility
+
+The experimental code for all our experiments is [available on GitHub][5]
+together with the only public implementation of the positional model.
 
 ## Strengths and Weaknesses of Math Information Retrieval Systems
 \label{sec:strengths-and-weaknesses}
