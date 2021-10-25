@@ -1466,6 +1466,9 @@ relation has been distributed between different token embedding features.
 
 #### Future Work
 
+Future work should investigate whether formal concept analysis can be used to
+extract a taxonomy of type-of word relations from quantized token embeddings.
+
 #### Reproducibility
 
 The experimental code for all our experiments is [available online.][8]
