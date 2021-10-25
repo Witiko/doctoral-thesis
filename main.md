@@ -1617,6 +1617,9 @@ online.][14]
 ## Interactive Visualizations of Math Information Retrieval Collections
 \label{sec:interactive-visualizations}
 
+In 2014, @hanel2014vizualizace developed an interactive visualization for the
+MREC dataset.
+
 # Conclusion {#conclusion}
 ## Thesis Summary
 ### Research Questions
