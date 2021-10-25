@@ -1617,8 +1617,45 @@ online.][14]
 ## Interactive Visualizations of Math Information Retrieval Collections
 \label{sec:interactive-visualizations}
 
-In 2014, @hanel2014vizualizace developed an interactive visualization for the
-MREC dataset.
+In 2011, @liska2011web developed the MREC dataset for the Math Information
+Retrieval Workshop. In 2014, @hanel2014vizualizace developed an interactive
+visualization for the exploration of the MREC dataset. However, the interactive
+visualization ignored math and modeled only text.
+
+In 2020, a Math StackExchange dataset was released for the ARQMath-1 lab. On
+the *answer retrieval* math information retrieval task of ARQMath-1, we showed
+that our *MIRMU-SCM* system[^44] was more accurate than any other individual
+information retrieval system from our MIRMU team. Additionally, *MIRMU-SCM*
+modeled both text and math. However, no interactive visualization for exploring
+the Math StackExchange dataset using the *MIRMU-SCM* system had been created. 
+
+ [^44]: See Section \vref{sec:joint-token-embeddings-of-text-and-math}
+        for a discussion of the *MIRMU-SCM* systems and its accuracy.
+
+ /figures/document-maps.tex
+
+#### Experiments
+
+In 2021, I led the bachelor's thesis of @petr2021document. In the thesis, we
+developed an interactive visualization of the Math StackExchange dataset using
+our *MIRMU-SCM* system, see Figure \vref{fig:document-maps}.
+
+#### Results
+
+The interactive visualization is [available online.][46]
+
+ [46]: https://mir.fi.muni.cz/document-maps-arqmath-2021
+
+#### Future Work
+
+Future work should focus at usability testing of our interactive visualizations
+and on the role of interpretability in the user experience.
+
+#### Reproducibility
+
+The code of the interactive visualization is [available on GitHub.][45]
+
+ [45]: https://github.com/MIR-MU/document-maps
 
 # Conclusion {#conclusion}
 ## Thesis Summary
