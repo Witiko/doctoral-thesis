@@ -131,11 +131,11 @@
 
 %% Definitions of various Unicode characters
 \RequirePackage{newunicodechar}
+\usepackage{amsmath,centernot}
 \newunicodechar{◌}{\dottedcircle}
 \newunicodechar{←}{\noindent\ignorespaces}
-\newunicodechar{→}{$\rightarrow$}
-\newunicodechar{×}{$\times$}
-\usepackage{amsmath,centernot}
+\newunicodechar{→}{\ensuremath{\rightarrow}}
+\newunicodechar{×}{\ensuremath{\times}}
 \newunicodechar{⇒}{\!\!\implies\!\!}
 \newunicodechar{⇏}{\!\!\centernot\implies\!\!}
 \newunicodechar{∧}{\land}
@@ -146,3 +146,8 @@
 \newunicodechar{≤}{\leq}
 \newunicodechar{‖}{\Vert}
 \newunicodechar{ᵀ}{^{\mkern-1.5mu\mathsf{T}}}
+\newunicodechar{□}{\square\:}
+\newunicodechar{■}{\blacksquare\:}
+\newunicodechar{·}{\cdot}
+\newunicodechar{≡}{\equiv}
+\newunicodechar{Σ}{\ifmmode\sum\else\Sigma\fi}

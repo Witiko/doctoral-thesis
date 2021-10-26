@@ -17,13 +17,13 @@ In this chapter, I will describe the following:
    digital mathematical libraries as the main application of math information
    retrieval systems.
 
-2. In Section \vref{sec:math-representations}, I will describe the different
-   kinds of math information that focus on different aspects of the language of
-   mathemathics and show how they are represented.
+2. In Section \vref{sec:math-representations}, I will discuss the presentation,
+   structural, and semantic aspects of math information and show how they are
+   commonly represented in math information retrieval systems.
 
 3. In Section \vref{sec:math-information-retrieval}, I will describe the math
-   information retrieval techniques based on sparse data, dense data, and
-   structural and semantic matching.
+   information retrieval techniques based on sparse data, dense data,
+   structural and semantic matching, and learning to rank.
 
 4. In Section \vref{sec:objectives-and-evaluation}, I will descibe the three
    major objectives of math information retrieval and how we can evaluate math
@@ -32,9 +32,22 @@ In this chapter, I will describe the following:
 ## Digital Mathematical Libraries
 \label{sec:digital-mathematical-libraries}
 
-According to @bouche2008some, the first actual formulation of the concept of a
-digital mathematical library goes back to the project of the eponymous project
-of the Cornell University [@thomas2004digital]:
+According to @bouche2008some, the first definition of a digital mathematical
+library goes back to the eponymous project of the Cornell University
+[@thomas2004digital] with the following ambitious vision statement:
+
+> In light of mathematicians' reliance on their discipline's rich published
+> heritage and the key role of mathematics in enabling other scientific
+> disciplines, the Digital Mathematics Library strives to make the entirety of
+> past mathematics scholarship available online, at reasonable cost, in the
+> form of an authoritative and enduring digital collection, developed and
+> curated by a network of institutions.
+>
+> > DML project vision, Cornell library, 2002
+
+← Although this ambitious vision has not been fully realized by the project,
+it motivated the creation of many smaller digital mathematical libraries, some
+examples of which we will discuss in this section.
 
 ### ArXiv
 ### Mini-DML
@@ -44,12 +57,98 @@ of the Cornell University [@thomas2004digital]:
 ## Math Representations
 \label{sec:math-representations}
 
+Written natural languages have rules of orthography and typography, which
+govern how the language is presented to the reader, syntax, which governs how
+words can be combined into phrases and sentences, and semantics, which give the
+words, phrases, and sentences their meaning.
+
+Similarly, we can represent expressions in the language of mathematics using
+their presentation, structural, and semantic aspects. In this section, we will
+discuss each of these aspects and show examples of formal languages that are
+commonly used for their representation.
+
+### Presentation Math
+
+Unlike in natural language writing systems, where words are typically written
+in the order in which they are uttered, it is common to have mathematical
+expressions with multiple baselines and with multiple levels of nesting that
+may have no apparent reading order:
+
+\begin{equation}
+\tag{Einstein's special relativity}
+t' = t · \frac{1}{\sqrt{1 - \frac{v^2}{c^2}}}
+\end{equation}
+
+Therefore, although presentation aspects of written natural text are typically
+ignored in information retrieval, the placement of symbols (further known as
+*presentation math*) in the language of mathematics is often useful for math
+information retrieval.
+
+In math information retrieval systems, presentation math can be represented
+using the following formal languages:
+
+% TeX
+% Unicode
+
+% Presentation MathML
+% Presentation MathML normalization
+
+% Symbol Layout Tree
+
+### Content Math
+
+Writing systems of natural languages can offer several alternative ways to
+present one sentence using different word breaks, punctuation, and hyphenation
+without changing the structure or the meaning of the sentence. Similarly, the
+language of mathematics can offer several ways to present one mathematical
+expression ($a\times b$) through different notations ($□ ab$
+[@cajori1993history, para. 232]) without changing its structure (further known
+as *content math*) or meaning.
+
+In math information retrieval systems, content math can be represented using
+Content MathML ...
+
+% Content MathML
+% LaTeXML
+
+% Operator Tree
+
+### Semantic Math
+
+In natural languages, a word (bank) may have a different meaning depending
+on its surroundings (commercial bank and river bank) and different words
+may have nearly the same meaning (begin and initiate). A sentence may also have
+a different meaning depending on the genre of the text, the sociocultural
+setting, or even the reader themselves. Conversely, two different sentences may
+have the same meaning.
+
+Similarly, in the language of mathematics, two mathematical expressions may
+have the same structure but different meaning depending on variable bindings,
+the definitions of the operands, and the underlying mathematical theory.
+Conversely, two mathematical structures may have a different structure but the
+same meaning ($a · b$ and $b · a$).
+
+% CAS and proof assistants
+% Examples of encoding theorems and definitions
+
+% OpenMath
+
+% Semantic normalization
+
 ## Math Information Retrieval
 \label{sec:math-information-retrieval}
 
+% ![](obrázek 8 v mém Math OpenQA proposalu)
+
+% Query
+% Retrieval unit
+
 ### Sparse Retrieval
+
 ### Dense Retrieval
+
 ### Structural and Semantic Matching
+
 ### Learning to rank
 
 ## Objectives and Evaluation
@@ -58,6 +157,7 @@ of the Cornell University [@thomas2004digital]:
 ### Accuracy
 ### Interpretability
 ### Speed
+
 # State of the Art {#state-of-the-art}
 ## Competitions
 ### Math Information Retrieval Workshop
@@ -291,7 +391,7 @@ The phrasing algorithm contains three undisclosed parameters:
 ← For the threshold and the decay, only the parameter values were withheld.
 For the maximum dictionary size, the parameter only appears in the reference
 implementation. I suggested the following default parameter values: $\delta =
-100, n = 5\cdot 10^8$.
+100, n = 5 · 10^8$.
 
 The fastText positional language model does not disclose the initial
 distribution of weights for the input and positional vectors. I described three
@@ -317,7 +417,7 @@ implementation.  The Unicode locale appears in neither the published works nor
 in the reference implementation. I showed that up to 4\% of word analogy
 accuracy can depend on the Unicode locale and up to 18\% on the case
 transformation and the locale. I suggested the following default parameter
-values: $n = 3\cdot 10^5,$ Unicode case-folding, and the locale of the word
+values: $n = 3 · 10^5,$ Unicode case-folding, and the locale of the word
 analogy task.
 
 #### Reproducibility
@@ -761,7 +861,7 @@ and as [a Docker image.][11]
 \label{sec:rank-based-fusion}
 
 The systematic errors of structural and semantic matching techniques also
-affect the ranking of results in document retrieval systems. As a result,
+affect the ranking of results in information retrieval systems. As a result,
 different information retrieval systems can agree on a small portion of the
 most relevant documents, but each individual system will miss the great
 majority of relevant documents.
@@ -1413,17 +1513,20 @@ ARQMath-1 and ARQMath-2 labs.
 
 #### Future Work
 
-My algorithm for computing the similarity $\vec{x}ᵀ \cdot S\cdot \vec{y}$
+My algorithm for computing the similarity $\vec{x}ᵀ · S · \vec{y}$
 between a query $\vec{x}$ and a document $\vec{y}$ in the restricted model with
 $\mathcal{O}(1)$ worst-case time complexity assumed that we would compute the
 similarity as a single operation. This would allow us to eliminate any index
 $i$ and $j$ where $x\_i = 0, y\_i = 0,$ or $s\_{ij} = 0$ in the following
-summation: $$ \vec{x}ᵀ \cdot S\cdot \vec{y} = \sum\_i \sum\_j x\_i\cdot s\_{ij}
-\cdot y\_j. $$
+summation:
+
+\begin{equation}
+\vec{x}ᵀ · S · \vec{y} = Σ\_i Σ\_j x\_i · s\_{ij} · y\_j.
+\end{equation}
 
 However, my implementation of the restricted model used the SciPy Python
-library, which would separate $\vec{x}ᵀ \cdot S\cdot \vec{y}$ into two
-operations: $\vec{x}ᵀ \cdot S$ and $◌ \cdot \vec{y}$, where the worst-case time
+library, which would separate $\vec{x}ᵀ · S · \vec{y}$ into two
+operations: $\vec{x}ᵀ · S$ and $◌ · \vec{y}$, where the worst-case time
 complexity of both operations was $\mathcal{O}(n)$ if the size of query
 $\vec{x}$ was constant. Future work should investigate how to improve my
 implementation to achieve the theoretical $\mathcal{O}(1)$ worst-case time
