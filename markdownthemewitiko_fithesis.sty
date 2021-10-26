@@ -54,6 +54,39 @@
   }
 }
 
+%% Bibliography
+\renewcommand\multinamedelim{\addcomma\addspace}
+\renewcommand\finalnamedelim{\addspace and\addspace}
+\letbibmacro*{oldtextcite}{textcite}
+\renewbibmacro*{textcite}{%
+  \iffieldequals{namehash}{\cbx@lasthash}
+    {\setunit{\multicitedelim}}
+    {\ifnameundef{labelname}
+       {\printfield[citetitle]{labeltitle}}
+       {\printnames{labelname}}%
+     \setunit*{\printdelim{namelabeldelim}}%
+     \ifciteseen  % Omit brackets from repeated citations
+       {}
+       {%
+         \printtext{\bibopenbracket}\global\booltrue{cbx:parens}%
+       }%
+     \stepcounter{textcitecount}%
+     \savefield{namehash}{\cbx@lasthash}}%
+  \ifciteseen  % Omit citation number from repeated citations
+    {}
+    {%
+      \ifnumequal{\value{citecount}}{1}
+        {\usebibmacro{prenote}}
+        {}%
+      \usebibmacro{cite}%
+      \setunit{%
+        \ifbool{cbx:parens}
+          {\bibclosebracket\global\boolfalse{cbx:parens}}
+          {}%
+        \textcitedelim}%
+    }%
+}
+\letbibmacro*{newtextcite}{textcite}
 
 %% Margin notes
 \RequirePackage{ragged2e,marginfix}
@@ -79,12 +112,16 @@
     inlineHtmlComment = {%
       \marginpar
         [%
+          \letbibmacro*{textcite}{oldtextcite}%
           \marginparsetlists
           \color{black}\footnotesize\RaggedLeft#1%
+          \letbibmacro*{textcite}{newtextcite}%
         ]%
         {%
+          \letbibmacro*{textcite}{oldtextcite}%
           \marginparsetlists
           \color{black}\footnotesize\RaggedRight#1%
+          \letbibmacro*{textcite}{newtextcite}%
         }%
     },
   },
