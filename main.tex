@@ -101,6 +101,12 @@
   theme=witiko/dot,
 ]{markdown}
 
+%% Additional math operators
+\RequirePackage{amsmath}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\sign}{sign}
+
 \begin{document}
 
 \markdownInput[slice=introduction]{main.md}

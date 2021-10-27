@@ -13,6 +13,21 @@
   underscores=false,
 }
 
+%% Headings
+\markdownSetup{
+  renderers = {
+    headingFive = {%
+      \paragraph{#1}%
+      \begingroup  % Disable the next \par
+        \markdownSetup{
+          renderers = {
+            interblockSeparator = {\endgroup},
+          }
+        }
+    },
+  }
+}
+
 %% Content blocks
 \markdownSetup{
   renderers = {
@@ -186,5 +201,8 @@
 \newunicodechar{□}{\square\:}
 \newunicodechar{■}{\blacksquare\:}
 \newunicodechar{·}{\cdot}
+\newunicodechar{⊙}{\odot}
 \newunicodechar{≡}{\equiv}
+\newunicodechar{…}{\ldots}
 \newunicodechar{Σ}{\ifmmode\sum\else\Sigma\fi}
+\newunicodechar{∈}{\in}
