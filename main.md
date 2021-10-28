@@ -187,7 +187,7 @@ y^2 = 0$` in \TeX.
 
 In 1998,[^59] the World Wide Web Consortium has developed the Presentation MathML
 XML language, which \`\`[…] can be used to describe the layout structure of
-mathematical notation.'' [@ausbrooks2014minermathematical, Section 3.1]
+mathematical notation.'' [@buswell1998mathematical, Section 3.1]
 % To give an example ... [@novotny2020three, Figure 2]
 
  [^59]: Presentation MathML can be extracted from \TeX{} by [\LaTeX ML.][60]
@@ -219,14 +219,6 @@ In 2017, the American Mathematical Society has developed Unicode support for
 Mathematics [@beeton2017unicode], which can be used to used to encode
 presentation math in plain text without special markup.
 
-% TeX, AMSTeX, LaTeX
-% Unicode Math [@beeton2017unicode]
-
-% Presentation MathML [@ausbrooks2014minermathematical, Section 3; @novotny2020three, Figure 2]
-% Presentation MathML normalization
-
-% Symbol Layout Tree [@novotny2020three, Figure 3]
-
 ### Content Math
 
 Writing systems of natural languages can offer several alternative ways to
@@ -248,7 +240,7 @@ represent content math in math information retrieval systems.
 Since 1998,[^63] the World Wide Web Consortium has been developing the Content
 MathML XML language, which can provide \`\`[…] an explicit encoding of the
 *underlying mathematical meaning* of an expression, rather than any particular
-rendering for the expression'' [@ausbrooks2014minermathematical, Section 4.1.1]
+rendering for the expression'' [@buswell1998mathematical, Section 4.1.1]
 % To give an example ... [@novotny2020three, Figure 2]
 
  [^63]: Content MathML can be extracted from \TeX{} by [\LaTeX ML.][60]
