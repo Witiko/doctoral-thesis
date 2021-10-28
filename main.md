@@ -190,10 +190,10 @@ XML language, which ``[…] can be used to describe the layout structure of
 mathematical notation.'' [@ausbrooks2014minermathematical, Section 3.1]
 % To give an example ... [@novotny2020three, Figure 2]
 
- [^59]: Presentation MathML can be extracted from \TeX{} using the [\LaTeX
-        ML][60] tool. [@stamerjohanns2010transforming]
+ [^59]: Presentation MathML can be extracted from \TeX{} by [\LaTeX ML.][60]
+        [@stamerjohanns2010transforming]
 
- [60]: https://dlmf.nist.gov/LaTeXML/
+ [60]: https://dlmf.nist.gov/LaTeXML
 
 In Presentation MathML, visually equivalent math formulae can receive different
 representations, which affects retrieval accuracy. Therefore, the problem of
@@ -209,7 +209,7 @@ used for information retrieval without further normalization.
 % To give an example ... [@novotny2020three, Figure 3]
 
  [^61]: SLT can be extracted from Presentation MathML using the [Tangent-S][62]
-        systems. [@zanibbi2016multi]
+        system. [@zanibbi2016multi]
 
  [62]: https://github.com/MIR-MU/TangentCFT (module TangentS)
 
