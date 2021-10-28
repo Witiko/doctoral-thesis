@@ -177,11 +177,11 @@ represent presentation math in math information retrieval systems.
 
 ##### TeX
 
-In 1986, @knuth86tex has developed the programming language of \TeX{} with the
-express goal to author mathematical documents with precise presentation
-requirements. At the present time, \TeX{} is the most popular authoring
-language for mathematical documents. To give an example, the formula $x!! - y^2
-= 0$ would be represented as `$x!! - y^2 = 0$` in \TeX.
+In 1986, @knuth86tex has developed the programming language of \TeX{} to author
+mathematical documents with precise presentation requirements. At the present
+time, \TeX{} is the most popular authoring language for mathematical documents.
+To give an example, the formula $x!! - y^2 = 0$ would be represented as `$x!! -
+y^2 = 0$` in \TeX.
 
 ##### Presentation MathML
 
@@ -190,7 +190,7 @@ XML language, which ``[…] can be used to describe the layout structure of
 mathematical notation.'' [@ausbrooks2014minermathematical, Section 3.1]
 % To give an example ... [@novotny2020three, Figure 2]
 
- [^59]: Presentation MathML can be extracted from \TeX{} using [\LaTeX ML][60].
+ [^59]: Presentation MathML can be extracted from \TeX{} with [\LaTeX ML][60].
         [@stamerjohanns2010transforming]
 
  [60]: https://dlmf.nist.gov/LaTeXML/
@@ -203,10 +203,14 @@ representations, which affects retrieval accuracy. Therefore, the problem of
 
 ##### Syntax Layout Tree
 
-In 2016, @zanibbi2016multi has developed the *symbol layout tree (SLT)*
+In 2016,[^61] @zanibbi2016multi has developed the *symbol layout tree (SLT)*
 as a simplified representation of Presentation MathML that can be directly
 used for information retrieval without further normalization.
 % To give an example ... [@novotny2020three, Figure 3]
+
+ [^61]: SLT can be extracted from Presentation MathML with [Tangent-S][62].
+
+ [62]: https://github.com/BehroozMansouri/TangentCFT (directory TangentS)
 
 ##### Unicode Math
 
