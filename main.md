@@ -668,10 +668,10 @@ the value $k = 60$. [@buttcher2010information, Section 11.1.2]
 
 Information retrieval systems must fulfil three major objectives: the
 *accuracy* of their results for the information needs of their users, the
-*speed* at which they deliver the results to their users before the results
-have lost their relevance, and the *interpretability* of their results, which
-determines how well they can explain the information in the results to their
-users.
+*speed* at which they can be deployed, index new documents, and deliver results
+to their users before the results have lost their relevance, and their
+*interpretability*, which determines how well they can explain the information
+in the results to their users.
 
 To measure how well the systems fulfil these three objectives, we can use a
 number of *evaluation measures*. In this section, I will discuss the existing
@@ -718,10 +718,11 @@ information needs, a collection of retrieval units $D$ that correspond to
 information, and *relevance judgements* from *human assessors* that specify
 whether the information in a retrieval unit $d$ is relevant to the information
 need behind query $q$.
-The relevance judgements can either be *complete* and cover all combinations $Q
+Relevance judgements can either be *complete* and cover all combinations $Q
 × D$ of queries and documents or *incomplete*, depending on the size of the
-collection, and either *graded* with several levels of relevance (further known
-as *gain*) or *binary*.
+collection
+Relevance judgements can also be either *graded* with several levels of
+relevance or *binary*.
 
 In the evaluation, we submit queries $Q$ to an information retrieval system
 and we compare the retrieval results with the relevance judgements. To evaluate
@@ -741,17 +742,31 @@ a relevance judgement from the retrieval results.
 
 ### Speed
 
-% System Deployment Time
-% Training and indexing time
-% Query time
+To evaluate the speed of an information retrieval system, we can measure the
+time experienced by the users (further known as *wall clock time*) at various
+stages of the system's life cycle:
+
+We can measure how fast we can deploy our system at a server (further known as
+the *deployment time*), train token embeddings and other machine learning
+components of our system (further known as the *training time*), index new
+documents before the retrieval (further known as the *indexing time*), and
+deliver results to a query (further known as *query time*).
 
 ### Interpretability
 
-% Clustering and Silhouette Score
+To help determine the *interpretability* [@hall2018introduction, Section 1] of
+the various components of an information retrieval systems, we can use
+exploratory visualization techniques such as *dimensionality reduction*
+[@van2008visualizing; @cox2008multidimensional; @hinton2006reducing] to show
+high-dimensional data, *clustering* [@manning2008introduction, Chapter 16] and
+*correlation analysis* to discover patterns in the data, and *formal concept
+analysis* [@wille1982restructuring; @priss2005linguistic] to discover
+hierarchical relationships in the data.
 
-% Formal Concept Analysis
-
-% Usability Testing
+To determine the quality of the explanations provided by the information
+retrieval systems, we can perform *usability testing* [@nielsen1993usability]
+by deploying the system with different types of explanations and measuring user
+satisfaction. [@manning2008introduction, Section 8.6.3]
 
 # State of the Art {#state-of-the-art}
 ## Competitions
