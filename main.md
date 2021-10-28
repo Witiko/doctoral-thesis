@@ -25,7 +25,7 @@ In this chapter, I will describe the following:
   information retrieval techniques based on sparse data, dense data,
   structural and semantic matching, and learning to rank.
 
-- In Section \vref{sec:objectives-and-evaluation}, I will descibe the three
+- In Section \vref{sec:objectives-and-evaluation}, I will describe the three
   major objectives of math information retrieval and how we can evaluate math
   information retrieval systems on these objectives.
 
@@ -47,8 +47,8 @@ library goes back to the eponymous project of the Cornell University
 
 ← Although this ambitious vision has not been fully realized by the project,
 it motivated the creation of many smaller digital mathematical libraries, some
-examples of which we will discuss in sections \ref{sec:arxiv}--\ref{sec:eudml}.
-In Section \vref{sec:gdml}, we will discuss the future of digital mathematical
+examples of which I will discuss in sections \ref{sec:arxiv}--\ref{sec:eudml}.
+In Section \vref{sec:gdml}, I will discuss the future of digital mathematical
 libraries.
 
 ### ArXiv
@@ -231,7 +231,9 @@ have a different structure but the same meaning ($a · b$ and $b · a$).
 ## Math Information Retrieval
 \label{sec:math-information-retrieval}
 
-% Obrázek 8 v [Math OpenQA proposalu](https://www.overleaf.com/project/615acd56fbda7f7599e9ba47)
+% Obrázek 8 v [Math OpenQA proposalu][58]
+%
+%  [58]: https://www.overleaf.com/project/615acd56fbda7f7599e9ba47
 
 Here is a textbook definition of information retrieval:
 
@@ -245,30 +247,38 @@ Here is a textbook definition of information retrieval:
 Although math information retrieval also focuses on document retrieval, other
 *retrieval units* of interest include math formulae and math statements such as
 definitions, theorems, and proofs. Furthermore, the language of mathematics is
-naturally more structured than natural text, which brings unique opportunities
-and challenges.
+inherently more structured than natural text, which brings unique opportunities
+and challenges. Finally, whereas in today's information retrieval, users
+commonly express their *information needs* as queries in natural language, math
+information retrieval offers more variety:
 
-In today's information retrieval, users commonly express their *information
-needs* in natural language. In math information retrieval, queries can also
-be expressed in natural language (further known as *textual queries*), but they
-can also be expressed in the language of mathematics (further known as *math
-queries*) or a combination of both (further known as *mixed queries*). However,
-studies have shown that up to 95\% of queries in existing math information
-retrieval systems are textual. [@libbrecht2006methods, Section 5;
-@miller2013three, Section 5] This shows that techniques for *joint modeling
-of text and math* that allow users to ask natural language questions about
-information captured in the language of mathematics are crucially important for
-math information retrieval.
+In math information retrieval, users can express information needs as queries in
+natural language (further known as *text queries*), but they can also be
+expressed in the language of mathematics (further known as *math queries*) or a
+combination of both (further known as *mixed queries*).
+However, studies have shown that up to 95\% of queries in existing math
+information retrieval systems are text queries. [@libbrecht2006methods, Section
+5; @miller2013three, Section 5]
+This shows that techniques for *joint modeling of text and math* that allow
+users to ask natural language questions about information captured in the
+language of mathematics are crucially important for today's math information
+retrieval.
+It also shows that we may need a more expressive language for math queries
+that would include elements such as *wildcards* [@altamimi2008math;
+@aizawa2013ntcir; @aizawa2014ntcir; @zanibbi2016ntcir], special math symbols
+that may match any other math symbol or math subformulae, and *simto regions*
+[@zanibbi2016ntcir], which specify the parts of a math formula that must match
+perfectly and parts that may only be similar.
 
-In this section, I will discuss four approaches that are central to today's
-math information retrieval: sparse retrieval, dense retrieval, structural and
+In the rest of this section, I will discuss four common approaches to math
+information retrieval: sparse retrieval, dense retrieval, structural and
 semantic matching, and learning to rank.
 
 ### Sparse Retrieval
 \label{sec:sparse-retrieval}
 
-Over the course of their short history, information retrieval systems have
-changed from expert systems to everyday appliances.
+Over the course of their history, information retrieval systems have changed
+from expert systems to everyday appliances.
 
 In this section, I will describe the concepts of the traditional sparse
 approach to information retrieval and show how they had developed since the
@@ -287,7 +297,7 @@ information needs using queries in prepositional calculus:
 %
 However, only expert users could specify queries in prepositional calculus.
 Additionally, boolean retrieval systems would present the users with an
-unranked list of *all* documents that matched their query. For large document
+*unranked* list of *all* documents that matched their query. For large document
 collections, either too many documents or too few (if any) documents would
 often be retrieved, a problem commonly referred to as *feast or famine*.
 
@@ -379,7 +389,7 @@ corpus:%
 %
 \begin{equation}
   \argmin\_{\vec{\theta}} \Big[-Σ\_{t = 1}^T \log\Pr(w\_t\mid C\_t;
-    \vec{\theta})\Big].
+  \vec{\theta})\Big].
 \end{equation}
 %
 To estimate $\Pr(w\_t\mid C\_t)$, @mikolov2013distributed used a simplified
@@ -388,7 +398,7 @@ negative sampling:%
 %
 \begin{equation}
   \Pr(w\_t\mid C\_t)=\sigma(s(w\_t, C\_t))
-    \prod\_{n ∈ N\_{C\_t}}\sigma(-s(n, C\_t)),
+  \prod\_{n ∈ N\_{C\_t}}\sigma(-s(n, C\_t)),
 \end{equation}
 %
 where $\sigma$ is the logistic function $x\mapsto \nicefrac{1}{1 + e^{-x}},$
@@ -398,7 +408,7 @@ matches the context $C\_t$:%
 %
 \begin{equation}
   s(w\_t, C\_t) = \vec{u}\_{C\_t}ᵀ · \vec{v}\_{w\_t},
-    \vec{u}\_{C\_t} = \frac{1}{|C\_t|}Σ\_{w ∈ C\_t}\vec{u}\_{w}.
+  \vec{u}\_{C\_t} = \frac{1}{|C\_t|}Σ\_{w ∈ C\_t}\vec{u}\_{w}.
 \end{equation}
 %
 Here, $\vec{u}\_{w} ∈\mathbb{R}^D$ is the *input vector* of the context token
@@ -534,34 +544,179 @@ Turing-completeness of Transformers [@dai2019transformerxl;
 ### Structural and Semantic Matching
 \label{sec:structural-and-semantic-matching}
 
+Unlike natural text, the language of mathematics is inherently more structured,
+which makes it possible to use *structural matching* techniques for math
+information retrieval. Both information retrieval and math information
+retrieval can also use *semantic matching* techniques that lie at the boundary
+of sparse retrieval an dense retrieval and use token embeddings for sentence
+and document retrieval.
+
 #### Structural Matching
 \label{sec:structural-matching}
 
-% Substitution Trees
+To retrieve math formulae $\big(f(a + b, g(c))\big)$ and their generalizations
+$\big(f(x, y)\big)$, we can use *substitution trees*. [@graf1995substitution]
 
-% Edit Distance and Tree Edit Distance
+To determine the pairwise structural similarity of two math formulae, we can
+use distance measures defined on ordered trees such as
+the *tree[^56] edit distance* [@tai1979tree; @zhang1989simple],
+the *top-down distance* [@selkow1977tree; @yang1991identifying],
+the *bottom-up distance* [@valiente2001efficient]
+the *alignment distance* [@jiang1995alignment], and
+the *isolated-subtree distance* [@tanaka1988tree].
+The worst-case time complexity of some of these techniques is linear in the
+tree size. Nevertheless, if constant-time retrieval in the index size is
+required, it is only practical to use pairwise similarity to *rerank* a small
+number of top retrieval results, not for the retrieval itself.
 
-% Multiple Tree Similarity
-
-% XML Search
+ [^56]: See [the website][57] of the Database Research Group at the
+        \foreignlanguage{german}{Paris Lodron Universität Salzburg}
+        for an overview of existing algorithms, their implementations,
+        and recent literature on the tree edit distance.
+ 
+ [57]: http://tree-edit-distance.dbresearch.uni-salzburg.at/
 
 #### Semantic Matching
 \label{sec:semantic-matching}
 
-### Learning to rank
+% [@novotny2020three, Figure 6]
+
+To retrieve semantically similar documents, we can use the *soft vector space
+model* [@sidorov2014soft]. Unlike the hard vector space model, which will only
+find exact *hard matches* between tokens, the soft vector space model will also
+consider fuzzy *soft matches* between related tokens. In the soft vector space
+model, the relevance of a document to a query is estimated as the *soft cosine
+similarity* $\softcos(\vec x, \vec y)$ between their sparse vectors $\vec x$
+and $\vec y$:
+%
+\begin{equation}
+  \softcos(\vec x, \vec y) = \frac{\vec xᵀ · S · \vec y}%
+  {\sqrt{\vec xᵀ · S · \vec x} · \sqrt{\vec yᵀ · S · \vec y}}.
+\end{equation}
+%
+where $s\_{ij}$ can be the cosine similarity $\cos(\vec i, \vec j)$ between the
+global token embeddings $\vec i$ and $\vec j$ of tokens $i$ and $j$ or another
+measure of semantic token relatedness. [@charlet2017simbow] Intuitively, the soft
+vector space model will expand the query with related tokens and then use
+cosine similarity. The worst-case time complexity of the soft cosine measure is
+$\mathcal{O}(n^2)$, where $n$ is the number of unique tokens in the documents,
+but it can be reduced to $\mathcal{O}(n)$ (the same as the hard vector space
+model) by restricting the measures of relatedness that the soft vector space
+model can use.  [@novotny2018implementation]
+
+An alternative technique to determine the pairwise semantic similarity of two
+documents is the *word mover's distance* [@kusner2015from], which will find the
+*minimum-cost flow* $F$ between the sparse vectors $\vec{x}$ and $\vec{y}$ of
+two documents:%
+%
+\begin{equation}
+  \min\_F Σ\_i Σ\_j f\_{ij} · s\_{ij}
+  `  subject to  ` Σ\_j f\_{ij} = x\_i, Σ\_i f\_{ij} = y\_j,
+\end{equation}
+%
+where $S$ is a measure of token relatedness like in the soft cosine similarity.
+Intuitively, the word mover's distance will match each token in one document
+with the most related tokens in the other document and the word mover's
+distance reflects the quality of the matches. As with the pairwise structural
+similarity, it is only practical to use the word mover's distance to rerank top
+retrieval results.  Additionally, the worst-case time complexity of the word
+mover's distance is $\mathcal{O}(n^3 \log n)$, where $n$ is the number of
+unique tokens in the documents, which makes the word mover's distance only
+practical to use the word mover's distance for sentences and short documents.
+
+### Learning to Rank
 \label{sec:learning-to-rank}
+
+Information retrieval systems make make naive assumptions about the syntax and
+the semantics of the natural language and the language of mathematics. They
+also often rely on token embeddings of language models, which contain
+human-like biases. [@caliskan2017semantics] These assumptions and biases cause
+systematic errors and affect the retrieval results.
+
+In this section, I will describe *Learning to rank* techniques, which attempt
+to remove these systematic errors and improve the ranking of results by
+combining the results of several individual systems.
+
+*Score aggregation* is a learning to rank technique that combines several
+structural and semantic matching techniques and corrects their errors before
+they can influence the retrieval results. An example of score aggregation
+is the *CombMNZ* technique [@lee1997analyses], which combines the scores
+$s\_i$ that a document $d$ received from $N\_d$ matching techniques to a
+corrected score:
+%
+\begin{equation}
+    `CombMNZScore`(d) = N\_d · Σ\_i s\_i(d)
+\end{equation}
+
+*Rank-based fusion* is a learning to rank technique that combines the results
+of several information retrieval systems and corrects the results before users
+can see them. An example of rank-based fusion is the *reciprocal rank fusion*
+[@cormack2009reciprocal], which combines the ranks $r\_i(d)$ that a document
+$d$ received from several information retrieval systems to a final score that
+determines the rank of the document in the corrected results:
+%
+\begin{equation}
+  `RRFScore`(d) = Σ\_i \frac{1}{k + r\_i(d)},
+\end{equation}
+%
+where $k$ is a constant that determines the importance of lower-ranked
+documents compared to higher-ranked documents and that is typically set to
+the value $k = 60$. [@buttcher2010information, Section 11.1.2]
 
 ## Objectives and Evaluation
 \label{sec:objectives-and-evaluation}
 
-% Intrinsic Evaluation
-% Extrinsic Evaluation
+Information retrieval systems must fulfil three major objectives: the
+*accuracy* of their results for the information needs of their users, the
+*speed* at which they deliver the results to their users before the results
+have lost their relevance, and the *interpretability* of their results, which
+determines how well they can explain the information in the results to their
+users.
+
+To measure how well the systems fulfil these three objectives, we can use a
+number of *evaluation measures*. In this section, I will discuss the existing
+evaluation measures for each of the three objectives.
 
 ### Accuracy
 
-% Relevance Judgements
+An important distinction between evaluation measures of accuracy is whether
+they are *intrinsic* or *extrinsic*. Intrinsic evaluation measures are defined
+on small tasks and are easily reproducible in a laboratory setting. In
+contrast, extrinsic evaluation measures are defined on real-world applications
+and may require the participation of a human in the loop.
 
-#### Boolean Retrieval
+#### Extrinsic Measures
+
+Extrinsic evaluation measures use a set of *queries* $Q$ that correspond to
+information needs, a collection of retrieval units $D$ that correspond to
+information, and *relevance judgements* from *human assessors* that specify
+whether the information in a retrieval unit $d$ is relevant to the information
+need behind query $q$.
+
+The relevance judgements can either be *complete* and cover all combinations
+$Q × D$ of queries and documents or *incomplete*, depending on the size of the
+collection, and either *graded* with several levels of relevance (further known
+as *gain*) or *binary*. The results of our system can also be either unranked
+or ranked. All of these differences come into play when selecting an evaluation
+measure.
+
+For unranked retrieval, we can us the *precision (P)* and *recall (R)*
+[@manning2008introduction, Section 8.3] evaluation measures for complete and
+binary relevance judgements.
+
+For ranked retrieval, we can use the *precision at $k$ (P@$k$)* and *mean
+average precision (MAP)* [@manning2008introduction, Section 8.4] also for
+complete and binary judgements, *Bpref* [@buckley2004retrieval] for incomplete
+and binary judgements, and *NDCG* for complete and graded judgements.
+[@manning2008introduction, Section 8.4]
+
+In 2008, @sakai2008information developed a technique for converting measures
+for complete judgements (P, R, P-$k$, MAP, and NDCG) to measures for incomplete
+judgements (P', R', P'@$k$, MAP', and NDCG'). Their technique condenses the
+results of an information retrieval system by removing all documents without
+a relevance judgements before the evaluation.
+
+#### Unranked Retrieval
 
 % Precision and Recall
 % F1-score
@@ -571,7 +726,16 @@ Turing-completeness of Transformers [@dai2019transformerxl;
 % Precision at $k$
 % Mean average precision
 % Bpref
-% nDCG
+
+Like Bpref, the NDCG' evaluation measure is used with incomplete relevance judgements.
+Unlike Bpref, NDCG' is used with graded relevance judgements:
+%
+\begin{equation}
+  `NDCG'` = \avg\_{q\in Q} \frac{`DCG'`}\_{t}}{`IDCG`}\_t},
+  `IDCG` = Σ\_{i = 1}^{|`REL`\_i|} \frac{`gain`\_t(`REL`\_{t,i})}{\log\_2(i + 1)},
+  `DCG`'
+\end{equation}
+%
 
 #### Token Embeddings
 
@@ -1302,7 +1466,7 @@ different information retrieval systems can agree on a small portion of the
 most relevant documents, but each individual system will miss the great
 majority of relevant documents.
 
-In 2009, @cormack2009reciprocal developed a rank-based fusion technique and
+In 2009, @cormack2009reciprocal developed the reciprocal rank fusion technique and
 showed that it achieved better accuracy than any individual system on five out
 of five information retrieval tasks and that it achieved state-of-the-art
 accuracy on three out of five information retrieval tasks. However, they did
@@ -1317,8 +1481,8 @@ systems of our MIRMU team.
 
 In 2021, we developed two new supervised rank-based fusion techniques
 (*MIRMU-WIBC* and *MIRMU-RBC*) and we used them together with our unsupervised
-*MIRMU-Ensemble* (further known as *MIRMU-IBC*) and the unsupervised technique of
-@cormack2009reciprocal (further known as *MIRMU-RRF*) for the *answer retrieval*
+*MIRMU-Ensemble* (further known as *MIRMU-IBC*) and the unsupervised reciprocal
+rank fusion (further known as *MIRMU-RRF*) for the *answer retrieval*
 math information retrieval task of the ARQMath-2 lab. [@novotny2021ensembling,
 Section 4] We used our technique to ensemble all ten systems of our MIRMU and
 MSM teams.[^17]
@@ -1347,7 +1511,7 @@ benefit from a large number of systems.
 At ARQMath-2, we showed that all our four rank-based fusion techniques were
 more accurate than any individual information retrieval system from our MIRMU
 and MSM teams. We also showed that our *MIRMU-WIBC* can be more accurate than
-the *MIRMU-RRF* of @cormack2009reciprocal.
+*MIRMU-RRF*.
 
 When we used the unsupervised *MIRMU-IBC* and *MIRMU-RRF* to ensemble all
 non-baseline primary systems, we received the best (*MIRMU-RRF*) and the
@@ -2164,7 +2328,7 @@ were our small number of diverse systems.
 To interpret the diversity of the systems, we developed two measures of their
 strengths and weaknesses that showed: [@novotny2021ensembling, Figure 8]
 
-1. how capable the systems were at mathematical and textual queries and
+1. how capable the systems were at mathematical and text queries and
 2. how capable the systems were at long and short queries.
 
  /figures/strengths-and-weaknesses.tex
@@ -2179,13 +2343,13 @@ We selected five diverse systems: *MIRMU-CompuBERT*, *MIRMU-SCM*, *MSM-LM*,
         and their accuracy.
 
 We also showed that *MIRMU-CompuBERT* received the most consistent results
-across both textual and mathematical queries, excelled at short queries, but
-its performance deteriorated for long queries that didn't fit into the short
+across both text and math queries, excelled at short queries, but its
+performance deteriorated for long queries that didn't fit into the short
 context window of its dense attention. By contrast, the remaining four systems
-that were based on the vector space model excelled at textual queries, but
-their performance deteriorated for mathematical queries. *MIRMU-SCM*, which
-uses techniques for structural and semantic matching, could exploit both short
-and long queries. See Figure \vref{fig:strengths-and-weaknesses}.
+that were based on the vector space model excelled at text queries, but their
+performance deteriorated for mathematical queries. *MIRMU-SCM*, which uses
+techniques for structural and semantic matching, could exploit both short and
+long queries. See Figure \vref{fig:strengths-and-weaknesses}.
 
 #### Reproducibility
 

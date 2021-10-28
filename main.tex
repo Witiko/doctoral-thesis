@@ -46,9 +46,8 @@
     facultyLogo = fithesis-fi,
 }
 
-%% Author and term index
+%% Term index
 \usepackage{imakeidx}
-\makeindex[name = author, title = {Author Index}, intoc]
 \makeindex[name = subject, title = {Subject Index}, intoc]
 
 %% Context-sensitive quotation marks
@@ -105,7 +104,9 @@
 \RequirePackage{amsmath}
 \DeclareMathOperator*{\argmax}{arg\,max}
 \DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\avg}{avg}
 \DeclareMathOperator*{\sign}{sign}
+\DeclareMathOperator*{\softcos}{softcos}
 
 \begin{document}
 
@@ -125,7 +126,6 @@
 {\sloppy\printbibliography[heading=bibintoc]}
 \printindex[subject]
 \chapter{Glossary of Research Groups}
-\printindex[author]
 
 \appendix
 \chapter{List of Author's Publications}

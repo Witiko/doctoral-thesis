@@ -122,22 +122,32 @@
     partopsep  = 0pt,
   }
 }
+\newtoks\marginparfootnotetext
+\marginparfootnotetext={}
+\newif\ifmarginpar
+\marginpartrue
 \markdownSetup{
   renderers = {
     inlineHtmlComment = {%
       \marginpar
         [%
+          \marginpartrue
           \letbibmacro*{textcite}{oldtextcite}%
           \marginparsetlists
           \color{black}\footnotesize\RaggedLeft#1%
           \letbibmacro*{textcite}{newtextcite}%
+          \marginparfalse
         ]%
         {%
+          \marginpartrue
           \letbibmacro*{textcite}{oldtextcite}%
           \marginparsetlists
           \color{black}\footnotesize\RaggedRight#1%
           \letbibmacro*{textcite}{newtextcite}%
+          \marginparfalse
         }%
+      \footnotetext{\the\marginparfootnotetext}%
+      \marginparfootnotetext={}%
     },
   },
 }
@@ -149,11 +159,21 @@
   \begingroup
   \catcode`\#=12
   \def\next##1##2##3##4{%
-    ##1\footnote{%
-      \RaggedRight
-      \href{##3}{{\sffamily\color{thesis@color@secondary}##2}}%
-      \ifx\empty##4\empty\else, ##4\fi
-    }%
+    ##1%
+    \ifmarginpar
+      \footnotemark
+      \global\marginparfootnotetext={%
+        \RaggedRight
+        \href{##3}{{\sffamily\color{thesis@color@secondary}##2}}%
+        \ifx\empty##4\empty\else, ##4\fi
+      }%
+    \else
+      \footnote{%
+        \RaggedRight
+        \href{##3}{{\sffamily\color{thesis@color@secondary}##2}}%
+        \ifx\empty##4\empty\else, ##4\fi
+      }%
+    \fi
     \endgroup
   }%
   \next
