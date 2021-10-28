@@ -190,8 +190,8 @@ XML language, which ``[…] can be used to describe the layout structure of
 mathematical notation.'' [@ausbrooks2014minermathematical, Section 3.1]
 % To give an example ... [@novotny2020three, Figure 2]
 
- [^59]: Presentation MathML can be extracted from \TeX{} with [\LaTeX ML][60].
-        [@stamerjohanns2010transforming]
+ [^59]: Presentation MathML can be extracted from \TeX{} using the [\LaTeX
+        ML][60] tool. [@stamerjohanns2010transforming]
 
  [60]: https://dlmf.nist.gov/LaTeXML/
 
@@ -208,9 +208,10 @@ as a simplified representation of Presentation MathML that can be directly
 used for information retrieval without further normalization.
 % To give an example ... [@novotny2020three, Figure 3]
 
- [^61]: SLT can be extracted from Presentation MathML with [Tangent-S][62].
+ [^61]: SLT can be extracted from Presentation MathML using the [Tangent-S][62]
+        systems. [@zanibbi2016multi]
 
- [62]: https://github.com/BehroozMansouri/TangentCFT (file TangentS/Tuple_Extraction.py)
+ [62]: https://github.com/MIR-MU/TangentCFT (module TangentS)
 
 ##### Unicode Math
 
