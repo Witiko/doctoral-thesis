@@ -190,8 +190,8 @@ XML language, which ``[…] can be used to describe the layout structure of
 mathematical notation.'' [@ausbrooks2014minermathematical, Section 3.1]
 % To give an example ... [@novotny2020three, Figure 2]
 
- [^59]: Presentation MathML can be extracted from \TeX{} using the [\LaTeX
-        ML][60] tool. [@stamerjohanns2010transforming]
+ [^59]: Presentation MathML can be extracted from \TeX{} using [\LaTeX ML][60].
+        [@stamerjohanns2010transforming]
 
  [60]: https://dlmf.nist.gov/LaTeXML/
 
