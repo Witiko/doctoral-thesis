@@ -737,7 +737,7 @@ judgements, and *NDCG* for complete and graded judgements.
 In 2008, @sakai2008information developed a technique that converts measures
 for complete judgements (P, R, P@$k$, MAP, and NDCG) to measures for incomplete
 judgements (P', R', P'@$k$, MAP', and NDCG') by removing all documents without
-a relevance judgement from the retrieval results. This ensures that no
+a relevance judgement from the retrieval results.
 
 ### Speed
 
