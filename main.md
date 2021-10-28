@@ -195,7 +195,7 @@ mathematical notation.'' [@ausbrooks2014minermathematical, Section 3.1]
 
  [60]: https://dlmf.nist.gov/LaTeXML
 
-In Presentation MathML, visually equivalent math formulae can receive different
+In Presentation MathML, visually equivalent math formulae may receive different
 representations, which affects retrieval accuracy. Therefore, the problem of
 *presentation normalization* has received a lot of attention in the literature.
 [@archambault2006canonical; @formanek2012normalization; @altamimi2007more;
@@ -247,7 +247,7 @@ represent content math in math information retrieval systems.
 
 Since 1998,[^63] the World Wide Web Consortium has been developing the Content
 MathML XML language, which can provide \`\`[…] an explicit encoding of the
-underlying mathematical meaning of an expression, rather than any particular
+*underlying mathematical meaning* of an expression, rather than any particular
 rendering for the expression'' [@ausbrooks2014minermathematical, Section 4.1.1]
 % To give an example ... [@novotny2020three, Figure 2]
 
@@ -264,11 +264,6 @@ used for information retrieval.
  [^64]: SLT can be extracted from Content MathML using the [Tangent-S][62]
         system. [@davila2017layout]
 
-% Content MathML [@ausbrooks2014minermathematical, Section 4; @novotny2020three, Figure 2]
-% LaTeXML [@stamerjohanns2008transforming]
-
-% Operator Tree [@novotny2020three, Figure 4]
-
 ### Semantic Math
 
 In natural languages, a word (bank) may have a different meaning depending
@@ -284,14 +279,52 @@ math*) depending on variable bindings, the definitions of the operands, and the
 underlying mathematical theory.  Conversely, two mathematical structures may
 have a different structure but the same meaning ($a · b$ and $b · a$).
 
-% CAS and proof assistants
-% Examples of encoding theorems and definitions
-% OpenMath [@glensbrecht2006special]
-% OMDoc [@kohlhase2006omdoc], has been developed by the German mathematician and computer scientist Michael Kohlhase since 1998.
-% @kamareddine2021intelligent
-% https://video-archive.fields.utoronto.ca/list/event/1053 @avigad2016type
+In the rest of this section, I will describe languages[^65] that can be used to
+represent semantic math in math information retrieval systems.
 
-% Semantic normalization
+ [^65]: For more information about languages for semantic math representation,
+        see recent proceedings of the *International Conferences of Intelligent
+        Computer Mathematics (CICM)* [@kamareddine2021intelligent], or talks
+        from the [*Semantic Representation of Mathematical Knowledge*][52]
+        workshop.
+
+##### Computer Algebra Systems and Proof Assistants
+
+*Computer algebra systems* are general-purpose tools that can perform symbolic
+rather than numeric computation. Examples of computer algebra systems include
+*Mathematica*, *MatLab*, *Maple*, and *SageMath*. *Proof assistants* are more
+focused tools that can assist with the development of formal proofs.
+% To give an example of the different languages ... [@trott2016overview, slide
+% \`\`Examples of encoding theorems and definitions'', 15:19; @bancerek2015mizar,
+% Section 6]
+
+##### OpenMath
+
+Since 1990, the OpenMath Society has been developing the *OpenMath* XML
+language, which can representt \`\`[…] semantically rich mathematical
+objects''. To represent the potentially infinite number of math symbols from
+different math theories, *OpenMath* uses third-party *content directories*[^66]
+that define math symbols and their meaning.
+
+ [^66]: See [the web site][67] of the OpenMath society for a curated list of
+        existing content directories.
+
+ [67]: http://openmath.org/cdnames/
+
+In OpenMath, semantically equivalent math formulae may receive different
+representations, which affects retrieval accuracy. The problem of
+*semantic normalization* has received some attention in the literature
+[@normann2007extended, Section 2; @gauthier2014matching;
+@delahaye1999information], but it is generally undecidable by Gödel's first
+incompleteness theorem.
+
+##### OMDoc
+
+Since 2000, @kohlhase2000omdoc has been developing the OMDoc XML language,
+which uses a combination of Content MathML and OpenMath to represent math
+formulae and adds its own support for *math statements* such as definitions,
+theorems, and proofs and for *math theories* that serve as an advanced
+alternative to OpenMath content directories with support for inheritance.
 
 ## Math Information Retrieval
 \label{sec:math-information-retrieval}

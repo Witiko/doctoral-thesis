@@ -161,7 +161,7 @@
   \def\next##1##2##3##4{%
     ##1%
     \ifmarginpar
-      \footnotemark
+      \protect\footnotemark
       \global\marginparfootnotetext={%
         \RaggedRight
         \href{##3}{{\sffamily\color{thesis@color@secondary}##2}}%
