@@ -186,7 +186,7 @@ y^2 = 0$` in \TeX.
 ##### Presentation MathML
 
 In 1998,[^59] the World Wide Web Consortium has developed the Presentation MathML
-XML language, which ``[…] can be used to describe the layout structure of
+XML language, which \`\`[…] can be used to describe the layout structure of
 mathematical notation.'' [@ausbrooks2014minermathematical, Section 3.1]
 % To give an example ... [@novotny2020three, Figure 2]
 
@@ -209,7 +209,7 @@ used for information retrieval without further normalization.
 % To give an example ... [@novotny2020three, Figure 3]
 
  [^61]: SLT can be extracted from Presentation MathML using the [Tangent-S][62]
-        system. [@zanibbi2016multi]
+        system. [@davila2017layout]
 
  [62]: https://github.com/MIR-MU/TangentCFT (module TangentS)
 
@@ -240,8 +240,29 @@ meaning.
  [^47]: For more examples of historical mathematical notations, see
         @cajori1993history.
 
-In math information retrieval systems, content math can be represented using
-Content MathML ...
+In the rest of this section, I will describe languages that can be used to
+represent content math in math information retrieval systems.
+
+##### Content MathML
+
+Since 1998,[^63] the World Wide Web Consortium has been developing the Content
+MathML XML language, which can provide \`\`[…] an explicit encoding of the
+underlying mathematical meaning of an expression, rather than any particular
+rendering for the expression'' [@ausbrooks2014minermathematical, Section 4.1.1]
+% To give an example ... [@novotny2020three, Figure 2]
+
+ [^63]: Content MathML can be extracted from \TeX{} by [\LaTeX ML.][60]
+        [@stamerjohanns2010transforming]
+
+##### Operator Tree
+
+In 2017,[^64] @davila2017layout has developed the *operator tree (OPT)*
+as a simplified representation of Content MathML that can be directly
+used for information retrieval.
+% To give an example ... [@novotny2020three, Figure 4]
+
+ [^64]: SLT can be extracted from Content MathML using the [Tangent-S][62]
+        system. [@davila2017layout]
 
 % Content MathML [@ausbrooks2014minermathematical, Section 4; @novotny2020three, Figure 2]
 % LaTeXML [@stamerjohanns2008transforming]
