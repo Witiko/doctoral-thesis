@@ -698,10 +698,10 @@ example of an analogy from a semantic category is \`\`Man is to woman as king
 is to queen.''
 
 In the evaluation, we measure the ability of token embeddings to answer the
-question \`\`Which word $b'$ is to $a'$ as $a$ is to $b$?'' To find the answer,
-we take the corresponding token embeddings $\vec{a}, \vec{b},$ and $\vec{a'}$
-and we find the token embedding $\vec{b'}$ that maximizes the cosine similarity
-$\cos(\vec{a'} - \vec{a} + \vec{b}, \vec{b'})$.
+question \`\`Which word $b'$ is to $a'$ as $a$ is to $b$?'' To determine the
+answer, we take the corresponding token embeddings $\vec{a}, \vec{b},$ and
+$\vec{a'}$ and we find the token embedding $\vec{b'}$ that maximizes the cosine
+similarity $\cos(\vec{a'} - \vec{a} + \vec{b}, \vec{b'})$.
 
 The primary evaluation measure is the *total accuracy*, which is the percentage
 of correct answers in all categories. The *syntactic* and *semantic accuracies*
