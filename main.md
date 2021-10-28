@@ -172,8 +172,45 @@ ignored in information retrieval, the placement of symbols (further known as
 *presentation math*) in the language of mathematics is often useful for math
 information retrieval.
 
-In math information retrieval systems, presentation math can be represented
-using the following formal languages:
+In the rest of this section, I will describe languages that can be used to
+represent presentation math in math information retrieval systems.
+
+##### TeX
+
+In 1986, @knuth86texa @knuth86texb has developed the programming language of
+\TeX{} with the express goal to author mathematical documents with precise
+presentation requirements. At the present time, \TeX{} is the most popular
+authoring language for mathematical documents. To give an example, the formula
+$x!! - y^2 = 0$ would be represented as `$x!! - y^2 = 0$` in \TeX.
+
+##### Presentation MathML
+
+In 1998,[^59] the World Wide Web Consortium has developed the Presentation MathML
+XML language, which ``[…] can be used to describe the layout structure of
+mathematical notation.'' [@ausbrooks2014minermathematical, Section 3.1]
+% To give an example ... [@novotny2020three, Figure 2]
+
+ [^59]: Presentation MathML can be extracted from \TeX{} using the \LaTeX ML tool.
+        [@stamerjohanns2010transforming; @dlmf2019latexml]
+
+In Presentation MathML, visually equivalent math formulae can receive different
+representations, which affects retrieval accuracy. Therefore, the problem of
+*presentation normalization* has received a lot of attention in the literature.
+[@archambault2006canonical; @formanek2012normalization; @altamimi2007more;
+@miner2007approach, Section 3]
+
+##### Syntax Layout Tree
+
+In 2016, @zanibbi2016multi has developed the *symbol layout tree (SLT)*
+as a simplified representation of Presentation MathML that can be directly
+used for information retrieval without further normalization.
+% To give an example ... [@novotny2020three, Figure 3]
+
+##### Unicode Math
+
+In 2017, the American Mathematical Society has developed Unicode support for
+Mathematics [@beeton2017unicode], which can be used to used to encode
+presentation math in plain text without special markup.
 
 % TeX, AMSTeX, LaTeX
 % Unicode Math [@beeton2017unicode]
