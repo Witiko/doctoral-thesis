@@ -679,67 +679,65 @@ evaluation measures for each of the three objectives.
 
 ### Accuracy
 
-An important distinction between evaluation measures of accuracy is whether
-they are *intrinsic* or *extrinsic*. Intrinsic evaluation measures are defined
-on small tasks and are easily reproducible in a laboratory setting. In
-contrast, extrinsic evaluation measures are defined on real-world applications
-and may require the participation of a human in the loop.
+An important distinction between evaluation measures of information retrieval
+accuracy is whether they are *intrinsic* or *extrinsic*. Intrinsic evaluation
+measures are defined on small tasks and are easily reproducible in a laboratory
+setting. In contrast, extrinsic evaluation measures are defined on real-world
+applications and may require the participation of a human in the loop.
+
+#### Intrinsic Measures
+
+To evaluate the accuracy of global token embeddings as a source of token
+relatedness, we can use the *word analogy accuracy* intrinsic evaluation
+measure of @mikolov2013efficient.
+
+The word analogy accuracy uses a set of human-annotated analogies that are divided
+into syntactic and semantic categories. An example analogy from a syntactic
+category is \`\`Certain is to uncertain as possible is to impossible.'' An
+example of an analogy from a semantic category is \`\`Man is to woman as king
+is to queen.''
+
+In the evaluation, we measure the ability of token embeddings to answer the
+question \`\`Which word $b'$ is to $a'$ as $a$ is to $b$?'' To find the answer,
+we take the corresponding token embeddings $\vec{a}, \vec{b},$ and $\vec{a'}$
+and we find the token embedding $\vec{b'}$ that maximizes the cosine similarity
+$\cos(\vec{a'} - \vec{a} + \vec{b}, \vec{b'})$.
+
+The primary evaluation measure is the *total accuracy*, which is the percentage
+of correct answers in all categories. The *syntactic* and *semantic accuracies*
+are also sometimes reported and they correspond to the percentages of correct
+answers in the different categories.
 
 #### Extrinsic Measures
+
+To evaluate the accuracy of an information retrieval system for the information
+needs of its users, we can use extrinsic evaluation measures.
 
 Extrinsic evaluation measures use a set of *queries* $Q$ that correspond to
 information needs, a collection of retrieval units $D$ that correspond to
 information, and *relevance judgements* from *human assessors* that specify
 whether the information in a retrieval unit $d$ is relevant to the information
 need behind query $q$.
-
-The relevance judgements can either be *complete* and cover all combinations
-$Q × D$ of queries and documents or *incomplete*, depending on the size of the
+The relevance judgements can either be *complete* and cover all combinations $Q
+× D$ of queries and documents or *incomplete*, depending on the size of the
 collection, and either *graded* with several levels of relevance (further known
-as *gain*) or *binary*. The results of our system can also be either unranked
-or ranked. All of these differences come into play when selecting an evaluation
-measure.
+as *gain*) or *binary*.
 
-For unranked retrieval, we can us the *precision (P)* and *recall (R)*
+In the evaluation, we submit queries $Q$ to an information retrieval system
+and we compare the retrieval results with the relevance judgements. To evaluate
+unranked retrieval results, we can use the *precision (P)* and *recall (R)*
 [@manning2008introduction, Section 8.3] evaluation measures for complete and
-binary relevance judgements.
-
-For ranked retrieval, we can use the *precision at $k$ (P@$k$)* and *mean
-average precision (MAP)* [@manning2008introduction, Section 8.4] also for
-complete and binary judgements, *Bpref* [@buckley2004retrieval] for incomplete
-and binary judgements, and *NDCG* for complete and graded judgements.
+binary relevance judgements. To evaluate ranked retrieval results, we can use
+the *precision at $k$ (P@$k$)* and *mean average precision (MAP)*
+[@manning2008introduction, Section 8.4] also for complete and binary
+judgements, *Bpref* [@buckley2004retrieval] for incomplete and binary
+judgements, and *NDCG* for complete and graded judgements.
 [@manning2008introduction, Section 8.4]
 
-In 2008, @sakai2008information developed a technique for converting measures
-for complete judgements (P, R, P-$k$, MAP, and NDCG) to measures for incomplete
-judgements (P', R', P'@$k$, MAP', and NDCG'). Their technique condenses the
-results of an information retrieval system by removing all documents without
-a relevance judgements before the evaluation.
-
-#### Unranked Retrieval
-
-% Precision and Recall
-% F1-score
-
-#### Ranked Retrieval
-
-% Precision at $k$
-% Mean average precision
-% Bpref
-
-Like Bpref, the NDCG' evaluation measure is used with incomplete relevance judgements.
-Unlike Bpref, NDCG' is used with graded relevance judgements:
-%
-\begin{equation}
-  `NDCG'` = \avg\_{q\in Q} \frac{`DCG'`}\_{t}}{`IDCG`}\_t},
-  `IDCG` = Σ\_{i = 1}^{|`REL`\_i|} \frac{`gain`\_t(`REL`\_{t,i})}{\log\_2(i + 1)},
-  `DCG`'
-\end{equation}
-%
-
-#### Token Embeddings
-
-% Word Analogy
+In 2008, @sakai2008information developed a technique that converts measures
+for complete judgements (P, R, P@$k$, MAP, and NDCG) to measures for incomplete
+judgements (P', R', P'@$k$, MAP', and NDCG') by removing all documents without
+a relevance judgement from the retrieval results. This ensures that no
 
 ### Speed
 
@@ -949,8 +947,8 @@ pre-processing steps and fixed parameters can have a significant impact on
 experimental results.
 
 The accuracy of token embeddings is commonly evaluated on the intrinsic word
-analogy task of @mikolov2013efficient, which measures the ability of word
-vectors to answer the question ``Which word $b'$ is to $a'$ as $a$ is to $b$?''
+analogy task of @mikolov2013efficient, which measures the ability of token
+embeddings to answer the question ``Which word $b'$ is to $a'$ as $a$ is to $b$?''
 In their 2017 paper, @rogers2017too discuss the limitations of the word analogy
 task, including the selection of word pairs, the significant impact of
 including/excluding the words $a, b,$ and $a'$ in the candidates for $b'$, and
