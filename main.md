@@ -210,7 +210,7 @@ used for information retrieval without further normalization.
 
  [^61]: SLT can be extracted from Presentation MathML with [Tangent-S][62].
 
- [62]: https://github.com/BehroozMansouri/TangentCFT (directory TangentS)
+ [62]: https://github.com/BehroozMansouri/TangentCFT (file TangentS/Tuple_Extraction.py)
 
 ##### Unicode Math
 
