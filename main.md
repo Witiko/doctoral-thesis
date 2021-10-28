@@ -177,11 +177,11 @@ represent presentation math in math information retrieval systems.
 
 ##### TeX
 
-In 1986, @knuth86texa @knuth86texb has developed the programming language of
-\TeX{} with the express goal to author mathematical documents with precise
-presentation requirements. At the present time, \TeX{} is the most popular
-authoring language for mathematical documents. To give an example, the formula
-$x!! - y^2 = 0$ would be represented as `$x!! - y^2 = 0$` in \TeX.
+In 1986, @knuth86tex has developed the programming language of \TeX{} with the
+express goal to author mathematical documents with precise presentation
+requirements. At the present time, \TeX{} is the most popular authoring
+language for mathematical documents. To give an example, the formula $x!! - y^2
+= 0$ would be represented as `$x!! - y^2 = 0$` in \TeX.
 
 ##### Presentation MathML
 
@@ -190,8 +190,10 @@ XML language, which ``[…] can be used to describe the layout structure of
 mathematical notation.'' [@ausbrooks2014minermathematical, Section 3.1]
 % To give an example ... [@novotny2020three, Figure 2]
 
- [^59]: Presentation MathML can be extracted from \TeX{} using the \LaTeX ML tool.
-        [@stamerjohanns2010transforming; @dlmf2019latexml]
+ [^59]: Presentation MathML can be extracted from \TeX{} using the [\LaTeX
+        ML][60] tool. [@stamerjohanns2010transforming]
+
+ [60]: https://dlmf.nist.gov/LaTeXML/
 
 In Presentation MathML, visually equivalent math formulae can receive different
 representations, which affects retrieval accuracy. Therefore, the problem of
