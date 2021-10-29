@@ -201,7 +201,7 @@ representations, which affects retrieval accuracy. Therefore, the problem of
 [@archambault2006canonical; @formanek2012normalization; @altamimi2007more;
 @miner2007approach, Section 3]
 
-##### Syntax Layout Tree
+##### Symbol Layout Tree
 
 In 2016,[^61] @zanibbi2016multi has developed the *symbol layout tree (SLT)*
 as a simplified representation of Presentation MathML that can be directly
@@ -321,7 +321,7 @@ alternative to OpenMath content directories with support for inheritance.
 ## Math Information Retrieval
 \label{sec:math-information-retrieval}
 
-% Obrázek 8 v [Math OpenQA proposalu][58] (TODO ilustrace)
+% Figure 8 v [Math OpenQA proposalu][58] (TODO ilustrace)
 %
 %  [58]: https://www.overleaf.com/project/615acd56fbda7f7599e9ba47
 
@@ -398,12 +398,12 @@ At this point in time, digital and digitized fulltexts were becoming
 increasingly more available together with the computational resources to
 process them. Therefore, in addition to and instead of using keywords and
 other document metadata, information retrieval systems would process document
-fulltexts into lists of *tokens* that corresponded to (often *lemmatized* or
-*stemmed*) words and multi-word expressions. [@manning2008introduction, Chapter
-2] In the hard vector space model, documents were indexed as weighted sets
-of their tokens and users would search by specifying queries in free text,
-which the system would also process into weighted sets of tokens:
-[@manning2008introduction, Chapter 3]%
+fulltexts into lists of *tokens* (further known as *tokenization*) that
+corresponded to (often *lemmatized* or *stemmed*) words and multi-word
+expressions. [@manning2008introduction, Chapter 2] In the hard vector space
+model, documents were indexed as weighted sets of their tokens and users would
+search by specifying queries in free text, which the system would also process
+into weighted sets of tokens: [@manning2008introduction, Chapter 3]%
 %
 \begin{equation}
 `Using computers for information retrieval and artificial intelligence`
@@ -420,9 +420,9 @@ vector space model, further improving its accuracy in the eyes of its users.
 
 In concept, both documents and queries are represented as vectors in the hard
 vector space model and the relevance of a document to a query is estimated
-either as the *dot product* $\vec xᵀ · \vec y$ between their vectors $\vec x$
-and $\vec y$, or their *cosine similarity* $\cos(\vec x, \vec y)$
-[@manning2008introduction, Section 6.3]:%
+by a *similarity score*, which is either the *dot product* $\vec xᵀ · \vec y$
+between their vectors $\vec x$ and $\vec y$, or their *cosine similarity*
+$\cos(\vec x, \vec y)$ [@manning2008introduction, Section 6.3]:%
 %
 \begin{equation}
   \cos(\vec x, \vec y) = \frac{\vec xᵀ · \vec y}{‖x‖\_2 · ‖y‖\_2}.
@@ -644,8 +644,9 @@ and document retrieval.
 #### Structural Matching
 \label{sec:structural-matching}
 
-To retrieve math formulae $\big(f(a + b, g(c))\big)$ and their generalizations
+To retrieve math formulae $\big(f(a + b, g(c))\big)$ and their *generalizations*
 $\big(f(x, y)\big)$, we can use *substitution trees*. [@graf1995substitution]
+To also retrieve their *subformulae* ($a + b$), we must index them separately.
 
 To determine the pairwise structural similarity of two math formulae, we can
 use distance measures defined on ordered trees such as
@@ -687,7 +688,7 @@ and $\vec y$:
 where $s\_{ij}$ can be the cosine similarity $\cos(\vec i, \vec j)$ between the
 global token embeddings $\vec i$ and $\vec j$ of tokens $i$ and $j$ or another
 measure of semantic token relatedness. [@charlet2017simbow] Intuitively, the soft
-vector space model will expand the query with related tokens and then use
+vector space model will *expand the query* with related tokens and then use
 cosine similarity. The worst-case time complexity of the soft cosine measure is
 $\mathcal{O}(n^2)$, where $n$ is the number of unique tokens in the documents,
 but it can be reduced to $\mathcal{O}(n)$ (the same as the hard vector space
@@ -870,8 +871,8 @@ retrieval:
 - In Section \vref{sec:competitions}, I will describe the past and future
   math information retrieval competitions.
 
-- In Section \vref{sec:search-engines}, I will describe the search engines that
-  have received the best accuracy in the competitions.
+- In Section \vref{sec:systems}, I will describe the math information retrieval
+  systems that have received the best accuracy in the competitions.
 
 ## Competitions
 \label{sec:competitions}
@@ -909,7 +910,7 @@ Research (NTCIR)* workshops hosted by the National Institute of Informatics
 Following a four year pause, in 2020 and 2021, two math information retrieval
 competitions were held as [*Answer Retrieval for Questions on Math (ARQMath)*
 labs][71] at the *Conference and Labs of the Evaluation Forum (CLEF)*
-conferences. In 2022, the final third ARQMath lab will be held.
+conferences. In 2022, the third (and likely final) ARQMath lab will be held.
 
  [71]: https://www.cs.rit.edu/~dprl/ARQMath
 
@@ -1052,6 +1053,10 @@ the P@10 evaluation measure from ARQMath-1.
 
 ### ARQMath-3
 
+% Figure 9 v [Math OpenQA proposalu][58] (TODO ilustrace)
+%
+%  [58]: https://www.overleaf.com/project/615acd56fbda7f7599e9ba47
+
 In 2022, the *ARQMath-3* lab is going to be held at CLEF.
 Unless prolonged, CLEF labs are only held for three years, and the organizers
 announced their not to prolong the ARQMath lab. [@zanibbi2021arqmath]
@@ -1063,16 +1068,105 @@ Unlike finding answers, Math OpenQA systems can be generative and synthesize
 answers from multiple sources, pushing the envelope of math information
 retrieval.
 
-## Search Engines
-\label{sec:search-engines}
+## Systems
+\label{sec:systems}
+
+% Tabulka výsledků jednotlivých systémů v soutěžích (TODO ilustrace)
+% \label{tab:systems}
+
+In this section, I will describe the math information retrieval search engines
+that received the best accuracy in the competitions.
+For ease of comparison, the medal-winning results of the systems are listed
+in Table \vref{tab:systems}.
+@liska2015building [Section 2.1; @guidi2016survey; @ruzicka2018math, Section
+2.3] describe other systems of historical significance.
 
 ### MathWebSearch
+
+The *MathWebSearch (MWS)* system [@kohlhase2013mathwebsearch;
+@hambasan2014mathwebsearch] has been developed by Michael Kohlhase's
+KWARC research group and has been deployed in [several digital mathematical
+libraries][75] since 2005. MWS participated in the NTCIR-10 Math and NTCIR-11
+Math-2 tasks.
+
+ [75]: https://kwarc.info/systems/mws
+
+MWS indexes content math formulae using substitution trees. If the retrieval
+units are not math formulae, their text is indexed using a hard vector space
+model with the TF-IDF term weighting scheme.
+
+In the retrieval, retrieval units with math formulae that structurally match
+the query are presented first. If the retrieval units are not math formulae,
+then the remaining retrieval units are presented next in the order of the hard
+vector space model.
+
 ### Math Indexer and Searcher
 \label{sec:mias}
 
+The [*Math Indexer and Searcher (MIaS)* system][28] [@sojka2018mias] has been
+developed by Petr Sojka's MIR research group and has been deployed in [the
+European Digital Mathematical Library][51] since 2013. MIaS participated
+in the NTCIR Math tasks and the ARQMath-1 lab.
+
+MIaS indexes retrieval units using a hard vector space model with the TF-IDF
+term weighting scheme. Presentation and content math in the retrieval units is
+tokenized into math subformulae and their generalizations.
+
+In the retrieval, a *query reduction* technique is used to produce several
+mixed queries from the input query. Then, the results for all mixed queries are
+interleaved.
+
 ### Mathcat
+
+The [*Mathcat (MCAT)* system][76] [@topic2013mcat; @kristianto2014mcat; @kristianto2016mcat]
+has been developed by the Aizawa laboratory and participated in the NTCIR Math tasks.
+MCAT has not been publicly deployed in a digital mathematical library or have a
+live demo.
+
+ [76]: https://www-al.nii.ac.jp/mathcat-project/
+
+MCAT indexes presentation and content math formulae using a hard vector space
+model with the TF-IDF weighting scheme and weighted zone scoring. The math
+formulae are tokenized using several strategies and include text descriptions
+that are extracted from the math documents or paragraphs that contain the formulae.
+
+In the retrieval, math formulae are first retrieved with the hard vector space
+model and then reranked using structural and semantic matching techniques. If
+the retrieval units are not math formulae, the similarity score of a retrieval
+unit is the sum of the similarity scores of all formulae in the retrieval unit.
+
 ### Tangent
+
+% [@novotny2020document, Figure 2.1 with Tangent-CFTED added] (TODO ilustrace)
+
+The *Tangent* systems have been developed by the research groups of Hui Fang
+(InfoLab), Frank Tompa, and Richard Zanibbi (DPLR) and participated in the
+NTCIR-11 Math-2 and NTCIR-12 MathIR tasks and in the ARQMath labs. Although the
+Tangent systems have not been publicly deployed in a digital mathematical
+library, some of them (Approach0) have [a live demo.][77]
+
+ [77]: https://approach0.xyz/
+
 #### Tangent, Tangent-2, and Tangent-3
+
+*Tangent* [@wangari2014discovering; @stalnaker2015math] was an experimental
+system developed by Richard Zanibbi's DPLR research group and later evolved
+into the *Tangent-2* [@pattaniyil2014combining] and *Tangent-3*
+[@davila2016tangent] systems that participated in the NTCIR-11 Math-2 and
+NTCIR-12 MathIR tasks.
+
+Tangent-2 and Tangent-3 index presentation math formulae using a hard vector space model
+with the TF-IDF term weighting scheme. The math formulae are tokenized by
+extracting paths in the SLT math representation. If the retrieval units are not
+math formulae, their text is indexed using a different hard vector space model.
+
+In the retrieval, Tangent-2 and Tangent-3 retrieve math formulae that match the
+query from the formula index. If the retrieval units are not math formulae,
+then Tangent-2 and Tangent-3 also retrieve the units that match the query from
+the text index. Then, the similarity score of a retrieval unit is the sum of
+the similarity scores of all formulae in the unit combined with the similarity
+score of the unit's text.
+
 #### Tangent-S
 #### Tangent-L
 #### Approach0
@@ -1800,10 +1894,10 @@ systems out of all our ten systems at the ARQMath-2 lab.
 #### Results
 
 At ARQMath-1, we showed that *MIRMU-Ensemble* was more accurate than any
-individual information retrieval system from our MIRMU team. When we used
-*MIRMU-Ensemble* to ensemble all non-baseline primary systems, we received the
-best accuracy in the competition, which indicates that *MIRMU-Ensemble* can
-benefit from a large number of systems.
+individual information retrieval system from our MIRMU team. If we used
+*MIRMU-Ensemble* to ensemble all non-baseline primary systems, we would have
+received the best accuracy in the competition, which indicates that
+*MIRMU-Ensemble* can benefit from a large number of systems.
 
 At ARQMath-2, we showed that all our four rank-based fusion techniques were
 more accurate than any individual information retrieval system from our MIRMU
