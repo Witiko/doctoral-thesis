@@ -1,3 +1,7 @@
+\let\oldlooseness=\looseness
+\PassOptionsToPackage{
+  letterspace=-25,
+}{microtype}
 \documentclass[
   digital, %% The `digital` option enables the default options for the
            %% digital version of a document. Replace with `printed`
@@ -91,6 +95,7 @@
 \usepackage[nospace]{varioref} %% Intelligent references
 \usepackage{stix} %% Additional math symbols
 \usepackage{nicefrac} %% Nice fractions
+\usepackage[all]{nowidow} %% No widows
 
 %% Markup
 \let\lll\relax
@@ -109,6 +114,10 @@
 \DeclareMathOperator*{\softcos}{softcos}
 
 \begin{document}
+
+%% Disable active hyphen character
+\shorthandoff{-}
+\let\looseness=\oldlooseness
 
 %% Hyphenation
 \hyphenation{sojka}

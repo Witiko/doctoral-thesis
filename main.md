@@ -11,7 +11,7 @@ understand their applications, the kinds of information they retrieve, the
 techniques they use for the retrieval, and the different objectives that they
 have to fulfill.
 
-In this chapter, I will describe the following:
+↑ In this chapter, I'll describe the background of math information retrieval:
 
 - In Section \vref{sec:digital-mathematical-libraries}, I will describe
   digital mathematical libraries as the main application of math information
@@ -130,9 +130,9 @@ independent committees:
    a working group, which was tasked with designing a roadmap towards the
    GDML.
    
-   In 2016, the working group has co-organized a workshop titled [*Semantic
-   Representation of Mathematical Knowledge*][52] held at the Fields Institute
-   in Toronto, Canada, aimed at developing a language for representing the
+   In 2016, the working group has co-organized a [*Semantic Representation of
+   Mathematical Knowledge*][52] workshop held at the Fields Institute in
+   Toronto, Canada, aimed at developing a language for representing the
    semantic math in the GDML.
    
    In 2018, the working group has organized a panel on GDML at the ICM.
@@ -188,7 +188,7 @@ y^2 = 0$` in \TeX.
 In 1998,[^59] the World Wide Web Consortium has developed the Presentation MathML
 XML language, which \`\`[…] can be used to describe the layout structure of
 mathematical notation.'' [@buswell1998mathematical, Section 3.1]
-% To give an example ... [@novotny2020three, Figure 2]
+% To give an example ... [@novotny2020three, Figure 2] (TODO ilustrace)
 
  [^59]: Presentation MathML can be extracted from \TeX{} by [\LaTeX ML.][60]
         [@stamerjohanns2010transforming]
@@ -206,7 +206,7 @@ representations, which affects retrieval accuracy. Therefore, the problem of
 In 2016,[^61] @zanibbi2016multi has developed the *symbol layout tree (SLT)*
 as a simplified representation of Presentation MathML that can be directly
 used for information retrieval without further normalization.
-% To give an example ... [@novotny2020three, Figure 3]
+% To give an example ... [@novotny2020three, Figure 3] (TODO ilustrace)
 
  [^61]: SLT can be extracted from Presentation MathML using the [Tangent-S][62]
         system. [@davila2017layout]
@@ -241,7 +241,7 @@ Since 1998,[^63] the World Wide Web Consortium has been developing the Content
 MathML XML language, which can provide \`\`[…] an explicit encoding of the
 *underlying mathematical meaning* of an expression, rather than any particular
 rendering for the expression'' [@buswell1998mathematical, Section 4.1.1]
-% To give an example ... [@novotny2020three, Figure 2]
+% To give an example ... [@novotny2020three, Figure 2] (TODO ilustrace)
 
  [^63]: Content MathML can be extracted from \TeX{} by [\LaTeX ML.][60]
         [@stamerjohanns2010transforming]
@@ -251,7 +251,7 @@ rendering for the expression'' [@buswell1998mathematical, Section 4.1.1]
 In 2017,[^64] @davila2017layout has developed the *operator tree (OPT)*
 as a simplified representation of Content MathML that can be directly
 used for information retrieval.
-% To give an example ... [@novotny2020three, Figure 4]
+% To give an example ... [@novotny2020three, Figure 4] (TODO ilustrace)
 
  [^64]: SLT can be extracted from Content MathML using the [Tangent-S][62]
         system. [@davila2017layout]
@@ -275,7 +275,7 @@ In the rest of this section, I will describe languages[^65] that can be used to
 represent semantic math in math information retrieval systems.
 
  [^65]: For more information about languages for semantic math representation,
-        see recent proceedings of the *International Conferences of Intelligent
+        see recent proceedings of the *International Conference of Intelligent
         Computer Mathematics (CICM)* [@kamareddine2021intelligent], or talks
         from the [*Semantic Representation of Mathematical Knowledge*][52]
         workshop.
@@ -321,7 +321,7 @@ alternative to OpenMath content directories with support for inheritance.
 ## Math Information Retrieval
 \label{sec:math-information-retrieval}
 
-% Obrázek 8 v [Math OpenQA proposalu][58]
+% Obrázek 8 v [Math OpenQA proposalu][58] (TODO ilustrace)
 %
 %  [58]: https://www.overleaf.com/project/615acd56fbda7f7599e9ba47
 
@@ -466,7 +466,7 @@ semantically related tokens.[^54]
 
 ##### General Model
 
-% První obrázek ze strany 11 [prezentace na semináři PV173][55]
+% První obrázek ze strany 11 [prezentace na semináři PV173][55] (TODO ilustrace)
 %
 % [55]: https://www.overleaf.com/project/6062da8447b92d21b68c5472)
 
@@ -508,7 +508,7 @@ vector features (further known as *vector dimensionality*).
 
 ##### Subtoken Model
 
-% Druhý obrázek ze strany 11 [prezentace na semináři PV173][55]
+% Druhý obrázek ze strany 11 [prezentace na semináři PV173][55] (TODO ilustrace)
 %
 % [55]: https://www.overleaf.com/project/6062da8447b92d21b68c5472)
 
@@ -547,7 +547,7 @@ bitwise arithmetic for their manipulatiob.
 
 ##### Positional Model
 
-% Obrázek ze strany 12 [prezentace na semináři PV173][55]
+% Obrázek ze strany 12 [prezentace na semináři PV173][55] (TODO ilustrace)
 %
 % [55]: https://www.overleaf.com/project/6062da8447b92d21b68c5472)
 
@@ -669,7 +669,7 @@ number of top retrieval results, not for the retrieval itself.
 #### Semantic Matching
 \label{sec:semantic-matching}
 
-% [@novotny2020three, Figure 6]
+% [@novotny2020three, Figure 6] (TODO ilustrace)
 
 To retrieve semantically similar documents, we can use the *soft vector space
 model* [@sidorov2014soft]. Unlike the hard vector space model, which will only
@@ -807,10 +807,10 @@ Extrinsic evaluation measures use a set of *queries* $Q$ that correspond to
 information needs, a collection of retrieval units $D$ that correspond to
 information, and *relevance judgements* from *human assessors* that specify
 whether the information in a retrieval unit $d$ is relevant to the information
-need behind query $q$.
+need in a query $q$.
 Relevance judgements can either be *complete* and cover all combinations $Q
 × D$ of queries and documents or *incomplete*, depending on the size of the
-collection
+collection.
 Relevance judgements can also be either *graded* with several levels of
 relevance or *binary*.
 
@@ -859,17 +859,214 @@ by deploying the system with different types of explanations and measuring user
 satisfaction. [@manning2008introduction, Section 8.6.3]
 
 # State of the Art {#state-of-the-art}
-## Competitions
-### Math Information Retrieval Workshop
-### NTCIR-10 Math
-### NTCIR-11 Math
-### NTCIR-12 MathIR
-### ARQMath-1
-### ARQMath-2
-### ARQMath-3
-## Search Engines
-### MathWebSearch
 
+Despite the lack of attention math information retrieval has historically
+received compared to information retrieval, a substantial amount of research
+has been conducted since the 2008 pioneering workshop.
+
+⇑ In this chapter, I'll describe the state of the art in math information
+retrieval:
+
+- In Section \vref{sec:competitions}, I will describe the past and future
+  math information retrieval competitions.
+
+- In Section \vref{sec:search-engines}, I will describe the search engines that
+  have received the best accuracy in the competitions.
+
+## Competitions
+\label{sec:competitions}
+
+Even though the idea of digital mathematical libraries dates back to the 2002, it wasn't
+until ten years later until the first informal competition of math information
+retrieval engines took place.
+
+% Ganttův diagram jednotlivých soutěží (TODO ilustrace)
+
+During 2003--2015, thirteen *International Conferences on Mathematical
+Knowledge Management (MKM)* [@asperti2003mathematical] have been held and
+provided the first opportunity for individuals and research groups interested
+in math information retrieval to meet and collaborate.
+
+Since 2008, MKM was co-located with the *International Conferences of
+Intelligent Computer Mathematics (CICM)*. During 2008--2011, a group
+of MKM attendees who were interested in digital mathematical libraries
+held a series of *Towards a Digital Mathematics Library* workshops
+[@sojka2008towards; @sojka2009towards; @sojka2010towards; @sojka2011towards],
+which were also co-located with CICM. In 2012, [the *Math Information
+Retrieval (MIR)* workshop][69], which included historically the first
+competition of math information retrieval systems, was co-located with CICM.
+
+ [69]: https://cicm-conference.org/2012/cicm.php?event=mir&menu=general
+
+In 2013, 2014, and 2016, three math information retrieval competitions
+were held as [*Math* tasks][70] [@aizawa2013ntcir; @aizawa2014ntcir;
+@zanibbi2016ntcir] at the *NII Testbeds and Community for Information access
+Research (NTCIR)* workshops hosted by the National Institute of Informatics
+(NII) in Tokyo, Japan.
+
+ [70]: https://ntcir-math.nii.ac.jp
+
+Following a four year pause, in 2020 and 2021, two math information retrieval
+competitions were held as [*Answer Retrieval for Questions on Math (ARQMath)*
+labs][71] at the *Conference and Labs of the Evaluation Forum (CLEF)*
+conferences. In 2022, the final third ARQMath lab will be held.
+
+ [71]: https://www.cs.rit.edu/~dprl/ARQMath
+
+### Math Information Retrieval Workshop
+
+In 2012, [the MIR workshop][69] was held at CICM. For MIR, a dataset of 10,000
+math documents and 10,000 math formulae sampled from the [*Mathematical
+REtrieval Collection (MREC)*][72] [@liska2011web] of arXiv documents and
+extended with documents hand-picked by members of a jury.
+[@liska2013evaluation, Section 2.2.4] Math formulae in the dataset were
+represented using presentation math (Presentation MathML) and content math
+(Content MathML).
+
+ [72]: https://mir.fi.muni.cz/MREC
+
+The two teams that participated competed in three subtasks:
+
+1. *formula search*, where the retrieval units were math formulae,
+2. *full-text search*, where the retrieval units were math documents, and
+3. *open information retrieval*, where the retrieval units were to be decided
+   by the participants.
+
+← In the first two subtasks, the information needs were specified using mixed
+queries with wildcards. In the open information retrieval, the information
+needs were specified using text queries.
+
+For the evaluation, one relevant document was provided for every query in the
+first two subtasks. [@liska2013evaluation, Section 5.1] No relevance judgements
+were produced in the open information retrieval subtask, which was judged by
+members of the jury during the event.
+
+### NTCIR-10 Math
+
+In 2013, [the pilot *Math* task][74] was held at the 10th NTCIR workshop (NTCIR-10).
+[@aizawa2013ntcir]
+For NTCIR-10 Math, a dataset of 100,000 math documents and approximately 100×
+as many math formulae from arXiv was developed. In addition to the math
+representations in the MREC dataset, math formulae in the NTCIR-10 dataset were
+also represented using \TeX.
+
+ [74]: http://ntcir-math.nii.ac.jp/ntcir10-math
+
+The participants competed in the formula search and full-text search with the
+same representation of information needs as in the MIR workshop. Six teams
+participated in formula search and two in full-text search.
+
+For the evaluation, incomplete and graded relevance judgements were produced
+with three levels of relevance: *relevant*, *partially relevant*, and
+*not relevant*. Retrieval results were evaluated using the MAP, P@5, P@10, and P
+evaluation measures. Since these measures are for complete judgements, the
+judgements were made complete by considering unannotated documents to be
+not relevant. Since these measures are also for binary judgements, the judgements
+were binarized using two different approaches:
+
+1. In the *partialy relevant* approach, both partially relevant and relevant
+   documents were considered relevant.
+
+2. In the *relevant* approach, partially relevant documents were considered
+   non-relevant and only relevant judgements were considered relevant.
+
+### NTCIR-11 Math-2
+
+In 2014, [the *Math-2* task][73] was held at the 11th NTCIR workshop (NTCIR-11).
+[@aizawa2014ntcir]
+For NTCIR-11 Math, a dataset of 8,301,578 paragraphs from approximately 105,120
+documents from arXiv was developed. Math formulae were represented as in the
+NTCIR-10 Math dataset.
+
+ [73]: https://ntcir-math.nii.ac.jp/ntcir11-math
+
+The eight teams that participated competed in the *main* subtask, where the
+retrieval units were paragraphs, so that the retrieval results could be more
+focused. As in the full-text search subtask from NTCIR-10 Math, the information
+needs were specified using mixed queries with wildcards.
+
+In addition to the evaluation measures from NTCIR-10 Math, the bpref evaluation
+measure for incomplete and binary judgements was also used.
+
+### NTCIR-12 MathIR
+
+In 2016, [the *MathIR* task][70] was held at the 12th NTCIR workshop (NTCIR-12).
+[@zanibbi2016ntcir]
+For NTCIR-12 MathIR, a dataset of 319,689 math documents and over 590,000 math
+formulae from the English Wikipedia was developed in addition to the NTCIR-11
+Math-2 dataset from arXiv. Math formulae were represented as in the NTCIR-11
+Math-2 and NTCIR-10 Math datasets.
+
+The participants competed in four subtasks (the number of participating teams
+is in parentheses):
+
+- *arXiv main* (5) and *arXiv simto* (2), where the retrieval units were paragraphs
+  from the NTCIR-11 Math-2 dataset,
+- *math wiki* (6), where the retrieval units were math documents from the English
+  Wikipedia, and
+- *math wiki formula* (2), where the retrieval units were math formulae from the
+  English Wikipedia.
+
+← In the *arXiv main*, *math wiki*, and *math wiki formula* subtasks, the
+information needs were specified using mixed queries with wildcards. In the
+*arXiv simto* subtask, the information needs were specified using mixed queries
+with wildcards and also simto regions.
+
+Retrieval results were evaluated using the P@5, P@10, P@15, and P@20 evaluation
+measures.
+
+### ARQMath-1
+
+In 2020, the pilot [*ARQMath-1* lab][71] was held at CLEF. [@zanibbi2020overview]
+For ARQMath-1, a dataset of 2,466,080 math questions, answers, and comments and
+28,320,920 math formulae from the Math StackExchange question answering website
+was developed. Math formulae were represented as in the NTCIR Math datasets.
+
+The participants competed in two tasks:
+
+1. *find answers*, where the retrieval units were math answers and
+2. *formula search*, where the retrieval units were math formulae.
+
+← In both tasks, the information needs were specified using mixed queries.
+Five teams participated in finding answers and tree in formula search.
+
+For the evaluation, incomplete and graded relevance judgements were produced
+with four levels of relevance: *high*, *medium*, *low*, and *not relevant*.
+Retrieval results were primarily evaluated using the nDCG' evaluation measure.
+The MAP' and P@10 measures were also reported. Since the P@10 measure is for
+complete judgements, the judgements were made complete by considering
+unannotated documents to be non-relevant. Since the MAP' and P@10 measures are
+for binary judgements, the judgements were binarized by considering documents
+with high and medium relevance to be relevant.
+
+### ARQMath-2
+
+In 2021, the *ARQMath-2* lab was held at CLEF. [@behrooz2021overview]
+For ARQMath-2, the dataset from ARQMath-1 was used.
+
+The participants competed the same task as in ARQMath-1.
+Nine teams participated in finding answers and six in formula search.
+
+Retrieval results were evaluated using the P'@10 evaluation measure instead of
+the P@10 evaluation measure from ARQMath-1.
+
+### ARQMath-3
+
+In 2022, the *ARQMath-3* lab is going to be held at CLEF.
+Unless prolonged, CLEF labs are only held for three years, and the organizers
+announced their not to prolong the ARQMath lab. [@zanibbi2021arqmath]
+Therefore, ARQMath-3 may be the last ARQMath lab.
+
+For ARQMath-3, I proposed the historically first *math open-domain question
+answering task (Math OpenQA)*. [@novotny2021proposala; @novotny2021proposalb]
+Unlike finding answers, Math OpenQA systems can be generative and synthesize
+answers from multiple sources, pushing the envelope of math information
+retrieval.
+
+## Search Engines
+\label{sec:search-engines}
+
+### MathWebSearch
 ### Math Indexer and Searcher
 \label{sec:mias}
 
@@ -949,9 +1146,9 @@ $=$, $0$, $)$, and as the following comma-separated list of OPT nodes: `(`,
 `(`, `O!double-factorial`, `(`, `V!x`, `)`, `O!minus`, `O!SUP`, `(`, `V!y`,
 `N!2`, `)`, `)`, `U!eq`, `N!0`, `)`.
 
-In the *answer retrieval* math information retrieval task of the ARQMath-1 lab,
-we used the prefix and infix notations in two of our primary math
-information retrieval systems that jointly modeled both text and math:
+In the *find answers* task of the ARQMath-1 lab, we used the prefix and infix
+notations in two of our primary math information retrieval systems that jointly
+modeled both text and math:
 
 - *MIRMU-SCM* [@novotny2020three, Section 4], which was based on a soft vector
   space model with token embeddings from a fastText subtoken shallow
@@ -1447,8 +1644,7 @@ embeddings of text and math or evaluated on math information retrieval.
 
 In 2020 and 2021, we developed two primary math information retrieval
 systems[^12] using joint token and sentence embeddings of text and math for the
-*answer retrieval* math information retrieval task of the ARQMath-1 and
-ARQMath-2 labs:
+*find answers* task of the ARQMath-1 and ARQMath-2 labs:
 
 - *MIRMU-SCM* [@novotny2020three, Section 4; @novotny2021ensembling, Section
   3.3], which was based on a soft vector space model with token embeddings from
@@ -1578,17 +1774,15 @@ not evaluate their rank-based fusion technique on math information retrieval.
 #### Experiments
 
 In 2020, we developed the *MIRMU-Ensemble* rank-based fusion technique for the
-*answer retrieval* math information retrieval task of the ARQMath-1 lab.
-[@novotny2020three, Section 7]. We used our technique to ensemble the primary
-systems of our MIRMU team.
+*find answers* task of the ARQMath-1 lab.  [@novotny2020three, Section 7]. We
+used our technique to ensemble the primary systems of our MIRMU team.
 
 In 2021, we developed two new supervised rank-based fusion techniques
 (*MIRMU-WIBC* and *MIRMU-RBC*) and we used them together with our unsupervised
 *MIRMU-Ensemble* (further known as *MIRMU-IBC*) and the unsupervised reciprocal
-rank fusion (further known as *MIRMU-RRF*) for the *answer retrieval*
-math information retrieval task of the ARQMath-2 lab. [@novotny2021ensembling,
-Section 4] We used our technique to ensemble all ten systems of our MIRMU and
-MSM teams.[^17]
+rank fusion (further known as *MIRMU-RRF*) for the *find answers*
+task of the ARQMath-2 lab. [@novotny2021ensembling, Section 4] We used our
+technique to ensemble all ten systems of our MIRMU and MSM teams.[^17]
 
  [^17]: We entered the ARQMath-2 lab as two teams: our lab (MIRMU) and the
         students of the FI:PV211 information retrieval course taught at the
@@ -1661,8 +1855,7 @@ B of the *community question answering* information retrieval task of
 SemEval-2016 and SemEval-2017.
 
 In 2021, we developed three primary math information retrieval systems using
-weighted zone scoring for the *answer retrieval* math information retrieval
-task of the ARQMath-2 lab:[^17]
+weighted zone scoring for the *find answers* task of the ARQMath-2 lab:[^17]
 
 - *MSM-MG* [@novotny2021ensembling, Section 3.1], which represents every answer
   as its body text and the title, the body text, and the tags of its parent
@@ -1702,9 +1895,9 @@ zone scoring can be important for information retrieval.
 
 We also showed that our three math information retrieval systems that used
 weighted zone scoring all achieved better accuracy than our six systems that
-did not use weighted zone scoring on the *answer retrieval* math information
-retrieval task of the ARQMath-2 lab. This shows that weighted zone scoring can
-be important for math information retrieval.
+did not use weighted zone scoring on the *find answers* task of the ARQMath-2
+lab. This shows that weighted zone scoring can be important for math
+information retrieval.
 
 #### Future Work
 
@@ -1743,15 +1936,14 @@ approximate math information retrieval more accurate:
 
 Recent results show that dense retrieval techniques can achieve higher accuracy
 than sparse retrieval techniques on information retrieval tasks.
-[@lin2021batch] At the *answer retrieval* math information retrieval task of
-the ARQMath-1 and ARQMath-2 labs, sparse information retrieval systems still
-achieved the best accuracy, but the gap is closing: Whereas at ARQMath-1, only
-three[^19] out of 23 systems (13\%) used dense retrieval and the best dense
-retrieval system only received the seventh best accuracy in the competition,
-[@zanibbi2020overview, Table A1], at ARQMath-2, nine[^20] out of 40 systems
-(23\%) used dense retrieval and the best dense retrieval systems received the
-second and third best accuracies in the competition. [@behrooz2021overview,
-Table 4]
+[@lin2021batch] At the *find answers* task of the ARQMath-1 and ARQMath-2 labs,
+sparse information retrieval systems still achieved the best accuracy, but the
+gap is closing: Whereas at ARQMath-1, only three[^19] out of 23 systems (13\%)
+used dense retrieval and the best dense retrieval system only received the
+seventh best accuracy in the competition, [@zanibbi2020overview, Table A1], at
+ARQMath-2, nine[^20] out of 40 systems (23\%) used dense retrieval and the best
+dense retrieval systems received the second and third best accuracies in the
+competition. [@behrooz2021overview, Table 4]
 
  [^19]: The three systems were, by decreasing accuracy:
 
@@ -1849,12 +2041,12 @@ embeddings on six text classification tasks. [@novotny2020text, Figure 8]
 We also reported the optimal hyperparameter values for our orthogonalization
 algorithm on all six tasks. [@novotny2020text, Table 2]
 
-In 2020 and 2021, we evaluated the soft vector space model on the *answer
-retrieval* math information retrieval task of the ARQMath-1 and ARQMath-2 labs
-to see if the soft vector space model would be more accurate than the hard
-vector space model. [@novotny2020three, Section 4; @novotny2021ensembling,
-Section 3.3] We also reported the optimal hyperparameter values for our
-orthogonalization algorithm. [@novotny2020three, Table 1]
+In 2020 and 2021, we evaluated the soft vector space model on the *find
+answers* task of the ARQMath-1 and ARQMath-2 labs to see if the soft vector
+space model would be more accurate than the hard vector space model.
+[@novotny2020three, Section 4; @novotny2021ensembling, Section 3.3] We also
+reported the optimal hyperparameter values for our orthogonalization algorithm.
+[@novotny2020three, Table 1]
  
  [^22]: See Section \vref{sec:joint-token-embeddings-of-text-and-math} for a
         discussion about the joint token embeddings of text and math that we
@@ -2198,9 +2390,9 @@ In 2020, we compared the query time of the restricted model and the
 non-restricted model on six text classification tasks. [@novotny2020text,
 Figure 9]
 
-In 2021, we evaluated the query time of the restricted model on the *answer
-retrieval* math information retrieval task of the ARQMath-1 and ARQMath-2 labs.
-[@novotny2020three, Table 5; @novotny2021ensembling, Figure 11]
+In 2021, we evaluated the query time of the restricted model on the *find
+answers* task of the ARQMath-1 and ARQMath-2 labs. [@novotny2020three,
+Table 5; @novotny2021ensembling, Figure 11]
 
 #### Results
 
@@ -2211,8 +2403,7 @@ whereas the non-restricted model had been implemented using faster dense matrix
 operations. We offer further explanation below.
 
 We also showed that the restricted model was the slowest in query time of all
-our systems on the *answer retrieval* math information retrieval task of the
-ARQMath-1 and ARQMath-2 labs.
+our systems on the *find answers* task of the ARQMath-1 and ARQMath-2 labs.
 
 #### Future Work
 
@@ -2411,11 +2602,11 @@ together with the only public implementation of the positional model.
 \label{sec:strengths-and-weaknesses}
 
 In 2021, we used two unsupervised rank-based fusion[^42] techniques for the
-*answer retrieval* math information retrieval task of the ARQMath-2 lab
-[@novotny2021ensembling, Section 4] to ensemble all ten systems of our teams.
-We were also interested if our techniques could benefit from a small number of
-diverse systems. However, it was unclear how to select a small number of
-diverse systems and how to interpret their diversity.
+*find answers* task of the ARQMath-2 lab [@novotny2021ensembling, Section 4] to
+ensemble all ten systems of our teams.  We were also interested if our
+techniques could benefit from a small number of diverse systems. However, it
+was unclear how to select a small number of diverse systems and how to
+interpret their diversity.
 
  [^42]: See Section \vref{sec:rank-based-fusion} for the discussion of the
         development and the accuracy of our rank-based fusion techniques.
@@ -2468,11 +2659,11 @@ visualization for the exploration of the MREC dataset. However, the interactive
 visualization ignored math and modeled only text.
 
 In 2020, a Math StackExchange dataset was released for the ARQMath-1 lab. On
-the *answer retrieval* math information retrieval task of ARQMath-1, we showed
-that our *MIRMU-SCM* system[^44] was more accurate than any other individual
-information retrieval system from our MIRMU team. Additionally, *MIRMU-SCM*
-modeled both text and math. However, no interactive visualization for exploring
-the Math StackExchange dataset using the *MIRMU-SCM* system had been created. 
+the *find answers* task of ARQMath-1, we showed that our *MIRMU-SCM*
+system[^44] was more accurate than any other individual information retrieval
+system from our MIRMU team. Additionally, *MIRMU-SCM* modeled both text and
+math. However, no interactive visualization for exploring the Math
+StackExchange dataset using the *MIRMU-SCM* system had been created. 
 
  [^44]: See Section \vref{sec:joint-token-embeddings-of-text-and-math}
         for a discussion of the *MIRMU-SCM* systems and its accuracy.

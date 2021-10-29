@@ -212,6 +212,21 @@
 \usepackage{amsmath,centernot}
 \newunicodechar{◌}{\dottedcircle}
 \newunicodechar{←}{\noindent\ignorespaces}
+\newunicodechar{↑}{\looseness=-1\ignorespaces}
+\newunicodechar{⇑}{%
+  ↑
+  \begingroup
+    \lsstyle
+    \markdownSetup{
+      renderers = {
+        interblockSeparator = {%
+          \endgroup
+          \markdownRendererInterblockSeparator
+        },
+      },
+    }%
+    \ignorespaces
+}
 \newunicodechar{→}{\ensuremath{\rightarrow}}
 \newunicodechar{×}{\ensuremath{\times}}
 \newunicodechar{⇒}{\!\!\implies\!\!}
