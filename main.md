@@ -413,10 +413,11 @@ Free text queries made information retrieval accessible to a wide range of
 users. Additionally, the hard vector space model would present the users
 with a *ranked* list of documents starting with the most relevant, which resolved
 the *feast or famine* problem of boolean retrieval. Furthermore, advanced
-techniques for token weighting such as *TF-IDF* [@salton1988termweighting] and
-*BM25* [@robertson1994okapi] and for weighted zone scoring
-[@manning2008introduction, Section 6.1] were later developed for the hard
-vector space model, further improving its accuracy in the eyes of its users.
+techniques for token weighting such as *TF-IDF* [@salton1988termweighting],
+*BM25* [@robertson1994okapi], and *BM25⁺* [@lv2011lower] and for weighted zone
+scoring [@manning2008introduction, Section 6.1] were later developed for the
+hard vector space model, further improving its accuracy in the eyes of its
+users.
 
 In concept, both documents and queries are represented as vectors in the hard
 vector space model and the relevance of a document to a query is estimated
@@ -688,12 +689,14 @@ and $\vec y$:
 where $s\_{ij}$ can be the cosine similarity $\cos(\vec i, \vec j)$ between the
 global token embeddings $\vec i$ and $\vec j$ of tokens $i$ and $j$ or another
 measure of semantic token relatedness. [@charlet2017simbow] Intuitively, the soft
-vector space model will *expand the query* with related tokens and then use
+vector space model will *expand the query*[^78] with related tokens and then use
 cosine similarity. The worst-case time complexity of the soft cosine measure is
 $\mathcal{O}(n^2)$, where $n$ is the number of unique tokens in the documents,
 but it can be reduced to $\mathcal{O}(n)$ (the same as the hard vector space
 model) by restricting the measures of relatedness that the soft vector space
 model can use.  [@novotny2018implementation]
+
+ [^78]: Other useful query expansion techniques include *RM3* [@abdul2004umass].
 
 An alternative technique to determine the pairwise semantic similarity of two
 documents is the *word mover's distance* [@kusner2015from], which will find the
@@ -1149,30 +1152,86 @@ library, some of them (Approach0) have [a live demo.][77]
 
 #### Tangent, Tangent-2, and Tangent-3
 
-*Tangent* [@wangari2014discovering; @stalnaker2015math] was an experimental
-system developed by Richard Zanibbi's DPLR research group and later evolved
-into the *Tangent-2* [@pattaniyil2014combining] and *Tangent-3*
-[@davila2016tangent] systems that participated in the NTCIR-11 Math-2 and
-NTCIR-12 MathIR tasks.
+↑ The *Tangent* system [@wangari2014discovering; @stalnaker2015math] was
+developed by Richard Zanibbi's DPLR research group and evolved into the
+*Tangent-2* [@pattaniyil2014combining] and *Tangent-3* [@davila2016tangent]
+systems that participated in the NTCIR-11 Math-2 and NTCIR-12 MathIR tasks.
 
-Tangent-2 and Tangent-3 index presentation math formulae using a hard vector space model
-with the TF-IDF term weighting scheme. The math formulae are tokenized by
-extracting paths in the SLT math representation. If the retrieval units are not
-math formulae, their text is indexed using a different hard vector space model.
+Tangent-2 and Tangent-3 index presentation math formulae using a hard vector
+space model with the TF-IDF term weighting scheme. The math formulae are
+tokenized by extracting paths in the SLT math representation. If the retrieval
+units are not math formulae, their text is indexed using a different hard
+vector space model.
 
 In the retrieval, Tangent-2 and Tangent-3 retrieve math formulae that match the
-query from the formula index. If the retrieval units are not math formulae,
-then Tangent-2 and Tangent-3 also retrieve the units that match the query from
-the text index. Then, the similarity score of a retrieval unit is the sum of
-the similarity scores of all formulae in the unit combined with the similarity
-score of the unit's text.
+query from the formula index and rerank them using structural matching
+techniques. If the retrieval units are not math formulae, then Tangent-2 and
+Tangent-3 also retrieve the units that match the query from the text index.
+Then, the similarity score of a retrieval unit is the sum of the similarity
+scores of all formulae in the unit aggregated with the similarity score of the
+unit's text.
+
+#### Tangent-L
+
+The *Tangent-L* system [@fraser2018choosing; @ng2020dowsing; @ng2021dowsing]
+evolved from Tangent-3, was developed by Frank Tompa's research group, and
+participated post-hoc in the NTCIR-12 MathIR task and personally in the ARQMath
+labs.
+
+Unlike Tangent-3, which uses the hard vector space model with the TF-IDF term
+weighting scheme, Tangent-L uses the more accurate BM25 and BM25⁺ term
+weighting schemes.  Unlike Tangent-3, which only tokenizes math formulae by
+extracting paths in the SLT, Tangent-L uses several tokenization strategies.
+
+In the retrieval, unlike Tangent-3, which reranks the retrieved math formulae,
+Tangent-L does not rerank the retrieved math formulae.
 
 #### Tangent-S
-#### Tangent-L
+
+The *Tangent-S* system [@davila2017layout] also evolved from Tangent-3, was
+developed by DPLR, and was used as a *baseline* system in the ARQMath labs.
+
+Unlike Tangent-3, which only indexes presentation math formulae in the SLT
+representation, Tangent-S also indexes content math formulae in the OPT
+representation.
+
+In the retrieval, unlike Tangent-3, which immediately reranks the retrieved
+math formulae using structural matching techniques, Tangent-S applies score
+aggregation to the techniques before the reranking.
+
 #### Approach0
-#### Tangent-CFT
-#### Tangent-CFTED
-### TU\\\_DBS
+
+The [*Approach0* system][77] [@zhong2015novel; @zhong2016opmes;
+@zhong2019structural; @zhong2021approach] evolved from Tangent-S, was developed
+by InfoLab and DPLR, was used as a baseline system in the ARQMath-1 lab, and
+participated in the ARQMath-2 lab.
+
+Unlike Tangent-S, which still indexes presentation math formulae in the SLT
+representation, Approach0 only indexes content math formulae in the OPT
+representation.
+
+In the retrieval, unlike Tangent-S, which reranks the retrieved math formulae
+using structural matching techniques, Approach0 uses both structural and
+semantic matching techniques for the reranking. Additionally, in the ARQMath-2
+lab, Approach0 used the RM3 query expansion technique.
+
+#### Tangent-CFT and Tangent-CFTED
+
+The *Tangent-CFT* and *Tangent-CFTED* system [@mansouri2019tangent;
+@mansouri2020dprl; @mansouri2021dprl] also evolved from Tangent-S, were
+developed by DLPR, and participated post-hoc in the NTCIR-12 MathIR task and
+personally in the ARQMath labs.
+
+Unlike Tangent-S, which uses the hard vector space model, Tangent-CFT and
+Tangent-CFTED use the soft vector space model with fastText token embeddings as
+a source of token relatedness. Additionally, unlike Tangent-S, which tokenizes
+math formulae by extracting paths in the SLT and OPT, Tangent-CFT and
+Tangent-CFTED only extract tuples of neighboring nodes.
+
+In the retrieval, unlike Tangent-S, which reranks the retrieved math formulae
+using structural matching techniques, Tangent-CFT does not rerank the retrieved
+math formulae and Tangent-CFTED uses a different structural matching technique:
+the tree edit distance.
 
 # Accuracy {#accuracy}
 There are many advanced features we may wish from a math information retrieval
@@ -2169,10 +2228,10 @@ of the MSM team.[^23]
 #### Future Work
 
 At the ARQMath-1 and ARQMath-2 labs, state-of-the-art accuracy was achieved
-by systems that used the BM25 term weighting scheme, whereas our soft vector
-space model used the TF-IDF term weighting scheme. Future work should study in
-more detail the impact of term weighting schemes on the accuracy of the soft
-vector space model on math information retrieval.
+by systems that used the BM25 and BM25⁺ term weighting schemes, whereas our
+soft vector space model used the TF-IDF term weighting scheme. Future work
+should study in more detail the impact of term weighting schemes on the
+accuracy of the soft vector space model on math information retrieval.
 
 #### Reproducibility
 

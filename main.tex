@@ -53,6 +53,7 @@
 %% Term index
 \usepackage{imakeidx}
 \makeindex[name = subject, title = {Subject Index}, intoc]
+\makeindex[name = author,  title = {Author Index},  intoc]
 
 %% Context-sensitive quotation marks
 \usepackage[babel]{csquotes}
@@ -134,10 +135,11 @@
 
 \markdownInput[slice=conclusion]{main.md}
 
-\chapter{Acronyms}
 {\sloppy\printbibliography[heading=bibintoc]}
-\printindex[subject]
+\printindex[author]
 \chapter{Glossary of Research Groups}
+\chapter{Acronyms}
+\printindex[subject]
 
 \appendix
 \chapter{List of Author's Publications}
