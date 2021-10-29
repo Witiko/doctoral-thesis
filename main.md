@@ -2851,3 +2851,5 @@ The code of the interactive visualization is [available on GitHub.][45]
 ### Research Questions
 ### Thesis Contributions
 ## Future Work
+
+# List of Author's Publications {#publications}
