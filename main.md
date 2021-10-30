@@ -33,8 +33,8 @@ have to fulfill.
 \label{sec:digital-mathematical-libraries}
 
 According to @bouche2008some, the first definition of a digital mathematical
-library goes back to the eponymous project of the Cornell University
-[@thomas2004digital] with the following ambitious vision statement:
+library goes back to the project of the Cornell University [@thomas2004digital]
+with the following vision statement:
 
 > In light of mathematicians' reliance on their discipline's rich published
 > heritage and the key role of mathematics in enabling other scientific
@@ -65,16 +65,16 @@ Documents in arXiv span the fields of mathematics, physics, astronomy,
 electrical engineering, computer science, quantitative biology, statistics,
 mathematical finance, and economics.
 
-The information retrieval system of arXiv uses both the metadata of documents,
-such as author names, document titles, and abstracts, and document fulltexts.
+The information retrieval system of arXiv uses both the metadata of documents
+(such as author names, document titles, and abstracts) and document fulltexts.
 
 ### Mini-DML
 \label{sec:mini-dml}
 
 [Mini-DML][49] is a decentralized digital mathematical library that indexes
 more than 450,000 documents from fifteen national centralized digital
-mathematical libraries in six European countries -- Germany, France,
-Czech~Republic, Poland, Italy, Portugal -- in the United States, and in Japan.
+mathematical libraries in six European countries (Germany, France,
+Czech~Republic, Poland, Italy, Portugal), in the United States, and in Japan.
 Mini-DML has been deployed since 2008 [@bouche2004introducing] and is now
 operated and maintained by the Cellule MathDoc research group at Université
 Grenoble Alpes in Grenoble, France.
@@ -115,7 +115,7 @@ of the Global Digital Mathematical Library (GDML) is being pursued by two
 independent committees:
 
 1. The Committee on Planning a Global Library of the Mathematical
-   Sciences of the U.S National Research Council held meetings,
+   Sciences of the US National Research Council held meetings,
    conducted public data gathering sessions, and publicized GDML
    in 2012 and 2013.
    
@@ -139,9 +139,9 @@ independent committees:
 
  [52]: https://video-archive.fields.utoronto.ca/list/event/1053
 
-Both initiatives instill hope that in the near future, the mathematicians'
-dream of a comprehensive digital collection of the world's mathematics may
-become a reality.
+Both initiatives give hope that in the near future, the mathematicians' dream
+of a comprehensive digital collection of the world's mathematics may become a
+reality.
 
 ## Math Representations
 \label{sec:math-representations}
@@ -152,9 +152,10 @@ words can be combined into phrases and sentences, and semantics, which give the
 words, phrases, and sentences their meaning.
 
 Similarly, we can represent expressions in the language of mathematics using
-their presentation, structural, and semantic aspects. In this section, we will
-discuss each of these aspects, show examples of formal languages that are
-commonly used for their representation and how they can interoperate.
+their presentation aspects, structural aspects, and semantic aspects. In this
+section, I will discuss each of these aspects, show examples of formal
+languages that are commonly used for their representation and how they can
+interoperate.
 
 ### Presentation Math
 
@@ -248,7 +249,7 @@ y^2 = 0$` in \TeX.
 ##### Presentation MathML
 
 In 1998,[^59] the World Wide Web Consortium has developed the Presentation MathML
-XML language, which \`\`[…] can be used to describe the layout structure of
+XML language, which \`\`can be used to describe the layout structure of
 mathematical notation.'' [@buswell1998mathematical, Section 3.1]
 To give an example, Figure \vref{fig:pmml-and-cmml} shows how the formula $x!!
 - y^2 = 0$ can be represented in Presentation MathML.
@@ -302,7 +303,7 @@ represent content math in math information retrieval systems.
 ##### Content MathML
 
 Since 1998,[^63] the World Wide Web Consortium has been developing the Content
-MathML XML language, which can provide \`\`[…] an explicit encoding of the
+MathML XML language, which can provide \`\`an explicit encoding of the
 *underlying mathematical meaning* of an expression, rather than any particular
 rendering for the expression'' [@buswell1998mathematical, Section 4.1.1]
 To give an example, Figure \vref{fig:pmml-and-cmml} shows how the formula $x!!
@@ -326,7 +327,7 @@ To give an example, Figure \vref{fig:opt} shows how the formula $x!!
 
 In natural languages, a word (bank) may have a different meaning depending
 on its surroundings (commercial bank and river bank) and different words
-may have nearly the same meaning (begin and initiate). A sentence may also have
+may have nearly the same meaning (begin and start). A sentence may also have
 a different meaning depending on the genre of the text, the sociocultural
 setting, or even the reader themselves. Conversely, two different sentences may
 have the same meaning.
@@ -359,7 +360,7 @@ focused tools that can assist with the development of formal proofs.
 ##### OpenMath
 
 Since 1990, the OpenMath Society has been developing the *OpenMath* XML
-language, which can representt \`\`[…] semantically rich mathematical
+language, which can represent \`\`semantically rich mathematical
 objects''. To represent the potentially infinite number of math symbols from
 different math theories, *OpenMath* uses third-party *content directories*[^66]
 that define math symbols and their meaning.
@@ -389,7 +390,7 @@ alternative to OpenMath content directories with support for inheritance.
 
  /figures/math-information-retrieval.tex
 
-Here is a textbook definition of information retrieval:
+The following is a textbook definition of information retrieval:
 
 > Information retrieval (IR) is finding material (usually documents) of
 > an unstructured nature (usually text) that satisfies an information need
@@ -405,7 +406,7 @@ theorems, and proofs. Furthermore, the language of mathematics is inherently
 more structured than natural text, which brings unique opportunities and
 challenges. Finally, whereas in today's information retrieval, users commonly
 express their *information needs* as queries in natural language, math
-information retrieval offers more variety:
+information retrieval offers more variety.
 
 In math information retrieval, users can express information needs as queries in
 natural language (further known as *text queries*), but they can also be
@@ -516,7 +517,7 @@ and documents for dense retrieval.
 
 #### Shallow Log-Bilinear Language Models
 
-After a long reign of topic modeling methods,[^53] [@deerwester1990indexing]
+After a long reign of topic modeling methods [@deerwester1990indexing],[^53]
 *shallow log-bilinear language models* emerged as a faster method for learning
 continuous representations of tokens (further known as *token embeddings*),
 which can be stored in a dense vector database and used to retrieve
@@ -536,7 +537,7 @@ In 2013, @mikolov2013efficient developed the *Word2Vec general language
 model*, which learned continuous representations of tokens (further known as
 *token embeddings*). As its objective, the model would predict a *masked token*
 $w_t$ from its context $C\_t = w\_{t - c}$, …, $w\_{t - 1}$, $w\_{t + 1}$, …,
-$w\_{t + c}$, where $c$ is the *context window size* and $w\_1, …, w\_T$ is the
+$w\_{t + c}$, where $c$ is the *context window size* and $w\_1, w\_2, …$ is the
 corpus:%
 %
 \begin{equation}
@@ -611,7 +612,7 @@ output vectors $\vec{v}\_{w\_t}$:%
 \end{equation}
 %
 This decreased the size of the token embeddings 16× and allowed the use of fast
-bitwise arithmetic for their manipulatiob.
+bitwise arithmetic for their manipulation.
 
 ##### Positional Model
 
@@ -620,7 +621,7 @@ function, which is important for predicting the masked token. Additionally, if
 the context $C\_t$ is large, distant tokens only introduce noise to the context
 vector $\vec{u}\_{C\_t}$.
 
-To better adapt to these situations, we would like to have separate input
+To better adapt to these situations, it would be useful to have separate input
 vectors $\vec{u}\_{w, p}$ for different positions $p ∈ P$ of a context token
 $w$:%
 %
@@ -679,7 +680,9 @@ long-short-term memory (LSTM) cells of RNNs: Instead of computing the current
 the current memory and hidden state would be computed as weighted averages of
 all previous memories and hidden states. Dense attention would act as a
 random-access memory mechanism, enabling the LSTM to recall long-range
-memories. In 2017, @vaswani2017attention proposed the *Transformer* architecture,
+memories.
+
+In 2017, @vaswani2017attention proposed the *Transformer* architecture,
 which successfully replaced recurrence by the vertical stacking of attention
 and which has since been shown to be a Turing-complete [@perez2019turing]
 universal approximator [@yun2020transformers].
@@ -751,15 +754,15 @@ x, \vec y)$ between their sparse vectors $\vec x$ and $\vec y$:
   {\sqrt{\vec xᵀ · S · \vec x} · \sqrt{\vec yᵀ · S · \vec y}}.
 \end{equation}
 %
-where $s\_{ij}$ can be the cosine similarity $\cos(\vec i, \vec j)$ between the
-global token embeddings $\vec i$ and $\vec j$ of tokens $i$ and $j$ or another
-measure of semantic token relatedness. [@charlet2017simbow] Intuitively, the soft
-vector space model will *expand the query*[^78] with related tokens and then use
-cosine similarity. The worst-case time complexity of the soft cosine measure is
-$\mathcal{O}(n^2)$, where $n$ is the number of unique tokens in the documents,
-but it can be reduced to $\mathcal{O}(n)$ (the same as the hard vector space
-model) by restricting the measures of relatedness that the soft vector space
-model can use.  [@novotny2018implementation]
+where $S\_{ij}$ can either be the cosine similarity $\cos(\vec i, \vec j)$
+between the global token embeddings $\vec i$ and $\vec j$ of tokens $i$ and $j$
+or another measure of semantic token relatedness. [@charlet2017simbow]
+Intuitively, the soft vector space model will *expand the query*[^78] with
+related tokens and then use cosine similarity. The worst-case time complexity
+of the soft cosine measure is $\mathcal{O}(n^2)$, where $n$ is the number of
+unique tokens in the documents. It can be reduced to $\mathcal{O}(n)$ (the
+same as the hard vector space model) by restricting the measures of relatedness
+that the soft vector space model can use.  [@novotny2018implementation]
 
  [^78]: Other useful query expansion techniques include *RM3* [@abdul2004umass].
 
@@ -769,8 +772,8 @@ documents is the *word mover's distance* [@kusner2015from], which will find the
 two documents:%
 %
 \begin{equation}
-  \min\_F Σ\_i Σ\_j f\_{ij} · s\_{ij}
-  `  subject to  ` Σ\_j f\_{ij} = x\_i, Σ\_i f\_{ij} = y\_j,
+  \min\_F Σ\_i Σ\_j F\_{ij} · S\_{ij}
+  `  subject to  ` Σ\_j F\_{ij} = x\_i, Σ\_i F\_{ij} = y\_j,
 \end{equation}
 %
 where $S$ is a measure of token relatedness like in the soft cosine similarity.
@@ -792,27 +795,31 @@ also often rely on token embeddings of language models, which contain
 human-like biases. [@caliskan2017semantics] These assumptions and biases cause
 systematic errors and affect the retrieval results.
 
-In this section, I will describe *Learning to rank* techniques, which attempt
+In this section, I will describe *learning to rank* techniques, which attempt
 to remove these systematic errors and improve the ranking of results by
 combining the results of several individual systems.
 
-*Score aggregation* is a learning to rank technique that combines several
-structural and semantic matching techniques and corrects their errors before
-they can influence the retrieval results. An example of score aggregation
-is the *CombMNZ* technique [@lee1997analyses], which combines the scores
-$s\_i$ that a document $d$ received from $N\_d$ matching techniques to a
+##### Score Aggregation
+
+A learning to rank technique that combines several structural and semantic
+matching techniques and corrects their errors before they can influence the
+retrieval results is called *score aggregation*. An example of score
+aggregation is the *CombMNZ* technique [@lee1997analyses], which combines the
+scores $s\_i$ that a document $d$ received from $N\_d$ matching techniques to a
 corrected score:
 %
 \begin{equation}
     `CombMNZScore`(d) = N\_d · Σ\_i s\_i(d)
 \end{equation}
 
-*Rank-based fusion* is a learning to rank technique that combines the results
-of several information retrieval systems and corrects the results before users
-can see them. An example of rank-based fusion is the *reciprocal rank fusion*
-[@cormack2009reciprocal], which combines the ranks $r\_i(d)$ that a document
-$d$ received from several information retrieval systems to a final score that
-determines the rank of the document in the corrected results:
+##### Rank-Based Fusion
+
+A learning to rank technique that combines the results of several information
+retrieval systems and corrects the results before users can see them is called
+*rank-based fusion*. An example of rank-based fusion is the *reciprocal rank
+fusion* [@cormack2009reciprocal], which combines the ranks $r\_i(d)$ that a
+document $d$ received from several information retrieval systems to a final
+score that determines the rank of the document in the corrected results:
 %
 \begin{equation}
   `RRFScore`(d) = Σ\_i \frac{1}{k + r\_i(d)},
@@ -842,7 +849,7 @@ An important distinction between evaluation measures of information retrieval
 accuracy is whether they are *intrinsic* or *extrinsic*. Intrinsic evaluation
 measures are defined on small tasks and are easily reproducible in a laboratory
 setting. In contrast, extrinsic evaluation measures are defined on real-world
-applications and may require the participation of a human in the loop.
+applications and may require human participants.
 
 #### Intrinsic Measures
 
@@ -889,7 +896,7 @@ unranked retrieval results, we can use the *precision (P)* and *recall (R)*
 [@manning2008introduction, Section 8.3] evaluation measures for complete and
 binary relevance judgements. To evaluate ranked retrieval results, we can use
 the *precision at $k$ (P@$k$)* and *mean average precision (MAP)*
-[@manning2008introduction, Section 8.4] also for complete and binary
+[@manning2008introduction, Section 8.4] for complete and binary
 judgements, *Bpref* [@buckley2004retrieval] for incomplete and binary
 judgements, and *NDCG* for complete and graded judgements.
 [@manning2008introduction, Section 8.4]
@@ -945,7 +952,7 @@ retrieval:
   math information retrieval competitions.
 
 - In Section \vref{sec:systems}, I will describe the math information retrieval
-  systems that have received the best accuracy in the competitions.
+  systems that have achieved the best accuracy in the competitions.
 
 ## Competitions
 \label{sec:competitions}
@@ -956,18 +963,18 @@ information retrieval systems took place, see Figure \vref{fig:competitions}.
 
  /figures/competitions.tex
 
-During 2003--2015, thirteen *International Conferences on Mathematical
+During 2003--2015, thirteen *International Conference on Mathematical
 Knowledge Management (MKM)* [@asperti2003mathematical] have been held and
 provided the first opportunity for individuals and research groups interested
 in math information retrieval to meet and collaborate.
 
-Since 2008, MKM was co-located with the *International Conferences of
+Since 2008, MKM was co-located with the *International Conference of
 Intelligent Computer Mathematics (CICM)*. During 2008--2011, a group
 of MKM attendees interested in digital mathematical libraries
 held a series of *Towards a Digital Mathematics Library* workshops
 [@sojka2008towards; @sojka2009towards; @sojka2010towards; @sojka2011towards],
 which were also co-located with CICM. In 2012, the *Math Information
-Retrieval (MIR)* workshop, which included historically the first
+Retrieval (MIR)* workshop, which included the historically first
 competition of math information retrieval systems, was co-located with CICM.
 
  [69]: https://cicm-conference.org/2012/cicm.php?event=mir&menu=general
@@ -1012,8 +1019,8 @@ needs were specified using text queries.
 
 For the evaluation, one relevant document was provided for every query in the
 first two subtasks. [@liska2013evaluation, Section 5.1] No relevance judgements
-were produced in the open information retrieval subtask, which was judged by
-members of the jury during the event.
+were produced in the open information retrieval subtask and the subtask was
+judged by members of the jury during the event.
 
 ### NTCIR-10 Math
 
@@ -1046,8 +1053,7 @@ were binarized using two different approaches:
 
 ### NTCIR-11 Math-2
 
-In 2014, [the *Math-2* task][73] was held at the 11th NTCIR workshop (NTCIR-11).
-[@aizawa2014ntcir]
+In 2014, [the *Math-2* task][73] was held at the 11th NTCIR workshop (NTCIR-11).~[@aizawa2014ntcir]
 For NTCIR-11 Math, a dataset of 8,301,578 paragraphs from approximately 105,120
 documents from arXiv was developed. Math formulae were represented as in the
 NTCIR-10 Math dataset.
@@ -1102,7 +1108,7 @@ The participants competed in two tasks:
 2. *formula search*, where the retrieval units were math formulae.
 
 ← In both tasks, the information needs were specified using mixed queries.
-Five teams participated in finding answers and tree in formula search.
+Five teams participated in finding answers and three in formula search.
 
 For the evaluation, incomplete and graded relevance judgements were produced
 with four levels of relevance: *high*, *medium*, *low*, and *not relevant*.
@@ -1128,7 +1134,7 @@ the P@10 evaluation measure from ARQMath-1.
 
 In 2022, the *ARQMath-3* lab is going to be held at CLEF.
 Unless prolonged, CLEF labs are only held for three years, and the organizers
-announced their not to prolong the ARQMath lab. [@zanibbi2021arqmath]
+announced their intention not to prolong the ARQMath lab. [@zanibbi2021arqmath]
 Therefore, ARQMath-3 may be the last ARQMath lab.
 
 For ARQMath-3, I proposed the historically first *math open-domain question
@@ -1263,8 +1269,7 @@ unit's text.
 
 The *Tangent-L* system [@fraser2018choosing; @ng2020dowsing; @ng2021dowsing]
 evolved from Tangent-3, was developed by Frank Tompa's research group, and
-participated post-hoc in the NTCIR-12 MathIR task and personally in the ARQMath
-labs.
+participated in the ARQMath labs and post-hoc in the NTCIR-12 MathIR task.
 
 Unlike Tangent-3, which uses the hard vector space model with the TF-IDF term
 weighting scheme, Tangent-L uses the more accurate BM25 and BM25⁺ term
@@ -1289,11 +1294,10 @@ aggregation to the techniques before the reranking.
 
 #### Approach0
 
-The [*Approach0* system][77] [@zhong2015novel; @zhong2016opmes;
-@zhong2019structural; @zhong2021approach] evolved from Tangent-S, was developed
-by InfoLab and DPLR, participated post-hoc in the NTCIR-12 MathIR task,
-was used as a baseline system in the ARQMath-1 lab, and personally participated
-in the ARQMath-2 lab.
+The *Approach0* system [@zhong2015novel; @zhong2016opmes; @zhong2019structural;
+@zhong2021approach] evolved from Tangent-S, was developed by InfoLab and DPLR,
+was used as a baseline system in the ARQMath-1 lab, and participated in the
+ARQMath-2 lab and post-hoc in the NTCIR-12 MathIR task.
 
 Unlike Tangent-S, which still indexes presentation math formulae in the SLT
 representation, Approach0 only indexes content math formulae in the OPT
@@ -1308,8 +1312,8 @@ lab, Approach0 used the RM3 query expansion technique.
 
 The *Tangent-CFT* and *Tangent-CFTED* systems [@mansouri2019tangent;
 @mansouri2020dprl; @mansouri2021dprl] also evolved from Tangent-S, were
-developed by DLPR, and participated post-hoc in the NTCIR-12 MathIR task and
-personally in the ARQMath labs.
+developed by DLPR, and participated in the ARQMath labs and post-hoc in the
+NTCIR-12 MathIR task.
 
 Unlike Tangent-S, which uses the hard vector space model, Tangent-CFT and
 Tangent-CFTED use the soft vector space model with fastText token embeddings as
@@ -2593,7 +2597,7 @@ system, where our system wass both fast and accurate, see Figure
 State-of-the-art math information retrieval systems rely on the hard soft
 vector space model of @salton1988termweighting, but the soft vector space model
 of @sidorov2014soft can more accurately model both the natural language and the
-language of mathematics. However, computing the similarity between two
+language of mathematics. However, computing the soft cosine similarity between two
 documents in the soft vector space model had an impractical worst-case time
 complexity of $\mathcal{O}(n^2)$ for a vocabulary of $n$ words and symbols.
 Additionally, converting the soft vector space model to a hard vector space
@@ -2616,7 +2620,7 @@ my restricted soft vector space model in detail.
 In 2018, I proved that if we restricted the soft vector space model to measures
 of relatedness that could be represented by a sparse similarity matrix $S$ with
 no more than $C$ non-zero elements in any of its columns, where $C$ is constant,
-then computing the similarity between a query and a document in the soft vector
+then computing the soft cosine similarity between a query and a document in the soft vector
 space model had a worst-case time complexity of $\mathcal{O}(1)$ if the maximum
 size of a query was constant. [@novotny2018implementation, Algorithm 1]
 
@@ -2651,15 +2655,15 @@ our systems on the *find answers* task of the ARQMath-1 and ARQMath-2 labs.
 
 #### Future Work
 
-My algorithm for computing the similarity $\vec{x}ᵀ · S · \vec{y}$
+My algorithm for computing the soft cosine similarity $\vec{x}ᵀ · S · \vec{y}$
 between a query $\vec{x}$ and a document $\vec{y}$ in the restricted model with
 $\mathcal{O}(1)$ worst-case time complexity assumed that we would compute the
 similarity as a single operation. This would allow us to eliminate any index
-$i$ and $j$ where $x\_i = 0, y\_i = 0,$ or $s\_{ij} = 0$ in the following
+$i$ and $j$ where $x\_i = 0, y\_i = 0,$ or $S\_{ij} = 0$ in the following
 summation:%
 %
 \begin{equation}
-\vec{x}ᵀ · S · \vec{y} = Σ\_i Σ\_j x\_i · s\_{ij} · y\_j.
+\vec{x}ᵀ · S · \vec{y} = Σ\_i Σ\_j x\_i · S\_{ij} · y\_j.
 \end{equation}
 
 However, my implementation of the restricted model used the SciPy Python
