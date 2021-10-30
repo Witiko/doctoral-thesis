@@ -1,0 +1,19 @@
+\begin{figure}
+\centering
+\begin{tikzpicture}[->, >=stealth', node distance=2cm]
+  \user;
+  \dataset [below=of user, yshift=1cm];
+  \mathquery [right=of user];
+  \retriever [below=of question, yshift=1.5cm];
+  \mathresultlist [right=of retriever];
+
+  \path (user) edge (question);
+  \path (question) edge (retriever);
+  \path (dataset) edge [bend left=8] node [below=0.5em] {Indexing} (retriever);
+  \path (retriever) edge (result-list);
+\end{tikzpicture}
+\caption
+  [General architecture of math information retrieval systems]%
+  {The general architecture of math document retrieval systems.}
+\label{fig:math-information-retrieval}
+\end{figure}

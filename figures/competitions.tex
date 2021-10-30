@@ -1,0 +1,26 @@
+\begin{figure}
+\hspace*{-0.3cm}
+\begin{ganttchart}[
+  vgrid = {*{364}{draw=none}, dotted},
+  y unit title = 0.6cm,
+  title height = 1,
+  x unit = 0.025mm,
+  today = 2021-11-01,
+  today label = Today,
+  time slot format = isodate,
+  today rule/.style = {draw = thesis@color@secondary, ultra thick},
+]{2012-01-01}{2022-12-31}
+  \gantttitlecalendar{year} \\
+  \ganttbar{MIR workshop}{2012-07-08}{2012-07-09} \\
+  \ganttbar{NTCIR tasks}{2013-06-18}{2016-06-10} \\
+  \ganttbar{ARQMath labs}{2020-09-25}{2022-09-25}
+\end{ganttchart}
+\vspace*{-0.7cm}
+\caption
+  [Gantt chart of math information retrieval competitions]%
+  {After the Math Information Retrieval (MIR) workshop in 2012,
+   three NTCIR Math tasks were held in 2013, 2014, and 2016.
+   These were followed by two ARQMath labs in 2020 and 2021.
+   A final third ARQMath lab is planned for September 2022.}
+\label{fig:competitions}
+\end{figure}

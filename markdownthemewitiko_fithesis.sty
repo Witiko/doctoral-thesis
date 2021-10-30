@@ -230,6 +230,23 @@
   keepaspectratio,
 }
 
+%% GraphViz images with short captions and uniform scaling
+\markdownSetup{
+  renderers = {
+    image = {%
+      \begin{figure}%
+        \begin{center}%
+          \includegraphics[width=!, height=!, scale=0.65]{#3}%
+        \end{center}%
+        \ifx\empty#4\empty\else
+          \vspace*{-0.6cm}%
+          \caption#4%
+        \fi
+      \end{figure}%
+    },
+  }
+}
+
 %% Definitions of various Unicode characters
 \RequirePackage{newunicodechar}
 \usepackage{amsmath,centernot}

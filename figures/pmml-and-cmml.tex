@@ -1,0 +1,49 @@
+\begin{figure}
+\begingroup
+\makeatletter
+\let\bfseries\thesis@bfseries@old
+\makeatother
+\centering
+\begin{minipage}{0.27\textwidth}
+\begin{minted}{xml}
+<mrow>
+  <mi>x</mi>
+  <mo>!!</mo>
+  <msup>
+    <mi>y</mi>
+    <mn>2</mn>
+  </msup>
+  <mo>=</mo>
+  <mn>0</mn>
+</mrow>
+\end{minted}
+\end{minipage}%
+\begin{minipage}{0.73\textwidth}
+\begin{minted}{xml}
+<apply>
+  <eq/>
+  <apply>
+    <minus/>
+    <apply>
+      <csymbol>double-factorial</csymbol>
+      <ci>x</ci>
+    </apply>
+    <apply>
+      <csymbol>superscript</csymbol>
+      <ci>y</ci>
+      <cn type="integer">2</cn>
+    </apply>
+  </apply>
+  <cn type="integer">0</cn>
+</apply>
+\end{minted}
+\end{minipage}
+\endgroup
+\caption
+  [Presentation and Content MathML representations of the math formula $x!! - y^2 = 0$]%
+  {↑ Presentation MathML (left) and Content MathML (right)
+   representations of the math formula $x!! - y^2 = 0$. Notice how the two
+   exclamation marks become double factorial operator in Content MathML.
+   \cite[Figure 2]{novotny2020three}}
+\label{fig:pmml-and-cmml}
+\end{figure}

@@ -175,12 +175,74 @@ information retrieval.
 In the rest of this section, I will describe languages that can be used to
 represent presentation math in math information retrieval systems.
 
+ /figures/pmml-and-cmml.tex
+
+``` dot %
+    [Symbol Layout Tree representation of the math formula $x!! - y^2 = 0$]%
+    {Symbol Layout Tree (SLT) representation of the math formula $x!! - y^2 = 0$. %
+     Edge labels n and a stands for next and above. %
+     \cite[Figure 3]{novotny2020three}%
+     \label{fig:slt}}
+
+digraph tree {
+  margin  = 0;
+  rankdir = "LR";
+
+  x -> doublefactorial [label = "n"];
+  doublefactorial -> minus [label = "n"];
+  minus -> y [label = "n"];
+  y -> two [label = "a"];
+  y -> equals [label = "n"];
+  equals -> zero [label = "n"];
+
+  x [label = "V!x"];
+  doublefactorial [label = "!!"];
+  minus [label = "–"];
+  y [label = "V!y"];
+  equals [label = "="];
+  zero [label = "N!0"];
+  two [label = "N!2"];
+}
+
+```
+
+``` dot %
+    [Operator Tree representation of the math formula $x!! - y^2 = 0$]%
+    {↑ Operator Tree (OPT) representation of the math formula $x!! - y^2 = 0$. %
+     Edge labels 0 and 1 stand for first and second operands. %
+     \cite[Figure 4]{novotny2020three}%
+     \label{fig:opt}}
+
+digraph tree {
+  margin  = 0;
+  rankdir = "LR";
+
+  equals -> minus [label = "0"];
+  equals -> zero [label = "1"];
+  minus -> doublefactorial [label = "0"];
+  doublefactorial -> x [label = "0"];
+  minus -> sup [label = "1"];
+  sup -> y [label = "0"];
+  sup -> two [label = "1"];
+
+  x [label = "V!x"];
+  doublefactorial [label = "O!double-factorial"];
+  minus [label = "O!minus"];
+  y [label = "V!y"];
+  sup [label = "O!SUP"];
+  equals [label = "U!eq"];
+  zero [label = "N!0"];
+  two [label = "N!2"];
+}
+
+```
+
 ##### TeX
 
 In 1986, @knuth86tex has developed the programming language of \TeX{} to author
 mathematical documents with precise presentation requirements. At the present
 time, \TeX{} is the most popular authoring language for mathematical documents.
-To give an example, the formula $x!! - y^2 = 0$ would be represented as `$x!! -
+To give an example, the formula $x!! - y^2 = 0$ can be represented as `$x!! -
 y^2 = 0$` in \TeX.
 
 ##### Presentation MathML
@@ -188,7 +250,8 @@ y^2 = 0$` in \TeX.
 In 1998,[^59] the World Wide Web Consortium has developed the Presentation MathML
 XML language, which \`\`[…] can be used to describe the layout structure of
 mathematical notation.'' [@buswell1998mathematical, Section 3.1]
-% To give an example ... [@novotny2020three, Figure 2] (TODO ilustrace)
+To give an example, Figure \vref{fig:pmml-and-cmml} shows how the formula $x!!
+- y^2 = 0$ can be represented in Presentation MathML.
 
  [^59]: Presentation MathML can be extracted from \TeX{} by [\LaTeX ML.][60]
         [@stamerjohanns2010transforming]
@@ -206,7 +269,8 @@ representations, which affects retrieval accuracy. Therefore, the problem of
 In 2016,[^61] @zanibbi2016multi has developed the *symbol layout tree (SLT)*
 as a simplified representation of Presentation MathML that can be directly
 used for information retrieval without further normalization.
-% To give an example ... [@novotny2020three, Figure 3] (TODO ilustrace)
+To give an example, Figure \vref{fig:slt} shows how the formula $x!!
+- y^2 = 0$ can be represented in the SLT.
 
  [^61]: SLT can be extracted from Presentation MathML using the [Tangent-S][62]
         system. [@davila2017layout]
@@ -241,7 +305,8 @@ Since 1998,[^63] the World Wide Web Consortium has been developing the Content
 MathML XML language, which can provide \`\`[…] an explicit encoding of the
 *underlying mathematical meaning* of an expression, rather than any particular
 rendering for the expression'' [@buswell1998mathematical, Section 4.1.1]
-% To give an example ... [@novotny2020three, Figure 2] (TODO ilustrace)
+To give an example, Figure \vref{fig:pmml-and-cmml} shows how the formula $x!!
+- y^2 = 0$ can be represented in Content MathML.
 
  [^63]: Content MathML can be extracted from \TeX{} by [\LaTeX ML.][60]
         [@stamerjohanns2010transforming]
@@ -251,10 +316,11 @@ rendering for the expression'' [@buswell1998mathematical, Section 4.1.1]
 In 2017,[^64] @davila2017layout has developed the *operator tree (OPT)*
 as a simplified representation of Content MathML that can be directly
 used for information retrieval.
-% To give an example ... [@novotny2020three, Figure 4] (TODO ilustrace)
+To give an example, Figure \vref{fig:opt} shows how the formula $x!!
+- y^2 = 0$ can be represented in the OPT.
 
- [^64]: SLT can be extracted from Content MathML using the [Tangent-S][62]
-        system. [@davila2017layout]
+ [^64]: OPT can also be extracted from Presentation MathML using the
+        [Tangent-S][62] system. [@davila2017layout]
 
 ### Semantic Math
 
@@ -321,9 +387,7 @@ alternative to OpenMath content directories with support for inheritance.
 ## Math Information Retrieval
 \label{sec:math-information-retrieval}
 
-% Figure 8 v [Math OpenQA proposalu][58] (TODO ilustrace)
-%
-%  [58]: https://www.overleaf.com/project/615acd56fbda7f7599e9ba47
+ /figures/math-information-retrieval.tex
 
 Here is a textbook definition of information retrieval:
 
@@ -334,12 +398,13 @@ Here is a textbook definition of information retrieval:
 > > @manning2008introduction [Chapter 1]
 
 *Math information retrieval* differs from this definition in several aspects:
-Although math information retrieval also focuses on document retrieval, other
-*retrieval units* of interest include math formulae and math statements such as
-definitions, theorems, and proofs. Furthermore, the language of mathematics is
-inherently more structured than natural text, which brings unique opportunities
-and challenges. Finally, whereas in today's information retrieval, users
-commonly express their *information needs* as queries in natural language, math
+Although math information retrieval also focuses on document retrieval (see
+Figure \vref{fig:math-information-retrieval}), other *retrieval units* of
+interest include math formulae and math statements such as definitions,
+theorems, and proofs. Furthermore, the language of mathematics is inherently
+more structured than natural text, which brings unique opportunities and
+challenges. Finally, whereas in today's information retrieval, users commonly
+express their *information needs* as queries in natural language, math
 information retrieval offers more variety:
 
 In math information retrieval, users can express information needs as queries in
@@ -467,10 +532,6 @@ semantically related tokens.[^54]
 
 ##### General Model
 
-% První obrázek ze strany 11 [prezentace na semináři PV173][55] (TODO ilustrace)
-%
-% [55]: https://www.overleaf.com/project/6062da8447b92d21b68c5472)
-
 In 2013, @mikolov2013efficient developed the *Word2Vec general language
 model*, which learned continuous representations of tokens (further known as
 *token embeddings*). As its objective, the model would predict a *masked token*
@@ -494,7 +555,7 @@ negative sampling:%
 %
 where $\sigma$ is the logistic function $x\mapsto \nicefrac{1}{1 + e^{-x}},$
 $N\_{C\_t}$ is a set of negative examples $n$ for context $C\_t$, and $s(w\_t,
-C\_t)$ is a scoring function that measures how well the masked token $w\_t$
+C\_t)$ is a *scoring function* that measures how well the masked token $w\_t$
 matches the context $C\_t$:%
 %
 \begin{equation}
@@ -503,15 +564,19 @@ matches the context $C\_t$:%
 \end{equation}
 %
 Here, $\vec{u}\_{w} ∈\mathbb{R}^D$ is the *input vector* of the context token
-$w$, $\vec{v}\_{w\_t} ∈\mathbb{R}^D$ is the output vector of the masked token
+$w$, $\vec{v}\_{w\_t} ∈\mathbb{R}^D$ is the *output vector* of the masked token
 $w\_t$, $\vec{u}\_{C\_t}$ is the *context vector* and $D$ is the number of token
 vector features (further known as *vector dimensionality*).
 
-##### Subtoken Model
+ /figures/general-model.tex
 
-% Druhý obrázek ze strany 11 [prezentace na semináři PV173][55] (TODO ilustrace)
-%
-% [55]: https://www.overleaf.com/project/6062da8447b92d21b68c5472)
+ /figures/subword-model.tex
+
+ /figures/positional-model.tex
+
+See Figure \vref{fig:general-model} for an illustration of the model.
+
+##### Subtoken Model
 
 The general model only learns representations for tokens that are present in
 the training corpus. Additionally, input vectors for different inflectional
@@ -521,11 +586,13 @@ morphologically rich languages.
 In 2017, @bojanowski2017enriching developed the *fastText subtoken model*,
 which extended the general model by modeling subtokens instead of tokens: The
 input vector $\vec{u}\_w$ for a token $w$ becomes a sum of the input vectors
-$\vec{u}\_g$ for the subtokens $g ∈ G\_w$ of $w$:%
+$\vec{u}\_g$ for the *subtokens* $g ∈ G\_w$ of $w$:%
 %
 \begin{equation}
   \vec{u}\_w = Σ\_{g ∈ G\_w} \vec{u}\_g.
 \end{equation}
+
+See Figure \vref{fig:subword-model} for an illustration of the model.
 
 ##### Quantized Model
 
@@ -547,10 +614,6 @@ This decreased the size of the token embeddings 16× and allowed the use of fast
 bitwise arithmetic for their manipulatiob.
 
 ##### Positional Model
-
-% Obrázek ze strany 12 [prezentace na semináři PV173][55] (TODO ilustrace)
-%
-% [55]: https://www.overleaf.com/project/6062da8447b92d21b68c5472)
 
 In many sentences, the position of context tokens influences their syntactic
 function, which is important for predicting the masked token. Additionally, if
@@ -576,6 +639,8 @@ positional weighting of @mnih2013advances:%
 Here, $\vec{d}\_p  ∈ \mathbb{R}^{D'}, p ∈ P$ are *positional embeddings* with
 $D' = D$ features and $⊙ :\mathbb{R}^D\times\mathbb{R}^D\to\mathbb{R}^D$ is
 the Hadamard vector product.
+
+See Figure \vref{fig:positional-model} for an illustration of the model.
 
 #### Deep Neural Network Language Models
 
@@ -671,15 +736,15 @@ number of top retrieval results, not for the retrieval itself.
 #### Semantic Matching
 \label{sec:semantic-matching}
 
-% [@novotny2020three, Figure 6] (TODO ilustrace)
+ /figures/soft-vsm.tex
 
 To retrieve semantically similar documents, we can use the *soft vector space
 model* [@sidorov2014soft]. Unlike the hard vector space model, which will only
 find exact *hard matches* between tokens, the soft vector space model will also
-consider fuzzy *soft matches* between related tokens. In the soft vector space
-model, the relevance of a document to a query is estimated as the *soft cosine
-similarity* $\softcos(\vec x, \vec y)$ between their sparse vectors $\vec x$
-and $\vec y$:
+consider fuzzy *soft matches* between related tokens, see Figure
+\vref{fig:soft-vsm}. In the soft vector space model, the relevance of a
+document to a query is estimated as the *soft cosine similarity* $\softcos(\vec
+x, \vec y)$ between their sparse vectors $\vec x$ and $\vec y$:
 %
 \begin{equation}
   \softcos(\vec x, \vec y) = \frac{\vec xᵀ · S · \vec y}%
@@ -834,6 +899,11 @@ for complete judgements (P, R, P@$k$, MAP, and NDCG) to measures for incomplete
 judgements (P', R', P'@$k$, MAP', and NDCG') by removing all documents without
 a relevance judgement from the retrieval results.
 
+We can also *binarize* graded judgements by selecting which relevance levels
+will be considered relevant and which relevance levels will be considered
+irrelevant. This allows us to use measures for binary judgements.
+
+
 ### Speed
 
 To evaluate the speed of an information retrieval system, we can measure the
@@ -880,11 +950,11 @@ retrieval:
 ## Competitions
 \label{sec:competitions}
 
-Even though the idea of digital mathematical libraries dates back to the 2002, it wasn't
-until ten years later until the first informal competition of math information
-retrieval engines took place.
+↑ Even though the idea of digital mathematical libraries dates back to the
+2002, it wasn't until ten years later until the first competitions of math
+information retrieval systems took place, see Figure \vref{fig:competitions}.
 
-% Ganttův diagram jednotlivých soutěží (TODO ilustrace)
+ /figures/competitions.tex
 
 During 2003--2015, thirteen *International Conferences on Mathematical
 Knowledge Management (MKM)* [@asperti2003mathematical] have been held and
@@ -893,17 +963,17 @@ in math information retrieval to meet and collaborate.
 
 Since 2008, MKM was co-located with the *International Conferences of
 Intelligent Computer Mathematics (CICM)*. During 2008--2011, a group
-of MKM attendees who were interested in digital mathematical libraries
+of MKM attendees interested in digital mathematical libraries
 held a series of *Towards a Digital Mathematics Library* workshops
 [@sojka2008towards; @sojka2009towards; @sojka2010towards; @sojka2011towards],
-which were also co-located with CICM. In 2012, [the *Math Information
-Retrieval (MIR)* workshop][69], which included historically the first
+which were also co-located with CICM. In 2012, the *Math Information
+Retrieval (MIR)* workshop, which included historically the first
 competition of math information retrieval systems, was co-located with CICM.
 
  [69]: https://cicm-conference.org/2012/cicm.php?event=mir&menu=general
 
 In 2013, 2014, and 2016, three math information retrieval competitions
-were held as [*Math* tasks][70] [@aizawa2013ntcir; @aizawa2014ntcir;
+were held as *Math* tasks [@aizawa2013ntcir; @aizawa2014ntcir;
 @zanibbi2016ntcir] at the *NII Testbeds and Community for Information access
 Research (NTCIR)* workshops hosted by the National Institute of Informatics
 (NII) in Tokyo, Japan.
@@ -911,8 +981,8 @@ Research (NTCIR)* workshops hosted by the National Institute of Informatics
  [70]: https://ntcir-math.nii.ac.jp
 
 Following a four year pause, in 2020 and 2021, two math information retrieval
-competitions were held as [*Answer Retrieval for Questions on Math (ARQMath)*
-labs][71] at the *Conference and Labs of the Evaluation Forum (CLEF)*
+competitions were held as *Answer Retrieval for Questions on Math (ARQMath)*
+labs at the *Conference and Labs of the Evaluation Forum (CLEF)*
 conferences. In 2022, the third (and likely final) ARQMath lab will be held.
 
  [71]: https://www.cs.rit.edu/~dprl/ARQMath
@@ -972,7 +1042,7 @@ were binarized using two different approaches:
    documents were considered relevant.
 
 2. In the *relevant* approach, partially relevant documents were considered
-   non-relevant and only relevant judgements were considered relevant.
+   not relevant and only relevant judgements were considered relevant.
 
 ### NTCIR-11 Math-2
 
@@ -1040,8 +1110,8 @@ Retrieval results were primarily evaluated using the nDCG' evaluation measure.
 The MAP' and P@10 measures were also reported. Since the P@10 measure is for
 complete judgements, the judgements were made complete by considering
 unannotated documents to be non-relevant. Since the MAP' and P@10 measures are
-for binary judgements, the judgements were binarized by considering documents
-with high and medium relevance to be relevant.
+for binary judgements, the judgements were binarized by considering retrieval
+units with high and medium relevance to be relevant.
 
 ### ARQMath-2
 
@@ -1056,10 +1126,6 @@ the P@10 evaluation measure from ARQMath-1.
 
 ### ARQMath-3
 
-% Figure 9 v [Math OpenQA proposalu][58] (TODO ilustrace)
-%
-%  [58]: https://www.overleaf.com/project/615acd56fbda7f7599e9ba47
-
 In 2022, the *ARQMath-3* lab is going to be held at CLEF.
 Unless prolonged, CLEF labs are only held for three years, and the organizers
 announced their not to prolong the ARQMath lab. [@zanibbi2021arqmath]
@@ -1067,21 +1133,19 @@ Therefore, ARQMath-3 may be the last ARQMath lab.
 
 For ARQMath-3, I proposed the historically first *math open-domain question
 answering task (Math OpenQA)*. [@novotny2021proposala; @novotny2021proposalb]
-Unlike finding answers, Math OpenQA systems can be generative and synthesize
-answers from multiple sources, pushing the envelope of math information
-retrieval.
+Unlike systems for finding answers, which can only retrieve existing documents,
+Math OpenQA systems can generate answers to novel questions from multiple
+sources.
 
 ## Systems
 \label{sec:systems}
 
-% Tabulka výsledků jednotlivých systémů v soutěžích (TODO ilustrace)
-% \label{tab:systems}
+ /figures/systems.tex
 
 In this section, I will describe the math information retrieval search engines
-that received the best accuracy in the competitions.
-For ease of comparison, the medal-winning results of the systems are listed
-in Table \vref{tab:systems}.
-@liska2015building [Section 2.1; @guidi2016survey; @ruzicka2018math, Section
+that received the best accuracies in the competitions, see Table
+\vref{tab:systems}.
+@liska2015building [Section 2.1] @guidi2016survey @ruzicka2018math [Section
 2.3] describe other systems of historical significance.
 
 ### MathWebSearch
@@ -1140,7 +1204,28 @@ unit is the sum of the similarity scores of all formulae in the retrieval unit.
 
 ### Tangent
 
-% [@novotny2020document, Figure 2.1 with Tangent-CFTED added] (TODO ilustrace)
+``` dot %
+    [Evolutionary tree of Tangent systems]%
+    {The evolutionary tree of the Tangent systems}%
+    \label{fig:tangent}
+
+digraph tree {
+  margin  = 0;
+  rankdir = "LR";
+
+  tangent    -> tangentS;
+  tangent    -> tangentL;
+  tangentS   -> tangentCFT;
+  tangentS   -> approach0;
+
+  tangent      [label = "Tangent,\nTangent-2, and\nTangent-3"];
+  tangentS     [label = "Tangent-S"];
+  tangentCFT   [label = "Tangent-CFT and\nTangent-CFTED"];
+  tangentL     [label = "Tangent-L"];
+  approach0    [label = "Approach0"];
+}
+
+```
 
 The *Tangent* systems have been developed by the research groups of Hui Fang
 (InfoLab), Frank Tompa, and Richard Zanibbi (DPLR) and participated in the
@@ -1149,6 +1234,9 @@ Tangent systems have not been publicly deployed in a digital mathematical
 library, some of them (Approach0) have [a live demo.][77]
 
  [77]: https://approach0.xyz/
+
+See Figure \vref{fig:tangent} for a quick overview of the existing Tangent
+systems and how they evolved from one another.
 
 #### Tangent, Tangent-2, and Tangent-3
 
@@ -1203,8 +1291,9 @@ aggregation to the techniques before the reranking.
 
 The [*Approach0* system][77] [@zhong2015novel; @zhong2016opmes;
 @zhong2019structural; @zhong2021approach] evolved from Tangent-S, was developed
-by InfoLab and DPLR, was used as a baseline system in the ARQMath-1 lab, and
-participated in the ARQMath-2 lab.
+by InfoLab and DPLR, participated post-hoc in the NTCIR-12 MathIR task,
+was used as a baseline system in the ARQMath-1 lab, and personally participated
+in the ARQMath-2 lab.
 
 Unlike Tangent-S, which still indexes presentation math formulae in the SLT
 representation, Approach0 only indexes content math formulae in the OPT
@@ -1217,7 +1306,7 @@ lab, Approach0 used the RM3 query expansion technique.
 
 #### Tangent-CFT and Tangent-CFTED
 
-The *Tangent-CFT* and *Tangent-CFTED* system [@mansouri2019tangent;
+The *Tangent-CFT* and *Tangent-CFTED* systems [@mansouri2019tangent;
 @mansouri2020dprl; @mansouri2021dprl] also evolved from Tangent-S, were
 developed by DLPR, and participated post-hoc in the NTCIR-12 MathIR task and
 personally in the ARQMath labs.
@@ -1737,14 +1826,15 @@ evaluation tasks.
 | DA 2016, src | fi→en   |  0.44  | *0.63*     |  0.45  | *0.58*  |
 | DA 2016, src | ru→en   |  0.30  | *0.43*     |  0.33  | *0.48*  |
 %
-: [The accuracies of the soft vector space and the word mover's distance %
+: [Accuracies of the soft vector space and the word mover's distance %
    with and without our decontextualized token embeddings on eight machine %
    translation tasks]%
   {The accuracies of the soft vector space (SCM) and the word mover's distance (WMD) %
    with and without our decontextualized token embeddings on eight machine %
    translation evaluation tasks. [@stefanik2021regressive] %
    Language pairs marked with an × were evaluated cross-lingually. %
-   [@stefanik2021regressive, Section 3.4]} \label{tab:decontextualized-token-embeddings}
+   [@stefanik2021regressive, Section 3.4]}%
+  \label{tab:decontextualized-token-embeddings}
 
 #### Results
 
@@ -1885,12 +1975,13 @@ evaluated our ensemble on 20 machine translation evaluation tasks.
 | Catastrophic, src | en→ja   | *0.20* |  0.18  (Reg-base)          |
 | Catastrophic, src | en→zh   |  0.16  | *0.27  (SCM-dec)*          |
 %                                              
-: [The accuracies of the our ensemble and the best individual techniques %
+: [Accuracies of the our ensemble and the best individual techniques %
    on 20 machine translation evaluation tasks]%
   {The accuracies of the our ensemble (RegEMT) and the best individual techniques %
    on 20 machine translation evaluation tasks. [@stefanik2021regressive] %
    Language pairs marked with an × were evaluated cross-lingually. %
-   [@stefanik2021regressive, Section 3.4]} \label{tab:regemt}
+   [@stefanik2021regressive, Section 3.4]}%
+  \label{tab:regemt}
 
 #### Results
 
