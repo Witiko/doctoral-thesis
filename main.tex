@@ -1,6 +1,6 @@
 \let\oldlooseness=\looseness
 \PassOptionsToPackage{
-  letterspace=-25,
+  letterspace=-30,
 }{microtype}
 \documentclass[
   digital, %% The `digital` option enables the default options for the
@@ -52,8 +52,16 @@
 
 %% Term index
 \usepackage{imakeidx}
-\makeindex[name = subject, title = {Subject Index}, intoc]
-\makeindex[name = author,  title = {Author Index},  intoc]
+\makeindex[
+  name = subject,
+  title = {Subject Index},
+  intoc,
+]
+\makeindex[
+  name = author,
+  title = {Author Index},
+  intoc,
+]
 
 %% Context-sensitive quotation marks
 \usepackage[babel]{csquotes}
@@ -101,10 +109,11 @@
 %% Markup
 \let\lll\relax
 \usepackage[
-  tightLists = false,
+  tightLists=false,
   theme=witiko/fithesis,
   theme=witiko/dot,
 ]{markdown}
+\markdownSetupSnippet{publications}{snippet=witiko/fithesis/publications}
 
 %% Additional math operators
 \RequirePackage{amsmath}
@@ -136,12 +145,23 @@
 \markdownInput[slice=conclusion]{main.md}
 
 {\sloppy\printbibliography[heading=bibintoc]}
-\printindex[author]
-\chapter{Glossary of Research Groups}
-\chapter{Acronyms}
-\printindex[subject]
 
 \appendix
-\markdownInput[slice=publications]{main.md}
+\markdownInput[
+  slice=publications,
+  snippet=publications,
+]{main.md}
+
+\printindex[author]
+
+\chapter*{Glossary of Research Groups}
+\markright{\textsc{Glossary of Research Groups}}
+\addcontentsline{toc}{chapter}{Glossary of Research Groups}
+
+\chapter*{Acronyms}
+\markright{\textsc{Acronyms}}
+\addcontentsline{toc}{chapter}{Acronyms}
+
+\printindex[subject]
 
 \end{document}

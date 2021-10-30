@@ -868,7 +868,7 @@ Despite the lack of attention math information retrieval has historically
 received compared to information retrieval, a substantial amount of research
 has been conducted since the 2008 pioneering workshop.
 
-⇑ In this chapter, I'll describe the state of the art in math information
+⇈ In this chapter, I'll describe the state of the art in math information
 retrieval:
 
 - In Section \vref{sec:competitions}, I will describe the past and future
@@ -2305,7 +2305,7 @@ our new solution was still slow and our builds would suddenly fail.
 #### Experiments
 
 In 2021, we have developed a new solution for deploying MIaS using Docker
-continuous integration. [@luptak2021deploying] [^29] With Docker, our solution
+continuous integration. [@luptak2021webmias] [^29] With Docker, our solution
 is no longer slow, because we do not need to build MIaS during the deployment,
 but we can download a pre-built Docker image. With continuous integration, our
 builds would no suddenly fail during the deployment, because any change to the
@@ -2853,3 +2853,114 @@ The code of the interactive visualization is [available on GitHub.][45]
 ## Future Work
 
 # List of Author's Publications {#publications}
+
+↑ In this appendix, I will list my international publications in journals and
+in conference proceedings listed by the publication date. I will also state my
+research roles using the [*CRediT* taxonomy][79] and my contributions in percent.
+
+ [79]: https://casrai.org/credit/
+
+## Journal Articles
+
+1. @novotny2021when
+
+    - *Author's roles:* Conceptualization, Data curation, Formal analysis,
+      Investigation, Methodology, Software, Validation, Visualization,
+      Writing -- original draft, Writing -- review \& editing
+
+    - *Author's contribution:* 70\%
+
+2. ⇈ @ayetiran2021eds
+
+    - ⇈ *Author's roles:* Investigation, Resources, Software, Writing -- review \& edit.
+
+    - ⇊ *Author's contribution:* 20\%
+
+## Proceeding Articles
+
+3. @stefanik2021regressive
+
+    - *Author's roles:* Investigation, Methodology, Resources, Software, Validation,
+      Writing -- review \& editing
+
+    - *Author's contribution:* 40\% ↔
+
+4. @novotny2021ensembling
+
+    - *Author's roles:* Conceptualization, Date curation, Formal analysis,
+      Investigation, Methodology, Project administration, Resources, Software,
+      Validation, Visualization, Writing -- original draft, Writing -- review \& editing
+
+    - *Author's contribution:* 50\%
+
+5. ⇈ @novotny2021one
+
+    - *Author's roles:* Conceptualization, Data curation, Formal analysis,
+      Investigation, Methodology, Resources, Software, Validation, Visualization,
+      Writing -- original draft, Writing -- review \& editing
+
+    - *Author's contribution:* 75\%
+
+6. @luptak2021webmias
+
+    - *Author's roles:* Conceptualization, Investigation, Methodology, Software,
+      Visualization, Writing -- original draft
+
+    - *Author's contribution:* 70\% ↔
+
+7. @novotny2020art
+
+    - *Author's roles:* Conceptualization, Formal analysis, Investigation,
+      Methodology, Resources, Software, Validation, Visualization, Writing --
+      original draft, Writing -- review \& editing
+
+    - *Author's contribution:* 100\%
+
+8. @novotny2020three
+
+    - *Author's roles:* Conceptualization, Date curation, Formal analysis,
+      Investigation, Methodology, Resources, Software, Validation,
+      Visualization, Writing -- original draft, Writing -- review \& editing
+
+    - *Author's contribution:* 50\%
+
+9. @sojka2019quo
+
+    - *Author's roles:* Investigation, Writing -- original draft, Writing --
+      review \& editing
+
+    - *Author's contribution:* 20\% ↔
+
+10. @novotny2018implementation
+
+    - ↑ *Author's roles:* Conceptualization, Formal analysis, Investigation, Software,
+      Validation, Writing -- original draft, Writing -- review \& edit.
+
+    - ⇊ *Author's contribution:* 100\%
+
+11. @sojka2018mias
+
+    - *Author's roles:* Software, Visualization, Writing -- original draft,
+      Writing -- review \& editing
+
+    - *Author's contribution:* 30\%
+
+12. @novotny2018weighting
+
+    - *Author's roles:* Conceptualization, Data curation, Formal analysis, Investigation,
+      Methodology, Software, Validation, Visualization, Writing -- original draft,
+      Writing -- review \& editing
+
+    - *Author's contribution:* 80\%
+
+13. @ruzicka2017flexible
+
+    - *Author's roles:* Formal analysis, Validation, Visualization, Writing -- review \& editing
+
+    - *Author's contribution:* 20\% ↔
+
+14. @rygl2017semantic
+
+    - *Author's roles:* Formal analysis, Validation, Writing -- review \& edit.
+
+    - *Author's contribution:* 15\%

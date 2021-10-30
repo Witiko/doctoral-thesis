@@ -13,6 +13,29 @@
   underscores=false,
 }
 
+%% List of Publication
+\DeclareCiteCommand{\fullcite}
+  {\defcounter{maxnames}{\blx@maxbibnames}%
+    \usebibmacro{prenote}}
+  {\usedriver
+     {\DeclareNameAlias{sortname}{default}}
+     {\thefield{entrytype}}}
+  {\multicitedelim}
+  {\usebibmacro{postnote}}
+\newcommand\markdownRendererTextCiteHelper[4]{%
+  \fullcite{#4}%
+}
+\markdownSetupSnippet{publications}{
+  renderers = {
+    olItemEnd = {%
+      \vspace{1em plus 0pt minus 1em}%
+    },
+    textCite = {%
+      \markdownRendererTextCiteHelper
+    },
+  }
+}
+
 %% Headings
 \markdownSetup{
   renderers = {
@@ -213,7 +236,7 @@
 \newunicodechar{◌}{\dottedcircle}
 \newunicodechar{←}{\noindent\ignorespaces}
 \newunicodechar{↑}{\looseness=-1\ignorespaces}
-\newunicodechar{⇑}{%
+\newunicodechar{⇈}{%
   ↑
   \begingroup
     \lsstyle
@@ -227,7 +250,12 @@
     }%
     \ignorespaces
 }
+\newunicodechar{⇊}{%
+  \markdownRendererInterblockSeparator
+  \ignorespaces
+}
 \newunicodechar{→}{\ensuremath{\rightarrow}}
+\newunicodechar{↔}{\pagebreak[4]\ignorespaces}
 \newunicodechar{×}{\ensuremath{\times}}
 \newunicodechar{⇒}{\!\!\implies\!\!}
 \newunicodechar{⇏}{\!\!\centernot\implies\!\!}
