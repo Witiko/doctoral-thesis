@@ -1327,7 +1327,7 @@ math formulae and Tangent-CFTED uses a different structural matching technique:
 the tree edit distance.
 
 # Accuracy {#accuracy}
-There are many advanced features we may wish from a math information retrieval
+There are many advanced features we may wish for from a math information retrieval
 system: the ability to reveal relationships between different pieces of
 information, to visualize the information, or to use the information as a basis
 for computation. However, all these advanced features are predicated on a much
@@ -1335,12 +1335,12 @@ more basic and fundamental feature: the ability of the math information
 retrieval system to *accurately* retrieve the information that satisfy the
 needs of its users.
 
-In this chapter, I will report the results of my research of representations
+In this chapter, I will report the results of my research on representations
 that enable accurate math information retrieval:
 
 - In Section \vref{sec:topological-math-representations} and Section
   \vref{sec:representation-learning-accuracy}, I will describe my work in
-  developing new representation of math and my experiments in learning neural
+  developing a new representation of math along with my experiments in learning neural
   representations of natural language words and math symbols.
 
 - In Section \vref{sec:score-aggregation-of-structural-and-semantic-matching-techniques} and
@@ -1355,11 +1355,11 @@ that enable accurate math information retrieval:
 \label{sec:topological-math-representations}
 
 Although tree-structured math representations for the exchange of presentation
-and content math are well-established, how to transform them into a linear
+and content math are well established, how to transform them into a linear
 stream of tokens for math information retrieval is an open problem.
 
-In 2019, @lample2020deep have linearized a tree-structured content math
-representation using pre-order traversal, producing a topologically-ordered
+In 2019, @lample2020deep linearized a tree-structured content math
+representation using pre-order traversal, producing a topologically ordered
 sequence of tokens (also known as the prefix notation or the normal Polish
 notation). To give an example, the expression $x!! - y^2 = 0$ would be represented
 as the following comma-separated list of math symbols: $=$, $-$, $!!$, $x$,
@@ -1415,8 +1415,8 @@ representation for comparison. [@novotny2020three, Table 2]
 
 In the *MIRMU-SCM* system, both the prefix and the infix notations received the
 best results on the train dataset. The prefix and infix notations received
-equivalent results, since they mainly differ by ordering (with TF-IDF weighting,
-adding parenthesis tokens is insignificant). Since the soft vector space model
+equivalent results, since they mainly differ by ordering. (With TF-IDF weighting,
+adding parenthesis tokens is insignificant.) Since the soft vector space model
 is insensitive to token ordering, both notations correspond to modeling
 individual OPT nodes. The better results of the prefix and infix notations
 compared to modeling adjacent pairs of OPT and SLT nodes show that in our soft
@@ -1426,8 +1426,8 @@ longer paths in OPT and SLT trees.
 In the *MIRMU-CompuBERT* system, the prefix notation has received better
 results than the infix notation, showing that the topological ordering of
 @lample2020deep is significant in deep neural language models. Surprisingly,
-the \LaTeX{} representation has received better results that both prefix and
-infix notations. We believe that this is due to tokenization: Unlike
+the \LaTeX{} representation has received better results than both prefix and
+infix notations. We believe that this is due to tokenisation: Unlike
 @lample2020deep, we fine-tuned a language model whose tokenizer was pre-trained
 on natural language text. In \LaTeX{}, commands have descriptive names in
 natural language, which makes it more appropriate to use the same tokenizer
@@ -1436,7 +1436,7 @@ for both natural language text and math.
 #### Future Work
 
 The state-of-the-art Approach0 and Tangent-L systems use hard vector space
-models to model paths in OPT and SLT trees, respectively. This indicates that
+models to model paths in OPT and SLT trees respectively. This indicates that
 the failure of our soft vector space model to exploit longer paths in OPT and
 SLT trees may be caused by the insufficient capacity of our fastText model.
 Future work should test this hypothesis by performing an end-to-end
@@ -1464,7 +1464,7 @@ accurate token embeddings:
 
 - In Section \vref{sec:variable-control-in-token-embedding-evaluation}, I will
   describe my survey of methodology in previous token embedding experiments
-  and show that a lack of variable control makes some previous experiments
+  and show how a lack of variable control makes some previous experiments
   difficult to reproduce.
 
 - In Section \vref{sec:heuristical-hyperparameter-optimization-in-subtoken-language-models},
@@ -1490,7 +1490,7 @@ accurate token embeddings:
 
 Although the usefulness of token embeddings for transfer learning is rarely
 disputed, their theoretical foundations were only recently addressed by
-@levy2014neural in 2014. In 2015, @levy2015improving have shown that several
+@levy2014neural in 2014. In 2015, @levy2015improving showed that several
 pre-processing steps and fixed parameters can have a significant impact on
 experimental results.
 
@@ -1523,7 +1523,7 @@ experimental results from the literature:
   the word analogy task to evaluate their models.
 
 I reported undisclosed variables that made the experiments difficult to
-reproduce. Whereever applicable, I suggested default parameter values and
+reproduce. Wherever applicable, I suggested default parameter values and
 ways to make future experiments easier to reproduce.
 
 #### Results
@@ -1547,7 +1547,7 @@ distributions suffered from numerical instability when the vector
 dimensionality $D$ was high. I suggested using either the square-root normal
 distribution $\mathcal{N}^{0.5}(0, \nicefrac{1}{3D^2})$ of @pinelis2018exp
 or the continuous uniform $\mathcal{U}(\pm\nicefrac{\sqrt\[4\]{3}}{\sqrt{D}})$.
-<!-- See also Section \vref{sec:position-independent-token-embeddings-accuracy},
+<!-- See also Section \vref{sec:position-independent-token-embeddings-accuracy}
 where I discuss our further experiments with the fastText positional language
 model. -->
 
@@ -1559,16 +1559,16 @@ The word analogy task contains three undisclosed parameters:
 
 ← For the maximum dictionary size, only the parameter values were withheld. For
 the case transformations, the parameter only appears in the reference
-implementation.  The Unicode locale appears in neither the published works nor
+implementation. The Unicode locale appears in neither the published works nor
 in the reference implementation. I showed that up to 4\% of word analogy
 accuracy can depend on the Unicode locale and up to 18\% on the case
-transformation and the locale. I suggested the following default parameter
-values: $n = 3 · 10^5,$ Unicode case-folding, and the locale of the word
+transformation and the locale. I suggested the default parameter
+values $n = 3 · 10^5,$ Unicode case-folding, and the locale of the word
 analogy task.
 
 #### Reproducibility
 
-[The experimental code for all my experiments is available GitHub.][4] I have
+[The experimental code for all my experiments is available on GitHub.][4] I have
 also released [the only public implementation of the fastText positional model.][5]
 
  [4]: https://github.com/MIR-MU/reproducible-ml
@@ -1587,14 +1587,14 @@ described as ``an arbitrary choice'' [@bojanowski2017enriching].
 
  [^6]: For subtoken sizes, we adopt the notation of @bojanowski2017enriching and
        @grave2018learning For example, subtokens of size 3–6 are all subtokens
-       whose size is 3, 4, 5, or 6.
+       whose sizes are 3, 4, 5, or 6.
 
 In 2018, @grave2018learning produced the French and Hindi word analogy tasks.
 Furthermore, they also trained and publicly released fastText language models
 for 157 languages.  Like @bojanowski2017enriching, they also neglected to
 optimize the subtoken sizes.  Unlike @bojanowski2017enriching, they used
 subtokens of size 5--5 for all languages, noting that ``using character
-$n$-grams of size 5, instead of using the default range of 3--6, does not
+$n$-grams of size 5 instead of using the default range of 3--6 does not
 significantly decrease the accuracy (except for Czech).'' [@grave2018learning]
 
 #### Experiments
@@ -1606,20 +1606,20 @@ of fastText on the Czech, Italian, Spanish, French, Hindi, Turkish, and Russian
 word analogy tasks. [@novotny2021one]
 
 Furthermore, we produced a simple $n$-gram coverage model that can suggest
-subtoken sizes for under-resourced languages, where optimal subtoken sizes are
+subtoken sizes for under-resourced languages where optimal subtoken sizes are
 unknown.
 
 #### Results
 
-We reproduced the optimal subtoken sizes of @bojanowski2017enriching and we
+We reproduced the optimal subtoken sizes of @bojanowski2017enriching and
 reported the optimal subtoken sizes on the Czech (1--4), Italian (2--5), Spanish
 (5--5), French (6--6), Hindi (2--2), Turkish (3--3), and Russian (5--6) word
 analogy tasks. We showed that using the optimal subtoken sizes can result in up
 to 14\% improvement in word analogy accuracy.
 
-We also showed that using the suggested subtoken sizes of the $n$-gram coverage
+We also demonstrated that using the suggested subtoken sizes of the $n$-gram coverage
 model was never worse than the default subtoken sizes of
-@bojanowski2017enriching @grave2018learning on our test dataset, improved the
+@bojanowski2017enriching @grave2018learning on our test dataset. It improved the
 word analogy accuracy by up to 3\% compared to the default subtoken sizes, and
 was within 2\% word analogy accuracy of the optimal subtoken sizes.
 
@@ -1654,7 +1654,7 @@ In the subtoken model, tokens are represented by the parts of their meaning that
 are *fixed* or dependent on the *broader context* that includes the
 conversational setting, the time and location of an utterance, and the salient
 common ground. [@bach2012context] Unlike in the positional model, they are
-*not* represented by the parts of the meaning that are dependent the *narrow
+*not* represented by the parts of the meaning that are dependent on the *narrow
 context* of a paragraph, which makes the subtoken model less accurate than the
 positional model. However, in the positional model, tokens are *only*
 represented by the parts of their meaning that are dependent on the narrow
@@ -1673,7 +1673,7 @@ D'$ fixed and broader-context-dependent features that would not interact with
 positional embeddings.
 
 We reported the optimal value of $D'$ on the English word analogy task
-[@novotny2021when, Table 1] and we compared the subtoken, positional, and
+[@novotny2021when, Table 1] and compared the subtoken, positional, and
 constrained positional models on the English word analogy task
 [@novotny2021when, figures 2 and 3] and an English language modeling task
 [@novotny2021when, Section 4.4].
@@ -1714,14 +1714,14 @@ In 2018, @lam2018word2bits developed the Word2Bits quantized language model
 and showed that it was more accurate than the Word2Vec language model on the
 English word similarity and open-domain question answering tasks and equally as
 accurate on the English word analogy task. However, word analogy accuracies for
-the different categories of analogical reasoning were not reported, only total
-word analogy accuracies.
+the different categories of analogical reasoning were not reported; only total
+word analogy accuracies were.
 
 #### Experiments
 
 In 2019, I consulted the master's thesis of @stefanik2019semantic.[^32]
 In the thesis, we aimed to reproduce the word analogy experiment of @lam2018word2bits
-and analyze the word analogy accuracies for the different categories of
+and analyse the word analogy accuracies for the different categories of
 analogical reasoning. [@stefanik2019semantic, Section 3.1]
 
  [^32]: See also Section
@@ -1733,7 +1733,7 @@ analogical reasoning. [@stefanik2019semantic, Section 3.1]
 #### Results
 
 We reproduced the total accuracy on the English word analogy task.
-Additionally, we showed that although the quantized model way equally
+Additionally, we showed that although the quantized model was equally
 as accurate as the Word2Vec language model in total accuracies, it was
 significantly more accurate on the semantic categories of analogical
 reasoning and significantly less accurate on the syntactic categories
@@ -1748,7 +1748,7 @@ The experimental code for all our experiments is [available online.][8]
 ### Word Sense Disambiguation with Sense Embeddings
 \label{sec:word-sense-disambiguation-with-sense-embeddings}
 
-In both natural language and in content math, words and symbols can have
+In both natural language and content math, words and symbols can have
 several possible senses. The accuracy of token embeddings can be improved
 by accurate disambiguation of the word and symbol tokens into senses.
 
@@ -1759,7 +1759,7 @@ acquisition bottleneck*.
 
 Additionally, previous work in training sense embeddings only evaluates the
 embeddings on word similarity tasks, where the sense representations are not
-directly used, and not on sense-specific tasks such as word sense
+directly used and not on sense-specific tasks such as word sense
 disambiguation.
 
 #### Experiments
@@ -1845,7 +1845,7 @@ evaluation tasks.
 We showed that the soft vector space model and the word mover's distance were
 more accurate with our decontextualized embeddings than with the global
 embeddings of a fastText model on most tasks: five out of eight for the soft
-vector space model and six out of eight for the word mover's distance, see
+vector space model and six out of eight for the word mover's distance. See
 Table \vref{tab:decontextualized-token-embeddings}.
 
 #### Future Work
@@ -1872,17 +1872,17 @@ modeling task. However, they did not evaluate their token embeddings on math
 information retrieval.
 
 In 2017, @bojanowski2017enriching developed the fastText subtoken shallow
-log-bilinear language model and showed that it was more accurate than general
+log-bilinear language model and demonstrated that it was more accurate than general
 shallow log-bilinear language models on word analogy tasks. However,
 @krstowski2018equation did not use a subtoken language model to train their
-token embeddings and they did not compare their token embeddings to subtoken
+token embeddings, nor did they compare their token embeddings to subtoken
 language models.
 
 In 2019, @reimers2019sentencebert developed the Sentence BERT deep neural
 network language model and achieved state-of-the-art accuracy with its sentence
 embeddings on semantic text similarity tasks. However, they did not evaluate
-their sentence embeddings on information retrieval, because the Sentence BERT
-uses dense attention and therefore can only embed short sentences, not the
+their sentence embeddings on information retrieval because the Sentence BERT
+uses dense attention and therefore can only embed short sentences, as opposed to the
 full-length documents that are commonly used in information retrieval tasks.
 Additionally, Sentence BERT has never been used to train joint sentence
 embeddings of text and math or evaluated on math information retrieval.
@@ -1902,7 +1902,7 @@ systems[^12] using joint token and sentence embeddings of text and math for the
   neural network language model.
 
  [^12]: See Section \vref{sec:topological-math-representations} for a
-        discussion about the math representation that we have developed for our
+        discussion on the math representation that we have developed for our
         systems.
 
  [^13]: The questions and answers in the answer retrieval task are short,
@@ -1918,17 +1918,17 @@ the hard vector space model and does not use token embeddings. This shows that
 using joint token embeddings of text and math from subtoken language models
 improves accuracy on math information retrieval. We also showed that
 *MIRMU-SCM* was among the top three most accurate primary systems in the
-competition.  *MIRMU-CompuBERT* suffered from a lack of accurate training data
-and failed to reach accuracy that would be significantly better than zero at
+competition. *MIRMU-CompuBERT* suffered from a lack of accurate training data
+and failed to reach accuracy that would have been significantly better than zero at
 ARQMath-1.
 
 At ARQMath-2, we showed that with accurate training data, *MIRMU-CompuBERT*
 was more accurate than *MIRMU-SCM*. @mansouri2021dprl [Section 3] also used
 sentence embeddings of the Sentence BERT in two of their three math information
 retrieval systems (*DPRL-RRF* and *DPRL-QASim*) and achieved the second and
-third best accuracies in the competition.  This shows that using joint sentence
+third best accuracies in the competition. This shows that using joint sentence
 embeddings of text and math from deep neural network language models is
-well-motivated and improved accuracy on math information retrieval.
+well motivated and improved accuracy on math information retrieval.
 
 #### Reproducibility
 
@@ -1942,8 +1942,7 @@ from the ARQMath-2 lab is [available online.][14]
 \label{sec:score-aggregation-of-structural-and-semantic-matching-techniques}
 
 Techniques for structural and semantic matching such as the soft vector space
-model and the word mover's distance make naive assumptions about the syntax and
-the semantics of the natural language and the language of mathematics. They
+model and the word mover's distance make naive assumptions about the syntax and semantics of the natural language and the language of mathematics. They
 also often rely on token embeddings of language models, which contain
 human-like biases. [@caliskan2017semantics] These assumptions and biases cause
 systematic errors and decrease accuracy on machine translation evaluation
@@ -1979,7 +1978,7 @@ evaluated our ensemble on 20 machine translation evaluation tasks.
 | Catastrophic, src | en→ja   | *0.20* |  0.18  (Reg-base)          |
 | Catastrophic, src | en→zh   |  0.16  | *0.27  (SCM-dec)*          |
 %                                              
-: [Accuracies of the our ensemble and the best individual techniques %
+: [Accuracies of our ensemble and the best individual techniques %
    on 20 machine translation evaluation tasks]%
   {The accuracies of the our ensemble (RegEMT) and the best individual techniques %
    on 20 machine translation evaluation tasks. [@stefanik2021regressive] %
@@ -1992,7 +1991,7 @@ evaluated our ensemble on 20 machine translation evaluation tasks.
 We showed that our ensemble was more or equally accurate than any individual
 technique on 15 out of 20 machine translation evaluation tasks, which confirms
 that score aggregation is a useful technique for avoiding naive assumptions and
-biases of individual semantic matching techniques, see Table \vref{tab:regemt}.
+biases of individual semantic matching techniques. See Table \vref{tab:regemt}.
 
 #### Future Work
 
@@ -2015,7 +2014,7 @@ majority of relevant documents.
 
 In 2009, @cormack2009reciprocal developed the reciprocal rank fusion technique and
 showed that it achieved better accuracy than any individual system on five out
-of five information retrieval tasks and that it achieved state-of-the-art
+of five information retrieval tasks. It achieved state-of-the-art
 accuracy on three out of five information retrieval tasks. However, they did
 not evaluate their rank-based fusion technique on math information retrieval.
 
@@ -2026,7 +2025,7 @@ In 2020, we developed the *MIRMU-Ensemble* rank-based fusion technique for the
 used our technique to ensemble the primary systems of our MIRMU team.
 
 In 2021, we developed two new supervised rank-based fusion techniques
-(*MIRMU-WIBC* and *MIRMU-RBC*) and we used them together with our unsupervised
+(*MIRMU-WIBC* and *MIRMU-RBC*) and used them together with our unsupervised
 *MIRMU-Ensemble* (further known as *MIRMU-IBC*) and the unsupervised reciprocal
 rank fusion (further known as *MIRMU-RRF*) for the *find answers*
 task of the ARQMath-2 lab. [@novotny2021ensembling, Section 4] We used our
@@ -2036,11 +2035,11 @@ technique to ensemble all ten systems of our MIRMU and MSM teams.[^17]
         students of the FI:PV211 information retrieval course taught at the
         Masaryk University (MSM).
 
-To see if our unsupervised techniques could benefit from a large number of
+To see whether our unsupervised techniques could benefit from a large number of
 systems, we also used them to ensemble all non-baseline primary systems at the
 ARQMath-1 and ARQMath-2 labs. To see if our techniques could benefit from a small
 number of diverse systems,[^41] we also used them to ensemble five selected
-systems out of all our ten systems at the ARQMath-2 lab.
+systems out of all of our ten systems at the ARQMath-2 lab.
 
  [^41]: See Section \vref{sec:strengths-and-weaknesses} for a discussion of how
         we selected our five diverse systems and their strengths and weaknesses.
@@ -2060,9 +2059,9 @@ and MSM teams. We also showed that our *MIRMU-WIBC* can be more accurate than
 
 When we used the unsupervised *MIRMU-IBC* and *MIRMU-RRF* to ensemble all
 non-baseline primary systems, we received the best (*MIRMU-RRF*) and the
-second best (*MIRMU-IBC*) accuracies in the competition, which indicates that
+second-best (*MIRMU-IBC*) accuracies in the competition. This indicates that
 both techniques can benefit from a large number of systems. Ensembling only five 
-selected systems out of all our ten systems increased the accuracy of three out
+selected systems out of all ten systems increased the accuracy of three out
 of our four techniques, which indicates that all our techniques can benefit
 from a small number of diverse systems.
 
@@ -2082,13 +2081,13 @@ zones that are more important than the body text, such as the title, abstract,
 and keywords, and zones that are less important than the body text, such as the
 appendices, footnotes, and comments. Weighted zone scoring techniques can be
 used to inform an information retrieval system about the importance of
-different zones and improve its accuracy. [@manning2008introduction, Section 6.1]
+different zones and also to improve its accuracy. [@manning2008introduction, Section 6.1]
 
  /figures/godwins-law.tex
 
 #### Experiments
 
-In 2018, we analyzed the datasets and the relevance judgements from the
+In 2018, we analysed the datasets and the relevance judgements from the
 *community question answering* information retrieval task of the SemEval-2016
 and SemEval-2017 competitions. [@novotny2018weighting]
 The datasets consist of questions and threads of comments. The relevance
@@ -2106,16 +2105,15 @@ In 2021, we developed three primary math information retrieval systems using
 weighted zone scoring for the *find answers* task of the ARQMath-2 lab:[^17]
 
 - *MSM-MG* [@novotny2021ensembling, Section 3.1], which represents every answer
-  as its body text and the title, the body text, and the tags of its parent
-  question, all with equal weights,
+  as its body text and the title, body text, and tags of its parent
+  question, all with equal weights
 
 - *MSM-PZ* [@novotny2021ensembling, Section 3.2], which represents every answer
   as its body text and the title and the tags of its parent question, where the
   title and the tags of the parent question are given three times as much
   weight as the body text of the answer, and
 
-- *MIRMU-SCM* [@novotny2021ensembling, Section 3.3], which represents every
-  as its body text and the title, the body text, and the tags of its parent
+- *MIRMU-SCM* [@novotny2021ensembling, Section 3.3], which represents every answer as its body text and the title, body text, and tags of its parent
   question, where the title of the parent question is given three times as much
   weight as any of the remaining parts.
 
@@ -2128,14 +2126,14 @@ zone scoring.
 
 We showed that in the datasets from the *community question answering*
 information retrieval task of the SemEval-2016 and SemEval-2017 competitions,
-later comments were significantly less likely to be relevant and that their
-relevance followed a Zipf distribution, see Figure \vref{fig:weighted-zone-scoring}.
+later comments were significantly less likely to be relevant and their
+relevance followed a Zipf distribution. See Figure \vref{fig:weighted-zone-scoring}.
 
 We then developed three information retrieval systems: one that used weighted
 zone scoring to place smaller weight to later comments in a thread, one that
 did not use weighted zone scoring but continuously decreased the weights of later
-tokens in a thread, and one that used neither [@novotny2018weighting, Figure 3]
-We showed that our system that used weighted zone scoring achieved the
+tokens in a thread, and one that used neither. [@novotny2018weighting, Figure 3]
+We showed that our system that used weighted zone scoring achieved
 state-of-the-art accuracy on both datasets, whereas our two systems that did
 not use weighted zone scoring achieved worse-than-baseline accuracy on both
 datasets. [@novotny2018weighting, tables 1 and 2] This shows that weighted
@@ -2169,7 +2167,7 @@ relevance perceived by the users. Additionally, due to the amount of data and
 time constraints, even this formal ranking criteria are usually approximated.
 
 In this section, I will report the results of my experiments in making
-approximate math information retrieval more accurate:
+approximate math information retrieval more accurate.
 
 - In Section \vref{sec:dense-retrieval-in-inverted-indices-accuracy}, I will
   show that dense retrieval can be approximated with almost no loss in
@@ -2186,20 +2184,20 @@ Recent results show that dense retrieval techniques can achieve higher accuracy
 than sparse retrieval techniques on information retrieval tasks.
 [@lin2021batch] At the *find answers* task of the ARQMath-1 and ARQMath-2 labs,
 sparse information retrieval systems still achieved the best accuracy, but the
-gap is closing: Whereas at ARQMath-1, only three[^19] out of 23 systems (13\%)
-used dense retrieval and the best dense retrieval system only received the
-seventh best accuracy in the competition, [@zanibbi2020overview, Table A1], at
-ARQMath-2, nine[^20] out of 40 systems (23\%) used dense retrieval and the best
-dense retrieval systems received the second and third best accuracies in the
-competition. [@behrooz2021overview, Table 4]
+gap is closing. Whereas, at ARQMath-1, only three[^19] out of 23 systems (13\%)
+used dense retrieval, with the best dense retrieval system only receiving the
+seventh best accuracy in the competition.  [@zanibbi2020overview, Table A1] At
+ARQMath-2, nine[^20] out of 40 systems (23\%) used dense retrieval, with the
+best dense retrieval systems receiving the second and third best accuracies in
+the competition. [@behrooz2021overview, Table 4]
 
- [^19]: The three systems were, by decreasing accuracy:
+ [^19]: The three systems by decreasing accuracy:
 
     1. *PSU1*,
     2. *PSU3*, and
-    3. *MIRMU-CompuBERT*.
+    3. *MIRMU-CompuBERT*
 
- [^20]: The nine systems were, by decreasing accuracy:
+ [^20]: The nine systems by decreasing accuracy:
 
     1. *DPRL-MathSE*,
     2. *DPRL-QASim*,
@@ -2207,7 +2205,7 @@ competition. [@behrooz2021overview, Table 4]
     4. *TU\\_DBS\\_A2*,
     5. *TU\\_DBS\\_A3*,
     6. *TU\\_DBS\\_A1*,
-    7. *MIRMU-CompuBERT*,
+    7. *MIRMU-CompuBERT*
     8. *PSU*, and
     9. *TU\\_DBS\\_A4*.
 
@@ -2232,14 +2230,14 @@ We showed that our system could perform exact dense retrieval with almost
 no loss in accuracy. [@rygl2017semantic, Table 2; @ruzicka2017flexible, Section 4]
 We also showed that both our encoding and our system can be configured to trade
 off accuracy for speed and perform fast approximate dense retrieval[^37]
-[@rygl2017semantic, Figure 1; @ruzicka2017flexible, figures 1--14], see also
+[@rygl2017semantic, Figure 1; @ruzicka2017flexible, figures 1--14]. See also
 Section \vref{sec:dense-retrieval-in-inverted-indices-speed}.
 
  [^37]: See Section \vref{sec:dense-retrieval-in-inverted-indices-speed} for a
         discussion about the trade-offs between speed and accuracy.
 
 Our results showed that the dilemma of the digital mathematical libraries is
-false: Using our system, libraries can use more accurate dense retrieval
+false. Using our system, libraries can use more accurate dense retrieval
 without replacing their tried-and-tested sparse retrieval architectures.
 
 ### Sparse Retrieval in Inverted Indices and Vector Databases
@@ -2247,13 +2245,11 @@ without replacing their tried-and-tested sparse retrieval architectures.
 
 State-of-the-art math information retrieval systems rely on the hard soft
 vector space model of @salton1988termweighting, which is fast and
-interpretable, but whose accuracy is limited by its failure to recognize that
+interpretable but its accuracy is limited by its failure to recognize that
 the meaning of different words and symbols can be similar or related.
 
 In 2014, @sidorov2014soft developed the soft vector space model, which can
-recognize the semantic relatedness of words and symbols. However, the soft
-vector space model was not practically fast. Additionally, the soft vector
-space model required a measure of relatedness between words and symbols.
+recognize the semantic relatedness of words and symbols. However, this model was not practically fast and it required a measure of relatedness between words and symbols.
 Furthermore, the soft vector space model had not been evaluated on math
 information retrieval.
 
@@ -2262,12 +2258,12 @@ between words and symbols based on the edit distance and on token embeddings
 and they achieved state-of-the-art accuracy on a semantic text similarity task.
 
 In 2018, @lam2018word2bits developed the Word2Bits quantized language model
-technique and showed that it was more accurate than the Word2Vec language model
+and showed that it was more accurate than the Word2Vec language model
 on the English word similarity and open-domain question answering tasks and
 equally as accurate on the English word analogy task. The token embeddings of
 the quantized model could make the soft vector space model practically fast.
-However, they the soft vector space model with the quantized token embeddings
-had not been never evaluated.
+However, the soft vector space model with the quantized token embeddings
+had never been evaluated.
 
 #### Experiments
 
@@ -2302,22 +2298,22 @@ reported the optimal hyperparameter values for our orthogonalization algorithm.
 
 #### Results
 
-We showed that quantized and (especially) regularized token embeddings not only
-did not decrease the accuracy of the soft vector space, but actually improved
+We showed that quantized and (especially) regularized token embeddings
+did not decrease the accuracy of the soft vector space. In fact, they actually improved
 it on five out of six text classification tasks. We also showed that the soft
 vector space model with any of our token embeddings was more accurate than the
 hard vector space model on all six tasks.
 
-We also showed that the soft vector space can be more accurate than math
+We also showed that the soft vector space model can be more accurate than math
 information retrieval systems that used similar information retrieval techniques
-but used the hard vector space model instead of the soft vector space model:
+but used the hard vector space model instead of the soft vector space model.
 For example, at ARQMath-1, the soft vector space model (*MIRMU-SCM*) was more
-accurate than *MIRMU-MIaS* of the European Digital Mathematical Library and
+accurate than *MIRMU-MIaS* of the European Digital Mathematical Library, and
 at ARQMath-2, the soft vector space model was more accurate than five systems
 of the MSM team.[^23]
 
  [^23]: *MIRMU-SCM* is more accurate even when we disable weighted zone scoring,
-        which the five systems of the MSM team did not use, see also
+        which the five systems of the MSM team did not use. See also
         Section \ref{sec:weighted-zone-scoring}.
 
 #### Future Work
@@ -2348,7 +2344,7 @@ ARQMath-2 lab is [available online.][14]
 # Speed {#speed}
 The accuracy as well as the availability of more advanced features in a math
 information retrieval system are fundamentally limited by the *speed* at which
-we can deploy the system, store new information in it, and recall information
+we can deploy the system, store new information in it and recall information
 that satisfy the needs of its users.
 
 In this chapter, I will report the results of my research of representations
@@ -2360,7 +2356,7 @@ and techniques that enable fast math information retrieval:
 
 - In Section \vref{sec:representation-learning-speed}, I will describe my
   work in making neural representations of natural language words and math
-  symbols both faster to learn and faster to use.
+  symbols faster to both learn and use.
 
 - In Section \vref{sec:approximate-nearest-neighbor-search-speed}, I will
   describe my work in developing fast approximate search techniques.
@@ -2378,10 +2374,10 @@ work of all developers to a shared repository several times a day. To maintain
 code quality, best practices for continuous integration include automating the
 builds and making the builds self-testing.
 
-In 2018, we have publicly released our MIaS search engine of the European
-Digital Mathematical Library [on GitHub.][28] [@sojka2018mias] We have also
-developed a solution for deploying MIaS and we have made it [available on
-GitHub.][26] However, our solution was slow, because we always needed to build
+In 2018, we publicly released our MIaS search engine of the European
+Digital Mathematical Library [on GitHub.][28] [@sojka2018mias] We also
+developed a solution for deploying MIaS, made [available on
+GitHub.][26] However, our solution was slow because we always needed to build
 MIaS during the deployment. Additionally, our builds would suddenly fail due to
 the changing code base of MIaS and a lack of code quality control. Furthermore,
 our solution had been written in the GNU Make language, which was difficult to
@@ -2390,10 +2386,9 @@ maintain.
  [26]: https://github.com/MIR-MU/ntcir-mias-deployment
  [28]: https://github.com/MIR-MU/WebMIaS
 
-In 2020, we have developed a new solution for deploying MIaS at the ARQMath-1
-lab and we have also made it [available on GitHub.][27] Our new solution had
-been written in Python, which was easier to maintain than GNU Make. However,
-our new solution was still slow and our builds would suddenly fail.
+In 2020, we developed a new solution for deploying MIaS at the ARQMath-1
+lab and made it [available on GitHub.][27] Our new solution was written in Python, which was easier to maintain than GNU Make. However,
+our new solution was still slow and our builds would still suddenly fail.
 
  [27]: https://github.com/MIR-MU/ARQMath-eval (file docs/MIaS-at-ARQMath.ipynb)
 
@@ -2401,9 +2396,9 @@ our new solution was still slow and our builds would suddenly fail.
 
 In 2021, we have developed a new solution for deploying MIaS using Docker
 continuous integration. [@luptak2021webmias] [^29] With Docker, our solution
-is no longer slow, because we do not need to build MIaS during the deployment,
+is no longer slow because we do not need to build MIaS during the deployment,
 but we can download a pre-built Docker image. With continuous integration, our
-builds would no suddenly fail during the deployment, because any change to the
+builds would no longer suddenly fail during the deployment because any change to the
 code base would build and test MIaS immediately.
 
  [^29]: For continuous integration, we have used the GitHub Actions service,
@@ -2422,7 +2417,7 @@ Docker image.][31]
 
 Math information retrieval techniques for structural and semantic matching rely
 on neural representations (token embeddings) of natural language words and math
-symbols that are not only accurate, but also fast to train and use.
+symbols that are not only accurate but also fast to train and use.
 
 In this section, I will report the results of my experiments in learning fast
 token embeddings:
@@ -2447,9 +2442,9 @@ similarity require expensive floating point multiplication and division.
 In 2018, @lam2018word2bits developed the Word2Bits quantized language model and
 showed that it was more accurate than the Word2Vec language model on the
 English word similarity and open-domain question answering tasks and equally as
-accurate on the English word analogy task. With the quantized language mode, we
+accurate on the English word analogy task. With the quantized language model, we
 can approximate the similarity between a pair of token embeddings using fast
-bitwise arithmetic. However, the speed and the accuracy of these approximations
+bitwise arithmetic. However, the speed and accuracy of these approximations
 had not been evaluated.
 
 #### Experiments
@@ -2473,8 +2468,8 @@ non-implication $\vec x ⇏ \vec y$.
 #### Results
 
 We showed that our bitwise approximation can be more than 20× faster than the
-float arithmetic and we also showed that our approximation was within 2\%
-accuracy of the cosine similarity on the English word analogy task, see
+float arithmetic. We also showed that our approximation was within 2\%
+accuracy of the cosine similarity on the English word analogy task. See
 Figure \vref{fig:quantized-token-embeddings-with-fast-bitwise-arithmetic}. This
 shows that quantized token embeddings can be used for fast structural and
 semantic matching.
@@ -2503,21 +2498,21 @@ fast to train.
 
 #### Experiments
 
-In 2020, I implemented the positional model[^35] and I evaluated if it can
+In 2020, I implemented the positional model[^35] and evaluated whether it could
 achieve better accuracy than the subtoken language model on the English word
 analogy task when we trained both models for an equal amount of time.
 [@novotny2020art, Table 3]
 
  [^35]: See Section \vref{sec:variable-control-in-token-embedding-evaluation}
-        for a discussion about my implementation of the positional model.
+        for a discussion on my implementation of the positional model.
 
 In 2021, we developed the fastText constrained positional model,[^36] which was
-less complex than the positional model and which achieved better accuracy than
+less complex than the positional model and achieved better accuracy than
 the positional model on word analogy and language modeling tasks.
-We compated the training time of both models. [@novotny2021when, Section 4]
+We compared the training time of both models. [@novotny2021when, Section 4]
 
  [^36]: See Section \vref{sec:position-independent-token-embeddings-accuracy}
-        for a discussion about the development and the accuracy of the contrained
+        for a discussion about the development and accuracy of the constrained
         positional model.
 
 #### Results
@@ -2528,7 +2523,7 @@ models for five hours. We also showed that our constrained positional model
 could train 2× faster than the positional model.[^41]
 
  [^41]: See Section \vref{sec:position-independent-token-embeddings-interpretability}
-        for a discussion about the interpretability of the positional model.
+        for a discussion on the interpretability of the positional model.
 
 #### Reproducibility
 
@@ -2536,7 +2531,7 @@ could train 2× faster than the positional model.[^41]
 also released [the only public implementation of the fastText positional model
 and our fastText constrained positional model.][5]
 
-## Approximate Nearest-Neighbor Search in Vector Spaces
+## Approximate Nearest Neighbor Search in Vector Spaces
 \label{sec:approximate-nearest-neighbor-search-speed}
 
 The amount of information that a math information retrieval system must store
@@ -2573,7 +2568,7 @@ perform fast approximate dense retrieval [@rygl2017semantic, Figure 1;
 of our system in detail.
 
  [^38]: See Section \vref{sec:dense-retrieval-in-inverted-indices-accuracy} for
-        a discussion about the development and the accuracy of our system.
+        a discussion on the development and accuracy of our system.
 
  /figures/scaletext-speed.tex
 
@@ -2587,8 +2582,8 @@ system.
 
 #### Results
 
-We showed that there ways an optimal configuration of our encoding and our
-system, where our system wass both fast and accurate, see Figure
+We showed that there existed an optimal configuration of our encoding and our
+system, where our system was both fast and accurate. See Figure
 \ref{fig:dense-retrieval-in-inverted-indices-speed}.
 
 ### Sparse Retrieval in Inverted Indices and Vector Databases
@@ -2609,11 +2604,11 @@ achieve practical speed by placing restrictions on the measures of relatedness
 that the soft vector space model could use. [@novotny2018implementation,
 Section 3] In 2020, we showed that our restricted model was more accurate[^39]
 than the non-restricted model on five out of six text classification tasks.
-[@novotny2020text, Figure 8] In this section, I will discuss the speed of the
+[@novotny2020text, Figure 8] In this section, I will discuss the speed of
 my restricted soft vector space model in detail.
 
  [^39]: See Section \ref{sec:sparse-retrieval-in-inverted-indices-and-vector-databases-accuracy}
-        for a discussion about the development and the accuracy of the soft vector space model.
+        for a discussion about the development and accuracy of the soft vector space model.
 
 #### Experiments
 
@@ -2644,8 +2639,8 @@ Table 5; @novotny2021ensembling, Figure 11]
 
 #### Results
 
-We showed that the restricted model was 3× slower than the non-restricted model
-on the six text classification tasks and we theorized that this was because the
+We showed that the restricted model was three times slower than the non-restricted model
+on the six text classification tasks. We theorized that this was because the
 restricted model had been implemented using slower sparse matrix operations
 whereas the non-restricted model had been implemented using faster dense matrix
 operations. We offer further explanation below.
@@ -2668,7 +2663,7 @@ summation:%
 
 However, my implementation of the restricted model used the SciPy Python
 library, which would separate $\vec{x}ᵀ · S · \vec{y}$ into two
-operations: $\vec{x}ᵀ · S$ and $◌ · \vec{y}$, where the worst-case time
+operations, $\vec{x}ᵀ · S$ and $◌ · \vec{y}$, where the worst-case time
 complexity of both operations was $\mathcal{O}(n)$ if the size of query
 $\vec{x}$ was constant. Future work should investigate how to improve my
 implementation to achieve the theoretical $\mathcal{O}(1)$ worst-case time
@@ -2691,7 +2686,7 @@ ARQMath-2 lab is [available online.][14]
 
 # Interpretability {#interpretability}
 In math information retrieval, accuracy and speed ensure that we can recall
-information that a user needs when she needs them. However, the ability of a
+information that a user needs when they need them. However, the ability of a
 system to explain the information to the user is fundamentally limited by the
 *interpretability* of its internal representations.
 
@@ -2715,13 +2710,13 @@ representations that enable explainable information retrieval:
 
 Math information retrieval techniques for structural and semantic matching rely
 on neural representations (token embeddings) of natural language words and math
-symbols that are not only accurate, but also interpretable.
+symbols that are not only accurate but also interpretable.
 
 In this section, I will report the results of my experiments in learning
 interpretable token embeddings:
 
 - In Section \vref{sec:formal-concept-analysis-with-quantized-token-embeddings},
-  I will show that quantizing the Word2Vec language model makes it possible to
+  I will illustrate how quantizing the Word2Vec language model makes it possible to
   determine type-of relations between tokens.
 
 - In Section \vref{sec:position-independent-token-embeddings-interpretability},
@@ -2736,8 +2731,8 @@ reformulation of the lattice theory that focused on objects and their binary
 attributes. The binary features of the Word2Bits quantized language model
 of @lam2018word2bits can be studied using the formal concept analysis.
 
-In 2015, @priss2005linguistic has noted that formal concept analysis can be
-used to encode and analyze type-of (hyponymy-hyperonymy) word relations.
+In 2015, @priss2005linguistic noted that formal concept analysis can be
+used to encode and analyse type-of (hyponymy-hyperonymy) word relations.
 Parts of speech are a type-of relation. However, the quantized language model
 has not been evaluated on a part-of-speech tagging task.
 
@@ -2755,8 +2750,8 @@ token embedding feature. To see if the part-of-speech relation would be
 eventually distributed between different features, we repeated the experiment
 for different vector dimensionalities $D$. [@stefanik2019semantic, Section 3.3]
 
-We also developed two algorithms for seciding whether a feature of a token
-embedding should be negated, so that its value was one if and only if the token
+We also developed two algorithms for deciding whether a feature of a token
+embedding should be negated so that its value was one if, and only if, the token
 had the interesting property that was associated with the feature. We used our
 algorithms to show the probabilities $P(i ⇒ j)$ of the implications $i ⇒ j$
 between the interesting properties $i$ and $j$ associated with the token
@@ -2766,8 +2761,7 @@ embedding features. [@stefanik2019semantic, Section 3.7]
 
 We showed that for vector dimensionality $D = 30$, nouns, verbs, and
 adjectives are significantly correlated with their token embedding feature.
-The correlations decrease as the vector dimensionality $D$ increases and become
-they insignificant for $D\geq 600$, which indicates that the part-of-speech
+The correlations decrease as the vector dimensionality $D$ increases and they become insignificant for $D\geq 600$, which indicates that the part-of-speech
 relation has been distributed between different token embedding features.
 
 We show the probabilities $P(i ⇒ j)$ produced by one of our algorithms in
@@ -2811,7 +2805,7 @@ reason for this was unclear.
 In 2021, we developed two measures for the importance of positions and one
 measure for the importance of tokens. [@novotny2021when, Section 3.4]
 We used our measures to explain the role of positional embeddings in the
-positional positional model. [@novotny2021when, Section 4.3]
+positional model. [@novotny2021when, Section 4.3]
 
  /figures/positional-features.tex
 
@@ -2851,24 +2845,24 @@ together with the only public implementation of the positional model.
 
 In 2021, we used two unsupervised rank-based fusion[^42] techniques for the
 *find answers* task of the ARQMath-2 lab [@novotny2021ensembling, Section 4] to
-ensemble all ten systems of our teams.  We were also interested if our
+ensemble all ten systems of our teams.  We were also interested in whether our
 techniques could benefit from a small number of diverse systems. However, it
-was unclear how to select a small number of diverse systems and how to
-interpret their diversity.
+was unclear how to select a small number of diverse systems and interpret their
+diversity.
 
  [^42]: See Section \vref{sec:rank-based-fusion} for the discussion of the
-        development and the accuracy of our rank-based fusion techniques.
+        development and accuracy of our rank-based fusion techniques.
 
 #### Experiments
 
 First, we used the correlations between the rankings of results from our
 systems to cluster the systems. Then, we used the Silhouette score to select
-the optimal number of clusters [@novotny2021ensembling, Figure 7] Finally,
+the optimal number of clusters. [@novotny2021ensembling, Figure 7] Finally,
 we selected a random representative from each cluster. These representatives
 were our small number of diverse systems.
 
 To interpret the diversity of the systems, we developed two measures of their
-strengths and weaknesses that showed: [@novotny2021ensembling, Figure 8]
+strengths and weaknesses that showed… [@novotny2021ensembling, Figure 8]
 
 1. how capable the systems were at mathematical and text queries and
 2. how capable the systems were at long and short queries.
@@ -2885,7 +2879,7 @@ We selected five diverse systems: *MIRMU-CompuBERT*, *MIRMU-SCM*, *MSM-LM*,
         and their accuracy.
 
 We also showed that *MIRMU-CompuBERT* received the most consistent results
-across both text and math queries, excelled at short queries, but its
+across both text and math queries, it excelled at short queries, but its
 performance deteriorated for long queries that didn't fit into the short
 context window of its dense attention. By contrast, the remaining four systems
 that were based on the vector space model excelled at text queries, but their
@@ -2922,7 +2916,7 @@ StackExchange dataset using the *MIRMU-SCM* system had been created.
 
 In 2021, I led the bachelor's thesis of @petr2021document. In the thesis, we
 developed an interactive visualization of the Math StackExchange dataset using
-our *MIRMU-SCM* system, see Figure \vref{fig:document-maps}.
+our *MIRMU-SCM* system. See Figure \vref{fig:document-maps}.
 
 #### Results
 
