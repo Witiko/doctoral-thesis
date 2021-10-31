@@ -1,9 +1,65 @@
-# Acknowledgements {#acknowledgements}
+# Acknowledgements {#thanks}
 
-I wish to express my most sincere gratitude to my thesis supervisor, Petr
-Sojka, for sharing his impeccable expertise, valuable guidance, and for
-introducing me to the math information retrieval community, many of friends
-and colleagues as well as my significant other.
+Throughout the writing of this dissertation I have received a great deal of
+support and assistance.
+
+I would first like to express my most sincere gratitude to my advisor,
+Petr Sojka, for sharing his impeccable expertise, which was invaluable
+in formulating my research questions the and methods of my research. Your
+thought-provoking insights have improved my dissertation in too many ways to
+count.
+
+I would also like to acknowledge the South Moravian Centre for International
+Mobility (JCMM), who financially supported my research through the Brno Ph.D.
+talent project and organized events where I could learn new skills and meet my
+colleagues, and the Ministry of Education, Youth and Sports of the Czech
+Republic, who supplied me with computational resources through the
+\`\`e-Infrastruktura CZ'' (e-INFRA CZ LM2018140) grant project.
+
+In addition, I would like to thank Radim Řehůřek, Gordon Mohr, and Michael
+Penkov from the Gensim project for volunteering their time to help me translate
+my ideas into code and become a better programmer.
+
+I would also like to acknowledge my colleagues from the math information
+retrieval (MIR-MU) research group for their wonderful collaboration. I would
+like to single out Michal Růžička, who was always willing to help me with the
+provision of computational resources, and Michal Štefánik, who would always be
+there to discuss any and all research ideas.
+
+I would also like to thank my tutor, Eniafe Festus Ayetiran, for his invaluable
+guidance throughout my studies. You provided me with the tools I needed to
+publish my work and successfully complete my dissertation.
+
+Last but not least, I would like to thank my parents for their wise counsel and
+sympathetic ear. You are always there for me.
+
+Finally, I could not have completed this dissertation without the support of
+Marie, Lída, Monika, and Anička, who would look after Samuel when I was working
+and who provided stimulating discussions as well as happy distractions to rest
+my mind outside of my research.
+
+# Abstract {#abstract}
+
+Mathematicians dream of a digital library of all peer-reviewed math literature
+ever published. Math information retrieval emerged when it became clear that
+standard information retrieval techniques used for text documents were
+inadequate to retrieve math documents from digital mathematical libraries.
+
+Math information retrieval systems use advanced representations of math to
+ensure fast and accurate retrieval. However, they rarely focus on the
+interpretability of their representations, which makes the retrieval results
+difficult to explain to users.
+
+In my thesis, I focus on representations and techniques that can make math
+information retrieval systems more interpretable: token embeddings, semantic
+matching techniques, and learning-to-rank techniques. The aim of my thesis
+is to determine whether these techniques can also make math information
+retrieval systems more accurate and keep them reasonably fast.
+
+I show that semantic matching techniques based on token embeddings and
+learning-to-rank techniques can improve the accuracy of math information
+retrieval systems and can achieve the same speed as non-interpretable
+systems. I also show the tangible benefits of interpretability.
 
 # Introduction {#introduction}
 
@@ -49,10 +105,10 @@ information retrieval systems more interpretable, namely:
 ← I aimed to answer three research questions:
 
 1. Can semantic matching techniques that use token embeddings improve the
-   accuracy of math information retrieval?
+   accuracy of math information retrieval systems?
 
 2. Can semantic matching techniques based on token embeddings be reasonably
-   fast for math information retrieval?
+   fast for math information retrieval systems?
 
 3. Can learning-to-rank techniques consistently improve accuracy compared to
    individual math information retrieval systems?
@@ -79,7 +135,8 @@ research question 2.
 
 In Chapter \vref{cha:interpretability}, I will report the results of my
 research on interpretable representations that enable explainable math
-information retrieval.
+information retrieval and I will show some tangible benefits of
+interpretability.
 
 I will conclude in Chapter \vref{cha:conclusion} by summarizing the results of
 my research with respect to my research questions. I will also offer directions
@@ -3019,10 +3076,10 @@ The code of the interactive visualization is [available on GitHub.][45]
 In my work, I aimed to answer three research questions:
 
 1. Can semantic matching techniques that use token embeddings improve the
-   accuracy of math information retrieval?
+   accuracy of math information retrieval systems?
 
 2. Can semantic matching techniques based on token embeddings be reasonably
-   fast for math information retrieval?
+   fast for math information retrieval systems?
 
 3. Can learning-to-rank techniques consistently improve accuracy compared to
    individual math information retrieval systems?

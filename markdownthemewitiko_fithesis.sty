@@ -18,8 +18,20 @@
   renderers = {
     headingOne = {},
     interblockSeparator = {%
-      \bigskip\par\noindent
+      \def\markdownRendererInterblockSeparator{%
+        \bigskip
+        \markdownRendererInterblockSeparatorPrototype
+        \noindent
+      }%
+      \ignorespaces
     },
+  }
+}
+
+%% Abstract
+\markdownSetupSnippet{abstract}{
+  renderers = {
+    headingOne = {},
   }
 }
 
@@ -41,6 +53,7 @@
       \vspace{1em plus 0pt minus 1em}%
     },
     ulBegin = {%
+      \vspace{-4pt}%
       \vspace{0.5em plus 0pt minus 0.5em}%
       \begin{itemize}%
     },

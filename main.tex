@@ -61,6 +61,9 @@
     thanks      = {%
       \markdownInput[slice=thanks, snippet=thanks]{main.md}%
     },
+    abstract    = {%
+      \markdownInput[slice=abstract, snippet=abstract]{main.md}%
+    },
 %    bib         = main.bib,
     bib         = ../thesis-outline/main.bib,
     %% Remove the following line to use the JVS 2018 faculty logo.
@@ -147,6 +150,7 @@
 ]{markdown}
 \markdownSetupSnippet{publications}{snippet=witiko/fithesis/publications}
 \markdownSetupSnippet{thanks}{snippet=witiko/fithesis/thanks}
+\markdownSetupSnippet{abstract}{snippet=witiko/fithesis/abstract}
 
 %% Additional math operators
 \RequirePackage{amsmath}
@@ -188,6 +192,6 @@
 
 \printindex[author]
 
-\printindex[subject]
+% \printindex[subject]
 
 \end{document}
