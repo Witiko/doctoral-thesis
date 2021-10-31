@@ -1,3 +1,5 @@
+\ProvidesPackage{mytikzicons}[2021/10/31]
+
 \usepackage{tikzpeople}
 \usetikzlibrary{arrows,positioning}
 
@@ -38,55 +40,55 @@
     \node [align=left, #1] (refined-question) {\textbf{Refined question:}\\ Is Barack Obama a reptile?}
 }
 \newcommand\retriever[1][]{%
-    \node [rectangle, draw, rounded corners, minimum height=2em, #1] (retriever) {Retriever};
+    \node [rectangle, draw, rounded corners, minimum height=2em, #1] (retriever) {Retriever}
 }
 \newcommand\referenceretriever[1][]{%
-    \node [rectangle, align=center, draw, rounded corners, minimum height=2em, #1] (retriever) {Reference\\ retriever};
+    \node [rectangle, align=center, draw, rounded corners, minimum height=2em, #1] (retriever) {Reference\\ retriever}
 }
 \newcommand\reader[1][]{%
-    \node [rectangle, draw, rounded corners, minimum height=2em, #1] (reader) {Reader};
+    \node [rectangle, draw, rounded corners, minimum height=2em, #1] (reader) {Reader}
 }
 \newcommand\answerpicker[1][]{%
-    \node [rectangle, draw, rounded corners, minimum height=2em, #1] (answer-picker) {Answer picker};
+    \node [rectangle, draw, rounded corners, minimum height=2em, #1] (answer-picker) {Answer picker}
 }
 \newcommand\resultlist[1][]{%
-    \node [align=center, #1] (result-list) {\includegraphics[width=3cm]{result-list}\\Result list};
+    \node [align=center, #1] (result-list) {\includegraphics[width=3cm]{result-list}\\Result list}
 }
 \newcommand\mathresultlist[1][]{%
-    \node [align=center, #1] (result-list) {\includegraphics[width=2.5cm]{math-result-list}\\Result list};
+    \node [align=center, #1] (result-list) {\includegraphics[width=2.5cm]{math-result-list}\\Result list}
 }
 \newcommand\mathreferenceresultlist[1][]{%
-    \node [align=center, #1] (result-list) {\includegraphics[width=3cm]{math-result-list}\\Reference\\ result list};
+    \node [align=center, #1] (result-list) {\includegraphics[width=3cm]{math-result-list}\\Reference\\ result list}
 }
 \newcommand\mathhumanserp[1][]{%
-    \node [align=center, #1] (human-serp) {\includegraphics[height=3cm]{math-human-serp}\\Exhaustive human annotations};
+    \node [align=center, #1] (human-serp) {\includegraphics[height=3cm]{math-human-serp}\\Exhaustive human annotations}
 }
 \newcommand\mathsystemserp[1][]{%
-    \node [align=center, #1] (system-serp) {\includegraphics[height=3cm]{math-system-serp}\\System submission};
+    \node [align=center, #1] (system-serp) {\includegraphics[height=3cm]{math-system-serp}\\System submission}
 }
 \newcommand\mathchoices[1][]{%
-    \node [#1] (choices) {\includegraphics[width=3cm]{math-choices}};
+    \node [#1] (choices) {\includegraphics[width=3cm]{math-choices}}
 }
 \newcommand\bert[1][]{%
-    \node [align=center, #1] (bert) {\includegraphics[height=3cm]{bert}\\[-1em]Pre-trained\\ language model};
+    \node [align=center, #1] (bert) {\includegraphics[height=3cm]{bert}\\[-1em]Pre-trained\\ language model}
 }
 \newcommand\contextparagraph[1][]{%
-    \node [align=center, #1] (context-paragraph) {\includegraphics[width=3cm]{context-paragraph}\\[-0.5em]Context paragraph};
+    \node [align=center, #1] (context-paragraph) {\includegraphics[width=3cm]{context-paragraph}\\[-0.5em]Context paragraph}
 }
 \newcommand\mathcontextparagraph[1][]{%
-    \node [align=center, #1] (context-paragraph) {\includegraphics[width=3cm]{math-context-paragraph}\\[-0.5em]Context paragraph};
+    \node [align=center, #1] (context-paragraph) {\includegraphics[width=3cm]{math-context-paragraph}\\[-0.5em]Context paragraph}
 }
 \newcommand\extractedanswer[1][]{%
-    \node [align=center, #1] (answer) {\includegraphics[width=3cm]{extracted-answer}\\[-0.5em]Answer};
+    \node [align=center, #1] (answer) {\includegraphics[width=3cm]{extracted-answer}\\[-0.5em]Answer}
 }
 \newcommand\extractedanswers[1][]{%
-    \node [align=center, #1] (answers) {\includegraphics[width=3cm]{extracted-answers}\\Answers};
+    \node [align=center, #1] (answers) {\includegraphics[width=3cm]{extracted-answers}\\Answers}
 }
 \newcommand\extractedmathanswer[1][]{%
-    \node [align=center, #1] (answer) {\includegraphics[width=3cm]{extracted-math-answer}\\[-0.5em]Answer};
+    \node [align=center, #1] (answer) {\includegraphics[width=3cm]{extracted-math-answer}\\[-0.5em]Answer}
 }
 \newcommand\extractedmathanswers[1][]{%
-    \node [align=center, #1] (answers) {\includegraphics[width=3cm]{extracted-math-answers}\\Answers};
+    \node [align=center, #1] (answers) {\includegraphics[width=3cm]{extracted-math-answers}\\Answers}
 }
 \newcommand\generatedanswer[1][]{%
     \node [align=left, #1] (answer) {\textbf{Answer:}\\ August 4, 1961}

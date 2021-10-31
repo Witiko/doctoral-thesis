@@ -179,7 +179,7 @@ represent presentation math in math information retrieval systems.
  /figures/pmml-and-cmml.tex
 
 ``` dot %
-    [Symbol Layout Tree representation of the math formula $x!! - y^2 = 0$]%
+    [Symbol Layout Tree representation]%
     {Symbol Layout Tree (SLT) representation of the math formula $x!! - y^2 = 0$. %
      Edge labels n and a stands for next and above. %
      \cite[Figure 3]{novotny2020three}%
@@ -208,7 +208,7 @@ digraph tree {
 ```
 
 ``` dot %
-    [Operator Tree representation of the math formula $x!! - y^2 = 0$]%
+    [Operator Tree representation]%
     {↑ Operator Tree (OPT) representation of the math formula $x!! - y^2 = 0$. %
      Edge labels 0 and 1 stand for first and second operands. %
      \cite[Figure 4]{novotny2020three}%
@@ -943,7 +943,7 @@ satisfaction. [@manning2008introduction, Section 8.6.3]
 
 Despite the lack of attention math information retrieval has historically
 received compared to information retrieval, a substantial amount of research
-has been conducted since the 2008 pioneering workshop.
+has been conducted since the first workshop in 2008.
 
 ⇈ In this chapter, I'll describe the state of the art in math information
 retrieval:
@@ -974,7 +974,7 @@ of MKM attendees interested in digital mathematical libraries
 held a series of *Towards a Digital Mathematics Library* workshops
 [@sojka2008towards; @sojka2009towards; @sojka2010towards; @sojka2011towards],
 which were also co-located with CICM. In 2012, the *Math Information
-Retrieval (MIR)* workshop, which included the historically first
+Retrieval (MIR) workshop*, which included the historically first
 competition of math information retrieval systems, was co-located with CICM.
 
  [69]: https://cicm-conference.org/2012/cicm.php?event=mir&menu=general
@@ -996,10 +996,10 @@ conferences. In 2022, the third (and likely final) ARQMath lab will be held.
 
 ### Math Information Retrieval Workshop
 
-In 2012, [the MIR workshop][69] was held at CICM. For MIR, a dataset of 10,000
-math documents and 10,000 math formulae sampled from the [*Mathematical
-REtrieval Collection (MREC)*][72] [@liska2011web] of arXiv documents and
-extended with documents hand-picked by members of a jury.
+In 2012, [the MIR workshop][69] was held at CICM. For the workshop, a dataset
+of 10,000 math documents and 10,000 math formulae was sampled from the
+[*Mathematical REtrieval Collection (MREC)*][72] [@liska2011web] of arXiv
+documents and extended with documents hand-picked by members of a jury.
 [@liska2013evaluation, Section 2.2.4] Math formulae in the dataset were
 represented using presentation math (Presentation MathML) and content math
 (Content MathML).
@@ -1953,7 +1953,7 @@ tasks.
 In 2021, we used score aggregation to ensemble 16 diverse structural and
 semantic matching techniques in order to avoid the systematic errors of any
 individual technique. [@stefanik2021regressive, Section 3.3] We trained and
-evaluated our ensemble on 20 machine translation evaluation tasks.
+evaluated our ensemble on twenty machine translation evaluation tasks.
 
 |                   |         | RegEMT | Best individual technique  |
 |-------------------|---------|--------|----------------------------|
@@ -1979,9 +1979,9 @@ evaluated our ensemble on 20 machine translation evaluation tasks.
 | Catastrophic, src | en→zh   |  0.16  | *0.27  (SCM-dec)*          |
 %                                              
 : [Accuracies of our ensemble and the best individual techniques %
-   on 20 machine translation evaluation tasks]%
+   on twenty machine translation evaluation tasks]%
   {The accuracies of the our ensemble (RegEMT) and the best individual techniques %
-   on 20 machine translation evaluation tasks. [@stefanik2021regressive] %
+   on twenty machine translation evaluation tasks. [@stefanik2021regressive] %
    Language pairs marked with an × were evaluated cross-lingually. %
    [@stefanik2021regressive, Section 3.4]}%
   \label{tab:regemt}
@@ -2113,7 +2113,8 @@ weighted zone scoring for the *find answers* task of the ARQMath-2 lab:[^17]
   title and the tags of the parent question are given three times as much
   weight as the body text of the answer, and
 
-- *MIRMU-SCM* [@novotny2021ensembling, Section 3.3], which represents every answer as its body text and the title, body text, and tags of its parent
+- *MIRMU-SCM* [@novotny2021ensembling, Section 3.3], which represents every
+  answer as its body text and the title, body text, and tags of its parent
   question, where the title of the parent question is given three times as much
   weight as any of the remaining parts.
 
@@ -2191,23 +2192,11 @@ ARQMath-2, nine[^20] out of 40 systems (23\%) used dense retrieval, with the
 best dense retrieval systems receiving the second and third best accuracies in
 the competition. [@behrooz2021overview, Table 4]
 
- [^19]: The three systems by decreasing accuracy:
+ [^19]: The three systems by decreasing accuracy: *PSU1*, *PSU3*, and *MIRMU-CompuBERT*.
 
-    1. *PSU1*,
-    2. *PSU3*, and
-    3. *MIRMU-CompuBERT*
-
- [^20]: The nine systems by decreasing accuracy:
-
-    1. *DPRL-MathSE*,
-    2. *DPRL-QASim*,
-    3. *TU\\_DBS\\_P*,
-    4. *TU\\_DBS\\_A2*,
-    5. *TU\\_DBS\\_A3*,
-    6. *TU\\_DBS\\_A1*,
-    7. *MIRMU-CompuBERT*
-    8. *PSU*, and
-    9. *TU\\_DBS\\_A4*.
+ [^20]: The nine systems by decreasing accuracy: *DPRL-MathSE*, *DPRL-QASim*,
+        *TU\\_DBS\\_P*, *TU\\_DBS\\_A2*, *TU\\_DBS\\_A3*, *TU\\_DBS\\_A1*, *MIRMU-CompuBERT*,
+        *PSU*, and *TU\\_DBS\\_A4*.
 
 Digital mathematical libraries use industry-grade inverted indices such as
 ElasticSearch, Solr, and Lucene for sparse retrieval. However, as dense
@@ -2896,7 +2885,7 @@ online.][14]
 \label{sec:interactive-visualizations}
 
 In 2011, @liska2011web developed the MREC dataset for the Math Information
-Retrieval Workshop. In 2014, @hanel2014vizualizace developed an interactive
+Retrieval workshop. In 2014, @hanel2014vizualizace developed an interactive
 visualization for the exploration of the MREC dataset. However, the interactive
 visualization ignored math and modeled only text.
 

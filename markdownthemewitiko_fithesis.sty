@@ -1,4 +1,4 @@
-\ProvidesPackage{markdownthemewitiko_fithesis}[2021/10/17]
+\ProvidesPackage{markdownthemewitiko_fithesis}[2021/10/31]
 \markdownSetup{
   citations,
   contentBlocks,
@@ -29,6 +29,13 @@
   renderers = {
     olItemEnd = {%
       \vspace{1em plus 0pt minus 1em}%
+    },
+    ulBegin = {%
+      \vspace{0.5em plus 0pt minus 0.5em}%
+      \begin{itemize}%
+    },
+    ulItemEnd = {%
+      \vspace{0.5em plus 0pt minus 0.5em}%
     },
     textCite = {%
       \markdownRendererTextCiteHelper
@@ -129,22 +136,6 @@
 %% Margin notes
 \RequirePackage{ragged2e,marginfix}
 \setlength{\marginparwidth}{2.75cm}
-\newcommand\marginparsetlists{%
-  \setlist[itemize]{
-    leftmargin = 0.45cm,
-    itemsep    = 0pt,
-    parsep     = 0pt,
-    topsep     = 0pt,
-    partopsep  = 0pt,
-  }
-  \setlist[enumerate]{
-    leftmargin = 0.45cm,
-    itemsep    = 0pt,
-    parsep     = 0pt,
-    topsep     = 0pt,
-    partopsep  = 0pt,
-  }
-}
 \newtoks\marginparfootnotetext
 \newif\ifmarginpar\marginparfalse
 \newif\iffootnotetext
@@ -157,7 +148,6 @@
         [%
           \global\marginpartrue
           \letbibmacro*{textcite}{oldtextcite}%
-          \marginparsetlists
           \color{black}\footnotesize\RaggedLeft#1%
           \letbibmacro*{textcite}{newtextcite}%
           \global\marginparfalse
@@ -168,7 +158,6 @@
         {%
           \global\marginpartrue
           \letbibmacro*{textcite}{oldtextcite}%
-          \marginparsetlists
           \color{black}\footnotesize\RaggedRight#1%
           \letbibmacro*{textcite}{newtextcite}%
           \global\marginparfalse

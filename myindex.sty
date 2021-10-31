@@ -1,0 +1,50 @@
+\ProvidesPackage{myindex}[2021/10/31]
+
+% Adapted from https://tex.stackexchange.com/a/422276/70941
+\def\nhblx@bibfile@name{\jobname -namehashes.bib}
+\newwrite\nhblx@bibfile
+\immediate\openout\nhblx@bibfile=\nhblx@bibfile@name
+\newcounter{nhblx@name}
+\setcounter{nhblx@name}{0}
+\newcommand*{\nhblx@writenametobib}[1]{%
+  \stepcounter{nhblx@name}%
+  \edef\nhblx@tmp@nocite{%
+    \noexpand\AfterPreamble{%
+      \noexpand\setbox0\noexpand\vbox{%
+        \noexpand\nhblx@getmethehash{nhblx@name@\the\value{nhblx@name}}}}%
+  }%
+  \nhblx@tmp@nocite
+  \immediate\write\nhblx@bibfile{%
+    @misc{nhblx@name@\the\value{nhblx@name}, author = {\unexpanded{#1}}, %
+          options = {dataonly=true},}%
+  }%
+}
+
+\AtEndDocument{%
+  \closeout\nhblx@bibfile}
+
+\addbibresource{\nhblx@bibfile@name}
+
+\newcommand*{\nhblx@hashes}{}
+\DeclareNameFormat{nhblx@hashextract}{%
+  \xifinlist{\thefield{hash}}{\nhblx@hashes}
+    {}
+    {\listxadd{\nhblx@hashes}{\thefield{fullhash}}}}
+
+\DeclareCiteCommand{\nhblx@getmethehash}
+  {}
+  {\printnames[nhblx@hashextract][1-999]{author}}
+  {}
+  {}
+
+\newcommand*{\removeauthor}{\forcsvlist\nhblx@writenametobib}
+
+\DeclareIndexNameFormat{default}{%
+  \savefield*{hash}{\nhblx@currentnamehash}%
+  \xifinlist{\nhblx@currentnamehash}{\nhblx@hashes}
+    {}
+    {\usebibmacro{index:name}{\index[author]}
+       {\namepartfamily}
+       {\namepartgiven}
+       {\namepartprefix}
+       {\namepartsuffix}}}

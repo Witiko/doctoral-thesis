@@ -2,6 +2,9 @@
 \PassOptionsToPackage{
   letterspace=-30,
 }{microtype}
+\PassOptionsToPackage{
+  hyperindex=false,
+}{hyperref}
 \documentclass[
   printed, %% The `digital` option enables the default options for the
            %% digital version of a document. Replace with `printed`
@@ -51,15 +54,16 @@
 }
 
 %% Term index
-\usepackage{imakeidx}
+\usepackage[
+  noautomatic,
+  xindy,
+]{imakeidx}
+\indexsetup{
+  headers = {\textsc{\indexname}}{\textsc{\indexname}},
+}
 \makeindex[
   name = subject,
   title = {Subject Index},
-  intoc,
-]
-\makeindex[
-  name = author,
-  title = {Author Index},
   intoc,
 ]
 
@@ -68,12 +72,23 @@
 
 %% Bibliography
 \PassOptionsToPackage{
+  backref=true,
   citetracker=true,
   citereset=subsection+,
   mincitenames=2,
   maxcitenames=3,
+  indexing=bib,
 }{biblatex}
 \thesisload
+
+% Author index
+\makeindex[
+  name = author,
+  title = {Author Index},
+  intoc,
+]
+\usepackage{myindex}
+\removeauthor{Apica}
 
 %% Typesetting
 \emergencystretch=1em
