@@ -26,10 +26,6 @@ like to single out Michal Růžička, who was always willing to help me with the
 provision of computational resources, and Michal Štefánik, who would always be
 there to discuss any and all research ideas.
 
-I would also like to thank my tutor, Eniafe Festus Ayetiran, for his invaluable
-guidance throughout my studies. You provided me with the tools I needed to
-publish my work and successfully complete my dissertation.
-
 Last but not least, I would like to thank my parents for their wise counsel and
 sympathetic ear. You are always there for me.
 
@@ -58,8 +54,29 @@ retrieval systems more accurate and keep them reasonably fast.
 
 I show that semantic matching techniques based on token embeddings and
 learning-to-rank techniques can improve the accuracy of math information
-retrieval systems and can achieve the same speed as non-interpretable
-systems. I also show the tangible benefits of interpretability.
+retrieval systems and can achieve the same speed as non-interpretable systems.
+
+# Abstract {#abstract-cs}
+
+Matematici sní o digitální knihovně s veškerou recenzovanou matematickou
+literaturou na světě. Matematické vyhledávání vzniklo jako vědní obor v reakci
+na tento sen a zaobírá se technikami pro vyhledávání matematických textů v
+digitálních matematických knihovnách.
+
+Matematické vyhledávače využívají pokročilé reprezentace matematiky pro
+zajištění rychlého a přesného vyhledávání. Zřídkakdy se však zaměřují na
+interpretovatelnost svých reprezentací, čímž omezují vysvětlitelnost výsledků
+vyhledávání.
+
+Ve své práci se zaměřuji na reprezentace a techniky, které mohou zvýšit
+interpretovatelnost matematického vyhledávání: slovní embedingy, techniky pro
+hledání sémantické shody a techniky pro agregaci výsledků. Cílem mé práce je
+určit, jestli tyto reprezentace a techniky mohou také zvýšit přesnost
+matematického vyhledávání při zachování praktické rychlosti.
+
+Ukazuji, že techniky pro hledání sémantické shody na základě slovních embedingů
+a techniky pro agregaci výsledků mohou zlepšit přesnost matematického
+vyhledávání a mohou dosáhnout stejné rychlosti jako neinterpretovatelné techniky.
 
 # Introduction {#introduction}
 
