@@ -2933,7 +2933,7 @@ The code of the interactive visualization is [available on GitHub.][45]
 # List of Author's Publications {#publications}
 
 ↑ In this appendix, I will list my international publications in journals and
-in conference proceedings listed by the publication date. I will also state my
+conference proceedings ordered by publication date. I will also state my
 research roles using the [*CRediT* taxonomy][79] and my contributions in percent.
 
  [79]: https://casrai.org/credit/

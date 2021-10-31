@@ -6,17 +6,23 @@
   title height = 1,
   x unit = 0.025mm,
   time slot format = isodate,
-  today rule/.style = {draw=thesis@color@secondary, thick}
-]{2011-01-01}{2021-12-31}
+  today = 2021-11-31,
+  today label = {Today},
+  today rule/.style = {draw=thesis@color@secondary, very thick},
+  progress = today,
+  progress label text = {},
+  bar incomplete/.append style = {fill=none, densely dashed},
+]{2012-01-01}{2022-12-31}
   \gantttitlecalendar{year} \\
-  \ganttbar{MIR workshop}{2011-07-23}{2012-07-08} \\
+  \ganttbar{MIR workshop}{2012-02-01}{2012-07-08} \\
   \ganttbar{NTCIR tasks}{2012-05-01}{2013-06-21}
   \ganttbar{}{2013-09-31}{2014-12-11}
   \ganttbar{}{2015-07-27}{2016-06-10} \\
   \ganttbar{ARQMath labs}{2019-11-05}{2020-09-25}
   \ganttbar{}{2020-12-18}{2021-09-23}
+  \ganttbar{}{2022-01-15}{2022-09-05}
 \end{ganttchart}
-\vspace*{-0.6cm}
+\vspace*{-0.7cm}
 \caption
   [Gantt chart of math information retrieval competitions]%
   {After the Math Information Retrieval (MIR) workshop in 2012,
