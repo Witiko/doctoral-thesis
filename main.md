@@ -3026,18 +3026,18 @@ questions and offer directions for future work:
     significantly improve accuracy on math information retrieval compared to
     the hard vector space model. This is especially true in combination with
     weighted zone scoring.
-    See sections
+    See Section
     \vref{sec:sparse-retrieval-in-inverted-indices-and-vector-databases-accuracy}
-    and \vref{sec:weighted-zone-scoring}.
+    and Section \vref{sec:weighted-zone-scoring}.
 
     I have also shown how the accuracy of token embeddings can be further
     improved using hyperparameter optimization, the constrained
     positional model, word sense disambiguation, decontextualization), and
     regularization. See sections
-    \vref{sec:heuristical-hyperparameter-optimization-in-subtoken-language-models}
-    through \vref{sec:decontextualized-word-embeddings}.
+    \vref{sec:heuristical-hyperparameter-optimization-in-subtoken-language-models}%
+    --\vref{sec:decontextualized-token-embeddings}.
     However, some of my results were only evaluated on
-    intrinsic tasks. Therefore, future work should also evaluate these
+    intrinsic tasks. Future work should also evaluate these
     improvements on math information retrieval.
 
 2.  I have proven that the soft vector space model with token embeddings as its
@@ -3048,10 +3048,10 @@ questions and offer directions for future work:
     focus on improving it. See Section \vref{sec:sparse-retrieval-in-inverted-indices-and-vector-databases-speed}
 
     I have also shown how the speed of token embeddings can be improved in terms
-    their arithmetic, training, and retrieval. See sections
+    their arithmetic, training, and retrieval. See Section
     \vref{sec:quantized-token-embeddings-with-fast-bitwise-arithmetic},
-    \vref{sec:position-independent-token-embeddings-speed}, and
-    \vref{sec:dense-retrieval-in-inverted-indices-speed}.
+    Section \vref{sec:position-independent-token-embeddings-speed}, and
+    Section \vref{sec:dense-retrieval-in-inverted-indices-speed}.
 
 3.  I have shown that four different rank-based fusion learning-to-rank techniques
     can always improve the accuracy compared to individual systems on math
