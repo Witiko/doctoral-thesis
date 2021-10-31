@@ -19,28 +19,25 @@ retrieval systems use optical character recognition techniques to extract
 information from historical math documents and they use advanced
 representations of math to ensure fast and accurate retrieval.
 
-## Problem Statement
-
-Math information retrieval rarely focus on the interpretability of their
-representations, which makes their retrieval results difficult to explain to
-ithe users. Studies have shown that up to 95\% of queries in existing math
-information retrieval systems are simple text queries.  [@libbrecht2006methods,
-Section 5; @miller2013three, Section 5] This may indicate that more advanced
-math queries produce results that are confusing to the users.
+↑ However, math information retrieval systems rarely focus on the
+interpretability of their representations, which makes their retrieval results
+difficult to explain to users. Studies have shown that up to 95\% of
+queries in existing math information retrieval systems are simple text queries.
+[@libbrecht2006methods; @miller2013three] This indicates that advanced
+queries produce results that are confusing to the users.
 
 ## Research Questions
 
 In my research, I focused on representations and techniques that can make math
 information retrieval systems more explainable:
 
-1. *token embeddings*, which can represent semantic relationships between text
-   words and math symbols and which can be used with *semantic matching*
-   techniques to retrieve mathematical documents and explain why they were
-   retrieved, and
+- *token embeddings*, which can represent semantic relationships between text
+  words and math symbols and which can be used with *semantic matching*
+  techniques to explainably retrieve mathematical documents and
 
-2. *learning-to-rank* techniques, which can combine several interpretable
-   math information retrieval systems to produce a more accurate retrieval
-   system without any loss in interpretability.
+- *learning-to-rank* techniques, which can combine several interpretable
+  math information retrieval systems to produce a more accurate retrieval
+  system without any loss in interpretability.
 
 ← I aimed to answer three research questions:
 
@@ -50,7 +47,7 @@ information retrieval systems more explainable:
 2. Can semantic matching techniques based on token embeddings be practically
    fast for math information retrieval?
 
-3. Can learning-to-rank techniques always improve accuracy compared to the
+3. Can learning-to-rank techniques consistently improve accuracy compared to the
    individual math information retrieval systems?
 
 ## Thesis Structure
@@ -77,9 +74,8 @@ In Chapter \vref{cha:interpretability}, I will report the results of my
 research on interpretable representations that enable explainable math
 information retrieval and show the tangible benefits of interpretability.
 
-In chapter \vref{cha:conclusion}, I will summarize the results of my research
-in relation to my research questions, and I will offer directions for future
-work.
+I will conclude in Chapter \vref{cha:conclusion} by summarizing the results of
+my research with respect to my questions and offer directions for future work.
 
 # Background {#background}
 \label{cha:background}
@@ -3012,92 +3008,65 @@ The code of the interactive visualization is [available on GitHub.][45]
 # Conclusion {#conclusion}
 \label{cha:conclusion}
 
-% Can semantic matching techniques based on token embeddings improve accuracy
-% of math information retrieval?
-%
-% - Section 4.2.1:
-%     - Answer: Intrinsic evaluation of token embeddings suffers many flaws and
-%       does not always correlate with extrinsic end tasks.
-% - Section 4.2.2:
-%     - Future work: Evaluate on extrinsic end tasks.
-% - Section 4.2.3:
-%     - Future work: Evaluate on languages other than English.
-% - Section 4.2.5:
-%     - Future work: Use our WSD algorithm to disambiguate content math into
-%       semantic math.
-% - Section 4.2.6:
-%     - Future work: Evaluate decontextualized token embeddings on math
-%       information retrieval.
-% - Section 4.2.7:
-%     - Answer: Semantic matching techniques based on token embeddings
-%       significantly improve accuracy on math information retrieval.
-%       -> Especially with weighted zone scoring (Section 4.5).
-% - Section 4.6.2:
-%     - Answer: Quantized and regularized token embeddings can improve accuracy
-%     - Future work: Let's try using BM25 and BM25⁺. -> Let's also try using
-%       paths in SLT and OPT trees for representations (Section 4.1).
+In my work, I aimed to answer three research questions:
 
-% Can semantic matching techniques based on token embeddings be practically fast?
-%
-% - Section 5.2.1:
-%     - Answer: Quantized token embeddings can be more than 20× faster than
-%       non-quantized token embeddings and are within 2% accuracy of the cosine
-%       similarity on the English word analogy task.
-%     - Future work: 
-% - Section 5.2.2:
-%     - Answer: Our constrained positional model can be trained 2× faster than
-%       the positional model.
-% - Sections 5.3.2:
-%     - Answer: We showed that the soft vector space can be as fast as the hard
-%       vector with no loss in accuracy.
-%     - Future work: Improve current implementation to achieve the theoretical
-%       O(1) worst-case time complexity. -> Use our approximate dense retrieval
-%       to speed up the retrieval of token embeddings. (Section 4.6.1 and 5.3.1)
+1. Can semantic matching techniques based on token embeddings improve accuracy
+   of math information retrieval?
 
-% Can learning-to-rank techniques always improve the accuracy compared to
-% individual systems?
-%
-% - Section 4.3:
-%     - Answer: Our ensemble was more or equally accurate than any
-%       individual technique on 15 out of 20 machine translation evaluation
-%       tasks
-%     - Future work: Evaluate on math information retrieval.
-% - Section 4.4:
-%     - Answer: Our ensemble was more accurate than any other individual system
-%       on the find answers task of the ARQMath labs.
+2. Can semantic matching techniques based on token embeddings be practically
+   fast for math information retrieval?
 
-% Mixed bag
+3. Can learning-to-rank techniques consistently improve accuracy compared to the
+   individual math information retrieval systems?
 
-% - Section 4.1:
-%     - Answer: Prefix works, but Paths in SLT (Tangent-L) and OPT (Approach0)
-%       are better.
-%     - Future work: Let's try using Paths in SLT and OPT.
-% - Section 4.5:
-%     - Answer: Weighted zone scoring improves accuracy on math information
-%       retrieval.
-% - Sections 4.6.1 and 5.3.1:
-%     - Answer: We can perform approximate dense retrieval with no loss in
-%       accuracy.
-% - Sections 6.1.1 and 6.1.2:
-%     - Answer: Part-of-speech tags and other grammatical properties of tokens
-%       can be extracted from quantized and positional models.
-%     - Future work: Can formal concept analysis be used to extract token relations
-%       from the quantized model?
-% - Section 6.2:
-%     - Answer: We showed that the different strengths and weaknesses of math
-%       information retrieval systems can be analyzed and explained.
-% - Section 6.3:
-%     - Answer: We created an interactive visualization of the soft vector space
-%       model and published it online.
-%     - Future work should focus at the usability testing of our visualization.
+← I will now summarize the results of my research with respect to my research
+questions and offer directions for future work:
 
-% Highlight reproducibility: more than 20 digital artifacts including Docker images,
-% Jupyter Notebooks, and pre-trained token embeddings.
+1.  I have shown that semantic matching techniques based on token embeddings
+    significantly improve accuracy on math information retrieval compared to
+    the hard vector space model. This is especially true in combination with
+    weighted zone scoring.
+    See sections
+    \vref{sec:sparse-retrieval-in-inverted-indices-and-vector-databases-accuracy}
+    and \vref{sec:weighted-zone-scoring}.
 
-## Thesis Summary
-### Research Questions
-### Thesis Contributions
-## Future Work
+    I have also shown how the accuracy of token embeddings can be further
+    improved using hyperparameter optimization, the constrained
+    positional model, word sense disambiguation, decontextualization), and
+    regularization. See sections
+    \vref{sec:heuristical-hyperparameter-optimization-in-subtoken-language-models}
+    through \vref{sec:decontextualized-word-embeddings}.
+    However, some of my results were only evaluated on
+    intrinsic tasks. Therefore, future work should also evaluate these
+    improvements on math information retrieval.
+
+2.  I have proven that the soft vector space model with token embeddings as its
+    measure of semantic token relatedness can be restricted to be as fast as
+    the hard vector space model and I have shown that this restriction does not
+    cause any loss in accuracy.  However, my implementation has not achieved
+    the theoretical speed of the soft vector space model and future work should
+    focus on improving it. See Section \vref{sec:sparse-retrieval-in-inverted-indices-and-vector-databases-speed}
+
+    I have also shown how the speed of token embeddings can be improved in terms
+    their arithmetic, training, and retrieval. See sections
+    \vref{sec:quantized-token-embeddings-with-fast-bitwise-arithmetic},
+    \vref{sec:position-independent-token-embeddings-speed}, and
+    \vref{sec:dense-retrieval-in-inverted-indices-speed}.
+
+3.  I have shown that four different rank-based fusion learning-to-rank techniques
+    can always improve the accuracy compared to individual systems on math
+    information retrieval. See Section \vref{sec:rank-based-fusion}.
+   
+    I have also shown that the score aggregation learning-to-rank technique can
+    consistently improve the accuracy compared to individual systems on machine
+    translation tasks.  Future work should evaluate score aggregation on math
+    information retrieval. 
+    See Section \vref{sec:score-aggregation-of-structural-and-semantic-matching-techniques}.
+
+To make it easy for other to reproduce and continue my work, I have produced
+and publicly released more than twenty digital artifacts, including Docker
+images, Jupyter notebooks, pre-trained token embeddings, online demos, and Git
+repositories.
 
 # List of Author's Publications {#publications}
 
