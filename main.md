@@ -240,11 +240,11 @@ digraph tree {
 
 ##### TeX
 
-In 1986, @knuth86tex has developed the programming language of \TeX{} to author
-mathematical documents with precise presentation requirements. At the present
-time, \TeX{} is the most popular authoring language for mathematical documents.
-To give an example, the formula $x!! - y^2 = 0$ can be represented as `$x!! -
-y^2 = 0$` in \TeX.
+Since 1977, @knuth86tex has been developing the programming language of \TeX{}
+to author mathematical documents with precise presentation requirements. At the
+present time, \TeX{} is the most popular authoring language for mathematical
+documents.  To give an example, the formula $x!! - y^2 = 0$ can be represented
+as `$x!! - y^2 = 0$` in \TeX.
 
 ##### Presentation MathML
 
@@ -2039,7 +2039,7 @@ To see whether our unsupervised techniques could benefit from a large number of
 systems, we also used them to ensemble all non-baseline primary systems at the
 ARQMath-1 and ARQMath-2 labs. To see if our techniques could benefit from a small
 number of diverse systems,[^41] we also used them to ensemble five selected
-systems out of all of our ten systems at the ARQMath-2 lab.
+systems out of all of our ten systems at ARQMath-2.
 
  [^41]: See Section \vref{sec:strengths-and-weaknesses} for a discussion of how
         we selected our five diverse systems and their strengths and weaknesses.
