@@ -58,10 +58,10 @@ retrieval systems and can achieve the same speed as non-interpretable systems.
 
 # Abstract {#abstract-cs}
 
-Matematici sní o digitální knihovně s veškerou recenzovanou matematickou
-literaturou na světě. Matematické vyhledávání vzniklo jako vědní obor v reakci
-na tento sen a zaobírá se technikami pro vyhledávání matematických textů v
-digitálních matematických knihovnách.
+Matematici sní o digitální knihovně s veškerou světovou matematickou
+literaturou. Matematické vyhledávání vzniklo v reakci na tento sen a zaobírá se
+technikami pro vyhledávání matematických textů v digitálních matematických
+knihovnách.
 
 Matematické vyhledávače využívají pokročilé reprezentace matematiky pro
 zajištění rychlého a přesného vyhledávání. Zřídkakdy se však zaměřují na
