@@ -1,10 +1,88 @@
 # Introduction {#introduction}
+
+Mathematicians dream of a digital library of all peer-reviewed math literature
+ever published. [@sojka2010towardsb] However, although historical math
+literature amounts to less than 100 million pages [@trott2016overview],
+only a small portion has ever been digitized[^80] [@bouche2008some, Section 2].
+Additionally, the amount of math literature doubles approximately every 16
+years [@trott2016overview], which makes it increasingly more difficult to
+organize.
+
+ [^80]: \`\`The amount of resources available to digitize mathematics is
+        significantly less than the resources available to digitize cats.''
+        [@watt2016semantic]
+
+Math information retrieval emerged in 2012, when it became clear that standard
+information retrieval techniques used for text documents were inadequate to
+retrieve math documents from digital mathematical libraries. Math information
+retrieval systems use optical character recognition techniques to extract
+information from historical math documents and they use advanced
+representations of math to ensure fast and accurate retrieval.
+
 ## Problem Statement
+
+Math information retrieval rarely focus on the interpretability of their
+representations, which makes their retrieval results difficult to explain to
+ithe users. Studies have shown that up to 95\% of queries in existing math
+information retrieval systems are simple text queries.  [@libbrecht2006methods,
+Section 5; @miller2013three, Section 5] This may indicate that more advanced
+math queries produce results that are confusing to the users.
+
 ## Research Questions
-## Thesis Contributions
+
+In my research, I focused on representations and techniques that can make math
+information retrieval systems more explainable:
+
+1. *token embeddings*, which can represent semantic relationships between text
+   words and math symbols and which can be used with *semantic matching*
+   techniques to retrieve mathematical documents and explain why they were
+   retrieved, and
+
+2. *learning-to-rank* techniques, which can combine several interpretable
+   math information retrieval systems to produce a more accurate retrieval
+   system without any loss in interpretability.
+
+← I aimed to answer three research questions:
+
+1. Can semantic matching techniques based on token embeddings improve accuracy
+   of math information retrieval?
+
+2. Can semantic matching techniques based on token embeddings be practically
+   fast for math information retrieval?
+
+3. Can learning-to-rank techniques always improve accuracy compared to the
+   individual math information retrieval systems?
+
 ## Thesis Structure
 
+In Chapter \vref{cha:background}, I will describe the background of math
+information retrieval, including different kinds of token embeddings in
+Section \vref{sec:shallow-models}, semantic matching techniques in Section
+\vref{sec:semantic-matching}, and learning-to-rank techniques in Section
+\vref{sec:learning-to-rank}.
+
+In Chapter \vref{cha:state-of-the-art}, I will describe math information
+retrieval competitions and state-of-the-art math information retrieval systems
+that received the best accuracy in the competitions.
+
+In Chapter \vref{cha:accuracy}, I will report the results of my research on
+representations that enable accurate math information retrieval. In this
+chapter, I will answer research questions 1 and 3.
+
+In Chapter \vref{cha:speed}, I will report the results of my research on
+representations that enable fast math information retrieval. In this chapter,
+I will answer research question 2.
+
+In Chapter \vref{cha:interpretability}, I will report the results of my
+research on interpretable representations that enable explainable math
+information retrieval and show the tangible benefits of interpretability.
+
+In chapter \vref{cha:conclusion}, I will summarize the results of my research
+in relation to my research questions, and I will offer directions for future
+work.
+
 # Background {#background}
+\label{cha:background}
 
 In order to understand math information retrieval systems, we have to
 understand their applications, the kinds of information they retrieve, the
@@ -516,6 +594,7 @@ and how they can be used to produce representations of tokens, sentences,
 and documents for dense retrieval.
 
 #### Shallow Log-Bilinear Language Models
+\label{sec:shallow-models}
 
 After a long reign of topic modeling methods [@deerwester1990indexing],[^53]
 *shallow log-bilinear language models* emerged as a faster method for learning
@@ -940,6 +1019,7 @@ by deploying the system with different types of explanations and measuring user
 satisfaction. [@manning2008introduction, Section 8.6.3]
 
 # State of the Art {#state-of-the-art}
+\label{cha:state-of-the-art}
 
 Despite the lack of attention math information retrieval has historically
 received compared to information retrieval, a substantial amount of research
@@ -1327,6 +1407,8 @@ math formulae and Tangent-CFTED uses a different structural matching technique:
 the tree edit distance.
 
 # Accuracy {#accuracy}
+\label{cha:accuracy}
+
 There are many advanced features we may wish for from a math information retrieval
 system: the ability to reveal relationships between different pieces of
 information, to visualize the information, or to use the information as a basis
@@ -1415,13 +1497,13 @@ representation for comparison. [@novotny2020three, Table 2]
 
 In the *MIRMU-SCM* system, both the prefix and the infix notations received the
 best results on the train dataset. The prefix and infix notations received
-equivalent results, since they mainly differ by ordering. (With TF-IDF weighting,
-adding parenthesis tokens is insignificant.) Since the soft vector space model
-is insensitive to token ordering, both notations correspond to modeling
-individual OPT nodes. The better results of the prefix and infix notations
-compared to modeling adjacent pairs of OPT and SLT nodes show that in our soft
-vector space model, modeling individual OPT nodes is better than modeling
-longer paths in OPT and SLT trees.
+equivalent results, since they mainly differ by ordering. (With TF-IDF term
+weighting, adding parenthesis tokens is insignificant.) Since the soft vector
+space model is insensitive to token ordering, both notations correspond to
+modeling individual OPT nodes. The better results of the prefix and infix
+notations compared to modeling adjacent pairs of OPT and SLT nodes show that in
+our soft vector space model, modeling individual OPT nodes is better than
+modeling longer paths in OPT and SLT trees.
 
 In the *MIRMU-CompuBERT* system, the prefix notation has received better
 results than the infix notation, showing that the topological ordering of
@@ -2142,9 +2224,8 @@ zone scoring can be important for information retrieval.
 
 We also showed that our three math information retrieval systems that used
 weighted zone scoring all achieved better accuracy than our six systems that
-did not use weighted zone scoring on the *find answers* task of the ARQMath-2
-lab. This shows that weighted zone scoring can be important for math
-information retrieval.
+did not on the *find answers* task of the ARQMath-2 lab. This shows that
+weighted zone scoring can be important for math information retrieval.
 
 #### Future Work
 
@@ -2215,7 +2296,7 @@ Section 3.1; @ruzicka2017flexible, Section 3]
 
 #### Results
 
-We showed that our system could perform exact dense retrieval with almost
+We showed that our system could perform approximate dense retrieval with almost
 no loss in accuracy. [@rygl2017semantic, Table 2; @ruzicka2017flexible, Section 4]
 We also showed that both our encoding and our system can be configured to trade
 off accuracy for speed and perform fast approximate dense retrieval[^37]
@@ -2331,12 +2412,14 @@ ARQMath-2 lab is [available online.][14]
  [25]: https://github.com/MIR-MU/regularized-embeddings
 
 # Speed {#speed}
+\label{cha:speed}
+
 The accuracy as well as the availability of more advanced features in a math
 information retrieval system are fundamentally limited by the *speed* at which
 we can deploy the system, store new information in it and recall information
 that satisfy the needs of its users.
 
-In this chapter, I will report the results of my research of representations
+In this chapter, I will report the results of my research on representations
 and techniques that enable fast math information retrieval:
 
 - In Section \vref{sec:fast-and-reproducible-deployment}, I will describe my
@@ -2509,7 +2592,7 @@ We compared the training time of both models. [@novotny2021when, Section 4]
 We showed that the positional model could achieve 4\% better accuracy than the
 subtoken language model on the English word analogy task when we trained both
 models for five hours. We also showed that our constrained positional model
-could train 2× faster than the positional model.[^41]
+could be trained 2× faster than the positional model.[^41]
 
  [^41]: See Section \vref{sec:position-independent-token-embeddings-interpretability}
         for a discussion on the interpretability of the positional model.
@@ -2635,7 +2718,7 @@ whereas the non-restricted model had been implemented using faster dense matrix
 operations. We offer further explanation below.
 
 We also showed that the restricted model was the slowest in query time of all
-our systems on the *find answers* task of the ARQMath-1 and ARQMath-2 labs.
+our systems on the *find answers* task of the ARQMath labs.
 
 #### Future Work
 
@@ -2674,13 +2757,15 @@ The experimental code for the soft vector space model from the ARQMath-1 lab is
 ARQMath-2 lab is [available online.][14]
 
 # Interpretability {#interpretability}
+\label{cha:interpretability}
+
 In math information retrieval, accuracy and speed ensure that we can recall
 information that a user needs when they need them. However, the ability of a
 system to explain the information to the user is fundamentally limited by the
 *interpretability* of its internal representations.
 
-In this chapter, I will report the results of my research of interpretable
-representations that enable explainable information retrieval:
+In this chapter, I will report the results of my research on interpretable
+representations that enable explainable math information retrieval:
 
 - In Section \vref{sec:representation-learning-interpretability}, I will
   describe my work in making neural representations of natural language words
@@ -2721,7 +2806,7 @@ attributes. The binary features of the Word2Bits quantized language model
 of @lam2018word2bits can be studied using the formal concept analysis.
 
 In 2015, @priss2005linguistic noted that formal concept analysis can be
-used to encode and analyse type-of (hyponymy-hyperonymy) word relations.
+used to encode and analyze type-of (hyponymy-hyperonymy) token relations.
 Parts of speech are a type-of relation. However, the quantized language model
 has not been evaluated on a part-of-speech tagging task.
 
@@ -2759,7 +2844,7 @@ Figure \vref{fig:formal-concept-analysis-with-quantized-token-embeddings}.
 #### Future Work
 
 Future work should investigate whether formal concept analysis can be used to
-extract type-of word relations from quantized token embeddings.
+extract type-of token relations from quantized token embeddings.
 
 #### Reproducibility
 
@@ -2925,6 +3010,90 @@ The code of the interactive visualization is [available on GitHub.][45]
  [45]: https://github.com/MIR-MU/document-maps
 
 # Conclusion {#conclusion}
+\label{cha:conclusion}
+
+% Can semantic matching techniques based on token embeddings improve accuracy
+% of math information retrieval?
+%
+% - Section 4.2.1:
+%     - Answer: Intrinsic evaluation of token embeddings suffers many flaws and
+%       does not always correlate with extrinsic end tasks.
+% - Section 4.2.2:
+%     - Future work: Evaluate on extrinsic end tasks.
+% - Section 4.2.3:
+%     - Future work: Evaluate on languages other than English.
+% - Section 4.2.5:
+%     - Future work: Use our WSD algorithm to disambiguate content math into
+%       semantic math.
+% - Section 4.2.6:
+%     - Future work: Evaluate decontextualized token embeddings on math
+%       information retrieval.
+% - Section 4.2.7:
+%     - Answer: Semantic matching techniques based on token embeddings
+%       significantly improve accuracy on math information retrieval.
+%       -> Especially with weighted zone scoring (Section 4.5).
+% - Section 4.6.2:
+%     - Answer: Quantized and regularized token embeddings can improve accuracy
+%     - Future work: Let's try using BM25 and BM25⁺. -> Let's also try using
+%       paths in SLT and OPT trees for representations (Section 4.1).
+
+% Can semantic matching techniques based on token embeddings be practically fast?
+%
+% - Section 5.2.1:
+%     - Answer: Quantized token embeddings can be more than 20× faster than
+%       non-quantized token embeddings and are within 2% accuracy of the cosine
+%       similarity on the English word analogy task.
+%     - Future work: 
+% - Section 5.2.2:
+%     - Answer: Our constrained positional model can be trained 2× faster than
+%       the positional model.
+% - Sections 5.3.2:
+%     - Answer: We showed that the soft vector space can be as fast as the hard
+%       vector with no loss in accuracy.
+%     - Future work: Improve current implementation to achieve the theoretical
+%       O(1) worst-case time complexity. -> Use our approximate dense retrieval
+%       to speed up the retrieval of token embeddings. (Section 4.6.1 and 5.3.1)
+
+% Can learning-to-rank techniques always improve the accuracy compared to
+% individual systems?
+%
+% - Section 4.3:
+%     - Answer: Our ensemble was more or equally accurate than any
+%       individual technique on 15 out of 20 machine translation evaluation
+%       tasks
+%     - Future work: Evaluate on math information retrieval.
+% - Section 4.4:
+%     - Answer: Our ensemble was more accurate than any other individual system
+%       on the find answers task of the ARQMath labs.
+
+% Mixed bag
+
+% - Section 4.1:
+%     - Answer: Prefix works, but Paths in SLT (Tangent-L) and OPT (Approach0)
+%       are better.
+%     - Future work: Let's try using Paths in SLT and OPT.
+% - Section 4.5:
+%     - Answer: Weighted zone scoring improves accuracy on math information
+%       retrieval.
+% - Sections 4.6.1 and 5.3.1:
+%     - Answer: We can perform approximate dense retrieval with no loss in
+%       accuracy.
+% - Sections 6.1.1 and 6.1.2:
+%     - Answer: Part-of-speech tags and other grammatical properties of tokens
+%       can be extracted from quantized and positional models.
+%     - Future work: Can formal concept analysis be used to extract token relations
+%       from the quantized model?
+% - Section 6.2:
+%     - Answer: We showed that the different strengths and weaknesses of math
+%       information retrieval systems can be analyzed and explained.
+% - Section 6.3:
+%     - Answer: We created an interactive visualization of the soft vector space
+%       model and published it online.
+%     - Future work should focus at the usability testing of our visualization.
+
+% Highlight reproducibility: more than 20 digital artifacts including Docker images,
+% Jupyter Notebooks, and pre-trained token embeddings.
+
 ## Thesis Summary
 ### Research Questions
 ### Thesis Contributions
