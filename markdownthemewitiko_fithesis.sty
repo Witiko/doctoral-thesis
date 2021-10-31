@@ -13,6 +13,16 @@
   underscores=false,
 }
 
+%% Acknowledgements
+\markdownSetupSnippet{thanks}{
+  renderers = {
+    headingOne = {},
+    interblockSeparator = {%
+      \bigskip\par\noindent
+    },
+  }
+}
+
 %% List of Publication
 \DeclareCiteCommand{\fullcite}
   {\defcounter{maxnames}{\blx@maxbibnames}%
@@ -171,7 +181,7 @@
 \let\markdownRendererFootnote=\markdownRendererInlineHtmlComment
 
 %% Non-teletype links
-\usepackage[para]{footmisc}
+\usepackage[para,multiple]{footmisc}
 \def\markdownRendererLink{%
   \begingroup
   \catcode`\#=12
@@ -260,6 +270,7 @@
   \markdownRendererInterblockSeparator
   \ignorespaces
 }
+\newunicodechar{↓}{\vspace{\parsep}}
 \newunicodechar{→}{\ensuremath{\rightarrow}}
 \newunicodechar{↔}{\pagebreak[4]\ignorespaces}
 \newunicodechar{×}{\ensuremath{\times}}

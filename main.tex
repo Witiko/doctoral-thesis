@@ -48,6 +48,19 @@
                    Accurate Retrieval of Mathematical Information},
     TeXtitle    = {Interpretable Representations \\ for Fast and
                    Accurate Retrieval \\ of Mathematical Information},
+    keywords    = {%
+      math information retrieval,
+      digital mathematical libraries,
+      math representations,
+      semantic matching,
+      learning to rank,
+      language modeling,
+      token embeddings,
+      interpretability
+    },
+    thanks      = {%
+      \markdownInput[slice=thanks, snippet=thanks]{main.md}%
+    },
 %    bib         = main.bib,
     bib         = ../thesis-outline/main.bib,
     %% Remove the following line to use the JVS 2018 faculty logo.
@@ -98,15 +111,15 @@
 \usepackage{enumitem}
 \setlist[itemize]{
   leftmargin = \parindent,
-  itemsep    = 0pt,
-  parsep     = 0pt,
+  itemsep    = -4pt,
+  parsep     = 4pt,
   topsep     = 0.15cm,
   partopsep  = 0pt,
 }
 \setlist[enumerate]{
   leftmargin = \parindent,
-  itemsep    = 0pt,
-  parsep     = 0pt,
+  itemsep    = -4pt,
+  parsep     = 4pt,
   topsep     = 0.15cm,
   partopsep  = 0pt,
 }
@@ -133,6 +146,7 @@
   theme=witiko/dot,
 ]{markdown}
 \markdownSetupSnippet{publications}{snippet=witiko/fithesis/publications}
+\markdownSetupSnippet{thanks}{snippet=witiko/fithesis/thanks}
 
 %% Additional math operators
 \RequirePackage{amsmath}

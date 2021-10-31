@@ -1,3 +1,10 @@
+# Acknowledgements {#acknowledgements}
+
+I wish to express my most sincere gratitude to my thesis supervisor, Petr
+Sojka, for sharing his impeccable expertise, valuable guidance, and for
+introducing me to the math information retrieval community, many of friends
+and colleagues as well as my significant other.
+
 # Introduction {#introduction}
 
 Mathematicians dream of a digital library of all peer-reviewed math literature
@@ -12,24 +19,24 @@ organize.
         significantly less than the resources available to digitize cats.''
         [@watt2016semantic]
 
-Math information retrieval emerged in 2012, when it became clear that standard
+Math information retrieval emerged in 2012 when it became clear that standard
 information retrieval techniques used for text documents were inadequate to
 retrieve math documents from digital mathematical libraries. Math information
 retrieval systems use optical character recognition techniques to extract
-information from historical math documents and they use advanced
-representations of math to ensure fast and accurate retrieval.
+information from historical math documents and advanced representations of math
+to ensure fast and accurate retrieval.
 
 ↑ However, math information retrieval systems rarely focus on the
-interpretability of their representations, which makes their retrieval results
-difficult to explain to users. Studies have shown that up to 95\% of
-queries in existing math information retrieval systems are simple text queries.
-[@libbrecht2006methods; @miller2013three] This indicates that advanced
-queries produce results that are confusing to the users.
+interpretability of their representations, which makes the retrieval results
+difficult to explain. Studies have shown that up to 95\% of queries in existing
+math information retrieval systems are simple text queries.
+[@libbrecht2006methods; @miller2013three] This shows that advanced queries
+produce results that are confusing to the users.
 
 ## Research Questions
 
 In my research, I focused on representations and techniques that can make math
-information retrieval systems more explainable:
+information retrieval systems more interpretable, namely:
 
 - *token embeddings*, which can represent semantic relationships between text
   words and math symbols and which can be used with *semantic matching*
@@ -41,13 +48,13 @@ information retrieval systems more explainable:
 
 ← I aimed to answer three research questions:
 
-1. Can semantic matching techniques based on token embeddings improve accuracy
-   of math information retrieval?
+1. Can semantic matching techniques that use token embeddings improve the
+   accuracy of math information retrieval?
 
-2. Can semantic matching techniques based on token embeddings be practically
+2. Can semantic matching techniques based on token embeddings be reasonably
    fast for math information retrieval?
 
-3. Can learning-to-rank techniques consistently improve accuracy compared to the
+3. Can learning-to-rank techniques consistently improve accuracy compared to
    individual math information retrieval systems?
 
 ## Thesis Structure
@@ -60,22 +67,23 @@ Section \vref{sec:shallow-models}, semantic matching techniques in Section
 
 In Chapter \vref{cha:state-of-the-art}, I will describe math information
 retrieval competitions and state-of-the-art math information retrieval systems
-that received the best accuracy in the competitions.
+that achieved the best accuracy in the competitions.
 
 In Chapter \vref{cha:accuracy}, I will report the results of my research on
-representations that enable accurate math information retrieval. In this
-chapter, I will answer research questions 1 and 3.
+representations that enable accurate math information retrieval. I will also
+answer research questions 1 and 3.
 
 In Chapter \vref{cha:speed}, I will report the results of my research on
-representations that enable fast math information retrieval. In this chapter,
-I will answer research question 2.
+representations that enable fast math information retrieval. I will also answer
+research question 2.
 
 In Chapter \vref{cha:interpretability}, I will report the results of my
 research on interpretable representations that enable explainable math
-information retrieval and show the tangible benefits of interpretability.
+information retrieval.
 
 I will conclude in Chapter \vref{cha:conclusion} by summarizing the results of
-my research with respect to my questions and offer directions for future work.
+my research with respect to my research questions. I will also offer directions
+for future work.
 
 # Background {#background}
 \label{cha:background}
@@ -185,7 +193,7 @@ the indexed documents.
 \label{sec:gdml}
 
 In reaction to the European Digital Mathematical library, an ambitious idea
-of the Global Digital Mathematical Library (GDML) is being pursued by two
+of a Global Digital Mathematical Library (GDML) is being pursued by two
 independent committees:
 
 1. The Committee on Planning a Global Library of the Mathematical
@@ -195,7 +203,7 @@ independent committees:
    
    In 2014, the committee published a report [@cole2014developing] in which
    they described previous digital mathematical library efforts and laid out a
-   roadmap towards the GDML.
+   roadmap towards the GDML.↓
 
 2. The Committee on Electronic Information and Communication (CEIC)
    of the International Mathematical Union (IMU) organized a panel
@@ -205,13 +213,14 @@ independent committees:
    GDML.
    
    In 2016, the working group has co-organized a [*Semantic Representation of
-   Mathematical Knowledge*][52] workshop held at the Fields Institute in
+   Mathematical Knowledge*][52][][53] workshop held at the Fields Institute in
    Toronto, Canada, aimed at developing a language for representing the
    semantic math in the GDML.
    
    In 2018, the working group has organized a panel on GDML at the ICM.
 
  [52]: https://video-archive.fields.utoronto.ca/list/event/1053
+ [53]: https://youtu.be/psSyM1zp82k
 
 Both initiatives give hope that in the near future, the mathematicians' dream
 of a comprehensive digital collection of the world's mathematics may become a
@@ -227,9 +236,8 @@ words, phrases, and sentences their meaning.
 
 Similarly, we can represent expressions in the language of mathematics using
 their presentation aspects, structural aspects, and semantic aspects. In this
-section, I will discuss each of these aspects, show examples of formal
-languages that are commonly used for their representation and how they can
-interoperate.
+section, I will discuss each of these aspects and show examples of formal
+languages that are commonly used for their representation.
 
 ### Presentation Math
 
@@ -341,7 +349,7 @@ representations, which affects retrieval accuracy. Therefore, the problem of
 
 ##### Symbol Layout Tree
 
-In 2016,[^61] @zanibbi2016multi has developed the *symbol layout tree (SLT)*
+In 2016,[^61] @zanibbi2016multi have developed the *symbol layout tree (SLT)*
 as a simplified representation of Presentation MathML that can be directly
 used for information retrieval without further normalization.
 To give an example, Figure \vref{fig:slt} shows how the formula $x!!
@@ -388,14 +396,14 @@ To give an example, Figure \vref{fig:pmml-and-cmml} shows how the formula $x!!
 
 ##### Operator Tree
 
-In 2017,[^64] @davila2017layout has developed the *operator tree (OPT)*
+In 2017,[^64] @davila2017layout have developed the *operator tree (OPT)*
 as a simplified representation of Content MathML that can be directly
 used for information retrieval.
 To give an example, Figure \vref{fig:opt} shows how the formula $x!!
 - y^2 = 0$ can be represented in the OPT.
 
  [^64]: OPT can also be extracted from Presentation MathML using the
-        [Tangent-S][62] system. [@davila2017layout]
+        Tangent-S system.
 
 ### Semantic Math
 
@@ -418,8 +426,8 @@ represent semantic math in math information retrieval systems.
  [^65]: For more information about languages for semantic math representation,
         see recent proceedings of the *International Conference of Intelligent
         Computer Mathematics (CICM)* [@kamareddine2021intelligent], or talks
-        from the [*Semantic Representation of Mathematical Knowledge*][52]
-        workshop.
+        from the [*Semantic Representation of Mathematical Knowledge*]
+        workshop (see Section \vref{sec:eudml}).
 
 ##### Computer Algebra Systems and Proof Assistants
 
@@ -1028,7 +1036,7 @@ retrieval:
   math information retrieval competitions.
 
 - In Section \vref{sec:systems}, I will describe the math information retrieval
-  systems that have achieved the best accuracy in the competitions.
+  systems that achieved the best accuracy in the competitions.
 
 ## Competitions
 \label{sec:competitions}
@@ -3010,16 +3018,16 @@ The code of the interactive visualization is [available on GitHub.][45]
 
 In my work, I aimed to answer three research questions:
 
-1. Can semantic matching techniques based on token embeddings improve accuracy
-   of math information retrieval?
+1. Can semantic matching techniques that use token embeddings improve the
+   accuracy of math information retrieval?
 
-2. Can semantic matching techniques based on token embeddings be practically
+2. Can semantic matching techniques based on token embeddings be reasonably
    fast for math information retrieval?
 
-3. Can learning-to-rank techniques consistently improve accuracy compared to the
+3. Can learning-to-rank techniques consistently improve accuracy compared to
    individual math information retrieval systems?
 
-← I will now summarize the results of my research with respect to my research
+← Below, I summarize the results of my research with respect to my research
 questions and offer directions for future work:
 
 1.  I have shown that semantic matching techniques based on token embeddings
@@ -3031,27 +3039,29 @@ questions and offer directions for future work:
     and Section \vref{sec:weighted-zone-scoring}.
 
     I have also shown how the accuracy of token embeddings can be further
-    improved using hyperparameter optimization, the constrained
-    positional model, word sense disambiguation, decontextualization), and
+    improved using hyperparameter optimization, constrained positional
+    modeling, word sense disambiguation, decontextualization, and
     regularization. See sections
-    \vref{sec:heuristical-hyperparameter-optimization-in-subtoken-language-models}%
-    --\vref{sec:decontextualized-token-embeddings}.
+    \ref{sec:heuristical-hyperparameter-optimization-in-subtoken-language-models}%
+    --\ref{sec:decontextualized-token-embeddings} on pages
+    \pageref{sec:heuristical-hyperparameter-optimization-in-subtoken-language-models}%
+    --\pageref{sec:decontextualized-token-embeddings}.
     However, some of my results were only evaluated on
     intrinsic tasks. Future work should also evaluate these
-    improvements on math information retrieval.
+    improvements on math information retrieval.↓
 
-2.  I have proven that the soft vector space model with token embeddings as its
-    measure of semantic token relatedness can be restricted to be as fast as
-    the hard vector space model and I have shown that this restriction does not
-    cause any loss in accuracy.  However, my implementation has not achieved
-    the theoretical speed of the soft vector space model and future work should
-    focus on improving it. See Section \vref{sec:sparse-retrieval-in-inverted-indices-and-vector-databases-speed}
+2.  I have proven that the soft vector space model with token embeddings can be
+    restricted to be as fast as the hard vector space model and I have shown
+    that this restriction does not harm accuracy.  However, my implementation
+    has not achieved the theoretical speed of the soft vector space model and
+    future work should
+    focus on improving it. See Section \vref{sec:sparse-retrieval-in-inverted-indices-and-vector-databases-speed}.
 
     I have also shown how the speed of token embeddings can be improved in terms
     their arithmetic, training, and retrieval. See Section
     \vref{sec:quantized-token-embeddings-with-fast-bitwise-arithmetic},
     Section \vref{sec:position-independent-token-embeddings-speed}, and
-    Section \vref{sec:dense-retrieval-in-inverted-indices-speed}.
+    Section \vref{sec:dense-retrieval-in-inverted-indices-speed}.↓
 
 3.  I have shown that four different rank-based fusion learning-to-rank techniques
     can always improve the accuracy compared to individual systems on math
@@ -3063,10 +3073,9 @@ questions and offer directions for future work:
     information retrieval. 
     See Section \vref{sec:score-aggregation-of-structural-and-semantic-matching-techniques}.
 
-To make it easy for other to reproduce and continue my work, I have produced
-and publicly released more than twenty digital artifacts, including Docker
-images, Jupyter notebooks, pre-trained token embeddings, online demos, and Git
-repositories.
+To make it easy for others to reproduce my work, I have publicly released more
+than twenty digital artifacts, including Docker images, Jupyter notebooks,
+pre-trained token embeddings, online demos, and Git repositories.
 
 # List of Author's Publications {#publications}
 
