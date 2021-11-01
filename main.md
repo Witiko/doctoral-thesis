@@ -70,15 +70,15 @@ interpretovatelnost svých reprezentací, čímž činí výsledky svého vyhled
 hůře vysvětlitelnými.
 
 Ve své práci se zaměřuji na reprezentace a techniky, které mohou zvýšit
-interpretovatelnost matematického vyhledávání: slovní embedingy, techniky pro
-hledání sémantické shody a techniky pro agregaci výsledků. Cílem mé práce je
-určit, jestli tyto reprezentace a techniky mohou zvýšit přesnost matematického
-vyhledávání při zachování praktické rychlosti.
+interpretovatelnost matematického vyhledávání: slovní embedingy a techniky pro
+hledání sémantické shody a agregaci výsledků. Cílem mé práce je určit, jestli
+tyto reprezentace a techniky mohou zvýšit přesnost matematického vyhledávání
+při zachování praktické rychlosti.
 
 Ukazuji, že techniky pro hledání sémantické shody na základě slovních embedingů
 a techniky pro agregaci výsledků mohou zvýšit přesnost matematického
 vyhledávání a mohou dosáhnout stejné rychlosti jako neinterpretovatelné
-techniky. Dále také ilustruji praktické výhody interpretovatelnosti.
+techniky. Ilustruji také praktické výhody interpretovatelnosti.
 
 # Introduction {#introduction}
 
