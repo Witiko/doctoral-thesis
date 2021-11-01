@@ -76,9 +76,9 @@ určit, jestli tyto reprezentace a techniky mohou zvýšit přesnost matematick�
 vyhledávání při zachování praktické rychlosti.
 
 Ukazuji, že techniky pro hledání sémantické shody na základě slovních embedingů
-a techniky pro agregaci výsledků mohou zlepšit přesnost matematického
-vyhledávání a mohou dosáhnout stejné rychlosti jako neinterpretovatelné techniky.
-Dále také ilustruji praktické výhody interpretovatelnosti.
+a techniky pro agregaci výsledků mohou zvýšit přesnost matematického
+vyhledávání a mohou dosáhnout stejné rychlosti jako neinterpretovatelné
+techniky. Dále také ilustruji praktické výhody interpretovatelnosti.
 
 # Introduction {#introduction}
 
