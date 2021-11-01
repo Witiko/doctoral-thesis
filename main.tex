@@ -97,6 +97,11 @@
   indexing=bib,
 }{biblatex}
 \thesisload
+\defbibheading{bibintoc}{%
+  \chapter*{#1}%
+  \addcontentsline{toc}{chapter}{#1}%
+  \markboth{\textsc{#1}}{\textsc{#1}}%
+}
 
 % Author index
 \makeindex[
