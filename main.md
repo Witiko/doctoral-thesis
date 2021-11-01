@@ -57,7 +57,7 @@ learning-to-rank techniques can improve the accuracy of math information
 retrieval systems and can achieve the same speed as non-interpretable systems.
 I also show the tangible benefits of interpretability.
 
-# Abstract {#abstract-cs}
+# Abstrakt {#abstract-cs}
 
 Matematici sní o digitální knihovně s veškerou světovou matematickou
 literaturou. Matematické vyhledávání vzniklo v reakci na tento sen a zaobírá se
