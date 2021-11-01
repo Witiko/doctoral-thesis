@@ -65,8 +65,8 @@ knihovnách.
 
 Matematické vyhledávače využívají pokročilé reprezentace matematiky pro
 zajištění rychlého a přesného vyhledávání. Zřídkakdy se však zaměřují na
-interpretovatelnost svých reprezentací, čímž omezují vysvětlitelnost výsledků
-vyhledávání.
+interpretovatelnost svých reprezentací, čímž činí výsledky svého vyhledávání
+hůře vysvětlitelnými.
 
 Ve své práci se zaměřuji na reprezentace a techniky, které mohou zvýšit
 interpretovatelnost matematického vyhledávání: slovní embedingy, techniky pro
