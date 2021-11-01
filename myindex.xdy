@@ -1,4 +1,6 @@
 (require "page-ranges.xdy")
+(define-attributes (("first")))
 (define-location-class "arabic-page-numbers"
                        ("arabic-numbers") :min-range-length 1)
+(markup-locref :attr "first" :open "\first{\hyperpage{" :close "}}")
 (markup-locref :open "\hyperpage{" :close "}")
