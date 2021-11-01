@@ -1,6 +1,6 @@
 name: Test and publish
 on:
-  pull_request:
+  push:
   workflow_dispatch:
 env:
   DEBIAN_FRONTEND: noninteractive
