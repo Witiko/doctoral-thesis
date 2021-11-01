@@ -9,7 +9,7 @@ jobs:
     name: Test and publish the thesis
     runs-on: ubuntu-latest
     container:
-      image: witiko/markdown:2.11.0-10-g8d0d10c
+      image: witiko/markdown:2.11.0-9-g19f2f60
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v2
