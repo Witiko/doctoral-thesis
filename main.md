@@ -72,8 +72,8 @@ hůře vysvětlitelnými.
 Ve své práci se zaměřuji na reprezentace a techniky, které mohou zvýšit
 interpretovatelnost matematického vyhledávání: slovní embedingy, techniky pro
 hledání sémantické shody a techniky pro agregaci výsledků. Cílem mé práce je
-určit, jestli tyto reprezentace a techniky mohou také zvýšit přesnost
-matematického vyhledávání při zachování praktické rychlosti.
+určit, jestli tyto reprezentace a techniky mohou zvýšit přesnost matematického
+vyhledávání při zachování praktické rychlosti.
 
 Ukazuji, že techniky pro hledání sémantické shody na základě slovních embedingů
 a techniky pro agregaci výsledků mohou zlepšit přesnost matematického
