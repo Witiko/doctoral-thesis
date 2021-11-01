@@ -55,6 +55,7 @@ retrieval systems more accurate and keep them reasonably fast.
 I show that semantic matching techniques based on token embeddings and
 learning-to-rank techniques can improve the accuracy of math information
 retrieval systems and can achieve the same speed as non-interpretable systems.
+I also show the tangible benefits of interpretability.
 
 # Abstract {#abstract-cs}
 
@@ -77,6 +78,7 @@ matematického vyhledávání při zachování praktické rychlosti.
 Ukazuji, že techniky pro hledání sémantické shody na základě slovních embedingů
 a techniky pro agregaci výsledků mohou zlepšit přesnost matematického
 vyhledávání a mohou dosáhnout stejné rychlosti jako neinterpretovatelné techniky.
+Dále také ilustruji praktické výhody interpretovatelnosti.
 
 # Introduction {#introduction}
 
