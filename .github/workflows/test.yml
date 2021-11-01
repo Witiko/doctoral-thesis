@@ -1,0 +1,18 @@
+name: Test
+on:
+  pull_request:
+  workflow_dispatch:
+env:
+  DEBIAN_FRONTEND: noninteractive
+jobs:
+  test:
+    name: Test the thesis
+    runs-on: ubuntu-latest
+    container:
+      image: witiko/markdown:2.11.0-10-g8d0d10c
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v2
+
+      - name: Typeset the thesis
+        run: latexmk main
