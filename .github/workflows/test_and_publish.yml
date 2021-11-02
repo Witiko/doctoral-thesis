@@ -27,7 +27,7 @@ jobs:
       - name: Create a release
         uses: marvinpinto/action-automatic-releases@latest
         with:
-          title: The latest typeset book
+          title: The typeset doctoral thesis
           automatic_release_tag: latest
           prerelease: true
           repo_token: ${{ secrets.GITHUB_TOKEN }}
