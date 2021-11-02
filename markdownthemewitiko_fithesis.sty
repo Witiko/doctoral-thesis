@@ -23,7 +23,6 @@
         \markdownRendererInterblockSeparatorPrototype
         \noindent
       }%
-      \ignorespaces
     },
   }
 }
@@ -32,6 +31,10 @@
 \markdownSetupSnippet{abstract}{
   renderers = {
     headingOne = {},
+    interblockSeparator = {%
+      \let\markdownRendererInterblockSeparator
+        \markdownRendererInterblockSeparatorPrototype
+    },
   }
 }
 
