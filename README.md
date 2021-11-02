@@ -2,13 +2,14 @@
 
  [![actions-badge][]][actions]
 
-This repository contains [PDF][latest] and LaTeX source of the doctoral thesis
+This repository contains [PDF][latest] and [source][] of the doctoral thesis
 *Interpretable Representations for Fast and Accurate Retrieval of Mathematical
 Information* by Vít Novotný.
 
  [actions-badge]: https://github.com/Witiko/diploma-thesis/actions/workflows/test_and_publish.yml/badge.svg
  [actions]:       https://github.com/Witiko/diploma-thesis/actions/workflows/test_and_publish.yml
  [latest]:        https://github.com/Witiko/diploma-thesis/releases/download/latest/main.pdf
+ [source]:        main.md
 
 ## Abstract
 
