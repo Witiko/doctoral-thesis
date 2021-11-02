@@ -6,11 +6,8 @@ This repository contains [PDF][latest] and LaTeX source of the doctoral thesis
 *Interpretable Representations for Fast and Accurate Retrieval of Mathematical
 Information* by Vít Novotný.
 
- ![banner][]
-
  [actions-badge]: https://github.com/Witiko/diploma-thesis/actions/workflows/test_and_publish.yml/badge.svg
  [actions]:       https://github.com/Witiko/diploma-thesis/actions/workflows/test_and_publish.yml
- [banner]:        banner.png "Example pages from the thesis"
  [latest]:        https://github.com/Witiko/diploma-thesis/releases/download/latest/main.pdf
 
 ## Abstract
@@ -35,6 +32,12 @@ I show that semantic matching techniques based on token embeddings and
 learning-to-rank techniques can improve the accuracy of math information
 retrieval systems and can achieve the same speed as non-interpretable systems.
 I also show the tangible benefits of interpretability.
+
+## Contents
+
+ ![contents][]
+
+ [contents]:      contents.png "Table of contents"
 
 ## Citing
 
