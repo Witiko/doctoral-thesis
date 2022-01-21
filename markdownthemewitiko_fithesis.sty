@@ -223,19 +223,6 @@
   \next
 }
 
-%% Code span in math mode equals \text
-\markdownSetup{
-  renderers = {
-    codeSpan = {%
-      \ifmmode
-        \text{#1}%
-      \else
-        \texttt{#1}%
-      \fi
-    },
-  }
-}
-
 %% Graphics
 \usepackage{graphicx}
 \graphicspath{ {./figures/} }
