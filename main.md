@@ -346,6 +346,9 @@ represent presentation math in math information retrieval systems.
      \label{fig:slt}}
 
 digraph tree {
+  node [fontname = "times"];
+  edge [fontname = "times"];
+
   margin  = 0;
   rankdir = "LR";
 
@@ -375,6 +378,9 @@ digraph tree {
      \label{fig:opt}}
 
 digraph tree {
+  node [fontname = "times"];
+  edge [fontname = "times"];
+
   margin  = 0;
   rankdir = "LR";
 
@@ -1589,6 +1595,8 @@ unit is the sum of the similarity scores of all formulae in the retrieval unit.
     \label{fig:tangent}
 
 digraph tree {
+  node [fontname = "times"];
+
   margin  = 0;
   rankdir = "LR";
 
