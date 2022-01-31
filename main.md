@@ -1223,8 +1223,8 @@ satisfaction. [@manning2008introduction, Section 8.6.3]
 \label{cha:state-of-the-art}
 
 Despite the lack of attention math information retrieval has historically
-received compared to information retrieval, a substantial amount of research
-has been conducted since the first workshop in 2008.
+received compared to information retrieval more generally, a substantial amount
+of research has been conducted since the first workshop in 2008.
 
 ⇈ In this chapter, I'll describe the state of the art in math information
 retrieval:
@@ -1239,17 +1239,21 @@ retrieval:
 \label{sec:competitions}
 
 ↑ Even though the idea of digital mathematical libraries dates back to the
-2002, it wasn't until ten years later until the first competitions of math
+2002, it wasn't until ten years later until the first competitions[^81] of math
 information retrieval systems took place, see Figure \vref{fig:competitions}.
+
+ [^81]: Here and throughout the rest of the thesis, the term *competitions* is
+        used for its familiarity to the general audience instead of the more
+        technically correct term *shared task evaluations*.
 
  /figures/competitions.tex
 
-During 2003--2015, thirteen *International Conference on Mathematical
-Knowledge Management (MKM)* [@asperti2003mathematical] have been held and
+During 2003--2015, thirteen *International Conferences on Mathematical
+Knowledge Management (MKM)* [@asperti2003mathematical] have been held that
 provided the first opportunity for individuals and research groups interested
 in math information retrieval to meet and collaborate.
 
-Since 2008, MKM was co-located with the *International Conference of
+Since 2008, MKM was co-located with the *International Conferences of
 Intelligent Computer Mathematics (CICM)*. During 2008--2011, a group
 of MKM attendees interested in digital mathematical libraries
 held a series of *Towards a Digital Mathematics Library* workshops
@@ -1270,8 +1274,8 @@ Research (NTCIR)* workshops hosted by the National Institute of Informatics
 
 Following a four year pause, in 2020 and 2021, two math information retrieval
 competitions were held as *Answer Retrieval for Questions on Math (ARQMath)*
-labs at the *Conference and Labs of the Evaluation Forum (CLEF)*
-conferences. In 2022, the third (and likely final) ARQMath lab will be held.
+labs at the *Conferences and Labs of the Evaluation Forum (CLEF)*. In 2022, the
+third (and likely final) ARQMath lab will be held.
 
  [71]: https://www.cs.rit.edu/~dprl/ARQMath
 
@@ -1305,8 +1309,8 @@ The two teams that participated competed in three subtasks:
 📖{wildcard}
 
 ← In the first two subtasks, the information needs were specified using mixed
-queries with wildcards. In the open information retrieval, the information
-needs were specified using text queries.
+queries with wildcards. In open information retrieval, the information needs
+were specified using text queries.
 
 For the evaluation, one relevant document was provided for every query in the
 first two subtasks. [@liska2013evaluation, Section 5.1] No relevance judgements
@@ -1328,7 +1332,7 @@ also represented using \TeX.
 
 📖{information need}
 
-The participants competed in the formula search and full-text search with the
+The participants competed in formula search and full-text search with the
 same representation of information needs as in the MIR workshop. Six teams
 participated in formula search and two in full-text search.
 
@@ -1486,8 +1490,7 @@ sources.
  /figures/systems.tex
 
 In this section, I will describe the math information retrieval search engines
-that received the best accuracies in the competitions, see Table
-\vref{tab:systems}.
+that achieved the best accuracies in the competitions, see Table \vref{tab:systems}.
 @liska2015building [Section 2.1] @guidi2016survey @ruzicka2018math [Section
 2.3] describe other systems of historical significance.
 
@@ -1548,8 +1551,8 @@ interleaved.
 ### Mathcat
 
 The [*Mathcat (MCAT)* system][76] [@topic2013mcat; @kristianto2014mcat; @kristianto2016mcat]
-has been developed by the Aizawa laboratory and participated in the NTCIR Math tasks.
-MCAT has not been publicly deployed in a digital mathematical library or have a
+has been developed by the Aizawa laboratory, which participated in the NTCIR Math tasks.
+MCAT has not been publicly deployed in a digital mathematical library nor does it have a
 live demo.
 
  [76]: https://www-al.nii.ac.jp/mathcat-project/
@@ -1604,10 +1607,10 @@ digraph tree {
 ```
 
 The *Tangent* systems have been developed by the research groups of Hui Fang
-(InfoLab), Frank Tompa, and Richard Zanibbi (DPLR) and participated in the
+(InfoLab), Frank Tompa, and Richard Zanibbi (DPLR), which participated in the
 NTCIR-11 Math-2 and NTCIR-12 MathIR tasks and in the ARQMath labs. Although the
 Tangent systems have not been publicly deployed in a digital mathematical
-library, some of them (Approach0) have [a live demo.][77]
+library, Approach0 has [a live demo.][77]
 
  [77]: https://approach0.xyz/
 
@@ -1665,7 +1668,7 @@ Tangent-L does not rerank the retrieved math formulae.
 
 #### Tangent-S
 
-The *Tangent-S* system [@davila2017layout] also evolved from Tangent-3, was
+The *Tangent-S* system [@davila2017layout], also evolved from Tangent-3, was
 developed by DPLR, and was used as a *baseline* system in the ARQMath labs.
 
 📖{presentation math}
@@ -1686,7 +1689,7 @@ aggregation to the techniques before the reranking.
 #### Approach0
 
 The *Approach0* system [@zhong2015novel; @zhong2016opmes; @zhong2019structural;
-@zhong2021approach] evolved from Tangent-S, was developed by InfoLab and DPLR,
+@zhong2021approach], evolved from Tangent-S, was developed by InfoLab and DPLR,
 was used as a baseline system in the ARQMath-1 lab, and participated in the
 ARQMath-2 lab and post-hoc in the NTCIR-12 MathIR task.
 
@@ -1711,7 +1714,7 @@ lab, Approach0 used the RM3 query expansion technique.
 #### Tangent-CFT and Tangent-CFTED
 
 The *Tangent-CFT* and *Tangent-CFTED* systems [@mansouri2019tangent;
-@mansouri2020dprl; @mansouri2021dprl] also evolved from Tangent-S, were
+@mansouri2020dprl; @mansouri2021dprl], also evolved from Tangent-S, were
 developed by DLPR, and participated in the ARQMath labs and post-hoc in the
 NTCIR-12 MathIR task.
 
@@ -1853,8 +1856,8 @@ representation for comparison. [@novotny2020three, Table 2]
 📖{Symbol Layout Tree (SLT)}
 📖{TF-IDF}
 
-In the *MIRMU-SCM* system, both the prefix and the infix notations received the
-best results on the train dataset. The prefix and infix notations received
+In the *MIRMU-SCM* system, both the prefix and the infix notations achieved the
+best results on the train dataset. The prefix and infix notations achieved
 equivalent results, since they mainly differ by ordering. (With TF-IDF term
 weighting, adding parenthesis tokens is insignificant.) Since the soft vector
 space model is insensitive to token ordering, both notations correspond to
@@ -1865,10 +1868,10 @@ modeling longer paths in OPT and SLT trees.
 
 📖{TeX@\TeX{}}
 
-In the *MIRMU-CompuBERT* system, the prefix notation has received better
+In the *MIRMU-CompuBERT* system, the prefix notation has achieved better
 results than the infix notation, showing that the topological ordering of
 @lample2020deep is significant in deep neural language models. Surprisingly,
-the \TeX{} representation has received better results than both prefix and
+the \TeX{} representation has achieved better results than both prefix and
 infix notations. We believe that this is due to tokenisation: Unlike
 @lample2020deep, we fine-tuned a language model whose tokenizer was pre-trained
 on natural language text. In \TeX{}, commands have descriptive names in
@@ -2664,7 +2667,7 @@ systems out of all of our ten systems at ARQMath-2.
 At ARQMath-1, we showed that *MIRMU-Ensemble* was more accurate than any
 individual information retrieval system from our MIRMU team. If we used
 *MIRMU-Ensemble* to ensemble all non-baseline primary systems, we would have
-received the best accuracy in the competition, which indicates that
+achieved the best accuracy in the competition, which indicates that
 *MIRMU-Ensemble* can benefit from a large number of systems.
 
 📖{rank-based fusion}
@@ -2675,9 +2678,9 @@ and MSM teams. We also showed that our *MIRMU-WIBC* can be more accurate than
 *MIRMU-RRF*.
 
 When we used the unsupervised *MIRMU-IBC* and *MIRMU-RRF* to ensemble all
-non-baseline primary systems, we received the best (*MIRMU-RRF*) and the
+non-baseline primary systems, we achieved the best (*MIRMU-RRF*) and the
 second-best (*MIRMU-IBC*) accuracies in the competition. This indicates that
-both techniques can benefit from a large number of systems. Ensembling only five 
+both techniques can benefit from a large number of systems. Ensembling only five
 selected systems out of all ten systems increased the accuracy of three out
 of our four techniques, which indicates that all our techniques can benefit
 from a small number of diverse systems.
@@ -3699,7 +3702,7 @@ We selected five diverse systems: *MIRMU-CompuBERT*, *MIRMU-SCM*, *MSM-LM*,
 📖{structural matching}
 📖{semantic matching}
 
-We also showed that *MIRMU-CompuBERT* received the most consistent results
+We also showed that *MIRMU-CompuBERT* achieved the most consistent results
 across both text and math queries, it excelled at short queries, but its
 performance deteriorated for long queries that didn't fit into the short
 context window of its dense attention. By contrast, the remaining four systems
