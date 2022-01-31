@@ -590,6 +590,8 @@ express their *information needs* as queries in natural language, math
 information retrieval offers more variety.
 
 📖{mixed query|first}
+📖{math query|first}
+📖{text query|first}
 📖{joint modeling|first}
 📖{wildcard|first}
 📖{simto region|first}
@@ -1313,6 +1315,7 @@ The two teams that participated competed in three subtasks:
 
 📖{information need}
 📖{mixed query}
+📖{text query}
 📖{wildcard}
 
 ← In the first two subtasks, the information needs were specified using mixed
@@ -1809,7 +1812,7 @@ such as Mathematica, MatLab, and Maple.
 📖{content math}
 📖{Operator Tree (OPT)}
 
-In 2020, we have used the representation of @lample2020deep (further known as
+In 2020, we used the representation of @lample2020deep (further known as
 the *prefix* notation) in our submissions to the ARQMath-1 lab to see if the
 representation would also be useful for math information retrieval. Since
 @lample2020deep do not specify the precise tree-structured content math
@@ -1931,7 +1934,7 @@ accurate token embeddings:
   and show how a lack of variable control makes some previous experiments
   difficult to reproduce.
 
-- In Section \vref{sec:heuristical-hyperparameter-optimization-in-subtoken-language-models},
+- In Section \vref{sec:heuristic-hyperparameter-optimization-in-subtoken-language-models},
   I will report the optimal hyperparameters for the fastText subtoken language
   model on nine word analogy tasks. I will also show that expensive
   hyperparameter optimization can be replaced by a simple n-gram coverage model
@@ -2004,7 +2007,7 @@ The phrasing algorithm contains three undisclosed parameters:
 2. the incremental threshold decay, and
 3. the maximum dictionary size $n$.
 
-← For the threshold and the decay, only the parameter values were withheld.
+← For the threshold and the decay, only the parameter values were omitted.
 For the maximum dictionary size, the parameter only appears in the reference
 implementation. I suggested the following default parameter values: $\delta =
 100, n = 5 · 10^8$.
@@ -2033,7 +2036,7 @@ The word analogy task contains three undisclosed parameters:
 2. the case transformation applied to words $a, b, a'$, and $b'$, and
 3. the Unicode locale used for the case transformation.
 
-← For the maximum dictionary size, only the parameter values were withheld. For
+← For the maximum dictionary size, only the parameter values were omitted. For
 the case transformations, the parameter only appears in the reference
 implementation. The Unicode locale appears in neither the published works nor
 in the reference implementation. I showed that up to 4\% of word analogy
@@ -2050,8 +2053,8 @@ also released [the only public implementation of the fastText positional model.]
  [4]: https://github.com/MIR-MU/reproducible-ml
  [5]: https://github.com/MIR-MU/pine
 
-### Heuristical Hyperparameter Optimization in Subword Language Models
-\label{sec:heuristical-hyperparameter-optimization-in-subtoken-language-models}
+### Heuristic Hyperparameter Optimization in Subword Language Models
+\label{sec:heuristic-hyperparameter-optimization-in-subtoken-language-models}
 
 📖{general model}
 📖{word analogy}
@@ -2243,7 +2246,7 @@ word analogy accuracies were.
 
 📖{word analogy}
 
-In 2019, I consulted the master's thesis of @stefanik2019semantic.[^32]
+In 2019, I consulted on the master's thesis of @stefanik2019semantic.[^32]
 In the thesis, we aimed to reproduce the word analogy experiment of @lam2018word2bits
 and analyse the word analogy accuracies for the different categories of
 analogical reasoning. [@stefanik2019semantic, Section 3.1]
@@ -2295,7 +2298,7 @@ acquisition bottleneck*.
 
 Additionally, previous work in training sense embeddings only evaluates the
 embeddings on word similarity tasks, where the sense representations are not
-directly used and not on sense-specific tasks such as word sense
+directly used, and not on sense-specific tasks such as word sense
 disambiguation.
 
 #### Experiments
@@ -2525,7 +2528,7 @@ ARQMath-1.
 
 At ARQMath-2, we showed that with accurate training data, *MIRMU-CompuBERT*
 was more accurate than *MIRMU-SCM*. @mansouri2021dprl [Section 3] also used
-sentence embeddings of the Sentence BERT in two of their three math information
+sentence embeddings of Sentence~BERT in two of their three math information
 retrieval systems (*DPRL-RRF* and *DPRL-QASim*) and achieved the second and
 third best accuracies in the competition. This shows that using joint sentence
 embeddings of text and math from deep neural network language models is
@@ -2727,7 +2730,7 @@ In 2018, we analysed the datasets and the relevance judgements from the
 and SemEval-2017 competitions. [@novotny2018weighting]
 The datasets consist of questions and threads of comments. The relevance
 judgements show how relevant the individual comments (subtask A) and the whole
-threads (subtask A) are to a question.
+threads (subtask B) are to a question.
 
 📖{weighted zone scoring}
 
@@ -2775,7 +2778,7 @@ relevance followed a Zipf distribution. See Figure \vref{fig:weighted-zone-scori
 📖{weighted zone scoring}
 
 We then developed three information retrieval systems: one that used weighted
-zone scoring to place smaller weight to later comments in a thread, one that
+zone scoring to assign smaller weight to later comments in a thread, one that
 did not use weighted zone scoring but continuously decreased the weights of later
 tokens in a thread, and one that used neither. [@novotny2018weighting, Figure 3]
 We showed that our system that used weighted zone scoring achieved
@@ -2813,7 +2816,7 @@ online.][14]
 Until we have solved the mystery that is the human mind, ranking criteria of
 math information retrieval systems will always be just an approximation to the
 relevance perceived by the users. Additionally, due to the amount of data and
-time constraints, even this formal ranking criteria are usually approximated.
+time constraints, even these formal ranking criteria are usually approximated.
 
 In this section, I will report the results of my experiments in making
 approximate math information retrieval more accurate.
@@ -2836,7 +2839,7 @@ Recent results show that dense retrieval techniques can achieve higher accuracy
 than sparse retrieval techniques on information retrieval tasks.
 [@lin2021batch] At the *find answers* task of the ARQMath-1 and ARQMath-2 labs,
 sparse information retrieval systems still achieved the best accuracy, but the
-gap is closing. Whereas, at ARQMath-1, only three[^19] out of 23 systems (13\%)
+gap is closing. At ARQMath-1, only three[^19] out of 23 systems (13\%)
 used dense retrieval, with the best dense retrieval system only receiving the
 seventh best accuracy in the competition.  [@zanibbi2020overview, Table A1] At
 ARQMath-2, nine[^20] out of 40 systems (23\%) used dense retrieval, with the
@@ -2895,10 +2898,10 @@ without replacing their tried-and-tested sparse retrieval architectures.
 
 📖{hard vector space model}
 
-State-of-the-art math information retrieval systems rely on the hard soft
+State-of-the-art math information retrieval systems rely on the hard
 vector space model of @salton1975vector, which is fast and
-interpretable but its accuracy is limited by its failure to recognize that
-the meaning of different words and symbols can be similar or related.
+interpretable but whose accuracy is limited by its failure to recognize that
+the meaning of different words and symbols can be similar or otherwise related.
 
 📖{soft vector space model}
 
@@ -2941,7 +2944,7 @@ Section 3]
 📖{orthogonalization|first}
 📖{soft vector space model}
 
-In 2020, we developed an *orthogonalization* technique for token embeddings and
+In 2020, my colleagues and I developed an *orthogonalization* technique for token embeddings and
 we proved that using the measure of @charlet2017simbow with orthogonalized
 embeddings was consistent with the restrictions of my fast algorithm for the
 soft vector space model. [@novotny2020text, Section 4.2] We evaluated the soft
@@ -3157,8 +3160,8 @@ showed that it was more accurate than the Word2Vec language model on the
 English word similarity and open-domain question answering tasks and equally as
 accurate on the English word analogy task. With the quantized language model, we
 can approximate the similarity between a pair of token embeddings using fast
-bitwise arithmetic. However, the speed and accuracy of these approximations
-had not been evaluated.
+bitwise arithmetic. However, the speed and accuracy of these approximate
+similarity measures had not been evaluated.
 
 #### Experiments
 
@@ -3166,7 +3169,7 @@ had not been evaluated.
 📖{quantized model}
 📖{word analogy}
 
-In 2019, I consulted the master's thesis of @stefanik2019semantic.[^33] In the
+In 2019, I consulted on the master's thesis of @stefanik2019semantic.[^33] In the
 thesis, we approximated the cosine similarity $\cos(\vec x, \vec y)$ between a
 pair of quantized token embeddings $\vec x$ and $\vec y$ as the inverse of
 their Hamming distance $‖\vec x ⊻ \vec y‖\_1$.  [@stefanik2019semantic, Section
@@ -3347,7 +3350,7 @@ system, where our system was both fast and accurate. See Figure
 📖{hard vector space model}
 📖{soft vector space model}
 
-State-of-the-art math information retrieval systems rely on the hard soft
+State-of-the-art math information retrieval systems rely on the hard
 vector space model of @salton1975vector, but the soft vector space model
 of @sidorov2014soft can more accurately model both the natural language and the
 language of mathematics. However, computing the soft cosine similarity between two
@@ -3377,7 +3380,7 @@ my restricted soft vector space model in detail.
 
 In 2018, I proved that if we restricted the soft vector space model to measures
 of relatedness that could be represented by a sparse similarity matrix $S$ with
-no more than $C$ non-zero elements in any of its columns, where $C$ is constant,
+no more than $C$ non-zero elements in any of its columns, where $C$ was constant,
 then computing the soft cosine similarity between a query and a document in the soft vector
 space model had a worst-case time complexity of $\mathcal{O}(1)$ if the maximum
 size of a query was constant. [@novotny2018implementation, Algorithm 1]
@@ -3532,7 +3535,7 @@ has not been evaluated on a part-of-speech tagging task.
 📖{vector dimensionality $D$}
 📖{quantized model}
 
-In 2019, I consulted the master's thesis of @stefanik2019semantic.
+In 2019, I consulted on the master's thesis of @stefanik2019semantic.
 <!-- See also Sections \vref{sec:quantized-token-embeddings}
 and Section \vref{sec:quantized-token-embeddings-with-fast-bitwise-arithmetic}, where I
 discuss our further experiments with the quantized language model. -->
@@ -3544,10 +3547,15 @@ for different vector dimensionalities $D$. [@stefanik2019semantic, Section 3.3]
 
 We also developed two algorithms for deciding whether a feature of a token
 embedding should be negated so that its value was one if, and only if, the token
-had the interesting property that was associated with the feature. We used our
+had the *interesting property*[^81] that was associated with the feature. We used our
 algorithms to show the probabilities $P(i ⇒ j)$ of the implications $i ⇒ j$
 between the interesting properties $i$ and $j$ associated with the token
 embedding features. [@stefanik2019semantic, Section 3.7]
+
+ [^81]: A property of a token is interesting if its presence is more surprising
+        than its absence. For example, the token *blue* has the interesting
+        property that is is a color. Therefore, if the embedding of *blue* has
+        a feature for being a color, its value should be one.
 
 #### Results
 
@@ -3693,7 +3701,9 @@ were our small number of diverse systems.
 To interpret the diversity of the systems, we developed two measures of their
 strengths and weaknesses that showed… [@novotny2021ensembling, Figure 8]
 
-1. how capable the systems were at mathematical and text queries and
+📖{math query}
+
+1. how capable the systems were at text and math queries and
 2. how capable the systems were at long and short queries.
 
  /figures/strengths-and-weaknesses.tex
@@ -3711,13 +3721,15 @@ We selected five diverse systems: *MIRMU-CompuBERT*, *MIRMU-SCM*, *MSM-LM*,
 📖{dense attention}
 📖{structural matching}
 📖{semantic matching}
+📖{math query}
+📖{text query}
 
 We also showed that *MIRMU-CompuBERT* achieved the most consistent results
 across both text and math queries, it excelled at short queries, but its
 performance deteriorated for long queries that didn't fit into the short
 context window of its dense attention. By contrast, the remaining four systems
 that were based on the vector space model excelled at text queries, but their
-performance deteriorated for mathematical queries. *MIRMU-SCM*, which uses
+performance deteriorated for math queries. *MIRMU-SCM*, which uses
 techniques for structural and semantic matching, could exploit both short and
 long queries. See Figure \vref{fig:strengths-and-weaknesses}.
 
@@ -3817,9 +3829,9 @@ questions and offer directions for future work:
     improved using hyperparameter optimization, constrained positional
     modeling, word sense disambiguation, decontextualization, and
     orthogonalization. See sections
-    \ref{sec:heuristical-hyperparameter-optimization-in-subtoken-language-models}%
+    \ref{sec:heuristic-hyperparameter-optimization-in-subtoken-language-models}%
     --\ref{sec:decontextualized-token-embeddings} on pages
-    \pageref{sec:heuristical-hyperparameter-optimization-in-subtoken-language-models}%
+    \pageref{sec:heuristic-hyperparameter-optimization-in-subtoken-language-models}%
     --\pageref{sec:decontextualized-token-embeddings}.
     However, some of my results were only evaluated on
     intrinsic tasks. Future work should also evaluate these
