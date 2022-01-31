@@ -327,7 +327,7 @@ apparent reading order:%
 \begin{equation}
 t' = t · \frac{1}{\sqrt{1 - \frac{v^2}{c^2}}}
 \end{equation}
-
+%
 Therefore, although presentation aspects of written natural text are typically
 ignored in information retrieval, the placement of symbols (further known as
 *presentation math*) in the language of mathematics is often useful for math
@@ -341,7 +341,7 @@ represent presentation math in math information retrieval systems.
 ``` dot %
     [Symbol Layout Tree representation]%
     {Symbol Layout Tree (SLT) representation of the math formula $x!! - y^2 = 0$. %
-     Edge labels n and a stands for next and above. %
+     Edge labels n and a stand for next and above. %
      \cite[Figure 3]{novotny2020three}%
      \label{fig:slt}}
 
@@ -410,7 +410,7 @@ as `$x!! - y^2 = 0$` in \TeX.
 
 ##### Presentation MathML
 
-In 1998,[^59] the World Wide Web Consortium has developed the Presentation MathML
+In 1998,[^59] the World Wide Web Consortium developed the Presentation MathML
 XML language, which \`\`can be used to describe the layout structure of
 mathematical notation.'' [@buswell1998mathematical, Section 3.1]
 To give an example, Figure \vref{fig:pmml-and-cmml} shows how the formula $x!!
@@ -431,7 +431,7 @@ representations, which affects retrieval accuracy. Therefore, the problem of
 
 📖{Symbol Layout Tree (SLT)|first}
 
-In 2016,[^61] @zanibbi2016multi have developed the *symbol layout tree (SLT)*
+In 2016,[^61] @zanibbi2016multi developed the *symbol layout tree (SLT)*
 as a simplified representation of Presentation MathML that can be directly
 used for information retrieval without further normalization.
 To give an example, Figure \vref{fig:slt} shows how the formula $x!!
@@ -444,7 +444,7 @@ To give an example, Figure \vref{fig:slt} shows how the formula $x!!
 
 ##### Unicode Math
 
-In 2017, the American Mathematical Society has developed Unicode support for
+In 2017, the American Mathematical Society developed Unicode support for
 Mathematics [@beeton2017unicode], which can be used to used to encode
 presentation math in plain text without special markup.
 
@@ -482,7 +482,7 @@ To give an example, Figure \vref{fig:pmml-and-cmml} shows how the formula $x!!
 
 📖{Operator Tree (OPT)|first}
 
-↑ In 2017,[^64] @davila2017layout have developed the *operator tree (OPT)*
+↑ In 2017,[^64] @davila2017layout developed the *operator tree (OPT)*
 as a simplified representation of Content MathML that can be directly
 used for information retrieval.
 To give an example, Figure \vref{fig:opt} shows how the formula $x!!
@@ -613,15 +613,15 @@ semantic matching, and learning to rank.
 \label{sec:sparse-retrieval}
 
 Over the course of their history, information retrieval systems have changed
-from expert systems to everyday appliances.
+from systems for experts to everyday appliances.
 
 In this section, I will describe the concepts of the traditional sparse
 approach to information retrieval and show how they had developed since the
-development of *boolean retrieval* in the 1960s.
+development of *Boolean retrieval* in the 1960s.
 
 ##### Boolean Retrieval
 
-In boolean retrieval, documents were indexed as sets of their keywords and
+In Boolean retrieval, documents were indexed as sets of their keywords and
 users would search by specifying keywords that corresponded to their
 information needs using queries in prepositional calculus:
 [@manning2008introduction, Chapter 1]%
@@ -631,7 +631,7 @@ information needs using queries in prepositional calculus:
 \end{equation}
 %
 However, only expert users could specify queries in prepositional calculus.
-Additionally, boolean retrieval systems would present the users with an
+Additionally, Boolean retrieval systems would present the users with an
 *unranked* list of *all* documents that matched their query. For large document
 collections, either too many documents or too few (if any) documents would
 often be retrieved, a problem commonly referred to as *feast or famine*.
@@ -641,7 +641,8 @@ often be retrieved, a problem commonly referred to as *feast or famine*.
 📖{tokenization|first}
 📖{hard vector space model|first}
 
-In 1988, @salton1988termweighting developed the *hard vector space model*.
+In 1975, @salton1975vector developed the *vector space model*
+(further known as the *hard vector space model*).
 At this point in time, digital and digitized fulltexts were becoming
 increasingly more available together with the computational resources to
 process them. Therefore, in addition to and instead of using keywords and
@@ -664,8 +665,8 @@ into weighted sets of tokens: [@manning2008introduction, Chapter 3]%
 Free text queries made information retrieval accessible to a wide range of
 users. Additionally, the hard vector space model would present the users
 with a *ranked* list of documents starting with the most relevant, which resolved
-the *feast or famine* problem of boolean retrieval. Furthermore, advanced
-techniques for *term weighting* such as *TF-IDF* [@salton1988termweighting],
+the *feast or famine* problem of Boolean retrieval. Furthermore, advanced
+techniques for *term weighting* such as *TF-IDF* [@salton1975vector],
 *BM25* [@robertson1994okapi], and *BM25⁺* [@lv2011lower] and for *weighted zone
 scoring* [@manning2008introduction, Section 6.1] were later developed for the
 hard vector space model, further improving its accuracy.
@@ -732,7 +733,7 @@ semantically related tokens.[^54]
 📖{context window|first}
 
 In 2013, @mikolov2013efficient developed the *Word2Vec general language
-model*, which could learned token embeddings. As its objective, the model
+model*, which could learn token embeddings. As its objective, the model
 would predict a *masked token* $w_t$ from its context $C\_t = w\_{t - c}$, …,
 $w\_{t - 1}$, $w\_{t + 1}$, …, $w\_{t + c}$, where $c$ is the *context window
 size* and $w\_1, w\_2, …$ is the corpus:%
@@ -874,7 +875,7 @@ specific *sense* of a possibly ambiguous token.
 📖{dense attention|first}
 
 Early neural machine translation used *encoder-decoder models*, where an
-encoder recurrent neural network RNN would first read and encode a *source
+encoder recurrent neural network (RNN) would first read and encode a *source
 sequence* into a *fixed-length context vector* and a decoder RNN would then
 produce a *translated target sequence* from the context vector
 [@sutskever2014sequence; @cho2014learning]. Due to the context vector's fixed
@@ -930,7 +931,7 @@ Unlike natural text, the language of mathematics is inherently more structured,
 which makes it possible to use *structural matching* techniques for math
 information retrieval. Both information retrieval and math information
 retrieval can also use *semantic matching* techniques that lie at the boundary
-of sparse retrieval an dense retrieval and use token embeddings for sentence
+of sparse retrieval and dense retrieval and use token embeddings for sentence
 and document retrieval.
 
 #### Structural Matching
@@ -1025,12 +1026,12 @@ similarity, it is only practical to use the word mover's distance to rerank top
 retrieval results.  Additionally, the worst-case time complexity of the word
 mover's distance is $\mathcal{O}(n^3 \log n)$, where $n$ is the number of
 unique tokens in the documents, which makes the word mover's distance only
-practical to use the word mover's distance for sentences and short documents.
+practical to use for sentences and short documents.
 
 ### Learning to Rank
 \label{sec:learning-to-rank}
 
-Information retrieval systems make make naive assumptions about the syntax and
+Information retrieval systems make naive assumptions about the syntax and
 the semantics of the natural language and the language of mathematics. They
 also often rely on token embeddings of language models, which contain
 human-like biases. [@caliskan2017semantics] These assumptions and biases cause
@@ -2882,7 +2883,7 @@ without replacing their tried-and-tested sparse retrieval architectures.
 📖{hard vector space model}
 
 State-of-the-art math information retrieval systems rely on the hard soft
-vector space model of @salton1988termweighting, which is fast and
+vector space model of @salton1975vector, which is fast and
 interpretable but its accuracy is limited by its failure to recognize that
 the meaning of different words and symbols can be similar or related.
 
@@ -3334,7 +3335,7 @@ system, where our system was both fast and accurate. See Figure
 📖{soft vector space model}
 
 State-of-the-art math information retrieval systems rely on the hard soft
-vector space model of @salton1988termweighting, but the soft vector space model
+vector space model of @salton1975vector, but the soft vector space model
 of @sidorov2014soft can more accurately model both the natural language and the
 language of mathematics. However, computing the soft cosine similarity between two
 documents in the soft vector space model had an impractical worst-case time
