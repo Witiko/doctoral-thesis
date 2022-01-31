@@ -525,6 +525,7 @@ represent semantic math in math information retrieval systems.
 
 ##### Computer Algebra Systems and Proof Assistants
 
+📖{computer algebra system (CAS)|first}
 📖{Mathematica|first}
 📖{MatLab|first}
 📖{Maple|first}
@@ -1792,6 +1793,7 @@ notation). To give an example, the expression $x!! - y^2 = 0$ would be represent
 as the following comma-separated list of math symbols: $=$, $-$, $!!$, $x$,
 $◌^◌$, $y$, $2$, $0$.
 
+📖{computer algebra system (CAS)}
 📖{Mathematica}
 📖{MatLab}
 📖{Maple}
