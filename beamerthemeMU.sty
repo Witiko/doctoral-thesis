@@ -51,7 +51,7 @@
 %% The names of the source files used are shown above.
 %% 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{beamerthemeMU}[2020/05/16]
+\ProvidesPackage{beamerthemeMU}[2022/02/06]
 \mode<presentation>
 \RequirePackage{etoolbox}
 \DeclareOptionBeamer{locale}{\def\mubeamer@option@locale{#1}}
@@ -261,10 +261,26 @@
 \setbeamertemplate{frametitle}{%
   \vtop{{%
       \usebeamerfont{frametitle}{\insertframetitle}%
-      \ifx\insertframesubtitle\@empty\else\\
-        \usebeamerfont{framesubtitle}{\insertframesubtitle}
+      \ifx\insertframesubtitle\@empty
+        \usebeamerfont{frametitle}{%
+          \ 
+          \usebeamertemplate*{frametitle continuation}%
+        }%
+      \else\\
+        \usebeamerfont{framesubtitle}{%
+          \insertframesubtitle
+          \ 
+          \usebeamertemplate*{frametitle continuation}%
+        }%
       \fi}
     \vfill}}
+\long\def\beamer@@frametitle[#1]#2{%
+  \beamer@ifempty{#2}{}{%
+    \gdef\insertframetitle{{#2\ifnum\beamer@autobreakcount>0\relax{}\fi}}%
+    \gdef\beamer@frametitle{#2}%
+    \gdef\beamer@shortframetitle{#1}%
+  }%
+}
 \setbeamertemplate{navigation symbols}{}
 \setbeamertemplate{footline}{%
   \hskip\mubeamer@length@margin
