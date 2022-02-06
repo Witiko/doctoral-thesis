@@ -1,6 +1,7 @@
 name: Test and publish
 on:
   push:
+    branches: ['main']
   workflow_dispatch:
 env:
   DEBIAN_FRONTEND: noninteractive
