@@ -7,16 +7,27 @@ env:
   DEBIAN_FRONTEND: noninteractive
 jobs:
   test:
-    name: Test and publish the thesis
+    name: Test and publish the doctoral thesis and the thesis defense presentation
     runs-on: ubuntu-latest
     container:
-      image: witiko/markdown:2.13.0-3-g388b1a8-latest-with-cache
+      image: texlive/texlive:TL2020-historic
     steps:
+      - name: Install GraphViz
+        run: |
+          set -e
+          apt-get -qy update
+          apt-get -qy install --no-install-recommends graphviz
+
       - name: Checkout the repository
         uses: actions/checkout@v2
 
-      - name: Typeset the thesis
-        run: latexmk main
+      - name: Typeset the doctoral thesis
+        run: |
+          latexmk main
+
+      - name: Typeset the thesis defense presentation
+        run: |
+          latexmk defense
 
       - name: Upload the artifacts
         uses: actions/upload-artifact@v2
@@ -24,13 +35,15 @@ jobs:
           name: artifacts
           path: |
             main.pdf
+            defense.pdf
 
       - name: Create a release
         uses: marvinpinto/action-automatic-releases@latest
         with:
-          title: The typeset doctoral thesis
+          title: The typeset doctoral thesis and thesis defense presentation
           automatic_release_tag: latest
           prerelease: true
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           files: |
             main.pdf
+            defense.pdf

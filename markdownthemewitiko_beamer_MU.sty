@@ -1,0 +1,133 @@
+\ProvidesPackage{markdownthemewitiko_beamer_MU}[2022/02/06]
+
+%% Beamer theme
+\usetheme[workplace=fi]{MU}
+
+% Multi-column lists and texts
+\RequirePackage{multicol}
+\multicolsep=0.1em
+
+\newcount\markdownOlColumns
+\newcount\markdownUlColumns
+\newcount\markdownDlColumns
+\markdownOlColumns=2
+\markdownUlColumns=1
+\markdownDlColumns=1
+
+\markdownSetup{
+  renderers = {
+    olBegin = {%
+      \ifnum\markdownOlColumns>1\relax
+        \begingroup
+          \multicolsep=0pt
+          \raggedcolumns
+          \begin{multicols}{\the\markdownOlColumns}%
+            \begin{enumerate}%
+      \else
+        \begin{enumerate}%
+      \fi
+    },
+    olEnd = {%
+      \ifnum\markdownOlColumns>1\relax
+            \end{enumerate}%
+          \end{multicols}%
+        \endgroup
+      \else
+        \end{enumerate}%
+      \fi
+    },
+    ulBegin = {%
+      \ifnum\markdownUlColumns>1\relax
+        \begingroup
+          \multicolsep=0pt
+          \raggedcolumns
+          \begin{multicols}{\the\markdownUlColumns}%
+            \begin{itemize}%
+      \else
+        \begin{itemize}%
+      \fi
+    },
+    ulEnd = {%
+      \ifnum\markdownUlColumns>1\relax
+            \end{itemize}%
+          \end{multicols}%
+        \endgroup
+      \else
+        \end{itemize}%
+      \fi
+    },
+    dlBegin = {%
+      \ifnum\markdownDlColumns>1\relax
+        \begingroup
+          \multicolsep=0pt
+          \raggedcolumns
+          \begin{multicols}{\the\markdownOlColumns}%
+            \begin{description}%
+      \else
+        \begin{description}%
+      \fi
+    },
+    dlEnd = {%
+      \ifnum\markdownDlColumns>1\relax
+            \end{description}%
+          \end{multicols}%
+        \endgroup
+      \else
+        \end{description}%
+      \fi
+    },
+    horizontalRule = {
+      \begingroup
+        \multicolsep=0pt
+        \raggedcolumns
+        \begin{multicols}{2}
+        \renewcommand\markdownRendererHorizontalRule{%
+          \columnbreak
+          \renewcommand\markdownRendererHorizontalRule{%
+            \end{multicols}
+            \endgroup
+          }
+        }
+     },
+  },
+}
+
+% Tables
+\RequirePackage{booktabs}
+
+% Listings
+\RequirePackage{minted}
+
+% Headings
+\markdownSetup{
+  renderers = {
+    headingOne = {\frametitle{#1}},
+    headingTwo = {
+      \ifx\empty#1\empty\else
+        \framesubtitle{#1}\vspace{-0.4em}
+      \fi
+      \renewcommand\markdownRendererHeadingTwo[1]{%
+        \par\medskip\vspace*{0.1em}
+        {\usebeamerfont{framesubtitle}\usebeamercolor[fg]{structure}##1}%
+        \par\medskip
+      }
+    },
+  },
+}
+
+% Images
+\markdownSetup{
+  renderers = {
+    contentBlock = {%
+      \par\medskip
+      \rlap{\includegraphics{#2}}%
+    },
+  },
+}
+
+% Hyperlinks
+\markdownSetup{
+  renderers = {
+    link = {\href{#3}{\textcolor{mubeamer@base}{#1}}},
+  },
+}
