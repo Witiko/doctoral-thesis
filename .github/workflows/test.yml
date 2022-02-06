@@ -24,7 +24,7 @@ jobs:
 
       - name: Typeset the doctoral thesis
         run: |
-          latexmk main
+          latexmk thesis
 
       - name: Typeset the thesis defense presentation
         run: |
@@ -35,5 +35,5 @@ jobs:
         with:
           name: artifacts
           path: |
-            main.pdf
+            thesis.pdf
             defense.pdf
