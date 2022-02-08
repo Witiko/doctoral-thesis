@@ -4,12 +4,15 @@
 - Math literature is scarcely digitized and doubles in volume every 16 years. [@trott2016overview] [@bouche2008some]
 
 > \`\`The amount of resources available to digitize mathematics is
-> significantly less than the resources available to digitize cats.''
->
-> > @watt2016semantic
+> significantly less than the resources available to digitize cats.'' ---@watt2016semantic
 
-- Math information retrieval (MIR) emerged in 2012 to retrieve math documents from digital libraries.
-- 95\% of queries in MIR systems are simple text queries, [@libbrecht2006methods] [@miller2013three] which exposes usability gaps.
+- Math information retrieval systems retrieve math literature from digital libraries.
+- OCR techniques and math representations ensure fast and accurate retrieval.
+- 95\% of queries are stated in simple text, [@libbrecht2006methods] [@miller2013three] which exposes usability gaps.
+
+> \`\`We find math search to be used modestly, but this is not surprising given
+> that users don’t expect it and we have ruled out being confrontational to
+> promote it.'' ---@miller2013three
 
 ## Research Questions {#research-questions}
 ## Thesis Structure {#thesis-structure}

@@ -3,6 +3,21 @@
 %% Beamer theme
 \usetheme[workplace=fi]{MU}
 
+%% Blockquotes
+\markdownSetup{
+  renderers = {
+    blockQuoteBegin = {%
+      \medskip
+      \par
+      \begin{quotation}%
+        \noindent
+    },
+    blockQuoteEnd = {%
+      \end{quotation}%
+    },
+  },
+}
+
 % Multi-column lists and texts
 \RequirePackage{multicol}
 \multicolsep=0.1em
