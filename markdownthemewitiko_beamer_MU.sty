@@ -175,8 +175,21 @@
       $\curvearrowright$%
       \looseness=-1\par
     },
+    interblockSeparator = {%
+      \def\next##1##2{%
+        \def\@tempa{##2}%
+        \def\@tempb{\markdownRendererHorizontalRule}%
+        \ifx\@tempa\@tempb
+        \else
+          \par
+        \fi
+        ##2%
+      }%
+      \next
+    },
     horizontalRule = {%
       \markdownRendererDocumentEnd
+      \let\markdownRendererInterblockSeparator\relax
       \endinput
     },
   },
@@ -189,9 +202,7 @@
 \markdownSetup{
   renderers = {
     interblockSeparator = {%
-      \long\def\next##1\markdownRendererHorizontalRule{%
-        \markdownRendererHorizontalRule
-      }%
+      \long\def\next##1\markdownRendererHorizontalRule{}%
       \def\markdownRendererInterblockSeparator{%
         \markdownRendererInterblockSeparatorPrototype
       }%
