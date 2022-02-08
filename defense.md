@@ -1,3 +1,8 @@
+Previous presentations:
+
+- <https://www.overleaf.com/project/5ec0171153b27f0001599ced>
+- <https://www.overleaf.com/project/60e70b1d3797bcefd6389079>
+
 # Introduction {#introduction}
 
 foo
