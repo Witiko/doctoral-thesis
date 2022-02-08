@@ -4,12 +4,14 @@
 \usetheme[workplace=fi]{MU}
 
 %% Blockquotes
+\RequirePackage{etoolbox}
 \markdownSetup{
   renderers = {
     blockQuoteBegin = {%
       \medskip
       \par
       \begin{quotation}%
+        \preto\markdownRendererTextCite{\kern-2pt\,--\,}%
         \noindent
     },
     blockQuoteEnd = {%
@@ -122,6 +124,9 @@
 % Listings
 \RequirePackage{minted}
 
+\mode
+<presentation>
+
 % Headings
 \markdownSetup{
   renderers = {
@@ -139,6 +144,9 @@
   },
 }
 
+\mode
+<all>
+
 % Images
 \markdownSetup{
   renderers = {
@@ -155,3 +163,43 @@
     link = {\href{#3}{\textcolor{mubeamer@base}{#1}}},
   },
 }
+
+\mode
+<article>
+
+%% Skip all but the initial paragraph of a frame in the notes and display
+%% a next-slide symbol at the end of a markdown document.
+\markdownSetup{
+  renderers = {
+    documentEnd = {
+      $\curvearrowright$%
+      \looseness=-1\par
+    },
+    interblockSeparator = {%
+      \par
+      \def\markdownRendererInterblockSeparator{%
+        \markdownRendererDocumentEnd
+        \endinput
+      }%
+    },
+  },
+}
+
+\mode
+<presentation>
+
+%% Skip the initial paragraph of a frame in the presentation.
+\markdownSetup{
+  renderers = {
+    interblockSeparator = {%
+      \long\def\next##1\markdownRendererInterblockSeparator{}%
+      \def\markdownRendererInterblockSeparator{%
+        \markdownRendererInterblockSeparatorPrototype
+      }%
+      \next
+    },
+  },
+}
+
+\mode
+<all>

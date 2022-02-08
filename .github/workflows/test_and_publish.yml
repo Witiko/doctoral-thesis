@@ -25,9 +25,13 @@ jobs:
         run: |
           latexmk thesis
 
-      - name: Typeset the thesis defense presentation
+      - name: Typeset the thesis defense presentation slides
         run: |
-          latexmk defense
+          latexmk presentation
+          
+      - name: Typeset the thesis defense presentation notes
+        run: |
+          latexmk notes
 
       - name: Upload the artifacts
         uses: actions/upload-artifact@v2
@@ -35,7 +39,8 @@ jobs:
           name: artifacts
           path: |
             thesis.pdf
-            defense.pdf
+            presentation.pdf
+            notes.pdf
 
       - name: Create a release
         uses: marvinpinto/action-automatic-releases@latest
@@ -46,4 +51,5 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           files: |
             thesis.pdf
-            defense.pdf
+            presentation.pdf
+            notes.pdf

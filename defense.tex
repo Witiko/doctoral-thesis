@@ -1,70 +1,14 @@
-%% Boilerplate
-\documentclass[aspectratio=169, t]{beamer}
-\usepackage[english]{babel}
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage{microtype}
+\mode
+<article>
 
-%% Context-sensitive quotation marks
-\usepackage[babel]{csquotes}
+%% Title page
+\maketitle
 
-%% Bibliography
-\usepackage[
-  style=numeric-comp,
-  sorting=none,
-  maxnames=2,
-]{biblatex}
-\addbibresource{main.bib}
+\mode
+<presentation>
 
-%% Graphics
-\usepackage{tikz, grffile}
-\graphicspath{
-  {./figures/}
-}
-
-% Markup
-\usepackage[
-  footnotes=true,
-  inlineFootnotes=true,
-  html=true,
-  headerAttributes=true,
-  contentBlocks=true,
-  citations=true,
-  smartEllipses=true,
-  definitionLists=true,
-  hybrid=true,
-  underscores=false,
-  pipeTables=true,
-  tableCaptions=true,
-  theme=witiko/beamer/MU,
-]{markdown}
+%% Markup
 \markdownSetupSnippet{horizontalRule/frameBreak}{snippet=witiko/beamer/MU/horizontalRule/frameBreak}
-
-% Metadata
-\title[%
-  Interpretable, Fast, and Accurate Retrieval of Mathematical Information%
-]{%
-  \texorpdfstring{%
-    \textls[-16]{\alert{Interpretable} Document Representations} \\
-    \textls[5]{for \alert{Fast and Accurate} Retrieval} \\
-    \textls[5]{of Mathematical Information}%
-  }{%
-    Interpretable Document Representations for Fast and Accurate Retrieval of
-    Mathematical Information%
-  }%
-}
-\author[V. Novotný]{%
-  \texorpdfstring{%
-    Author: \textmd{RNDr.\ Vít Novotný} \\
-    Thesis Advisor: \textmd{Doc.\ RNDr.\ Petr Sojka, Ph.\,D.}%
-  }{%
-    Vít Novotný%
-  }%
-}
-\institute[FI MU]{Faculty of Informatics, Masaryk University}
-\date{February 17, 2022}
-
-\begin{document}
 
 %% Title page
 \begin{frame}[plain]
@@ -85,6 +29,15 @@
 
 \part{Summary}
 \frame{\vfill\partpage\vfill}
+
+\mode
+<article>
+
+\markdownInput[slice=introduction ^research-questions]{defense.md}
+\markdownInput[slice=research-questions]{defense.md}
+
+\mode
+<presentation>
 
 \section{Introduction}
 \begin{frame}[fragile]
@@ -160,4 +113,5 @@
 \printbibliography[heading=none]
 \end{frame}
 
-\end{document}
+\mode
+<all>

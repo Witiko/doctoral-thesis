@@ -1,0 +1,70 @@
+%% Boilerplate
+\documentclass[aspectratio=169, t]{beamer}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{microtype}
+
+%% Context-sensitive quotation marks
+\usepackage[babel]{csquotes}
+
+%% Bibliography
+\usepackage[
+  style=numeric-comp,
+  sorting=none,
+  maxnames=2,
+]{biblatex}
+\addbibresource{main.bib}
+
+%% Graphics
+\usepackage{tikz, grffile}
+\graphicspath{
+  {./figures/}
+}
+
+% Markup
+\usepackage[
+  footnotes=true,
+  inlineFootnotes=true,
+  html=true,
+  headerAttributes=true,
+  contentBlocks=true,
+  citations=true,
+  smartEllipses=true,
+  definitionLists=true,
+  hybrid=true,
+  underscores=false,
+  pipeTables=true,
+  tableCaptions=true,
+  theme=witiko/beamer/MU,
+]{markdown}
+
+% Metadata
+\title[%
+  Interpretable, Fast, and Accurate Retrieval of Mathematical Information%
+]{%
+  \texorpdfstring{%
+    \textls[-16]{\alert{Interpretable} Document Representations} \\
+    \textls[5]{for \alert{Fast and Accurate} Retrieval} \\
+    \textls[5]{of Mathematical Information}%
+  }{%
+    Interpretable Document Representations for Fast and Accurate Retrieval of
+    Mathematical Information%
+  }%
+}
+\author[V. Novotný]{%
+  \texorpdfstring{%
+    Author: \textmd{RNDr.\ Vít Novotný} \\
+    Thesis Advisor: \textmd{Doc.\ RNDr.\ Petr Sojka, Ph.\,D.}%
+  }{%
+    Vít Novotný%
+  }%
+}
+\institute[FI MU]{Faculty of Informatics, Masaryk University}
+\date{February 17, 2022}
+
+\begin{document}
+
+\input defense
+
+\end{document}
