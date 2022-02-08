@@ -167,7 +167,7 @@
 \mode
 <article>
 
-%% Skip all but the initial paragraph of a frame in the notes and display
+%% Only show content up to a horizontal rule in the notes and display
 %% a next-slide symbol at the end of a markdown document.
 \markdownSetup{
   renderers = {
@@ -175,12 +175,9 @@
       $\curvearrowright$%
       \looseness=-1\par
     },
-    interblockSeparator = {%
-      \par
-      \def\markdownRendererInterblockSeparator{%
-        \markdownRendererDocumentEnd
-        \endinput
-      }%
+    horizontalRule = {%
+      \markdownRendererDocumentEnd
+      \endinput
     },
   },
 }
@@ -188,11 +185,13 @@
 \mode
 <presentation>
 
-%% Skip the initial paragraph of a frame in the presentation.
+%% Skip the initial content up to a horizontal rule in the presentation.
 \markdownSetup{
   renderers = {
     interblockSeparator = {%
-      \long\def\next##1\markdownRendererInterblockSeparator{}%
+      \long\def\next##1\markdownRendererHorizontalRule{%
+        \markdownRendererHorizontalRule
+      }%
       \def\markdownRendererInterblockSeparator{%
         \markdownRendererInterblockSeparatorPrototype
       }%
