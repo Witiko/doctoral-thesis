@@ -209,6 +209,11 @@ representations have seen limited use in math-aware search engines.
 
 * * *
 
+% Figure 2.4
+% Figure 2.8
+% http://ceur-ws.org/Vol-2936/paper-06.pdf, Figure 5
+% https://doi.org/10.1109/CBMI.2014.6849825, Figure 3
+
 ## Objectives and Evaluation {#objectives-and-evaluation}
 
 * * *
