@@ -133,6 +133,9 @@ work.
 
 * * *
 
+/figures/digital-mathematical-libraries-01.png
+/figures/digital-mathematical-libraries-02.png
+
 ## Math Representations {#math-representations}
 
 * * *

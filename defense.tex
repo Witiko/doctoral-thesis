@@ -27,7 +27,7 @@
 %% Graphics
 \setkeys{Gin}{
   width = \columnwidth,
-  height = 0.65\paperheight,
+  height = \paperheight,
   keepaspectratio,
 }
 
@@ -40,6 +40,7 @@
 \markdownInput[slice=introduction ^research-questions]{defense.md}
 \markdownInput[slice=research-questions, snippet=horizontalRule/singleFrame]{defense.md}
 \markdownInput[slice=thesis-structure]{defense.md}
+\markdownInput[slice=digital-mathematical-libraries]{defense.md}
 
 \printbibliography
 
@@ -62,9 +63,12 @@
 
 \section{Background}
 \subsection{Digital Mathematical Libraries}
-\begin{frame}[fragile]{\secname}
-  \markdownInput[slice=digital-mathematical-libraries]{defense.md}
+\begingroup
+\setbeamertemplate{footline}{}
+\begin{frame}[fragile, allowframebreaks=1.2]{\secname}
+  \markdownInput[slice=digital-mathematical-libraries, snippet=horizontalRule/frameBreak]{defense.md}
 \end{frame}
+\endgroup
 
 \subsection{Math Representations}
 \begin{frame}[fragile]{\secname}
