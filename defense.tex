@@ -1,6 +1,9 @@
 \mode
 <article>
 
+%% Markup
+\markdownSetupSnippet{horizontalRule/singleFrame}{snippet=witiko/beamer/MU/horizontalRule/singleFrame}
+
 %% Title page
 \maketitle
 
@@ -35,7 +38,8 @@
 
 \markdownInput[slice=^ ^introduction]{defense.md}
 \markdownInput[slice=introduction ^research-questions]{defense.md}
-\markdownInput[slice=research-questions thesis-structure]{defense.md}
+\markdownInput[slice=research-questions, snippet=horizontalRule/singleFrame]{defense.md}
+\markdownInput[slice=thesis-structure]{defense.md}
 
 \printbibliography
 

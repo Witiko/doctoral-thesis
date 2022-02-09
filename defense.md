@@ -54,16 +54,16 @@ advanced math queries produced the results that they did.
 
 ## Research Questions {#research-questions}
 
-Therefore, in my research, I focused on representations and techniques that can
+Therefore, in my thesis, I focus on representations and techniques that can
 make the results of math-aware search engines more interpretable to the users.
-Namely, I focused on *token embeddings*, which explain the semantic
+Namely, I focus on *token embeddings*, which explain the semantic
 relationships between text words and math symbols and which can be used with
 semantic matching techniques to produce interpretable  search results.
-I also focused on *learning to rank* techniques and voting algorithms, which
+I also focus on *learning to rank* techniques and voting algorithms, which
 can combine the results of several math-aware search engines to produce more
 accurate results without compromising their interpretability.
 
-In my research, I aimed to answer the following three research questions:
+In my thesis, I aim to answer the following three research questions:
 
 1. Semantic matching techniques that use token embeddings do not only help explain
    the search results, but they also enable multimodal search, where a user can
@@ -83,17 +83,41 @@ In my research, I aimed to answer the following three research questions:
 
 * * *
 
-- I focused on representations and techniques that make retrieval results interpretable:
+- I focus on representations and techniques that make retrieval results interpretable:
     - *Token embeddings* explain semantic relationships between text and math symbols.
     - *learning to rank* combines systems to improve accuracy without loss of interpretability.
-- I posed three research questions:
+- I pose three research questions:
     1. Can token embeddings *improve the accuracy* of math information retrieval systems?
     2. Can token embeddings produce *reasonably fast* math information retrieval systems?
-    3. Can learning-to-rank consistently improve accuracy compared to individual systems?
+    3. Can learning-to-rank consistently *improve accuracy* compared to individual systems?
 
 ## Thesis Structure {#thesis-structure}
 
+In my thesis, I first describe the math information retrieval and information
+retrieval in general, including different kinds of token embeddings, semantic
+matching techniques, learning-to-rank techniques, and voting algorithms.
+
+Next, I describe past competitions of math-aware search engines and the search
+engines that achieved state-of-the-art accuracy in the competitions.
+
+Then, in the following two chapters, I describe the methods and the results of
+my research on representations that enable fast and accurate math-aware search.
+Here, I also answer all of my research questions.
+
+In the final chapter before the conclusion, I draw from the work of my
+undergraduate and graduate students to I showcase some tangible qualitative
+benefits of interpretability.
+
+Finally, I conclude by summarizing my results and outlining venues for future
+work.
+
 * * *
+
+- First, I describe the *background* of information retrieval and math information retrieval.
+- Next, I describe the math information retrieval *competitions* and *state-of-the-art* systems.
+- In the following two chapters, I answer my research questions about *accuracy* and *speed*.
+- In the final chapter before the conclusion, I show tangible benefits of *interpretability*.
+- In the *conclusion*, I summarize my results and outline venues for *future work*.
 
 # Background {#background}
 
