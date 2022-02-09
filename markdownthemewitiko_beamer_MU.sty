@@ -8,7 +8,7 @@
 \markdownSetup{
   renderers = {
     blockQuoteBegin = {%
-      \medskip
+      \smallskip
       \par
       \begin{quotation}%
         \preto\markdownRendererTextCite{\kern-2pt\,--\,}%
@@ -16,6 +16,7 @@
     },
     blockQuoteEnd = {%
       \end{quotation}%
+      \vspace*{-0.15em}%
     },
   },
 }
@@ -202,8 +203,10 @@
   },
 }
 \markdownSetupSnippet{horizontalRule/singleFrame}{
-  documentEnd = {%
-    \markdownRendererDocumentEndPrototype
+  renderers = {
+    documentEnd = {%
+      \markdownRendererDocumentEndPrototype
+    },
   },
 }
 

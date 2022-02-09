@@ -39,6 +39,14 @@ advanced math queries produced the results that they did.
 * * *
 
 - Mathematicians dream of a digital library of all peer-reviewed math literature. [@sojka2010towardsb]
+
+> \`\`In light of mathematicians' reliance on their
+> discipline's rich published heritage and the key role
+> of mathematics in enabling other scientific disciplines,
+> the Digital Mathematics Library strives to make the
+> entirety of past mathematics scholarship available
+> online [...]'' -- DML project vision, Cornell Library, 2002
+
 - Math literature is scarcely digitized and doubles in volume every 16 years. [@trott2016overview] [@bouche2008some]
 
 > \`\`The amount of resources available to digitize mathematics is
@@ -85,7 +93,7 @@ In my thesis, I aim to answer the following three research questions:
 
 - I focus on representations and techniques that make retrieval results interpretable:
     - *Token embeddings* explain semantic relationships between text and math symbols.
-    - *learning to rank* combines systems to improve accuracy without loss of interpretability.
+    - *Learning to rank* combines systems to improve accuracy without loss of interpretability.
 - I pose three research questions:
     1. Can token embeddings *improve the accuracy* of math information retrieval systems?
     2. Can token embeddings produce *reasonably fast* math information retrieval systems?
@@ -96,26 +104,24 @@ In my thesis, I aim to answer the following three research questions:
 In my thesis, I first describe the math information retrieval and information
 retrieval in general, including different kinds of token embeddings, semantic
 matching techniques, learning-to-rank techniques, and voting algorithms.
-
 Next, I describe past competitions of math-aware search engines and the search
 engines that achieved state-of-the-art accuracy in the competitions.
 
 Then, in the following two chapters, I describe the methods and the results of
 my research on representations that enable fast and accurate math-aware search.
 Here, I also answer all of my research questions.
-
 In the final chapter before the conclusion, I draw from the work of my
 undergraduate and graduate students to I showcase some tangible qualitative
 benefits of interpretability.
 
-Finally, I conclude by summarizing my results and outlining venues for future
+I conclude by summarizing my results and outlining venues for future
 work.
 
 * * *
 
-- First, I describe the *background* of information retrieval and math information retrieval.
-- Next, I describe the math information retrieval *competitions* and *state-of-the-art* systems.
-- In the following two chapters, I answer my research questions about *accuracy* and *speed*.
+- I describe the *background* of information retrieval and math information retrieval.
+- I describe the math information retrieval *competitions* and *state-of-the-art* systems.
+- In following two chapters, I answer my research questions about *accuracy* and *speed*.
 - In the final chapter before the conclusion, I show tangible benefits of *interpretability*.
 - In the *conclusion*, I summarize my results and outline venues for *future work*.
 
