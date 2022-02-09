@@ -27,7 +27,7 @@
 \newcount\markdownOlColumns
 \newcount\markdownUlColumns
 \newcount\markdownDlColumns
-\markdownOlColumns=2
+\markdownOlColumns=1
 \markdownUlColumns=1
 \markdownDlColumns=1
 
@@ -130,16 +130,23 @@
 % Headings
 \markdownSetup{
   renderers = {
-    headingOne = {\frametitle{#1}},
-    headingTwo = {
+    headingOne = {%
+      \frametitle{#1}%
+    },
+    headingTwo = {%
       \ifx\empty#1\empty\else
         \framesubtitle{#1}\vspace{-0.4em}
       \fi
-      \renewcommand\markdownRendererHeadingTwo[1]{%
-        \par\medskip\vspace*{0.1em}
-        {\usebeamerfont{framesubtitle}\usebeamercolor[fg]{structure}##1}%
-        \par\medskip
-      }
+      \markdownSetup{snippet=witiko/beamer/MU/headingTwo/several}
+    },
+  },
+}
+\markdownSetupSnippet{headingTwo/several}{
+  renderers = {
+    headingTwo = {%
+      \par\medskip\vspace*{0.1em}
+      {\usebeamerfont{framesubtitle}\usebeamercolor[fg]{structure}#1}%
+      \par\medskip
     },
   },
 }

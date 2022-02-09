@@ -9,6 +9,7 @@
 
 %% Markup
 \markdownSetupSnippet{horizontalRule/frameBreak}{snippet=witiko/beamer/MU/horizontalRule/frameBreak}
+\markdownSetupSnippet{headingTwo/several}{snippet=witiko/beamer/MU/headingTwo/several}
 
 %% Title page
 \begin{frame}[plain]
@@ -27,20 +28,22 @@
   keepaspectratio,
 }
 
-\part{Summary}
-\frame{\vfill\partpage\vfill}
-
 \mode
 <article>
 
+\part{Summary}
+
 \markdownInput[slice=^ ^introduction]{defense.md}
 \markdownInput[slice=introduction ^research-questions]{defense.md}
-\markdownInput[slice=research-questions]{defense.md}
+\markdownInput[slice=research-questions thesis-structure]{defense.md}
 
 \printbibliography
 
 \mode
 <presentation>
+
+\part{Summary}
+\frame{\vfill\partpage\vfill}
 
 \section{Introduction}
 \begin{frame}[fragile]
@@ -50,11 +53,7 @@
 \subsection{Research Questions}
 \begin{frame}[fragile]{\secname}
   \markdownInput[slice=research-questions]{defense.md}
-\end{frame}
-
-\subsection{Thesis Structure}
-\begin{frame}[fragile]{\secname}
-  \markdownInput[slice=thesis-structure]{defense.md}
+  \markdownInput[slice=thesis-structure, snippet=headingTwo/several]{defense.md}
 \end{frame}
 
 \section{Background}

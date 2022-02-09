@@ -88,8 +88,8 @@ In my research, I aimed to answer the following three research questions:
     - *learning to rank* combines systems to improve accuracy without loss of interpretability.
 - I posed three research questions:
     1. Can token embeddings *improve the accuracy* of math information retrieval systems?
-    2. Can token embeddings produce math information retrieval systems that are *reasonably fast*?
-    3. Can learning-to-rank techniques consistently improve accuracy compared to individual systems?
+    2. Can token embeddings produce *reasonably fast* math information retrieval systems?
+    3. Can learning-to-rank consistently improve accuracy compared to individual systems?
 
 ## Thesis Structure {#thesis-structure}
 
