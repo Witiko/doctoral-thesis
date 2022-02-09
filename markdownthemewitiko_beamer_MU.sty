@@ -176,7 +176,7 @@
 <article>
 
 %% Only show content up to a horizontal rule in the notes and display
-%% a next-slide symbol at the end of a markdown document.
+%% a next-frame symbol at the end of a markdown document.
 \markdownSetup{
   renderers = {
     documentEnd = {
@@ -202,6 +202,9 @@
     },
   },
 }
+
+%% If a frame contains several markdown documents, disable the next
+%% slide symbol in the notes.
 \markdownSetupSnippet{horizontalRule/singleFrame}{
   renderers = {
     documentEnd = {%

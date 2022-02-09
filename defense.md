@@ -132,6 +132,16 @@ work.
 
 ## Digital Mathematical Libraries {#digital-mathematical-libraries}
 
+Mathematical information can take many forms. Traditionally, it has been
+journal articles that are stored in conventional *digital libraries* such
+as Ar$\chi$iv, the European Digital Mathematical Library, or the ACM Digital
+Library.
+
+More recently, it has also been *community question answering forums*, such as
+the Mathematics StackExchange, Math Overflow, or the Data Science
+StackExchange, and *online encyclopedias*, such as the Wikipedia, Wolfram
+MathWorld, or the ProofWiki.
+
 * * *
 
 /figures/digital-mathematical-libraries-01.png
