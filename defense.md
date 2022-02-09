@@ -187,15 +187,15 @@ $x!! - y^2 = 0$:
   useful in *computer algebra systems* and *proof assistants*, where we need
   to know the exact meaning of a math formula.
 
-  However, although semantic representations allow us to prove whether two math
-  formulae are equivalent or not, which could be useful for math-aware search,
-  this equivalence is generally undecidable according to Gödel's first
-  incompleteness theorem. What's more, even if it were decidable, this decision
-  would not be practically fast unless $P = NP$, in which case we could prove
-  the equivalence as fast as we could verify it. Furthermore, a semantic
-  representation of a formula cannot be automatically obtained from the written
-  form and requires costly human annotations. Therefore, semantic math
-  representations have seen limited use in math-aware search engines.
+However, although semantic representations allow us to prove whether two math
+formulae are equivalent or not, which could be useful for math-aware search,
+this equivalence is generally undecidable according to Gödel's first
+incompleteness theorem. What's more, even if it were decidable, this decision
+would not be practically fast unless $P = NP$, in which case we could prove
+the equivalence as fast as we could verify it. Furthermore, a semantic
+representation of a formula cannot be automatically obtained from the written
+form and requires costly human annotations. Therefore, semantic math
+representations have seen limited use in math-aware search engines.
 
 * * *
 
