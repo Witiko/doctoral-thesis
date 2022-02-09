@@ -24,10 +24,10 @@ were when Euclid first wrote them.  This is because in mathematics, the new
 does not invalidate the old and mathematicians rely on their discipline's rich
 published heritage. However, since the advent of the world wide web, math
 literature has more than doubled in volume, which makes it increasingly
-difficult to find math results without specialized math-aware search engines.
+difficult to find math results without specialized *math-aware search engines*.
 
 Thankfully, such search engines do exist and they are actively deployed in
-digital mathematical libraries. First, optical character recognition is used to
+*digital mathematical libraries*. First, optical character recognition is used to
 extract both text and math formulae from scanned documents. Then, specialized
 representations are used to enable fast and accurate retrieval using advanced
 math queries. However, user studies [@libbrecht2006methods] [@miller2013three]
@@ -66,7 +66,7 @@ Therefore, in my thesis, I focus on representations and techniques that can
 make the results of math-aware search engines more interpretable to the users.
 Namely, I focus on *token embeddings*, which explain the semantic
 relationships between text words and math symbols and which can be used with
-semantic matching techniques to produce interpretable  search results.
+*semantic matching techniques* to produce interpretable  search results.
 I also focus on *learning to rank* techniques and voting algorithms, which
 can combine the results of several math-aware search engines to produce more
 accurate results without compromising their interpretability.
@@ -101,11 +101,12 @@ In my thesis, I aim to answer the following three research questions:
 
 ## Thesis Structure {#thesis-structure}
 
-In my thesis, I first describe the math information retrieval and information
-retrieval in general, including different kinds of token embeddings, semantic
-matching techniques, learning-to-rank techniques, and voting algorithms.
-Next, I describe past competitions of math-aware search engines and the search
-engines that achieved state-of-the-art accuracy in the competitions.
+In my thesis, I first describe math information retrieval and information
+retrieval in general, including existing digital mathematical libraries,
+math representations, retrieval models, different kinds of token embeddings,
+semantic matching techniques, learning-to-rank techniques, and voting
+algorithms. Next, I describe past competitions of math-aware search engines and
+the search engines that achieved state-of-the-art accuracy in the competitions.
 
 Then, in the following two chapters, I describe the methods and the results of
 my research on representations that enable fast and accurate math-aware search.
