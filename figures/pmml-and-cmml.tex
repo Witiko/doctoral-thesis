@@ -1,10 +1,33 @@
 \begin{figure}
+
 \begingroup
+
+\mode
+<presentation>
+
+\vspace*{-4.1em}
+
+\mode
+<article>
+
 \makeatletter
 \let\bfseries\thesis@bfseries@old
 \makeatother
+
+\mode
+<all>
+
 \centering
 \begin{minipage}{0.27\textwidth}
+
+\mode
+<presentation>
+
+\vspace*{2.5em}
+
+\mode
+<all>
+
 \begin{minted}{xml}
 <mrow>
   <mi>x</mi>
@@ -39,11 +62,26 @@
 \end{minted}
 \end{minipage}
 \endgroup
+
+\mode
+<presentation>
+
+\caption
+  {Presentation MathML (left) and Content MathML (right)
+   representations of $x!! - y^2 = 0$.}
+
+\mode
+<article>
+
 \caption
   [Presentation and Content MathML representations]%
   {↑ Presentation MathML (left) and Content MathML (right)
    representations of the math formula $x!! - y^2 = 0$. Notice how the two
    exclamation marks become double factorial operator in Content MathML.
    \cite[Figure 2]{novotny2020three}}
+
+\mode
+<all>
+
 \label{fig:pmml-and-cmml}
 \end{figure}

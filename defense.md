@@ -151,6 +151,8 @@ MathWorld, or the ProofWiki.
 
 * * *
 
+/figures/pmml-and-cmml.tex
+
 ## Math Information Retrieval {#math-information-retrieval}
 
 * * *

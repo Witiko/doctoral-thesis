@@ -132,11 +132,11 @@
 \markdownSetup{
   renderers = {
     headingOne = {%
-      \frametitle{#1}%
+      \frametitle{#1}\vspace{-0.2em}
     },
     headingTwo = {%
       \ifx\empty#1\empty\else
-        \framesubtitle{#1}\vspace{-0.4em}
+        \framesubtitle{#1}\vspace{-0.6em}
       \fi
       \markdownSetup{snippet=witiko/beamer/MU/headingTwo/several}
     },
@@ -156,11 +156,18 @@
 <all>
 
 % Images
+\RequirePackage{xstring}
 \markdownSetup{
   renderers = {
     contentBlock = {%
-      \par\medskip
-      \rlap{\includegraphics{#2}}%
+      \ifthenelse{\equal{#1}{tex}}{%
+        \catcode`\%=14\relax
+        \input #3\relax
+        \catcode`\%=12\relax
+      }{%
+        \par\medskip
+        \rlap{\includegraphics{#2}}%
+      }%
     },
   },
 }
@@ -231,3 +238,7 @@
 
 \mode
 <all>
+
+%% Definitions of various Unicode characters
+\RequirePackage{newunicodechar}
+\newunicodechar{↑}{\ignorespaces}
