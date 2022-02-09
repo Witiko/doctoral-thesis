@@ -24,18 +24,17 @@ were when Euclid first wrote them.  This is because in mathematics, the new
 does not invalidate the old and mathematicians rely on their discipline's rich
 published heritage. However, since the advent of the world wide web, math
 literature has more than doubled in volume, which makes it increasingly
-difficult to find mathematical results without specialized math-aware search
-engines.
+difficult to find math results without specialized math-aware search engines.
 
-Thankfully, such search engines do exist and are actively deployed in digital
-mathematical libraries. First, optical character recognition is used to extract
-both text and mathematical formulae from scanned documents. Then, specialized
-math representations are used to enable fast and accurate retrieval using
-advanced mathematical queries. However, user studies have shown that as much as
-95\% of queries in digital mathematical libraries are simple text queries that
-do not make proper use of the search engines. This indicates that the users
-struggle to understand why the advanced mathematical queries produced the
-results that they did.
+Thankfully, such search engines do exist and they are actively deployed in
+digital mathematical libraries. First, optical character recognition is used to
+extract both text and math formulae from scanned documents. Then, specialized
+representations are used to enable fast and accurate retrieval using advanced
+math queries. However, user studies [@libbrecht2006methods] [@miller2013three]
+have shown that as much as staggering 95\% of queries in digital mathematical
+libraries are simple text queries that do not make proper use of the math-aware
+search engines. This indicates that the users struggle to understand why the
+advanced math queries produced the results that they did.
 
 * * *
 
@@ -55,11 +54,42 @@ results that they did.
 
 ## Research Questions {#research-questions}
 
+Therefore, in my research, I focused on representations and techniques that can
+make the results of math-aware search engines more interpretable to the users.
+Namely, I focused on *token embeddings*, which explain the semantic
+relationships between text words and math symbols and which can be used with
+semantic matching techniques to produce interpretable  search results.
+I also focused on *learning to rank* techniques and voting algorithms, which
+can combine the results of several math-aware search engines to produce more
+accurate results without compromising their interpretability.
+
+In my research, I aimed to answer the following three research questions:
+
+1. Semantic matching techniques that use token embeddings do not only help explain
+   the search results, but they also enable multimodal search, where a user can
+   search for a math formula using a simple text query, or vise versa. Therefore,
+   it seem natural to ask, whether the semantic matching techniques not only improve
+   the interpretability of results, but also their accuracy.
+
+2. User studies [@taylor2013situation] have shown that the speed of search
+   engines is crucial to the user experience. Since semantic matching
+   techniques add complexity to a search engine, I figured that it would be
+   good to know whether they can still be reasonably fast.
+
+3. Learning to rank techniques and voting algorithms have been shown
+   [@cormack2009reciprocal] to consistently achieve better accuracy than
+   individual text search engines. However, it was unclear whether this was
+   also true of math-aware search engines.
+
 * * *
 
-- I focus on representations and techniques that make retrieval results interpretable:
+- I focused on representations and techniques that make retrieval results interpretable:
     - *Token embeddings* explain semantic relationships between text and math symbols.
-    - *Voting algorithms* combine systems to improve accuracy without loss of interpretability.
+    - *learning to rank* combines systems to improve accuracy without loss of interpretability.
+- I posed three research questions:
+    1. Can token embeddings *improve the accuracy* of math information retrieval systems?
+    2. Can token embeddings produce math information retrieval systems that are *reasonably fast*?
+    3. Can learning-to-rank techniques consistently improve accuracy compared to individual systems?
 
 ## Thesis Structure {#thesis-structure}
 
