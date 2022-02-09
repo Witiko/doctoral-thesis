@@ -145,7 +145,13 @@
 \usepackage{minted} %% Listings
 \usepackage{tikz,mytikzicons} % Diagrams
 \usepackage{pgfgantt} %% Gantt Charts
-\usepackage{beamerarticle} %% Support for Beamer commands
+
+%% Support for the Beamer \mode command
+\usepackage{beamerbasemodes}
+\makeatletter
+  \beamer@inpresentationfalse
+  \def\beamer@currentmode{article}
+\makeatother
 
 %% Markup
 \let\lll\relax
