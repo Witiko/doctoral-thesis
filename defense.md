@@ -209,6 +209,10 @@ representations have seen limited use in math-aware search engines.
 
 * * *
 
+> \`\`Information retrieval (IR) is finding material (usually documents) of
+> an unstructured nature (usually text) that satisfies an information need
+> from within large collections (usually stored on computers).'' @manning2008introduction [Chapter 1]
+
 ## Objectives and Evaluation {#objectives-and-evaluation}
 
 * * *
