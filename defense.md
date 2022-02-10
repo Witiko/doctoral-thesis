@@ -195,6 +195,39 @@ representations have seen limited adoption in math-aware search engines.
 
 ## Math Information Retrieval {#math-information-retrieval}
 
+Now that we have properly represented math information, we need to retrieve it.
+In the picture, you can see the general architecture of a math-aware search
+engine, where we first index the representations then allow the user to search
+for answers using queries. This does not seem too different from information
+retrieval in general, but the devil is in the detail.
+
+Although math information retrieval also focuses on the retrieval of documents,
+other *retrieval units* of interest include math formulae and math statements
+such as definitions, theorems, and proofs. Furthermore, the language of
+mathematics is inherently more structured than natural text, which brings
+unique opportunities and challenges. Finally, users may search for answers not
+only with *text queries*, but also as *math* and *mixed queries*, as you can
+see in the picture. ↷
+
+There are two main approaches to math information retrieval: *sparse retrieval*
+and *dense retrieval*.
+
+In sparse retrieval, also known as keyword search, we index math information as
+high-dimensional sparse vectors in a metric space, where every dimension
+represents a single word or a mathematical symbol in a dictionary, as you can
+see in the left image. Sparse retrieval is fast and interpretable, but it has
+several weaknesses that hurt its accuracy:
+
+1. It disregards word order, so it does not really represent the meaning of
+   the text. Instead, it reduces meaningful statements in human and
+   mathematical languages to an unintelligible salad of words and math symbols.
+
+2. It does not model word relatedness, so two words or math symbols are either
+   the same, or they are different. This means that slight differences in
+   terminology or math notation will confuse the search engine. ↷
+
+In dense retrieval, ...
+
 * * *
 
  /figures/math-information-retrieval.tex
