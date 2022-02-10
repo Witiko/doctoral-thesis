@@ -70,10 +70,10 @@ Therefore, in my thesis, I focus on representations and techniques that can
 make the results of math-aware search engines more interpretable to the users.
 Namely, I focus on *token embeddings*, which explain the semantic
 relationships between text words and math symbols and which can be used with
-*semantic matching techniques* to produce interpretable  search results.
-I also focus on *learning to rank* techniques and voting algorithms, which
-can combine the results of several math-aware search engines to produce more
-accurate results without compromising their interpretability.
+*semantic matching techniques* to produce interpretable search results.
+I also focus on fusion-based *learning-to-rank* techniques, which can combine
+the results of several math-aware search engines to produce more accurate
+results without compromising on their interpretability.
 
 In my thesis, I aim to answer the following three research questions:
 
@@ -108,9 +108,9 @@ In my thesis, I aim to answer the following three research questions:
 In my thesis, I first describe math information retrieval and information
 retrieval in general, including existing digital mathematical libraries,
 math representations, retrieval models, different kinds of token embeddings,
-semantic matching techniques, learning-to-rank techniques, and voting
-algorithms. Next, I describe past competitions of math-aware search engines and
-the search engines that achieved state-of-the-art accuracy in the competitions.
+semantic matching techniques, and fusion-based learning-to-rank techniques.
+Next, I describe past competitions of math-aware search engines and the search
+engines that achieved state-of-the-art accuracy in the competitions.
 
 Then, in the following two chapters, I describe the methods and the results of
 my research on representations that enable fast and accurate math-aware search.
@@ -209,24 +209,52 @@ unique opportunities and challenges. Finally, users may search for answers not
 only with *text queries*, but also as *math* and *mixed queries*, as you can
 see in the picture. ↷
 
-There are two main approaches to math information retrieval: *sparse retrieval*
-and *dense retrieval*.
+There are two main approaches to math information retrieval and information
+retrieval in general: *sparse retrieval* and *dense retrieval*.
 
-In sparse retrieval, also known as keyword search, we index math information as
-high-dimensional sparse vectors in a metric space, where every dimension
-represents a single word or a mathematical symbol in a dictionary, as you can
-see in the left image. Sparse retrieval is fast and interpretable, but it has
-several weaknesses that hurt its accuracy:
+In sparse retrieval we index documents as high-dimensional sparse vector
+coordinates, where every nonzero dimension represents a single word or
+mathematical symbol from the document, as you can see in the left picture.
+Sparse retrieval is fast and interpretable, but it has several weaknesses that
+hurt its accuracy:
 
-1. It disregards word order, so it does not really represent the meaning of
-   the text. Instead, it reduces meaningful statements in human and
+1. It disregards *word order*. Therefore, it does not really represent the
+   meaning of the text. Instead, it reduces meaningful statements in human and
    mathematical languages to an unintelligible salad of words and math symbols.
 
-2. It does not model word relatedness, so two words or math symbols are either
-   the same, or they are different. This means that slight differences in
-   terminology or math notation will confuse the search engine. ↷
+2. It does not model *word relatedness*. Therefore, two words or math symbols are
+   either the same, or they are different. This means that a slight difference
+   in terminology or math notation can make a big difference, which is not
+   always what we want. ↷
 
-In dense retrieval, ...
+By contrast, in dense retrieval, we index documents as low-dimensional dense
+vector coordinates (so-called *sentence embeddings*) that have been produced by
+deep neural network language models such as *BERT*, which you can see in the
+picture. Producing the vectors is computationally demanding and they are not
+immediately interpretable. Additionally, BERT and similar language models can
+only produce representations of short documents that contain at most hundreds
+of words. Despite these limitations, dense retrieval models achieve
+state-of-the-art performance on information retrieval.
+
+In addition to sparse and dense retrieval, math-aware search engines may take
+advantage of additional techniques such a *semantic matching* and *learning to
+rank*. ↷
+
+In *semantic matching* techniques, we first compute the distance between
+different tokens such words and math symbols using language models, as you can
+see in the middle picture. Then, we use these distances to improve the accuracy
+of the retrieval. For example, in the right picture, you can see the *soft
+vector space model*, which improves sparse retrieval, so that it can models
+word relatedness and is more robust against slight differences in terminology
+and math notation. ↷
+
+By contrast, in fusion-based learning-to-rank techniques, we don't improve the
+accuracy of an individual search engine themselves. Instead, we combine the
+results of several search engines to produce more accurate results. *Rank-based
+fusion* techniques such as the reciprocal rank fusion only use the ranks of a
+document across the results, whereas *score aggregation* techniques such as
+*ScoreMNZ* also take into account the similarity scores produced by the search
+engines.
 
 * * *
 
