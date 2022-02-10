@@ -139,7 +139,7 @@ work.
 Math information can take many forms. Traditionally, it has been journal
 articles that are stored in conventional *digital libraries* such as
 Ar$\chi$iv, the European Digital Mathematical Library, or the ACM Digital
-Library.
+Library. ↷
 
 More recently, it has also been *community question answering forums*, such as
 the Mathematics StackExchange, Math Overflow, or the Data Science
@@ -148,71 +148,60 @@ MathWorld, or the ProofWiki.
 
 * * *
 
-/figures/digital-mathematical-libraries-01.png
-/figures/digital-mathematical-libraries-02.png
+ /figures/digital-mathematical-libraries-01.png
+ /figures/digital-mathematical-libraries-02.png
 
 ## Math Representations {#math-representations}
 
 To use the math information in a search engine, we need to represent it
 somehow.
 
-Written natural languages have:
-
-1. rules of orthography and typography, which govern how the language is
-   presented to the reader,
-2. syntax, which governs how words can be combined into phrases and sentences,
-   and
-3. semantics, which give the words, phrases, and sentences their meaning.
+Written natural languages have rules of orthography and typography, which
+govern how the language is presented to the reader, syntax, which governs
+how words can be combined into phrases and sentences, and semantics, which
+give the words, phrases, and sentences their meaning.
 
 Similarly, we can represent math formulae using their *presentation* aspects,
-*structural* aspects, and *semantic* aspects.
-
-← In the picture, you can see two different representations of the math formula
+*structural* aspects, and *semantic* aspects. In the picture, you can see two different representations of the math formula
 $x!! - y^2 = 0$:
 
-- In the left picture, we represent the presentation aspects of the formula
-  using the *Presentation MathML* XML language. This representation is the
-  closest to the written form of a formula and the easiest to obtain.
+In the left picture, we represent the presentation aspects of the formula
+using the *Presentation MathML* XML language. This representation is the
+closest to the written form of a formula and the easiest to obtain.
 
-- In the right picture, we represent the structural aspects of the formula
-  using the *Content MathML* XML language. Notice how the two exclamation marks
-  in Presentation MathML become the double factorial operator in Content
-  MathML. In general, superficially different math formulae such as $a / b$
-  and $\frac{a}{b}$ will be equivalent in Content MathML. This is especially
-  useful in search engines, where we may want to ignore superficial differences
-  between math formulae. Importantly, a structural representation of a formula
-  can be automatically obtained from the written form.
+In the right picture, we represent the structural aspects of the formula
+using the *Content MathML* XML language. Notice how the two exclamation marks
+in Presentation MathML become the double factorial operator in Content
+MathML. In general, superficially different math formulae such as $a / b$
+and $\frac{a}{b}$ will be equivalent in Content MathML. This is especially
+useful in search engines, where we may want to ignore superficial differences
+between math formulae. Importantly, a structural representation of a formula
+can be automatically obtained from the written form.
 
-- However, two math formulae that seem equivalent may actually be quite
-  different depending on variable bindings, definitions of the operands,
-  and the underlying mathematical theory. Using an XML language such as
-  *OpenMath*, we can represent the semantic aspects of a formula by binding
-  each symbol in a formula to its definition in an ontology. This can be
-  useful in *computer algebra systems* and *proof assistants*, where we need
-  to know the exact meaning of a math formula.
-
-However, although semantic representations allow us to prove whether two math
-formulae are equivalent or not, which could be useful for math-aware search,
-this equivalence is generally undecidable according to Gödel's first
-incompleteness theorem. What's more, even if it were decidable, this decision
-would not be practically fast unless $P = NP$, in which case we could prove
-the equivalence as fast as we could verify it. Furthermore, a semantic
+However, two math formulae that seem equivalent may actually be quite
+different depending on variable bindings, definitions of the operands,
+and the underlying mathematical theory. Using an XML language such as
+*OpenMath*, we can represent the semantic aspects of a formula by binding
+each symbol in a formula to its definition in an ontology. This can be
+useful in *computer algebra systems* and *proof assistants*, where we need
+to know the exact meaning of a math formula. However, a semantic
 representation of a formula cannot be automatically obtained from the written
 form and requires costly human annotations. Therefore, semantic math
-representations have seen limited use in math-aware search engines.
+representations have seen limited adoption in math-aware search engines.
 
 * * *
 
-/figures/pmml-and-cmml.tex
+ /figures/pmml-and-cmml.tex
 
 ## Math Information Retrieval {#math-information-retrieval}
 
 * * *
 
-% Figure 2.4
-% Figure 2.8
-% http://ceur-ws.org/Vol-2936/paper-06.pdf, Figure 5
-% https://doi.org/10.1109/CBMI.2014.6849825, Figure 3
+ /figures/math-information-retrieval.tex
+ /figures/soft-vsm.tex
+ /figures/sentence-bert.tex
+ /figures/soft-vsm.tex
+ /figures/learning-to-rank.tex
 
 ## Objectives and Evaluation {#objectives-and-evaluation}
 

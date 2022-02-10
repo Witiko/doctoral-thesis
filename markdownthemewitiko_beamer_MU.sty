@@ -187,8 +187,7 @@
 \markdownSetup{
   renderers = {
     documentEnd = {
-      $\curvearrowright$%
-      \looseness=-1\par
+      ↷\par
     },
     interblockSeparator = {%
       \def\next##1##2{%
@@ -241,4 +240,5 @@
 
 %% Definitions of various Unicode characters
 \RequirePackage{newunicodechar}
-\newunicodechar{←}{\noindent}
+\newunicodechar{←}{\noindent\ignorespaces}
+\newunicodechar{↷}{$\curvearrowright$\looseness=-1}
