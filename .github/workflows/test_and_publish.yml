@@ -27,11 +27,11 @@ jobs:
 
       - name: Typeset the thesis defense presentation slides
         run: |
-          latexmk presentation
-          
+          latexmk -Werror presentation
+
       - name: Typeset the thesis defense presentation notes
         run: |
-          latexmk notes
+          latexmk -Werror notes
 
       - name: Upload the artifacts
         uses: actions/upload-artifact@v2
