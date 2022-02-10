@@ -18,7 +18,7 @@ he asked the matematician, whether there was an easier way to master geometry.
 According to historical accounts, Euclid famously responded: \`\`Sire, there
 is no royal road to mathematics.''
 
-Two centuries later, David Hilbert has successfully axiomatized the Euclidean
+Two centuries later, David Hilbert has successfully formalized the Euclidean
 geometry, but *the Elements* are arguably as current and as relevant as they
 were when Euclid first wrote them.  This is because in mathematics, the new
 does not invalidate the old and mathematicians rely on their discipline's rich
@@ -153,8 +153,8 @@ MathWorld, or the ProofWiki.
 
 ## Math Representations {#math-representations}
 
-To use the math information in a search engine, we need to represent it
-somehow.
+To use the math information in a search engine, we need to properly
+represent it.
 
 Written natural languages have rules of orthography and typography, which
 govern how the language is presented to the reader, syntax, which governs
@@ -162,8 +162,8 @@ how words can be combined into phrases and sentences, and semantics, which
 give the words, phrases, and sentences their meaning.
 
 Similarly, we can represent math formulae using their *presentation* aspects,
-*structural* aspects, and *semantic* aspects. In the picture, you can see two different representations of the math formula
-$x!! - y^2 = 0$:
+*structural* aspects, and *semantic* aspects. In the picture, you can see two
+different representations of the math formula $x!! - y^2 = 0$:
 
 In the left picture, we represent the presentation aspects of the formula
 using the *Presentation MathML* XML language. This representation is the
