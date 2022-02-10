@@ -231,7 +231,7 @@ In dense retrieval, ...
 * * *
 
  /figures/math-information-retrieval.tex
- /figures/soft-vsm.tex
+ /figures/soft-vsm-obscured.tex
  /figures/sentence-bert.tex
  /figures/soft-vsm.tex
  /figures/learning-to-rank.tex
