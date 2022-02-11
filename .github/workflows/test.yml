@@ -13,9 +13,9 @@ jobs:
     container:
       image: texlive/texlive:TL2020-historic
     steps:
-      - name: Check that there are no repeating footnote labels in the thesis
+      - name: Check that there are no repeating footnote and link labels in the thesis
         run: |
-          sed -n '/^ *\[\^/s/:.*//p' main.md | sort | uniq -dD | { ! grep .; }
+          sed -n '/^ *\[/s/:.*//p' main.md | sort | uniq -dD | { ! grep .; }
 
       - name: Install GraphViz
         run: |
