@@ -3443,7 +3443,13 @@ operations, $\vec{x}ᵀ · S$ and $◌ · \vec{y}$, where the worst-case time
 complexity of both operations was $\mathcal{O}(n)$ if the size of query
 $\vec{x}$ was constant. Future work should investigate how to improve my
 implementation to achieve the theoretical $\mathcal{O}(1)$ worst-case time
-complexity.
+complexity.[^4]
+
+ [^4]: For more information about my implementation of the soft cosine
+       similarity and its limitations, see a discussion at [the Computer
+       Science StackExchange question answering website.][6]
+
+ [6]: https://cs.stackexchange.com/a/144284/12931
 
 #### Reproducibility
 

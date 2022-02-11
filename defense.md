@@ -313,8 +313,6 @@ baz
 > standard implementations of Approximate Nearest Neighbor techniques for
 > efficiently computing inner products of dense vectors \[...] is puzzling.
 
-% See https://cs.stackexchange.com/a/144284/12931
-
 ## Thesis Structure {#oard-thesis-structure}
 
 * * *
