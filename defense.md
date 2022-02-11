@@ -251,7 +251,7 @@ and math notation. ↷
 By contrast, in fusion-based learning-to-rank techniques, we don't improve the
 accuracy of an individual search engine themselves. Instead, we combine the
 results of several search engines to produce more accurate results. *Rank-based
-fusion* techniques such as the reciprocal rank fusion only use the ranks of a
+fusion* techniques such as *the reciprocal rank fusion* only use the ranks of a
 document across the results, whereas *score aggregation* techniques such as
 *ScoreMNZ* also take into account the similarity scores produced by the search
 engines.
@@ -287,3 +287,42 @@ bar
 * * *
 
 baz
+
+% ...
+
+# Response to Prof. Oard's Report {#oard}
+
+## The Results of the Work {#oard-results-of-the-work}
+
+* * *
+
+## Thesis Structure {#oard-thesis-structure
+
+* * *
+
+## Defense Questions {#oard-defense-questions}
+
+* * *
+
+## Text Comments {#oard-text-comments}
+
+* * *
+
+# Response to Prof. Skopal's Report {#skopal}
+
+## The Results of the Work {#skopal-results-of-the-work}
+
+* * *
+
+## Thesis Structure and Evaluation {#skopal-thesis-structure-and-evaluation}
+
+* * *
+
+## Defense Questions {#skopal-defense-questions}
+
+* * *
+
+# Conclusion {#rebuttal-conclusion}
+
+* * *
+
