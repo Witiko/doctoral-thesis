@@ -1248,12 +1248,12 @@ retrieval:
 \label{sec:competitions}
 
 ↑ Even though the idea of digital mathematical libraries dates back to the
-2002, it wasn't until ten years later until the first competitions[^81] of math
+2002, it wasn't until ten years later until the first competitions[^3] of math
 information retrieval systems took place, see Figure \vref{fig:competitions}.
 
- [^81]: Here and throughout the rest of the thesis, the term *competitions* is
-        used for its familiarity to the general audience instead of the more
-        technically correct term *shared task evaluations*.
+ [^3]: Here and throughout the rest of the thesis, the term *competitions* is
+       used for its familiarity to the general audience instead of the more
+       technically correct term *shared task evaluations*.
 
  /figures/competitions.tex
 
@@ -2200,13 +2200,13 @@ narrow-context-dependent features is optimal on the English word analogy task.
 
 We also showed that the positional model is more accurate than the subtoken
 model and that the constrained positional model is more accurate than the
-positional model on the word analogy and language modeling tasks.[^42]
+positional model on the word analogy and language modeling tasks.[^2]
 
- [^41]: See Section \vref{sec:position-independent-token-embeddings-speed}
-        for a discussion about the speed of the positional and constrained
-        positional models. See Section
-        \vref{sec:position-independent-token-embeddings-interpretability}
-        for a discussion about the interpretability of the positional model.
+ [^2]: See Section \vref{sec:position-independent-token-embeddings-speed}
+       for a discussion about the speed of the positional and constrained
+       positional models. See Section
+       \vref{sec:position-independent-token-embeddings-interpretability}
+       for a discussion about the interpretability of the positional model.
 
 #### Future Work
 
@@ -3265,10 +3265,10 @@ We compared the training time of both models. [@novotny2021when, Section 4]
 We showed that the positional model could achieve 4\% better accuracy than the
 subtoken language model on the English word analogy task when we trained both
 models for five hours. We also showed that our constrained positional model
-could be trained 2× faster than the positional model.[^41]
+could be trained 2× faster than the positional model.[^1]
 
- [^41]: See Section \vref{sec:position-independent-token-embeddings-interpretability}
-        for a discussion on the interpretability of the positional model.
+ [^1]: See Section \vref{sec:position-independent-token-embeddings-interpretability}
+       for a discussion on the interpretability of the positional model.
 
 #### Reproducibility
 
