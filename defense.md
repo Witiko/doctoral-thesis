@@ -296,6 +296,25 @@ baz
 
 * * *
 
+> The CIKM2018 paper includes a theoretical analysis that indicates that the
+> asymptotic time complexity of search using regularized (and thus sparse)
+> vectors is linear in the product of the number of query terms and the number
+> of nonzero elements per regularized document vector, both of which can be
+> bounded.
+>
+> However, timing results at ARQMath 2021 indicate the author's regularization
+> technique \[...] actually made retrieval much slower than faster, increasing
+> the average query processing wall clock time from 5 seconds with
+> 768-dimension dense vectors \[...] to 223 seconds with regularized (sparse
+> vectors).
+>
+> \[This] does call into question question the practical benefit of that
+> asymptotic complexity analysis. \[...] Moreover, the failure to compare to
+> standard implementations of Approximate Nearest Neighbor techniques for
+> efficiently computing inner products of dense vectors \[...] is puzzling.
+
+% See https://cs.stackexchange.com/a/144284/12931
+
 ## Thesis Structure {#oard-thesis-structure}
 
 * * *
