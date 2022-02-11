@@ -296,7 +296,7 @@ baz
 
 * * *
 
-## Thesis Structure {#oard-thesis-structure
+## Thesis Structure {#oard-thesis-structure}
 
 * * *
 
