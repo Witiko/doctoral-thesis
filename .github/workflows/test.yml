@@ -17,6 +17,10 @@ jobs:
         run: |
           sed -n '/^ *\[/s/:.*//p' main.md | sort | uniq -dD | { ! grep .; }
 
+      - name: Check that there are no repeating footnote and link labels in the thesis defense
+        run: |
+          sed -n '/^ *\[/s/:.*//p' defense.md | sort | uniq -dD | { ! grep .; }
+
       - name: Install GraphViz
         run: |
           set -e
