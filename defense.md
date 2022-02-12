@@ -197,9 +197,9 @@ representations have seen limited adoption in math-aware search engines.
 
 Now that we have properly represented math information, we need to retrieve it.
 In the picture, you can see the general architecture of a math-aware search
-engine, where we first index the representations then allow the user to search
-for answers using queries. This does not seem too different from information
-retrieval in general, but the devil is in the detail.
+engine, where we first index the representations and then allow the user to
+search for answers using queries. This does not seem too different from
+information retrieval in general, but the devil is in the detail.
 
 Although math information retrieval also focuses on the retrieval of documents,
 other *retrieval units* of interest include math formulae and math statements
@@ -241,12 +241,12 @@ advantage of additional techniques such a *semantic matching* and *learning to
 rank*. ↷
 
 In *semantic matching* techniques, we first compute the distance between
-different tokens such words and math symbols using language models, as you can
-see in the middle picture. Then, we use these distances to improve the accuracy
-of the retrieval. For example, in the right picture, you can see the *soft
-vector space model*, which improves sparse retrieval, so that it can models
-word relatedness and is more robust against slight differences in terminology
-and math notation. ↷
+different tokens such as words and math symbols using language models, as you
+can see in the middle picture. Then, we use these distances to improve the
+accuracy of the retrieval. For example, in the right picture, you can see the
+*soft vector space model*, which improves sparse retrieval, so that it can
+models word relatedness and is more robust against slight differences in
+terminology and math notation. ↷
 
 By contrast, in fusion-based learning-to-rank techniques, we don't improve the
 accuracy of an individual search engine themselves. Instead, we combine the
@@ -266,7 +266,55 @@ engines.
 
 ## Objectives and Evaluation {#objectives-and-evaluation}
 
+Representations and retrieval techniques allow the math-aware search engines to
+fulfil three major objectives:
+
+1. the *accuracy* of their results for the information needs of the users,
+2. the *speed* at which they can be deployed, index new documents, and deliver
+   results to the users, and
+3. the *interpretability*, which determines how well they can explain the
+   results to the users.
+
+To measure how well a search engine fulfills an objective, we can use a number
+of *evaluation measures*.
+
+For accuracy, we distinguish between *intrinsic evaluation measures*, which
+focus on small, well-defined aspects of the search engines and which can be
+easily reproduced in a laboratory setting, and *extrinsic
+evaluation measures*, which focus on complex real-world applications and which
+may require human participants.
+
+An example of an intrinsic evaluation measure is the *word analogy accuracy*,
+which measures how well token embeddings produced by language models can be
+used for analogical reasoning. While the word analogy accuracy does not
+directly tell us how useful the token embeddings will be for semantic matching
+and math-aware search, it is fast and can be a useful proxy ↷ for extrinsic
+evaluation measures such as *the F-score*, *mean average precision*,
+or *nDCG'*, which measure the relevance of search results using costly human
+annotations.
+
+To evaluate the speed of an search engine, we can measure how much real time is
+spent to *train* token embeddings and other machine learning components,
+*deploy* the search engine at a server, *index* documents, and respond to a
+*query* from a user.
+
+To evaluate the interpretability of a search engine, we can first determine
+the interpretability of its representations using exploratory visualization
+techniques such as *dimensionality reduction* to display high-dimensional data,
+*clustering* and *correlation analysis* to discover patterns in the data, and
+*formal concept analysis* to discover hierarchical relationships in the data.
+Then, we can use the representations to produce different types of
+*explanations* for search results and perform *usability testing* to measure
+user satisfaction.
+
 * * *
+
+% Accuracy -- Intrinsic
+%% https://nlp.fi.muni.cz/raslan/2020/pres7.pdf#page=2
+% Accuracy -- extrinsic
+%% Table with a typology of complete / incomplete, binary / graded
+% Speed
+% Interpretability
 
 # State of the Art {#state-of-the-art}
 
