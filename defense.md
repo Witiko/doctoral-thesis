@@ -286,12 +286,12 @@ may require human participants.
 
 An example of an intrinsic evaluation measure is the *word analogy accuracy*,
 which measures how well token embeddings produced by language models can be
-used for analogical reasoning, as you can see in the picture. While the word analogy accuracy does not
-directly tell us how useful the token embeddings will be for semantic matching
-and math-aware search, it is fast and can be a useful proxy ↷ for extrinsic
-evaluation measures such as *the F₁-score*, *mean average precision*,
-or *nDCG'*, which measure the relevance of search results using costly human
-annotations.
+used for analogical reasoning, as you can see in the picture. While the word
+analogy accuracy does not directly tell us how useful the token embeddings will
+be for semantic matching and math-aware search, it is fast and can be a useful
+proxy ↷ for extrinsic evaluation measures such as *the F₁-score*, *mean average
+precision*, or *nDCG'*, which measure the relevance of search results using
+costly human annotations.
 
 To evaluate the speed of an search engine, we can measure how much real time is
 spent to *train* token embeddings and other machine learning components,
