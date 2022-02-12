@@ -296,6 +296,9 @@ baz
 
 * * *
 
+> **Research Question 2.** Can semantic matching techniques based on token
+> embeddings be reasonably fast for math information retrieval systems?
+>
 > The CIKM2018 paper includes a theoretical analysis that indicates that the
 > asymptotic time complexity of search using regularized (and thus sparse)
 > vectors is linear in the product of the number of query terms and the number
@@ -308,22 +311,193 @@ baz
 > 768-dimension dense vectors \[...] to 223 seconds with regularized (sparse
 > vectors).
 >
-> \[This] does call into question question the practical benefit of that
+> \[... This] does call into question question the practical benefit of that
 > asymptotic complexity analysis. \[...] Moreover, the failure to compare to
 > standard implementations of Approximate Nearest Neighbor techniques for
 > efficiently computing inner products of dense vectors \[...] is puzzling.
+
+* * *
+
+> **Research Question 3.** Can learning-to-rank techniques consistently improve
+> accuracy compared to individual math information retrieval systems?
+>
+> \[...] When the two unweighted techniques were applied to the 8 systems that
+> participating teams in ARQMath 2021 had designated as their first priority
+> for evaluation (which included the best of the 37 systems), the unsupervised
+> RRF technique (0.556) achieved a higher nDCG’ than the unsupervised IBC
+> technique (0.514), and was notably above the best individual system (0.434);
+> results for that 8-system combination were not reported for the supervised
+> RBC or WIBC techniques.
+
+* * *
+
+> Notably, despite the title of the thesis, there is no stated research
+> question involving the term “interpretable representation” at the start of
+> that title.
+>
+> \[...] The thesis contains no definition of what it means for a
+> representation or a system to be interpretable, although section 2.4.3 does
+> name five techniques that might generally be used to aid in interpretation of
+> data, and Chapter 6 does illustrate uses of three of those five (correlation
+> analysis, clustering, and visualization).
+>
+> \[...] I therefore conclude that although the author himself is interested in
+> interpreting things, original research on the design or evaluation of
+> “interpretable representations” does not seem to be a focus of the thesis.
 
 ## Thesis Structure {#oard-thesis-structure}
 
 * * *
 
+> The thesis consists of an introduction stating three research questions, two
+> chapters reviewing related work, three chapters that together contain 22
+> short research abstracts (each typically 2--3 pages) describing a broad range
+> of research conducted by the author, and a short conclusion that summarizes
+> where the three research questions were answered.
+>
+> \[...] I found the surprisingly brief treatment of each research question
+> to be problematic, lacking in the details that I needed to see in order to
+> determine whether research methods had been properly applied and whether
+> results had been properly analyzed and interpreted. I therefore found it
+> necessary to refer to the published papers that I have mentioned as the basis
+> for my assessment in the preceding section.
+
+* * *
+
+> There are also several instances in which I was not able to determine why the
+> author had chosen to summarize specific work in this thesis. Sections 4.2.6
+> and 4.3 describe machine translation research, a task very different from
+> information retrieval. Section 4.2.5 evaluates the effect of data
+> augmentation on word sense disambiguation. Section 6.1.1 describes research
+> on part of speech tagging. A substantial portion of Section 4.5 describes
+> experiments with giving more weight to early posts in threaded discussion
+> lists; I don’t see how that work with (text only) discussion lists sheds any
+> light on the question of how different fields of a single message should be
+> weighted in math retrieval (which is the other focus of section 4.5).
+
+## Language and Graphics Level {#oard-language-and-graphics-level}
+
+* * *
+
+> The use of language and illustrations generally meet the expected
+> professional standard.  exceptions are Figures 5.2 and 6.1, which are not
+> adequately explained.
+
 ## Defense Questions {#oard-defense-questions}
 
 * * *
 
-## Text Comments {#oard-text-comments}
+Soft Cosine Measure questions:
+
+> The Soft Cosine Measure (SCM) seems to me to have a structure similar to
+> CoIBERT (Khattab and Zaharia, SIGIR 2020), but with two differences: (1)
+> CoIBERT uses the maximum over the document terms of the similarity between
+> embeddings for each query term, whereas SCM uses the sum of those
+> similarities, and (2) CoIBERT uses a transformer to learn contextual
+> embeddings, whereas your implementation of SCM uses fastText to learn static.
+> How consequential is the first of those differences: are there theoretical or
+> practical advantages or disadvantages to CoIBERT’s max-sim operator compared
+> with the inner product in SCM?
+
+> What challenges would arise if you were to use standard tools for rapid
+> approximate nearest neighbor computation (e.g., Faiss) with SCM rather than
+> your regularization technique? Would there be a parameter similar to your C
+> that would need to be set to bound compute time?
+
+% However, there is a gray zone between 1% and 50% non-zeros in the vectors
+% where it is not clear whether it is more efficient to handle them as sparse or
+% dense. How sparse are your vectors?
+% -- https://github.com/facebookresearch/faiss/issues/754
 
 * * *
+
+Sentence-BERT questions:
+
+> Where system selection or tuning was based on tasks other than math retrieval
+> (e.g., on word analogy or on machine translation), what basis is there to
+> believe that the systems or parameters selected would be reasonable choices
+> for a math retrieval application?
+
+> Unlike Sentence-BERT, Dense Passage Retrieval (DPR, Karpukhin et al, EMNLP
+> 2020) models queries and documents differently, and it uses a prefix (CLS)
+> token as the representation rather than Sentence-BERT’s mean pooling. What
+> benefits does Sentence-BERT have over DPR?
+
+> Unlike your random selection of training examples, selecting negative
+> examples that are highly confusable with positive examples has been shown to
+> be a better approach. One application of this idea to BERT is ANN Negative
+> Contrastive Estimation (ANCE, Xiong et al, ICLR 2021), which iteratively
+> learns to select negative examples. Did you experiment with any alternative
+> to random selection of negative examples?
+
+* * *
+
+System Combination question:
+
+> In your work you have focused exclusively on rank-based system combination.
+> I believe it is the case that every system you have combined operates
+> pointwise, assigning a score to every document and then sorting on those
+> scores. One might expect those scores to have more information than is
+> available from the ranks alone (for example, smaller score gaps might
+> indicate a weaker commitment to the generated rank order). How might you
+> adapt IBC to benefit from access to those document scores? Would you expect
+> improved results?
+
+* * *
+
+Interpretable Representation questions:
+
+> You cite Hall and Gill’s 2018 O’Reilly book as defining interpretability, but
+> they offer no specific definition of an “interpretable representation,” the
+> term you use in the title of the thesis. In general, what characteristics
+> would make a representation “interpretable”?
+
+> In this thesis, you focus on embeddings as representations for text and math
+> content. | would think of surface forms (e.g., words or LaTeX) as being more
+> interpretable than the sparse vectors in what you call the hard vector space
+> model, and those vectors as more interpretable than the dense vectors that we
+> call embeddings. In what sense do you mean to claim that the embedding
+> representations studied in this thesis are “interpretable”?
+
+## Editorial Issues {#oard-editorial-issues}
+
+* * *
+
+> P23 competitions -> shared task evaluations (Shared task evaluations exist to
+> support comparisons between systems, but not all comparisons have competition
+> as their motive.  Organizers of some shared task evaluations have been clear
+> to indicate that they do not intend their venue to be a competition. Of
+> course, some participants may see their participation as competition, but
+> that does not make the event a competition any more than an exam in a course
+> would be a competition. This word “competition” appears throughout the
+> thesis, and it would be more properly replaced by shared task evaluation in
+> every case.)
+
+* * *
+
+> P4O what does it mean for some features to “interact with” positional
+> embeddings?
+
+* * *
+
+> P44 In the caption for Table 4.1, what does it mean for a language pair to be
+> evaluated cross-lingually? The same question arises in the caption for Table
+> 4.2 on page 48.
+
+* * *
+
+> P50 Does “significantly” mean statistically significantly? If so, by what
+> test? If not, “substantially” might be the more appropriate claim.
+
+* * *
+
+> P59 The second paragraph of section 5.2.1 says “showed it was more accurate”
+> and “the ... accuracy of these approximations have not been evaluated”. How
+> was it shown to be more accurate if accuracy was not evaluated?
+
+* * *
+
+> P69 What makes a property interesting?
 
 # Response to Prof. Skopal's Report {#skopal}
 
@@ -331,15 +505,55 @@ baz
 
 * * *
 
+> One journal publication was in Q1 (Knowledge-based Systems), while the second
+> in Q4 (J. of Universal Computer Science).
+
+% Q2, see e-mail by Peter Sojka from 2022-01-12 and SCIMAGO
+
 ## Thesis Structure and Evaluation {#skopal-thesis-structure-and-evaluation}
 
 * * *
+
+> Although the thesis is presented as a self-contained manuscript,
+> commentary to the individual published works listed above.
+>
+> [...] Such a “commentary” form of doctoral thesis might be beneficial for the
+> sake of brevity, however, it is often used in case the individual
+> publications do not form an inherent body of research. Unfortunately, this
+> seems to be the case of this thesis. The individual contributions are
+> scattered through many subproblems in the field of information retrieval or
+> machine-learning (and rarely contribute to the specific MathIR domain). The
+> results are not presented in a research framework or pipeline that
+> systematically addresses a more complex research goal. Therefore, also the
+> novelty of the individual results is quite low.
 
 ## Defense Questions {#skopal-defense-questions}
 
 * * *
 
+> As mentioned in my comments to the thesis structure, there is only a few
+> math-specific techniques mentioned in section 2.3 (actually just the
+> structural matching in 2.3.3.1). Everything else in 2.3 is applicable to
+> general IR. Some other MIR-related works are mentioned in subsections 4.x. Is
+> this lack of mathspecific IR a sign of small research MIR community? Please
+> comment on this.
+
+> Could you describe and quantify the impact of math-specific extensions to IR
+> engines? In the thesis results for text-based and math-based retrieval are
+> mixed. Could a reader of the thesis (or the referenced papers) find a
+> recommendation of what MIR techniques to use in what retrieval scenario?
+
 # Conclusion {#rebuttal-conclusion}
 
 * * *
 
+Prof. Oard's Conclusion:
+
+> [...] If evaluated on the basis of the results of the work actually
+> performed, as described in the cited publications, I would have graded this
+> dissertation as a B (above the average, but with minor errors) on the
+> European Credit Transfer and Accumulation System (ECTS) scale. However, if
+> evaluated on the basis of the content of the thesis itself, without reliance
+> on details reported only in other publications, | would grade this thesis as
+> FX on the ECTS scale (fail -- some more work required before the credit can
+> be awarded). [...]
