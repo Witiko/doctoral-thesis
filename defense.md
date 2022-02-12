@@ -286,10 +286,10 @@ may require human participants.
 
 An example of an intrinsic evaluation measure is the *word analogy accuracy*,
 which measures how well token embeddings produced by language models can be
-used for analogical reasoning. While the word analogy accuracy does not
+used for analogical reasoning, as you can see in the picture. While the word analogy accuracy does not
 directly tell us how useful the token embeddings will be for semantic matching
 and math-aware search, it is fast and can be a useful proxy ↷ for extrinsic
-evaluation measures such as *the F-score*, *mean average precision*,
+evaluation measures such as *the F₁-score*, *mean average precision*,
 or *nDCG'*, which measure the relevance of search results using costly human
 annotations.
 
@@ -309,12 +309,29 @@ user satisfaction.
 
 * * *
 
-% Accuracy -- Intrinsic
-%% https://nlp.fi.muni.cz/raslan/2020/pres7.pdf#page=2
-% Accuracy -- extrinsic
-%% Table with a typology of complete / incomplete, binary / graded
-% Speed
-% Interpretability
+- Key objectives in math information retrieval are *accuracy*, *speed*, and *interpretability*.
+- To measure how well a system fulfill the objectives, we use *evaluation measures*.
+- For accuracy, we distinguish between *intrinsic* and *extrinsic* evaluation measures:
+
+* * *
+
+/figures/word-analogy.pdf
+
+* * *
+
+|          | complete | graded | ranked |
++----------+----------+--------+--------+
+| P, R, F₁ | Yes      | No     | No     |
+| MAP      | Yes      | No     | Yes    |
+| bpref    | No       | No     | Yes    |
+| nDCG'    | No       | Yes    | Yes    |
+
+: Different extrinsic measures for math information retrieval have different strengths.
+
+* * *
+
+- For speed, we measure time to *train*, *deploy*, *index* documents, and *process* queries.
+- For interpretability, we can perform *usability testing* and measure *user satisfaction*.
 
 # State of the Art {#state-of-the-art}
 

@@ -96,6 +96,7 @@
     },
     horizontalRule = {
       \begingroup
+        \bigskip
         \multicolsep=0pt
         \raggedcolumns
         \begin{multicols}{2}
@@ -103,6 +104,7 @@
           \columnbreak
           \renewcommand\markdownRendererHorizontalRule{%
             \end{multicols}
+            \vspace*{-\medskipamount}
             \endgroup
           }
         }
@@ -242,3 +244,4 @@
 \RequirePackage{newunicodechar}
 \newunicodechar{←}{\noindent\ignorespaces}
 \newunicodechar{↷}{$\curvearrowright$\looseness=-1}
+\newunicodechar{₁}{\textsubscript{1}}
