@@ -213,7 +213,7 @@ There are two main approaches to math information retrieval and information
 retrieval in general: *sparse retrieval* and *dense retrieval*.
 
 In sparse retrieval we index documents as high-dimensional sparse vector
-coordinates, where every nonzero dimension represents a single word or
+coordinates, where every nonzero coordinate represents a single word or
 mathematical symbol from the document, as you can see in the left picture.
 Sparse retrieval is fast and interpretable, but it has several weaknesses that
 hurt its accuracy:
@@ -244,9 +244,9 @@ In *semantic matching* techniques, we first compute the distance between
 different tokens such as words and math symbols using language models, as you
 can see in the middle picture. Then, we use these distances to improve the
 accuracy of the retrieval. For example, in the right picture, you can see the
-*soft vector space model*, which improves sparse retrieval, so that it can
-models word relatedness and is more robust against slight differences in
-terminology and math notation. ↷
+*soft vector space model*, also known as the *soft cosine measure*, which
+improves sparse retrieval, so that it can models word relatedness and is more
+robust against slight differences in terminology and math notation. ↷
 
 By contrast, in fusion-based learning-to-rank techniques, we don't improve the
 accuracy of an individual search engine themselves. Instead, we combine the
@@ -343,21 +343,79 @@ user satisfaction.
 
 ## Systems {#systems}
 
-foo
-
 * * *
 
-bar
+# Accuracy {#accuracy}
 
-* * *
+# Speed {#speed}
 
-baz
-
-% ...
+# Interpretability {#interpretability}
 
 # Response to Prof. Oard's Report {#oard}
 
 ## Soft Cosine Measure Questions {#soft-cosine-measure-questions}
+
+% TODO ↷
+
+The second question asks what challenges would arise if we were to use standard
+tools for fast approximate nearest neighbor search such as Facebook's Faiss or
+Spotify's Annoy with the soft cosine measure.
+
+The answer is that whereas Faiss and Annoy are low-dimensional dense vector
+databases, the soft cosine measure is a sparse retrieval technique, where both
+the query and the documents are represented as high-dimensional sparse vector
+coordinates, where every nonzero coordinate represents a single word or
+mathematical symbol from the query or the document. Now, there is a gray zone
+between about 1% and 50% non-zeros in the vector coordinates where it is not
+clear whether it is more efficient to handle them as sparse or dense, but here
+the non-zero coordinates for most documents will be a fraction of a percent.
+Not only would it be extremely inefficient, but we would be unable to fit into
+memory. Imagine a small corpus of 1 million documents. According to Heaps' law,
+the dictionary will contain approximately 100,000 terms, which amounts to a
+matrix of 1 million times 100,000 floats, which amounts to about 400GiB RAM.
+
+Therefore, we would need a sparse vector database. These are much more rare,
+but in sparse retrieval, we typically use inverted indices such as Apache
+Lucene and ElasticSearch as our sparse vector databases. These would be ideal
+and in Section 4 of my CIKM 2018 paper, I have shown that the soft cosine
+measure can be implemented into inverted indices as a query expansion technique
+and that this will not lead to any increase in asymptotic time complexity if we
+regularize the token embeddings.
+
+An alternative approach would be to use dimensionality reduction techniques
+such as the latent semantic analysis to covert the sparse high-dimensional
+query and document vectors into dense low-dimensional vectors. However, prior
+work [@atreya2011latent] indicates this reduces information retrieval
+accuracy. ↷
+
+This should answer the question as stated, but if I may, I would like to
+address a related concern from the first section of your report. You remark
+that although I have proven in my CIKM 2018 paper that the soft cosine measure
+can be as fast as other sparse retrieval techniques such as TF-IDF and BM25,
+the soft cosine similarity was much slower than other search engines that used
+sparse and dense retrieval techniques at the ARQMath 2021 shared task
+evaluation, which calls into question the practical benefit of my asymptotic
+complexity analysis.
+
+I would like to clarify that the implementation that I used for ARQMath 2021
+was not asymptotically optimal. In the soft cosine measure, we perform two
+dot products, which should be performed as a single operation in order to
+achieve constant time complexity. However, our Python implementation used the
+high-level SciPy python library for convenience, which will compute the two dot
+products as two separate operations. This makes the time complexity our
+implementation linear in the dictionary size, which was sufficient for research
+purposes, but a proper asymptotically optimal implementation would be necessary
+before the technique can be used in a real-world search engine. I discuss this
+in more detail in the Future work subsection of Section 5.3.2 and also at the
+Computer Science StackExchange question answering forum as an answer to a
+question titled \`\`How can I optimize the systems in the paper Ensembling Ten
+Math Information Retrieval Systems''.
+
+In conclusion, it seems we would either need to use low-level code in C or C++
+to implement the constant-time algorithm in Python, or we would need to
+implement the soft cosine measure into an inverted index such as Apache
+ElasticSearch, neither of which is trivial and will involve significant
+programming effort.
 
 * * *
 
@@ -375,10 +433,77 @@ baz
 
 > What challenges would arise if you were to use standard tools for rapid
 > approximate nearest neighbor computation (e.g., Faiss) with SCM rather than
-> your regularization technique? Would there be a parameter similar to your C
-> that would need to be set to bound compute time?
+> your regularization technique? Would there be a parameter similar to your
+> $C$ that would need to be set to bound compute time?
+
+* * *
+
+> The CIKM2018 paper includes a theoretical analysis that indicates that the
+> asymptotic time complexity of search using regularized (and thus sparse)
+> vectors is linear in the product of the number of query terms and the number
+> of nonzero elements per regularized document vector, both of which can be
+> bounded.
+>
+> However, timing results at ARQMath 2021 indicate the author's regularization
+> technique \[...] actually made retrieval much slower than faster, increasing
+> the average query processing wall clock time from 5 seconds with
+> 768-dimension dense vectors \[...] to 223 seconds with regularized (sparse
+> vectors).
+>
+> \[... This] does call into question question the practical benefit of that
+> asymptotic complexity analysis. \[...] Moreover, the failure to compare to
+> standard implementations of Approximate Nearest Neighbor techniques for
+> efficiently computing inner products of dense vectors \[...] is puzzling.
 
 ## Sentence-BERT Questions {#sentence-bert-questions}
+
+The second set of questions concerns the Sentence-BERT dense retrieval model,
+which we used in the ARQMath-2020 and 2021 shared task evaluation.
+
+The first question asks whether there is any reason to believe that using a
+proxy objective such as word analogy accuracy or machine translation to perform
+model or parameter selection will improve performance on math information
+retrieval.
+
+Recent literature [@ghannay2016word; @chiu2016intrinsic; @rogers2018whats]
+indicates that the intrinsic word analogy accuracy does not always correlate
+with extrinsic natural language processing tasks such as part-of-speech
+tagging, named entity recognition, and chunking. In a bachelor's thesis
+[@kuchar2021evaluation] that I supervised, we have also shown that the word
+analogy accuracy did not correlate with the mean average precision on the
+Cranfield and TREC-8 information retrieval collections when we used the soft
+cosine measure and word mover's distance semantic matching techniques, which
+was a disappointing result.
+
+Therefore, while the word analogy accuracy can be useful to detect undertrained
+token embeddings and also as an early stopping criterion for training token
+embeddings, prior work suggests that it should be combined with extrinsic
+evaluation measures for model and parameter selection.
+
+As far as machine translation is concerned, I would like to emphasize that none
+of my experiments actually involved machine translation. In sections 4.2.6 and
+4.3, I discuss experiments in which we used token embeddings for machine
+translation *evaluation*, which is a close cousin to semantic text similarity
+or information retrieval and which involves deciding whether a translated
+sentence is close to a reference translation. Baseline techniques for machine
+translation evaluation include the BLEU score, the Levenshtein distance, or
+METEOR, which are often also used for question answering evaluation.
+
+Machine translation evaluation poses specific challenges compared to
+information retrieval. For example, there are usually several reference
+translations in machine translation evaluation, whereas we usually only
+have a single query in information retrieval. On the other hand, machine
+translation evaluation usually only involves short sentences, whereas
+in information retrieval, we have to grapple with documents that can be
+hundreds of pages long. Nevertheless, the basic objective is to decide
+the semantic text similarity between two texts, which makes it highly
+likely that language representation that are useful for machine translation
+evaluation will also be useful for math information retrieval and information
+retrieval in general. ↷
+
+% TODO ↷
+
+% TODO
 
 * * *
 
@@ -405,6 +530,43 @@ baz
 
 ## System Combination Questions {#system-combination-questions}
 
+The next question concerns the learning-to-rank techniques that I have
+developed for the ARQMath 2020 and 2021 shared task evaluations. The question
+remarks that all the techniques that I have developed use rank fusion and
+whether it would be useful to extend them with score aggregation as well.
+
+If we were to use score aggregation, we would need to standardize or even
+equalize the scores produced by different search engines, since they have
+different distributions, and in sparse retrieval, they are usually unbounded
+and depend on the lengths of the documents in the collection. Therefore,
+different score normalization would be required for community question
+answering collections such as ARQMath, where the average document is a short
+post contains hundreds of tokens at most and math understanding collection such
+as NTCIR-10, where the average document is a scientific article that contains
+thousands of tokens. After we have normalized the scores, we can directly use
+them in my IBC system instead of inverse ranks.
+
+Prior work shows that rank-based fusion can produce results that are
+competitive with score aggregation [@renda2003web; @cormack2009reciprocal]
+on TREC information retrieval collections and there are no experimental
+results on math information retrieval outside my results on the ARQMath shared
+task evaluations. Therefore, it is difficult to know whether using scores
+instead of ranks would improve the results, but I believe it would largely
+depend on the normalization function that we would use. ↷
+
+This should answer the question as stated, but if I may, I would like to
+address a related concern from the first section of your report. You remark
+that although I have reported results for unsupervised rank fusion of
+our eight ARQMath 2021 search engines on both the ARQMath 2020 and 2021
+collections, I have only reported results for supervised rank fusion of these
+search engines on the ARQMath 2021 collection. This is because the eight
+ARQMath 2021 search engines used one part of the relevance judgements from
+ARQMath 2020 for training, whereas the other part of the judgements was used to
+train the supervised rank fusion techniques. Therefore, the search engines
+and the supervised rank fusion techniques have collectively seen all ARQMath
+2020 relevance judgements, so any results we would report would have been too
+optimistic.
+
 * * *
 
 > In your work you have focused exclusively on rank-based system combination.
@@ -416,7 +578,66 @@ baz
 > adapt IBC to benefit from access to those document scores? Would you expect
 > improved results?
 
+* * *
+
+> \[...] When the two unweighted techniques were applied to the 8 systems that
+> participating teams in ARQMath 2021 had designated as their first priority
+> for evaluation (which included the best of the 37 systems), the unsupervised
+> RRF technique (0.556) achieved a higher nDCG’ than the unsupervised IBC
+> technique (0.514), and was notably above the best individual system (0.434);
+> results for that 8-system combination were not reported for the supervised
+> RBC or WIBC techniques.
+
 ## Interpretable Representation Questions {#interpretable-representation-questions}
+
+The next set of questions concerns the interpretable representations, which
+I study in Section 6 of my thesis.
+
+The first question notes that I have used the definition of *interpretability*
+from the 2018 book by Hall and Gill and asks what an *interpretable
+representation* means within this framework.
+
+In their book, Hall and Gill define interpretable as ,,the ability to explain
+or to present in understandable terms to a human\`\`. Under this definition,
+interpretable representations enable qualitative analysis that can be used to
+explain what they represent in understandable terms to a human.
+
+One example of an interpretable representation would be the soft vector space
+model, which allows us to explain which exact keywords but also which pairs of
+related words and symbols contributed to the final score of a result. In our
+demo application, we have used this information to produce rich snippets, but
+other kinds of explanations could be produced. This shows that interpretable
+representations can be used to produce interpretable search results.
+
+To quantify how interpretable the results are and how this contributes to user
+satisfaction, we would need to perform user studies. This was outside the
+scope of my thesis, where I focused on the qualitative, not qualitative,
+evaluation of the interpretable representations. ↷
+
+The second question gives an example of the ambiguity of the term
+*interpretable representation* by asking whether and how are simple
+representations such as the surface forms such as a word or a math formula less
+interpretable than the vectors used in sparse retrieval or even token
+embeddings, and in which sense are token embeddings interpretable.
+
+The surface forms such as a word or a math formula seems interpretable, since
+any part of it can be explained to a human. By contrast, we may not be able to
+recover the surface form from token embeddings, but, as I show in Section 6.1,
+we can use them to determine the grammatical and other properties of the
+tokens, which may not be obvious from the surface forms.
+
+In my thesis, I did not attempt to quantify the interpretability, but let
+us assume that the surface forms are more interpretable than token
+embeddings. Should I also have studied them? As I state in my research
+questions, I am interested in interpretable representations that can improve
+the speed and the accuracy of search engines. From this perspective, I don't
+think the surface forms would be too relevant to the topic of my thesis.
+
+However, the point that my definition of *interpretability* is vague is
+well-taken and Hall and Gill themselves agree they use it as an umbrella
+term. I agree that this makes it less useful for scientific enquiry that other
+more restrictive and technical definitions that are used in recent machine
+learning literature.
 
 * * *
 
@@ -433,57 +654,6 @@ baz
 > model, and those vectors as more interpretable than the dense vectors that we
 > call embeddings. In what sense do you mean to claim that the embedding
 > representations studied in this thesis are “interpretable”?
-
-## The Results of the Work
-
-> **Research Question 2.** Can semantic matching techniques based on token
-> embeddings be reasonably fast for math information retrieval systems?
->
-> The CIKM2018 paper includes a theoretical analysis that indicates that the
-> asymptotic time complexity of search using regularized (and thus sparse)
-> vectors is linear in the product of the number of query terms and the number
-> of nonzero elements per regularized document vector, both of which can be
-> bounded.
->
-> However, timing results at ARQMath 2021 indicate the author's regularization
-> technique \[...] actually made retrieval much slower than faster, increasing
-> the average query processing wall clock time from 5 seconds with
-> 768-dimension dense vectors \[...] to 223 seconds with regularized (sparse
-> vectors).
->
-> \[... This] does call into question question the practical benefit of that
-> asymptotic complexity analysis. \[...] Moreover, the failure to compare to
-> standard implementations of Approximate Nearest Neighbor techniques for
-> efficiently computing inner products of dense vectors \[...] is puzzling.
-
-* * *
-
-> **Research Question 3.** Can learning-to-rank techniques consistently improve
-> accuracy compared to individual math information retrieval systems?
->
-> \[...] When the two unweighted techniques were applied to the 8 systems that
-> participating teams in ARQMath 2021 had designated as their first priority
-> for evaluation (which included the best of the 37 systems), the unsupervised
-> RRF technique (0.556) achieved a higher nDCG’ than the unsupervised IBC
-> technique (0.514), and was notably above the best individual system (0.434);
-> results for that 8-system combination were not reported for the supervised
-> RBC or WIBC techniques.
-
-* * *
-
-> Notably, despite the title of the thesis, there is no stated research
-> question involving the term “interpretable representation” at the start of
-> that title.
->
-> \[...] The thesis contains no definition of what it means for a
-> representation or a system to be interpretable, although section 2.4.3 does
-> name five techniques that might generally be used to aid in interpretation of
-> data, and Chapter 6 does illustrate uses of three of those five (correlation
-> analysis, clustering, and visualization).
->
-> \[...] I therefore conclude that although the author himself is interested in
-> interpreting things, original research on the design or evaluation of
-> “interpretable representations” does not seem to be a focus of the thesis.
 
 ## Thesis Structure
 
@@ -572,6 +742,10 @@ baz
 
 ## Defense Questions {#defense-questions}
 
+% TODO ↷
+
+% TODO ↷
+
 * * *
 
 > As mentioned in my comments to the thesis structure, there is only a few
@@ -611,6 +785,10 @@ baz
 > novelty of the individual results is quite low.
 
 # Common Remarks {#common-remarks}
+
+% TODO ↷
+
+* * *
 
 % High-level text with not enough details. Feynman method. Many publications.
 % Not very specific to Math Information Retrieval.
