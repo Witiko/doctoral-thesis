@@ -357,9 +357,84 @@ baz
 
 # Response to Prof. Oard's Report {#oard}
 
-## The Results of the Work {#oard-results-of-the-work}
+## Soft Cosine Measure Questions {#soft-cosine-measure-questions}
 
 * * *
+
+> The Soft Cosine Measure (SCM) seems to me to have a structure similar to
+> CoIBERT (Khattab and Zaharia, SIGIR 2020), but with two differences: (1)
+> CoIBERT uses the maximum over the document terms of the similarity between
+> embeddings for each query term, whereas SCM uses the sum of those
+> similarities, and (2) CoIBERT uses a transformer to learn contextual
+> embeddings, whereas your implementation of SCM uses fastText to learn static.
+> How consequential is the first of those differences: are there theoretical or
+> practical advantages or disadvantages to CoIBERT’s max-sim operator compared
+> with the inner product in SCM?
+
+* * *
+
+> What challenges would arise if you were to use standard tools for rapid
+> approximate nearest neighbor computation (e.g., Faiss) with SCM rather than
+> your regularization technique? Would there be a parameter similar to your C
+> that would need to be set to bound compute time?
+
+## Sentence-BERT Questions {#sentence-bert-questions}
+
+* * *
+
+> Where system selection or tuning was based on tasks other than math retrieval
+> (e.g., on word analogy or on machine translation), what basis is there to
+> believe that the systems or parameters selected would be reasonable choices
+> for a math retrieval application?
+
+* * *
+
+> Unlike Sentence-BERT, Dense Passage Retrieval (DPR, Karpukhin et al, EMNLP
+> 2020) models queries and documents differently, and it uses a prefix (CLS)
+> token as the representation rather than Sentence-BERT’s mean pooling. What
+> benefits does Sentence-BERT have over DPR?
+
+* * *
+
+> Unlike your random selection of training examples, selecting negative
+> examples that are highly confusable with positive examples has been shown to
+> be a better approach. One application of this idea to BERT is ANN Negative
+> Contrastive Estimation (ANCE, Xiong et al, ICLR 2021), which iteratively
+> learns to select negative examples. Did you experiment with any alternative
+> to random selection of negative examples?
+
+## System Combination Questions {#system-combination-questions}
+
+* * *
+
+> In your work you have focused exclusively on rank-based system combination.
+> I believe it is the case that every system you have combined operates
+> pointwise, assigning a score to every document and then sorting on those
+> scores. One might expect those scores to have more information than is
+> available from the ranks alone (for example, smaller score gaps might
+> indicate a weaker commitment to the generated rank order). How might you
+> adapt IBC to benefit from access to those document scores? Would you expect
+> improved results?
+
+## Interpretable Representation Questions {#interpretable-representation-questions}
+
+* * *
+
+> You cite Hall and Gill’s 2018 O’Reilly book as defining interpretability, but
+> they offer no specific definition of an “interpretable representation,” the
+> term you use in the title of the thesis. In general, what characteristics
+> would make a representation “interpretable”?
+
+* * *
+
+> In this thesis, you focus on embeddings as representations for text and math
+> content. | would think of surface forms (e.g., words or LaTeX) as being more
+> interpretable than the sparse vectors in what you call the hard vector space
+> model, and those vectors as more interpretable than the dense vectors that we
+> call embeddings. In what sense do you mean to claim that the embedding
+> representations studied in this thesis are “interpretable”?
+
+## The Results of the Work
 
 > **Research Question 2.** Can semantic matching techniques based on token
 > embeddings be reasonably fast for math information retrieval systems?
@@ -410,9 +485,7 @@ baz
 > interpreting things, original research on the design or evaluation of
 > “interpretable representations” does not seem to be a focus of the thesis.
 
-## Thesis Structure {#oard-thesis-structure}
-
-* * *
+## Thesis Structure
 
 > The thesis consists of an introduction stating three research questions, two
 > chapters reviewing related work, three chapters that together contain 22
@@ -440,93 +513,24 @@ baz
 > light on the question of how different fields of a single message should be
 > weighted in math retrieval (which is the other focus of section 4.5).
 
-## Language and Graphics Level {#oard-language-and-graphics-level}
-
-* * *
+## Language and Graphics Level
 
 > The use of language and illustrations generally meet the expected
-> professional standard.  exceptions are Figures 5.2 and 6.1, which are not
-> adequately explained.
+> professional standard. Notable exceptions are Figures 5.2 and 6.1, which are
+> not adequately explained.
 
-## Defense Questions {#oard-defense-questions}
+# Conclusion
 
-* * *
+> [...] If evaluated on the basis of the results of the work actually
+> performed, as described in the cited publications, I would have graded this
+> dissertation as a B (above the average, but with minor errors) on the
+> European Credit Transfer and Accumulation System (ECTS) scale. However, if
+> evaluated on the basis of the content of the thesis itself, without reliance
+> on details reported only in other publications, | would grade this thesis as
+> FX on the ECTS scale (fail -- some more work required before the credit can
+> be awarded). [...]
 
-Soft Cosine Measure questions:
-
-> The Soft Cosine Measure (SCM) seems to me to have a structure similar to
-> CoIBERT (Khattab and Zaharia, SIGIR 2020), but with two differences: (1)
-> CoIBERT uses the maximum over the document terms of the similarity between
-> embeddings for each query term, whereas SCM uses the sum of those
-> similarities, and (2) CoIBERT uses a transformer to learn contextual
-> embeddings, whereas your implementation of SCM uses fastText to learn static.
-> How consequential is the first of those differences: are there theoretical or
-> practical advantages or disadvantages to CoIBERT’s max-sim operator compared
-> with the inner product in SCM?
-
-> What challenges would arise if you were to use standard tools for rapid
-> approximate nearest neighbor computation (e.g., Faiss) with SCM rather than
-> your regularization technique? Would there be a parameter similar to your C
-> that would need to be set to bound compute time?
-
-% However, there is a gray zone between 1% and 50% non-zeros in the vectors
-% where it is not clear whether it is more efficient to handle them as sparse or
-% dense. How sparse are your vectors?
-% -- https://github.com/facebookresearch/faiss/issues/754
-
-* * *
-
-Sentence-BERT questions:
-
-> Where system selection or tuning was based on tasks other than math retrieval
-> (e.g., on word analogy or on machine translation), what basis is there to
-> believe that the systems or parameters selected would be reasonable choices
-> for a math retrieval application?
-
-> Unlike Sentence-BERT, Dense Passage Retrieval (DPR, Karpukhin et al, EMNLP
-> 2020) models queries and documents differently, and it uses a prefix (CLS)
-> token as the representation rather than Sentence-BERT’s mean pooling. What
-> benefits does Sentence-BERT have over DPR?
-
-> Unlike your random selection of training examples, selecting negative
-> examples that are highly confusable with positive examples has been shown to
-> be a better approach. One application of this idea to BERT is ANN Negative
-> Contrastive Estimation (ANCE, Xiong et al, ICLR 2021), which iteratively
-> learns to select negative examples. Did you experiment with any alternative
-> to random selection of negative examples?
-
-* * *
-
-System Combination question:
-
-> In your work you have focused exclusively on rank-based system combination.
-> I believe it is the case that every system you have combined operates
-> pointwise, assigning a score to every document and then sorting on those
-> scores. One might expect those scores to have more information than is
-> available from the ranks alone (for example, smaller score gaps might
-> indicate a weaker commitment to the generated rank order). How might you
-> adapt IBC to benefit from access to those document scores? Would you expect
-> improved results?
-
-* * *
-
-Interpretable Representation questions:
-
-> You cite Hall and Gill’s 2018 O’Reilly book as defining interpretability, but
-> they offer no specific definition of an “interpretable representation,” the
-> term you use in the title of the thesis. In general, what characteristics
-> would make a representation “interpretable”?
-
-> In this thesis, you focus on embeddings as representations for text and math
-> content. | would think of surface forms (e.g., words or LaTeX) as being more
-> interpretable than the sparse vectors in what you call the hard vector space
-> model, and those vectors as more interpretable than the dense vectors that we
-> call embeddings. In what sense do you mean to claim that the embedding
-> representations studied in this thesis are “interpretable”?
-
-## Editorial Issues {#oard-editorial-issues}
-
-* * *
+## Editorial Issues
 
 > P23 competitions -> shared task evaluations (Shared task evaluations exist to
 > support comparisons between systems, but not all comparisons have competition
@@ -566,18 +570,32 @@ Interpretable Representation questions:
 
 # Response to Prof. Skopal's Report {#skopal}
 
-## The Results of the Work {#skopal-results-of-the-work}
+## Defense Questions {#defense-questions}
 
 * * *
+
+> As mentioned in my comments to the thesis structure, there is only a few
+> math-specific techniques mentioned in section 2.3 (actually just the
+> structural matching in 2.3.3.1). Everything else in 2.3 is applicable to
+> general IR. Some other MIR-related works are mentioned in subsections 4.x. Is
+> this lack of mathspecific IR a sign of small research MIR community? Please
+> comment on this.
+
+* * *
+
+> Could you describe and quantify the impact of math-specific extensions to IR
+> engines? In the thesis results for text-based and math-based retrieval are
+> mixed. Could a reader of the thesis (or the referenced papers) find a
+> recommendation of what MIR techniques to use in what retrieval scenario?
+
+## The Results of the Work
 
 > One journal publication was in Q1 (Knowledge-based Systems), while the second
 > in Q4 (J. of Universal Computer Science).
 
 % Q2, see e-mail by Peter Sojka from 2022-01-12 and SCIMAGO
 
-## Thesis Structure and Evaluation {#skopal-thesis-structure-and-evaluation}
-
-* * *
+## Thesis Structure and Evaluation
 
 > Although the thesis is presented as a self-contained manuscript,
 > commentary to the individual published works listed above.
@@ -592,33 +610,7 @@ Interpretable Representation questions:
 > systematically addresses a more complex research goal. Therefore, also the
 > novelty of the individual results is quite low.
 
-## Defense Questions {#skopal-defense-questions}
+# Common Remarks {#common-remarks}
 
-* * *
-
-> As mentioned in my comments to the thesis structure, there is only a few
-> math-specific techniques mentioned in section 2.3 (actually just the
-> structural matching in 2.3.3.1). Everything else in 2.3 is applicable to
-> general IR. Some other MIR-related works are mentioned in subsections 4.x. Is
-> this lack of mathspecific IR a sign of small research MIR community? Please
-> comment on this.
-
-> Could you describe and quantify the impact of math-specific extensions to IR
-> engines? In the thesis results for text-based and math-based retrieval are
-> mixed. Could a reader of the thesis (or the referenced papers) find a
-> recommendation of what MIR techniques to use in what retrieval scenario?
-
-# Conclusion {#rebuttal-conclusion}
-
-* * *
-
-Prof. Oard's Conclusion:
-
-> [...] If evaluated on the basis of the results of the work actually
-> performed, as described in the cited publications, I would have graded this
-> dissertation as a B (above the average, but with minor errors) on the
-> European Credit Transfer and Accumulation System (ECTS) scale. However, if
-> evaluated on the basis of the content of the thesis itself, without reliance
-> on details reported only in other publications, | would grade this thesis as
-> FX on the ECTS scale (fail -- some more work required before the credit can
-> be awarded). [...]
+% High-level text with not enough details. Feynman method. Many publications.
+% Not very specific to Math Information Retrieval.
