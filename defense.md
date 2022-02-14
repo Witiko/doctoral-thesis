@@ -689,13 +689,6 @@ learning literature.
 > short research abstracts (each typically 2--3 pages) describing a broad range
 > of research conducted by the author, and a short conclusion that summarizes
 > where the three research questions were answered.
->
-> \[...] I found the surprisingly brief treatment of each research question
-> to be problematic, lacking in the details that I needed to see in order to
-> determine whether research methods had been properly applied and whether
-> results had been properly analyzed and interpreted. I therefore found it
-> necessary to refer to the published papers that I have mentioned as the basis
-> for my assessment in the preceding section.
 
 * * *
 
@@ -765,7 +758,7 @@ learning literature.
 
 > P69 What makes a property interesting?
 
-# Response to the report of prof. RNDr. Tomáš Skopal, Ph.D. {#skopal}
+# Response to the report of prof.\ RNDr.\ Tomáš Skopal, Ph.D. {#skopal}
 
 % TODO
 
@@ -857,28 +850,52 @@ retrieval. Therefore, these techniques can also be recommended.
 > One journal publication was in Q1 (Knowledge-based Systems), while the second
 > in Q4 (J. of Universal Computer Science).
 
-% Q2, see e-mail by Peter Sojka from 2022-01-12 and SCIMAGO
+% Q2, see e-mail by Petr Sojka from 2022-01-12 and SCIMAGO
 
-## Thesis Structure and Evaluation
+# Common Remarks {#common-remarks}
 
-> Although the thesis is presented as a self-contained manuscript,
-> commentary to the individual published works listed above.
->
-> [...] Such a “commentary” form of doctoral thesis might be beneficial for the
-> sake of brevity, however, it is often used in case the individual
-> publications do not form an inherent body of research. Unfortunately, this
-> seems to be the case of this thesis. The individual contributions are
-> scattered through many subproblems in the field of information retrieval or
-> machine-learning (and rarely contribute to the specific MathIR domain). The
-> results are not presented in a research framework or pipeline that
-> systematically addresses a more complex research goal. Therefore, also the
-> novelty of the individual results is quite low.
+Lastly, if I may, I would also like to briefly respond to remarks that have
+appeared in both reports and that criticise the omission of technical details
+in my thesis.
 
-# Common Remarks
+The Faculty of Informatics allows doctoral students to submit manuscript-style
+doctoral theses, which only contain a brief introduction followed by the
+published manuscripts and then a brief conclusion. This is the form of thesis
+that I would have preferred, but I was informed that the Faculty would rather
+that doctoral students submit traditional doctoral theses that tell a story and
+provide a systematic account of their research. Therefore, after consulting
+with my supervisor, I have decided that I would write a traditional thesis.
 
-% TODO
+However, since my research consists of a wide variety of results across
+different research areas, I felt it would be difficult to include all the
+technical details from my manuscripts and also give a coherent account of how
+my experiments contribute to the research questions of my thesis. Furthermore,
+since math information retrieval has a small research community, I though it
+would be appropriate to write my thesis in a way that is approachable even to
+researchers outside math information retrieval.
+
+Therefore, I have used the technique of Richard Feynman which says that a
+researcher should first study, then teach what they have studied, then fill
+the gaps in their knowledge that they discover, and finally they should
+simplify what they have learned, so that they can explain it even to
+non-experts and draw connections, which would otherwise have been obscured by
+the details. This was the intent of my thesis and you will get to decide
+whether or not I have succeeded.
 
 * * *
 
-% High-level text with not enough details. Feynman method. Many publications.
-% Not very specific to Math Information Retrieval.
+> \[...] I found the surprisingly brief treatment of each research question
+> to be problematic, lacking in the details that I needed to see in order to
+> determine whether research methods had been properly applied and whether
+> results had been properly analyzed and interpreted. I therefore found it
+> necessary to refer to the published papers that I have mentioned as the basis
+> for my assessment in the preceding section. -- prof.\ Douglas W.\ Oard
+
+> Although the thesis is presented as a self-contained manuscript, it is actually
+> a commentary to the individual published works \[...] Such a “commentary” form
+> of doctoral thesis might be beneficial for the sake of brevity, however, it
+> is often used in case the individual publications do not form an inherent
+> body of research. \[...] -- prof.\ RNDr.\ Tomáš Skopal, Ph.D.
+
+> If you can’t explain it to a six-year-old, you don't understand it yourself.
+> -- Richard Feynman
