@@ -806,9 +806,9 @@ of math-specific techniques is and whether the reader of the thesis can
 find a recommendation what techniques they should use in which retrieval
 scenario.
 
-As I say in Section 3, the current state-of-the-art math-aware search engines
-are Approach0 for the retrieval of isolated math formulae and Tangent-L for
-full-text search.
+In Section 3, I list the current state-of-the-art math-aware search engines,
+which at the moment are Approach0 for the retrieval of isolated math formulae
+and Tangent-L for full-text search.
 
 Approach0 uses the operator tree content math representation, which I describe
 in Section 2.2, and structural matching, query expansion, and sparse retrieval
@@ -825,15 +825,17 @@ describe in Section 2.3. Here, the math-specific ingredients include the math
 representations and math normalization. The remaining techniques used by
 Tengent-L are not math-specific.
 
-% The soft cosine similarity measure that I have developed has not received
-% state-of-the-art results at the ARQMath shared task evaluations, but we can
-% compare it with the TF-IDF + Tangent-S baseline to see that the technique
-% improved the retrieval accuracy by 8% nDCG' on ARQMath 2020 and by 5% nDCG'
-% on ARQMath 2021, both of which are significant improvements, which suggests
-% that the technique could be used to improve other math information retrieval
-% search engines.
-
-% TODO: My rank fusion results
+Many of the techniques that I have developed have only been evaluated on tasks
+that are related to information retrieval, such as semantic text similarity,
+machine translation evaluation, and causal language modeling. However, for
+example, the soft cosine measure has received significantly better accuracy
+(nDCG', two-sample t-test, 90% confidence) than all the other math-aware search
+engines that used the soft vector space model with the TF-IDF weighting on the
+ARQMath 2021 shared task evaluation, which indicates that the technique can
+be recommended for sparse math information retrieval. The two learning-to-rank
+techniques, which I have developed for ARQMath have also outperformed the
+reciprocal rank fusion, which is a standard fusion technique for information
+retrieval. Therefore, these techniques can also be recommended.
 
 * * *
 
