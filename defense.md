@@ -289,7 +289,7 @@ which measures how well token embeddings produced by language models can be
 used for analogical reasoning, as you can see in the picture. While the word
 analogy accuracy does not directly tell us how useful the token embeddings will
 be for semantic matching and math-aware search, it is fast and can be a useful
-proxy ↷ for extrinsic evaluation measures such as *the F₁-score*, *mean average
+proxy for extrinsic evaluation measures such as *the F₁-score*, *mean average
 precision*, or *nDCG'*, which measure the relevance of search results using
 costly human annotations.
 
@@ -360,6 +360,18 @@ user satisfaction.
 # Interpretability {#interpretability}
 
 % TODO
+
+# Conclusion {#conclusion}
+
+% TODO
+
+# List of Author's Publications {#list-of-publications}
+
+% TODO
+
+% <https://digitalcommons.odu.edu/computerscience_fac_pubs/194/>, authored by Lee Giles (the author of Citeseer) cites @novotny2020three.
+% @novotny2018implementation has received many citations.
+% @ayetiran2021eds is Q1 and @novotny2021when is Q2 by SCIMAGO.
 
 # Response to Prof. Oard's Report {#oard}
 
