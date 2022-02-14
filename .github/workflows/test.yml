@@ -21,11 +21,11 @@ jobs:
         run: |
           sed -n '/^ *\[/s/:.*//p' defense.md | sort | uniq -dD | { ! grep .; }
 
-      - name: Install GraphViz
+      - name: Install GraphViz and pdf2txt
         run: |
           set -e
           apt-get -qy update
-          apt-get -qy install --no-install-recommends graphviz
+          apt-get -qy install --no-install-recommends graphviz python3-pdfminer
 
       - name: Checkout the repository
         uses: actions/checkout@v2
@@ -41,6 +41,12 @@ jobs:
       - name: Typeset the thesis defense presentation notes
         run: |
           latexmk -Werror notes
+
+      - name: Estimate the length of the thesis defense presentation notes
+        run: |
+          set -e
+          printf 'Summary length: %d minutes\n'  $(($(pdf2txt notes.pdf | sed -n '/^Summary$/,/^Rebuttal$/p' | wc -w) / 150))
+          printf 'Rebuttal length: %d minutes\n' $(($(pdf2txt notes.pdf | sed -n '/^Rebuttal$/,/^References$/p' | wc -w) / 150))
 
       - name: Upload the artifacts
         uses: actions/upload-artifact@v2
