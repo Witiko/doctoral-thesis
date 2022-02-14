@@ -540,13 +540,19 @@ faster convergence, which allows us to train a comparably accurate model with
 less training data. This is an important property in an area such as math
 information retrieval, where human annotations are scarce. ↷
 
-% TODO
+The third question remarks that whereas in my experiments, I have trained
+Sentence-BERT using simple random sampling of negatives, @xiong2020approximate
+show that speed of convergence can be improved by stratified sampling of
+negatives that are difficult to distinguish from positive samples. The question
+then asks, whether I have experimented with any alternatives to simple random
+sampling of negatives.
 
-% We've also experimented with some non-parametrised adversarial strategies:
-% we've picked negative samples based on the maximum lexical overlap with correct
-% answers or with the answers to the same question having the lowest scores.
-% However, we did not observe improvements in dev {whatever metric it was} as
-% compared to random selection.
+In our experiments for that ARQMath 2020 shared task evaluation, we have
+experimented with a number of adversarial strategies to negative sampling.
+For example, we have picked negative samples that had high lexical overlap
+with the accepted answer. We also picked negative samples that answered the
+same question, but had the least number of votes. However, we did not observe
+any improvements to accuracy on our development dataset.
 
 * * *
 
@@ -557,19 +563,19 @@ information retrieval, where human annotations are scarce. ↷
 
 * * *
 
-> Unlike Sentence-BERT, Dense Passage Retrieval (DPR, Karpukhin et al, EMNLP
-> 2020) models queries and documents differently, and it uses a prefix (CLS)
-> token as the representation rather than Sentence-BERT’s mean pooling. What
-> benefits does Sentence-BERT have over DPR?
+> Unlike Sentence-BERT, Dense Passage Retrieval (DPR, @karpukhin2020dense,
+> EMNLP 2020) models queries and documents differently, and it uses a prefix
+> (CLS) token as the representation rather than Sentence-BERT’s mean pooling.
+> What benefits does Sentence-BERT have over DPR?
 
 * * *
 
 > Unlike your random selection of training examples, selecting negative
 > examples that are highly confusable with positive examples has been shown to
 > be a better approach. One application of this idea to BERT is ANN Negative
-> Contrastive Estimation (ANCE, Xiong et al, ICLR 2021), which iteratively
-> learns to select negative examples. Did you experiment with any alternative
-> to random selection of negative examples?
+> Contrastive Estimation (ANCE, @xiong2020approximate, ICLR 2021), which
+> iteratively learns to select negative examples. Did you experiment with any
+> alternative to random selection of negative examples?
 
 ## System Combination Questions {#system-combination-questions}
 
