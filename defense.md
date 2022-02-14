@@ -335,23 +335,35 @@ user satisfaction.
 
 # State of the Art {#state-of-the-art}
 
-* * *
+% TODO
 
 ## Competitions {#competitions}
+
+% TODO
 
 * * *
 
 ## Systems {#systems}
 
+% TODO
+
 * * *
 
 # Accuracy {#accuracy}
 
+% TODO
+
 # Speed {#speed}
+
+% TODO
 
 # Interpretability {#interpretability}
 
+% TODO
+
 # Response to Prof. Oard's Report {#oard}
+
+% TODO
 
 ## Soft Cosine Measure Questions {#soft-cosine-measure-questions}
 
@@ -740,11 +752,74 @@ learning literature.
 
 # Response to Prof. Skopal's Report {#skopal}
 
+% TODO
+
 ## Defense Questions {#defense-questions}
 
-% TODO ↷
+The first question mentions that in Section 2.3 about math information
+retrieval, only Section 2.3.3.1 about structural matching discusses techniques
+that are specific to math information retrieval and not information retrieval
+in general. The question then asks whether this is a sign of a small math
+information retrieval community.
 
-% TODO ↷
+First, I would like to point out that there is a substantial body of work on
+presentation, content, and semantic math representations, which are referenced
+in Section 2.2 about math representations. Furthermore, Section 2 focuses on
+the most prominent techniques, which were either used in the state-of-the-art
+search engines that I list in Section 3 or which I encountered in my
+experiments that I list in sections 4 through 6. That is to say that the list
+is not exhaustive. For example, there is a large body of related work that
+focuses on computer algebra systems and proof assistants. This is its own
+branch of information retrieval, which is outside the scope of my thesis, but
+I point the readers to the proceedings of the *International Conference of
+Intelligent Computer Mathematics (CICM)*, which is the prime venue for new
+results in this area, in section 2.2.3 on semantic math.
+
+However, if we focus just on the subarea of math information retrieval that
+involves traditional user-facing math-aware search engines, it is the case
+that most recent results in the area are produced by a handful of research
+groups. These include the Rochester institute of technology that holds two
+grant projects for math information retrieval, then the University of Waterloo,
+and the University and Delaware, which developed some of the recent
+state-of-the-art math-aware search engines. There is also the
+Friedrich-Alexander-Universität, which develops the \LaTeX ML tool that is
+essential for the conversion of \LaTeX{} sources to presentation and content
+math representations that all state-of-the-art search engines use. However,
+I would say that math information retrieval community is quite small. ↷
+
+The second question expands on the first question by asking what the impact
+of math-specific techniques is and whether the reader of the thesis can
+find a recommendation what techniques they should use in which retrieval
+scenario.
+
+As I say in Section 3, the current state-of-the-art math-aware search engines
+are Approach0 for the retrieval of isolated math formulae and Tangent-L for
+full-text search.
+
+Approach0 uses the operator tree content math representation, which I describe
+in Section 2.2, and structural matching, query expansion, and sparse retrieval
+with the hard vector space model and BM25 weighting, which I describe in
+Section 2.3. Then, it combines the results using rank fusion, which I also
+describe in Section 2.3. The math-specific ingredients include the math
+representations and structural matching. The remaining techniques used by
+Approach0 are not math-specific.
+
+Tangent-L uses the symbol layout tree presentation math representation and
+math normalization techniques, which I describe in Section 2.2, and sparse
+retrieval with the hard vector space model and BM25⁺ weighting, which I
+describe in Section 2.3. Here, the math-specific ingredients include the math
+representations and math normalization. The remaining techniques used by
+Tengent-L are not math-specific.
+
+% The soft cosine similarity measure that I have developed has not received
+% state-of-the-art results at the ARQMath shared task evaluations, but we can
+% compare it with the TF-IDF + Tangent-S baseline to see that the technique
+% improved the retrieval accuracy by 8% nDCG' on ARQMath 2020 and by 5% nDCG'
+% on ARQMath 2021, both of which are significant improvements, which suggests
+% that the technique could be used to improve other math information retrieval
+% search engines.
+
+% TODO: My rank fusion results
 
 * * *
 
@@ -752,8 +827,7 @@ learning literature.
 > math-specific techniques mentioned in section 2.3 (actually just the
 > structural matching in 2.3.3.1). Everything else in 2.3 is applicable to
 > general IR. Some other MIR-related works are mentioned in subsections 4.x. Is
-> this lack of mathspecific IR a sign of small research MIR community? Please
-> comment on this.
+> this lack of math specific IR a sign of small research MIR community?
 
 * * *
 
@@ -784,9 +858,9 @@ learning literature.
 > systematically addresses a more complex research goal. Therefore, also the
 > novelty of the individual results is quite low.
 
-# Common Remarks {#common-remarks}
+# Common Remarks
 
-% TODO ↷
+% TODO
 
 * * *
 
