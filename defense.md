@@ -520,7 +520,21 @@ retrieval in general. ↷
 
 % TODO ↷
 
+% Sentence BERT (Reimers et al, 2019, tab. 1) experimented with both
+% representations of pooling, averaging and utilisation of [CLS] tokens for
+% information retrieval using cosine similarity of query and document
+% representation and concluded that both averaging and pooling outperformed a
+% quality of [CLS]-token classification. The situation might vary in cases
+% where queries and documents are represented separately, though with
+% CompuBERT, we followed the proven example of Reimers et al.
+
 % TODO
+
+% We've also experimented with some non-parametrised adversarial strategies:
+% we've picked negative samples based on the maximum lexical overlap with correct
+% answers or with the answers to the same question having the lowest scores.
+% However, we did not observe improvements in dev {whatever metric it was} as
+% compared to random selection.
 
 * * *
 
