@@ -518,15 +518,27 @@ likely that language representations that are useful for machine translation
 evaluation will also be useful for math information retrieval and information
 retrieval in general. ↷
 
-% TODO ↷
+The second question remarks that whereas Sentence-BERT averages the
+contextualized embeddings for all tokens in a sentence to produce sentence
+embeddings, the DPR system of @karpukhin2020dense uses the contextualized
+embeddings of *the CLS token* as sentence embeddings. Additionally, whereas
+Sentence-BERT produces the same sentence embeddings for queries and documents,
+DPR uses different encoders for queries and documents. The question then asks
+whether and how do these differences benefit Sentence-BERT.
 
-% Sentence BERT (Reimers et al, 2019, tab. 1) experimented with both
-% representations of pooling, averaging and utilisation of [CLS] tokens for
-% information retrieval using cosine similarity of query and document
-% representation and concluded that both averaging and pooling outperformed a
-% quality of [CLS]-token classification. The situation might vary in cases
-% where queries and documents are represented separately, though with
-% CompuBERT, we followed the proven example of Reimers et al.
+In their work, @reimers2019sentencebert [Section 1] have experimented with
+Sentence BERT, using both pooling and CLS tokens on semantic text
+classification tasks. They concluded that both achieved comparable performance.
+
+The Siamese architecture of Sentence-BERT does not distinguish between
+questions and answers. Therefore, in our experiments, we have prefixed the
+input sentences either with *Question:* or *Answer:* to indicate whether the
+sentences are queries or documents. I am not aware of prior work, which would
+compare our approach with the approach of @karpukhin2020dense. However, the
+advantage of using a single representation for both queries and documents is
+faster convergence, which allows us to train a comparably accurate model with
+less training data. This is an important property in an area such as math
+information retrieval, where human annotations are scarce. ↷
 
 % TODO
 
@@ -775,17 +787,13 @@ results in this area, in section 2.2.3 on semantic math.
 However, if we focus just on the subarea of math information retrieval that
 involves traditional user-facing math-aware search engines, it is the case
 that most recent results in the area were produced by a handful of research
-groups. These include the Rochester institute of technology that holds two
-grant projects for math information retrieval, the University of Waterloo,
-and the University of Delaware, which developed some of the recent
-state-of-the-art math-aware search engines, Friedrich-Alexander-Universität,
-which develops the \LaTeX ML tool that is essential for the conversion of
-\LaTeX{} sources to presentation and content math representations that all
-state-of-the-art search engines use. However, I would say that math information
-retrieval community is quite small. In their survey of math information
-retrieval, @guidi2016survey reached a similar conclusion, stating that
-the progress in the field ,,is mostly due to the steady work of a very few
-groups that keep improving their own software.\`\`. ↷
+groups. In their survey of math information retrieval, @guidi2016survey reached
+a similar conclusion, stating that the progress in the field ,,is mostly due to
+the steady work of a very few groups that keep improving their own
+software.\`\`. However, I should note that the ARQMath shared task evaluations
+have reinvigorated interest in the field and whereas only six research groups
+have participated in ARQMath 2020, eleven groups have participated in ARQMath
+2021 and twelve have already registered for ARQMath 2022. ↷
 
 The second question expands on the first question by asking what the impact
 of math-specific techniques is and whether the reader of the thesis can
