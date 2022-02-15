@@ -392,15 +392,134 @@ in the last NTCIR workshop.
 
 % TODO
 
+## Math Representations and Representation Learning {#accuracy-representations}
+
+% TODO (3 minutes)
+
+* * *
+
+% TODO
+
+% > There are also several instances in which I was not able to determine why the
+% > author had chosen to summarize specific work in this thesis. Sections 4.2.6
+% > and 4.3 describe machine translation research, a task very different from
+% > information retrieval. Section 4.2.5 evaluates the effect of data
+% > augmentation on word sense disambiguation.
+
+% > P4O what does it mean for some features to “interact with” positional
+% > embeddings?
+
+% > P44 In the caption for Table 4.1, what does it mean for a language pair to be
+% > evaluated cross-lingually? The same question arises in the caption for Table
+% > 4.2 on page 48.
+
+## Learning to Rank {#accuracy-learning-to-rank}
+
+% TODO (1 minute)
+
+* * *
+
+% TODO
+
+% > P50 Does “significantly” mean statistically significantly? If so, by what
+% > test? If not, “substantially” might be the more appropriate claim.
+
+% > There are also several instances in which I was not able to determine why the
+% > author had chosen to summarize specific work in this thesis. Sections 4.2.6
+% > and 4.3 describe machine translation research, a task very different from
+% > information retrieval. \[...] A substantial portion of Section 4.5 describes
+% > experiments with giving more weight to early posts in threaded discussion
+% > lists; I don’t see how that work with (text only) discussion lists sheds any
+% > light on the question of how different fields of a single message should be
+% > weighted in math retrieval (which is the other focus of section 4.5).
+
+## Approximate Nearest-Neighbor Search {#accuracy-approximate-search}
+
+% TODO (1 minute)
+
+* * *
+
+% TODO
+
 # Speed {#speed}
 
 % TODO
+
+## Search Engine Deployment {#speed-deployment}
+
+% TODO (1 minute)
+
+* * *
+
+% TODO
+
+## Representation Learning of Words and Symbols {#speed-representations}
+
+% TODO (1 minute)
+
+* * *
+
+% TODO
+
+% > P59 The second paragraph of section 5.2.1 says “showed it was more accurate”
+% > and “the ... accuracy of these approximations have not been evaluated”. How
+% > was it shown to be more accurate if accuracy was not evaluated?
+
+## Approximate Nearest-Neighbor Search {#speed-approximate-search}
+
+% TODO (1 minute)
+
+* * *
+
+% TODO
+
+% > The use of language and illustrations generally meet the expected
+% > professional standard. Notable exceptions are Figures 5.2 and 6.1, which are
+% > not adequately explained.
 
 # Interpretability {#interpretability}
 
 % TODO
 
+## Representation Learning of Words and Symbols {#interpretability-representations}
+
+% TODO (1 minute)
+
+* * *
+
+% TODO
+
+% > The use of language and illustrations generally meet the expected
+% > professional standard. Notable exceptions are Figures 5.2 and 6.1, which are
+% > not adequately explained.
+
+% > P69 What makes a property interesting?
+
+% > There are also several instances in which I was not able to determine why the
+% > author had chosen to summarize specific work in this thesis. \[...] Section
+% > 6.1.1 describes research on part of speech tagging.
+
+## Strengths and Weaknesses of Retrieval Systems {#interpretability-strengths-and-weaknesses}
+
+% TODO (1 minute)
+
+* * *
+
+% TODO
+
+## Interactive Visualizations of Retrieval Collections {#interpretability-interactive-visualizations}
+
+% TODO (1 minute)
+
+* * *
+
+% TODO
+
 # Conclusion {#conclusion}
+
+% TODO (2 minutes)
+
+* * *
 
 % TODO
 
@@ -410,7 +529,15 @@ in the last NTCIR workshop.
 
 % <https://digitalcommons.odu.edu/computerscience_fac_pubs/194/>, authored by Lee Giles (the author of Citeseer) cites @novotny2020three.
 % @novotny2018implementation has received many citations.
+
+% > One journal publication was in Q1 (Knowledge-based Systems), while the second
+% > in Q4 (J. of Universal Computer Science).
+
 % @ayetiran2021eds is Q1 and @novotny2021when is Q2 by SCIMAGO.
+
+* * *
+
+% TODO
 
 # Response to the report of prof.\ Douglas W.\ Oard {#oard}
 
@@ -429,6 +556,15 @@ uses contextual token embeddings produced by a deep neural network language
 model. The question then asks whether and how does the first of these
 differences, that is using either the sum of similarities or the maximum
 of similarities, benefit the two techniques.
+
+% TODO:
+%
+% - Geometrical motivation for sum with global embeddings and how max breaks it.
+% - Empirical motivation for sum embeddings and how max breaks it: we want to
+%   award large "soft term frequency". ColBERT seems well-suited for short
+%   passages.
+% - Empirical motivation for max embeddings: speed. Compromise: kNN, similar to
+%   regularized Soft Cosine Measure 
 
 In the regularized soft cosine measure, we only consider a small number of
 most similar document terms for each term. Therefore, the maximum operator
@@ -737,82 +873,6 @@ learning literature.
 > call embeddings. In what sense do you mean to claim that the embedding
 > representations studied in this thesis are “interpretable”?
 
-## Thesis Structure
-
-> The thesis consists of an introduction stating three research questions, two
-> chapters reviewing related work, three chapters that together contain 22
-> short research abstracts (each typically 2--3 pages) describing a broad range
-> of research conducted by the author, and a short conclusion that summarizes
-> where the three research questions were answered.
-
-* * *
-
-> There are also several instances in which I was not able to determine why the
-> author had chosen to summarize specific work in this thesis. Sections 4.2.6
-> and 4.3 describe machine translation research, a task very different from
-> information retrieval. Section 4.2.5 evaluates the effect of data
-> augmentation on word sense disambiguation. Section 6.1.1 describes research
-> on part of speech tagging. A substantial portion of Section 4.5 describes
-> experiments with giving more weight to early posts in threaded discussion
-> lists; I don’t see how that work with (text only) discussion lists sheds any
-> light on the question of how different fields of a single message should be
-> weighted in math retrieval (which is the other focus of section 4.5).
-
-## Language and Graphics Level
-
-> The use of language and illustrations generally meet the expected
-> professional standard. Notable exceptions are Figures 5.2 and 6.1, which are
-> not adequately explained.
-
-# Conclusion
-
-> [...] If evaluated on the basis of the results of the work actually
-> performed, as described in the cited publications, I would have graded this
-> dissertation as a B (above the average, but with minor errors) on the
-> European Credit Transfer and Accumulation System (ECTS) scale. However, if
-> evaluated on the basis of the content of the thesis itself, without reliance
-> on details reported only in other publications, | would grade this thesis as
-> FX on the ECTS scale (fail -- some more work required before the credit can
-> be awarded). [...]
-
-## Editorial Issues
-
-> P23 competitions -> shared task evaluations (Shared task evaluations exist to
-> support comparisons between systems, but not all comparisons have competition
-> as their motive.  Organizers of some shared task evaluations have been clear
-> to indicate that they do not intend their venue to be a competition. Of
-> course, some participants may see their participation as competition, but
-> that does not make the event a competition any more than an exam in a course
-> would be a competition. This word “competition” appears throughout the
-> thesis, and it would be more properly replaced by shared task evaluation in
-> every case.)
-
-* * *
-
-> P4O what does it mean for some features to “interact with” positional
-> embeddings?
-
-* * *
-
-> P44 In the caption for Table 4.1, what does it mean for a language pair to be
-> evaluated cross-lingually? The same question arises in the caption for Table
-> 4.2 on page 48.
-
-* * *
-
-> P50 Does “significantly” mean statistically significantly? If so, by what
-> test? If not, “substantially” might be the more appropriate claim.
-
-* * *
-
-> P59 The second paragraph of section 5.2.1 says “showed it was more accurate”
-> and “the ... accuracy of these approximations have not been evaluated”. How
-> was it shown to be more accurate if accuracy was not evaluated?
-
-* * *
-
-> P69 What makes a property interesting?
-
 # Response to the report of prof.\ RNDr.\ Tomáš Skopal, Ph.D. {#skopal}
 
 Next, I would like to respond to the questions from the report of professor
@@ -901,13 +961,6 @@ retrieval. Therefore, these techniques can also be recommended.
 > mixed. Could a reader of the thesis (or the referenced papers) find a
 > recommendation of what MIR techniques to use in what retrieval scenario?
 
-## The Results of the Work
-
-> One journal publication was in Q1 (Knowledge-based Systems), while the second
-> in Q4 (J. of Universal Computer Science).
-
-% Q2, see e-mail by Petr Sojka from 2022-01-12 and SCIMAGO
-
 # Common Remarks {#common-remarks}
 
 Lastly, if I may, I would also like to briefly respond to remarks that have
@@ -950,5 +1003,5 @@ been obscured by the details.
 > is often used in case the individual publications do not form an inherent
 > body of research. \[...] -- prof.\ RNDr.\ Tomáš Skopal, Ph.D.
 
-> If you can’t explain it to a six-year-old, you don't understand it yourself.
-> -- Richard Feynman
+% If you can’t explain it to a six-year-old, you don't understand it yourself.
+% -- Richard Feynman
