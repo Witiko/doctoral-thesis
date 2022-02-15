@@ -381,7 +381,21 @@ version of my thesis. I will now respond to the questions from the report.
 
 ## Soft Cosine Measure Questions {#soft-cosine-measure-questions}
 
-% TODO ↷
+The first question remarks that whereas the soft cosine measure uses a sum
+of similarities between the token embeddings of a query term and all document
+terms, the ColBERT technique of @khattab2020colbert uses the maximum of the
+similarities. Additionally, whereas the soft cosine measure uses global
+token embeddings that are independent on the context of a sentence, ColBERT
+uses contextual token embeddings produced by a deep neural network language
+model. The question then asks whether and how does the first of these
+differences, that is using either the sum of similarities or the maximum
+of similarities, benefit the two techniques.
+
+In the regularized soft cosine measure, we only consider a small number of
+most similar document terms for each term. Therefore, the maximum operator
+of ColBERT is a special case of the regularized soft cosine measure, where
+we set the parameter $C=1$ and only consider a single most similar document
+term. ↷
 
 The second question asks what challenges would arise if we were to use standard
 tools for fast approximate nearest neighbor search such as Facebook's Faiss or
@@ -445,7 +459,7 @@ programming effort.
 * * *
 
 > The Soft Cosine Measure (SCM) seems to me to have a structure similar to
-> CoIBERT (Khattab and Zaharia, SIGIR 2020), but with two differences: (1)
+> CoIBERT (@khattab2020colbert, SIGIR 2020), but with two differences: (1)
 > CoIBERT uses the maximum over the document terms of the similarity between
 > embeddings for each query term, whereas SCM uses the sum of those
 > similarities, and (2) CoIBERT uses a transformer to learn contextual
