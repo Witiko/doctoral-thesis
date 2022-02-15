@@ -13,6 +13,9 @@ jobs:
     container:
       image: texlive/texlive:TL2020-historic
     steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v2
+
       - name: Check that there are no repeating footnote and link labels in the thesis
         shell: bash {0}
         run: |
@@ -30,9 +33,6 @@ jobs:
           set -e
           apt-get -qy update
           apt-get -qy install --no-install-recommends graphviz python3-pdfminer
-
-      - name: Checkout the repository
-        uses: actions/checkout@v2
 
       - name: Typeset the doctoral thesis
         run: |
