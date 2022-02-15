@@ -352,20 +352,41 @@ of Informatics in Tokyo. In the last workshop, six research groups entered the
 participated, including my research group, which has developed the *MIaS* search
 engine that has since been deployed in *the European Digital Mathematical Library*.
 
-Following a four year hiatus, in 2020 and 2021, two math information retrieval
-shared task evaluations were held at the *Answer Retrieval for Questions on
-Math (ARQMath)* labs hosted by the CLEF conferences. In the last lab, as many
-as 11 research groups participated, and twelve research groups have already
-registered for the the third ARQMath lab, which I am co-organizing and which
-will take place later this year.
+In 2020 and 2021, two math information retrieval shared task evaluations were
+held at the *Answer Retrieval for Questions on Math (ARQMath)* labs hosted by
+the CLEF conferences. In the last lab, as many as 11 research groups
+participated, and twelve research groups have already registered for the the
+third ARQMath lab, which I am co-organizing and which will take place later
+this year.
 
 * * *
-
-## Systems {#systems}
 
 % TODO
 
+## Systems {#systems}
+
+Seven math-aware search engines achieved state-of-the-art results in the shared
+task evaluations at some point in time, as you can see in the table. The
+current state-of-the-art math-aware search engines are *Tangent-L* for
+full-text search and *Approach0* for formula search.
+
+*Tangent-L* was developed by the research group of the famous Canadian computer
+scientist Frank Tompa from the University of Waterloo. Tangent-L represents math
+formulae using presentation math. It uses two separate sparse retrieval search
+engines, one for text and one for math formulae, and uses score aggregation to
+produce the final results. Tangent-L received state-of-the-art results in the
+ARQMath labs and also post-hoc in the last NTCIR workshop.
+
+*Approach0* was developed by Wei Zhong from the University of Waterloo and has
+been deployed on the Math StackExchange question answering forum. Approach0
+represents math using content math. It uses structural matching and sparse
+retrieval, and uses rank fusion to produce the final results. Approach0
+received state-of-the-art results in the last ARQMath lab and also post-hoc
+in the last NTCIR workshop.
+
 * * *
+
+% TODO
 
 # Accuracy {#accuracy}
 
@@ -835,8 +856,15 @@ find a recommendation what techniques they should use in which retrieval
 scenario.
 
 In Section 3, I list the current state-of-the-art math-aware search engines,
-which at the moment are Approach0 for the retrieval of isolated math formulae
-and Tangent-L for full-text search.
+which at the moment are Tangent-L for full-text search and Approach0 for
+formula search.
+
+Tangent-L uses the symbol layout tree presentation math representation and
+math normalization techniques, which I describe in Section 2.2, and sparse
+retrieval with the hard vector space model and BM25⁺ weighting, which I
+describe in Section 2.3. Here, the math-specific ingredients include the math
+representations and math normalization. The remaining techniques used by
+Tengent-L are not math-specific.
 
 Approach0 uses the operator tree content math representation, which I describe
 in Section 2.2, and structural matching, query expansion, and sparse retrieval
@@ -845,13 +873,6 @@ Section 2.3. Then, it combines the results using rank fusion, which I also
 describe in Section 2.3. The math-specific ingredients include the math
 representations and structural matching. The remaining techniques used by
 Approach0 are not math-specific.
-
-Tangent-L uses the symbol layout tree presentation math representation and
-math normalization techniques, which I describe in Section 2.2, and sparse
-retrieval with the hard vector space model and BM25⁺ weighting, which I
-describe in Section 2.3. Here, the math-specific ingredients include the math
-representations and math normalization. The remaining techniques used by
-Tengent-L are not math-specific.
 
 Many of the techniques that I have developed have only been evaluated on tasks
 that are related to information retrieval, such as semantic text similarity,
@@ -910,12 +931,9 @@ would be appropriate to write my thesis in a way that is approachable even to
 researchers outside math information retrieval.
 
 Therefore, I have used the technique of Richard Feynman which says that a
-researcher should first study, then teach what they have studied, then fill
-the gaps in their knowledge that they discover, and finally they should
-simplify what they have learned, so that they can explain it even to
-non-experts and draw connections, which would otherwise have been obscured by
-the details. This was the intent of my thesis and you will get to decide
-whether or not I have succeeded.
+researcher should simplify what they have learned, so that they can explain it
+even to non-experts and draw useful connections, which would otherwise have
+been obscured by the details.
 
 * * *
 
