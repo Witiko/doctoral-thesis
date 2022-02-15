@@ -14,11 +14,15 @@ jobs:
       image: texlive/texlive:TL2020-historic
     steps:
       - name: Check that there are no repeating footnote and link labels in the thesis
+        shell: bash {0}
         run: |
+          set -e -o pipefail
           sed -n '/^ *\[/s/:.*//p' main.md | sort | uniq -dD | { ! grep .; }
 
       - name: Check that there are no repeating footnote and link labels in the thesis defense
+        shell: bash {0}
         run: |
+          set -e -o pipefail
           sed -n '/^ *\[/s/:.*//p' defense.md | sort | uniq -dD | { ! grep .; }
 
       - name: Install GraphViz and pdf2txt
