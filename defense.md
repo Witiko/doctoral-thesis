@@ -333,13 +333,31 @@ user satisfaction.
 - For speed, we measure time to *train*, *deploy*, *index* documents, and *process* queries.
 - For interpretability, we can perform *usability testing* and measure *user satisfaction*.
 
-# State of the Art {#state-of-the-art}
-
-% TODO
+# State of the Art
 
 ## Competitions {#competitions}
 
-% TODO
+Despite the lack of attention math information retrieval has historically
+received compared to information retrieval more generally, a substantial amount
+of research has been conducted since the first workshop *Towards a Digital
+Mathematics Library* in 2008 [@sojka2008towards].
+
+In 2012, the *Math Information Retrieval workshop* included the historically
+first friendly competition of two research groups, one of which was build by my
+predecessor Martin Líška.
+
+In 2013, 2014, and 2016, three math information retrieval shared task
+evaluations were held at the *NTCIR* workshops hosted by the National Institute
+of Informatics in Tokyo. In the last workshop, six research groups entered the
+participated, including my research group, which has developed the *MIaS* search
+engine that has since been deployed in *the European Digital Mathematical Library*.
+
+Following a four year hiatus, in 2020 and 2021, two math information retrieval
+shared task evaluations were held at the *Answer Retrieval for Questions on
+Math (ARQMath)* labs hosted by the CLEF conferences. In the last lab, as many
+as 11 research groups participated, and twelve research groups have already
+registered for the the third ARQMath lab, which I am co-organizing and which
+will take place later this year.
 
 * * *
 
