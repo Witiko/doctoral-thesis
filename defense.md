@@ -375,7 +375,9 @@ user satisfaction.
 
 # Response to the report of prof.\ Douglas W.\ Oard {#oard}
 
-% TODO
+First, I would like to thank professor Oard for the many editorial comments
+in his report, most of which I have already incorporated into an amended
+version of my thesis. I will now respond to the questions from the report.
 
 ## Soft Cosine Measure Questions {#soft-cosine-measure-questions}
 
@@ -760,7 +762,8 @@ learning literature.
 
 # Response to the report of prof.\ RNDr.\ Tomáš Skopal, Ph.D. {#skopal}
 
-% TODO
+Next, I would like to respond to the questions from the report of professor
+Skopal.
 
 ## Defense Questions {#defense-questions}
 
