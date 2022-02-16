@@ -387,7 +387,7 @@ in the last NTCIR workshop.
 # Accuracy and Speed {#accuracy-and-speed}
 
 All three research questions of my work focus at the quantitative evaluation of
-semantíc matching techniques and learning-to-rank techniques in terms of their
+semantic matching techniques and learning-to-rank techniques in terms of their
 accuracy and their speed. I will now describe my experiments in this area.
 
 ## Math Representations and Representation Learning {#representations}
@@ -454,8 +454,9 @@ whereas in reality, a part of the meaning of a token is fixed and independent
 on its position in a sentence.
 
 In my work, I have shown that constraining the effect of positional embeddings
-can improve the word analogy accuracy by 6\% and trains twice as fast.
-[@novotny2021when] ↷
+can improve the word analogy accuracy by 6\%, makes it possible to use longer
+sentences in the training data, and makes the embedding model twice as fast
+to train. [@novotny2021when] ↷
 
 % Section 4.2.4: Quantized Token Embeddings
 % Section 5.2.1: Quantized Token Embeddings with Fast Bitwise Arithmetic
@@ -468,13 +469,13 @@ point numbers, which contain 64 bits of information and use expensive floating
 point arithmetic, to binary zeros and ones, which contain just one bit of
 information and use fast bitwise arithmetic.
 
-I consulted the master's thesis of @stefanik2019semantic, where we have shown
-that *binary* token embeddings were as accurate as token embeddings that used
-floating point numbers. We have also shown that approximating vector addition
-as bitwise logical disjunction and vector subtraction as bitwise logical
-non-implication improved the speed more than 20× and was within 2\% of optimal
-word analogy accuracy, which is a novel result that extends beyond information
-retrieval. ↷
+In 2019, I consulted the master's thesis of @stefanik2019semantic, where we
+have shown that *binary* token embeddings were as accurate as token embeddings
+that used floating point numbers. We have also shown that approximating vector
+addition as bitwise logical disjunction and vector subtraction as bitwise
+logical non-implication improved the speed more than 20× and was within 2\% of
+optimal word analogy accuracy, which is a novel result that extends beyond
+information retrieval. ↷
 
 % Section 4.2.5: Word Sense Disambiguation with Sense Embeddings
 
@@ -647,7 +648,7 @@ easy to deploy. This will allow new research groups to take existing math-aware
 search engines and use them in their own work.
 
 In my work, I have used the example of the MIaS search engine to show how
-container virtualization with Docker and continuous integration can be used
+*container virtualization with Docker* and *continuous integration* can be used
 to create math-aware search engines that are not only more reproducible, but
 also easier to develop, maintain, and deploy. [@luptak2021webmias]
 
@@ -670,11 +671,40 @@ also easier to develop, maintain, and deploy. [@luptak2021webmias]
 
 # Interpretability {#interpretability}
 
-% TODO
+Although my research questions focus at accuracy and speed, they focus at the
+accuracy and speed of representations and techniques that are interpretable.
+In their book, @hall2018introduction define *interpretability* as ,,the ability
+to explain or to present in understandable terms to a human\`\`. To show the
+tangible benefits of interpretability, I will now describe my qualitative
+evaluation in this area.
 
 ## Representation Learning of Words and Symbols {#interpretable-representations}
 
-% TODO (2 minutes)
+First, I will focus on my experiments, where I show that token embeddings can
+be used to produce explanations that would have been difficult to produce just
+from the surface forms of words and math symbols.
+
+In 1982, @wille1982restructuring proposed the *formal concept analysis* as a
+tool to study objects and their binary attributes. In 2015,
+@priss2005linguistic noted that formal concept analysis can be used to encode
+and analyze type-of token attributes such as *parts of speech*.
+
+In 2019, I consulted the master's thesis of @stefanik2019semantic, where we
+have shown that binary token embeddings are not just as fast and accurate
+as token embeddings that used floating point numbers, but that they also
+correlated with parts-of-speech and could be studied using formal analysis. ↷
+
+I have already discussed positional embeddings and how they can help make
+token embeddings faster to train and more accurate. However, whereas the
+properties of token embeddings have been studied in the literature,
+[@levy2014neural] the exact role of positional embeddings was unknown.
+
+In my work, I have shown the primary purpose of positional embeddings was
+to attenuate the effect of distant tokens in the training data, which explained
+why positional embeddings make it possible to use longer sentences in the
+training data. I have also shown that there were three distinct clusters of
+vector coordinates in the positional embeddings, which could determine the
+grammatical properties of tokens such as parts of speech.
 
 * * *
 
@@ -690,13 +720,29 @@ also easier to develop, maintain, and deploy. [@luptak2021webmias]
 
 ## Strengths and Weaknesses of Retrieval Systems {#strengths-and-weaknesses}
 
-% TODO (1 minute)
+Next, I will focus on my experiments, where I show the role of *diversity* in
+learning-to-rank techniques.
+
+In my work, I have shown that we can improve the accuracy of learning-to-rank
+techniques at the ARQMath 2021 lab by first clustering the results of different
+search engines and then only combine those that are highly diverse. To explain
+the strengths and weaknesses of different search engines, I showed that we can
+determine how capable the different search engines were at understanding text
+and math and how capable they were at answering queries of different lengths.
 
 * * *
 
 ## Interactive Visualizations of Retrieval Collections {#interactive-visualizations}
 
-% TODO (1 minute)
+Finally, will focus on my experiments, where I show how semantic matching
+techniques can be used to produce explanations for math-aware search engines.
+
+In 2021, I led the bachelor's thesis of @petr2021document, where we have
+developed an *interactive demo* of the soft cosine measure technique on data
+from the ARQMath 2021 lab. In the demo, users can explore a small set of
+queries and their nearest results. To explain the results, we produce rich
+snippets that show which pairs of words and symbols in the query and the
+result contributed to its final score.
 
 * * *
 
@@ -1042,13 +1088,13 @@ The next set of questions concerns the interpretable representations, which
 I study in Section 6 of my thesis.
 
 The first question notes that I have used the definition of *interpretability*
-from the 2018 book by Hall and Gill and asks what an *interpretable
+from the 2018 book by @hall2018introduction and asks what an *interpretable
 representation* means within this framework.
 
-In their book, Hall and Gill define interpretable as ,,the ability to explain
-or to present in understandable terms to a human\`\`. Under this definition,
-interpretable representations enable qualitative analysis that can be used to
-explain what they represent in understandable terms to a human.
+In their book, @hall2018introduction define interpretable as ,,the ability to
+explain or to present in understandable terms to a human\`\`. Under this
+definition, interpretable representations enable qualitative analysis that can
+be used to explain what they represent in understandable terms to a human.
 
 One example of an interpretable representation would be the soft vector space
 model, which allows us to explain which exact keywords but also which pairs of
@@ -1081,10 +1127,10 @@ the speed and the accuracy of search engines. Therefore, I don't think the
 surface forms would be too relevant to the research questions of my thesis.
 
 However, the point that my definition of *interpretability* is vague is
-well-taken and Hall and Gill themselves admit that they use it as an umbrella
-term. I agree that this makes it less useful for scientific enquiry than other
-more restrictive and technical definitions that are sometimes used in machine
-learning literature.
+well-taken and @hall2018introduction themselves admit that they use it as an
+umbrella term. I agree that this makes it less useful for scientific enquiry
+than other more restrictive and technical definitions that are sometimes used
+in machine learning literature.
 
 * * *
 
