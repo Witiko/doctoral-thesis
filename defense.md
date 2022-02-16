@@ -395,6 +395,8 @@ accuracy and their speed. I will now describe my experiments in this area.
 First, I will focus on my experiments, where I develop new representations
 that can be used in semantic matching techniques.
 
+% Section 4.1: Topological Math Representations for Accurate Math Information Retrieval
+
 In 2019, @lample2020deep tokenized content math representations using pre-order
 traversal, producing a topologically ordered sequence of tokens (also known as
 the *prefix notation* or the *normal Polish notation*). Using their representations,
@@ -417,12 +419,16 @@ search engines, our representations outperformed the other representations. ↷
 The accuracy of semantic matching techniques depends on accurate token embeddings
 that properly capture the relationship between different words and math symbols.
 
+% Section 4.2.1: Variable Control in Token Embedding Evaluation
+
 The accuracy of token embeddings is often measured using the word analogy
 accuracy. In my work, I have shown that there are several hidden parameters in
 token embedding models and in the word analogy accuracy formula. These
 parameters are rarely reported in publications, but I have shown that they can
 cause up to 24\% difference in word analogy accuracy, which makes it difficult
 to compare and meaningfully reproduce published results. [@novotny2020art] ↷
+
+% Section 4.2.2: Heuristic Hyperparameter Optimization in Subword Language Models
 
 Token embedding models also contain a number of parameters that are reported in
 publications, but which are usually not tuned for different languages because of
@@ -436,6 +442,9 @@ heuristic that can suggest the value of the parameters based on simple $n$-gram
 analysis that can replace costly parameter tuning and is within 2\% of the
 optimal word analogy accuracy. [@novotny2021one] ↷
 
+% Section 4.2.3: Position-Independent Token Embeddings
+% Section 5.2.2: Position-Independent Token Embeddings
+
 State-of-the-art token embedding models also produce embeddings for different
 positions in a sentence, which helps them better grasp the meaning of the
 training data and produce more accurate token embeddings. However, these
@@ -446,7 +455,18 @@ on its position in a sentence.
 
 In my work, I have shown that constraining the effect of positional embeddings
 can improve the word analogy accuracy by 6\% and allows the use of longer
-sentences in the training data. [@novotny2021when] ↷
+sentences in the training data. [@novotny2021when]
+
+% TODO
+↷
+
+% Section 4.2.4: Quantized Token Embeddings
+% Section 5.2.1: Quantized Token Embeddings with Fast Bitwise Arithmetic
+
+% TODO
+↷
+
+% Section 4.2.5: Word Sense Disambiguation with Sense Embeddings
 
 In natural languages and in the language of mathematics, words and symbols can
 have several possible meanings or senses. However, token embeddings only assign
@@ -461,6 +481,8 @@ In my work, I have helped develop an augmentation technique for enlarging
 sense-annotated corpora. The token embeddings trained on the enlarged
 sense-annotated corpora achieved state-of-the-art accuracy on five our of six
 sense disambiguation tasks. [@ayetiran2021eds] ↷
+
+% Section 4.2.6: Decontextualized Token Embeddings
 
 Semantic matching techniques use so-called *global token embeddings*, which
 assign a single representation to a token or a sense. However, state-of-the-art
@@ -479,6 +501,8 @@ determine whether a translation is close to a reference translation, which is a
 task that is closely related to semantic text similarity and information
 retrieval. ↷
 
+% Section 4.2.7: Joint Token and Sentence Embeddings of Text and Math
+
 Both token embeddings and sentence embeddings can be trained on multimodal
 input data that contain both text and math. This allows the embeddings to
 capture the relationship between words and math symbols. However, prior work
@@ -488,9 +512,7 @@ In my work, I have developed two search engines that used such *joint*
 embeddings of text and math and I placed among the three best search engines in
 the ARQMath 2020 lab.  In the ARQMath 2021 lab, @mansouri2021dprl [Section 3]
 also used joint sentence embeddings in two of their systems and achieved the
-second and third best accuracies in the lab. ↷
-
-% TODO
+second and third best accuracies in the lab.
 
 * * *
 
@@ -516,6 +538,8 @@ second and third best accuracies in the lab. ↷
 Next, I will focus on my experiments, where I develop new learning-to-rank
 techniques.
 
+% Section 4.3: Score Aggregation of Structural and Semantic Matching Techniques
+
 Semantic matching techniques make naive assumptions about the syntax and the
 semantics of the natural language and the language of mathematics. They also
 often rely on token embeddings of language models, which contain human-like
@@ -527,6 +551,8 @@ to combine the results of 16 structural and semantic matching techniques in
 order to avoid the systematic errors of any individual technique. My score
 aggregation technique achieved equal or better accuracy than any individual
 technique on machine translation evaluation. [@stefanik2021regressive] ↷
+
+% Section 4.4: Rank-Based Fusion of Math Information Retrieval Systems
 
 The systematic errors of semantic matching techniques also affect the ranking
 of results in math-aware search engines. Therefore, although different search
@@ -549,8 +575,10 @@ ARQMath labs.
 
 ## Approximate Nearest-Neighbor Search {#approximate-search}
 
-Lastly, I will focus on my experiments, where I make information retrieval more
-accurate.
+Lastly, I will focus on my experiments, where I make information retrieval in
+general more accurate and faster.
+
+% Section 4.5: Weighted Zone Scoring Across Different Domains
 
 In information retrieval, documents are usually structured and contain *zones*
 that are more important than the body text, such as the title, abstract, and
@@ -573,6 +601,9 @@ Finally, I used weighted zone scoring in three out of nine math-aware search
 engines of our research group in the ARQMath 2021 lab. All three search engines
 achieved significantly better accuracy than the remaining six. ↷
 
+% Section 4.6: Approximate Nearest-Neighbor Search in Vector Spaces
+% Section 5.3: Approximate Nearest Neighbor Search in Vector Spaces
+
 Recent results show that dense retrieval and semantic matching techniques can
 achieve higher accuracy than sparse retrieval on semantic text similarity and
 information retrieval tasks. [@charlet2017simbow; @lin2021batch] However,
@@ -588,9 +619,15 @@ can be implemented into sparse retrieval systems [@novotny2018implementation]
 and also achieve higher accuracy on text classification [@novotny2020text]. My
 results shown that digital mathematical libraries can use semantic matching
 techniques and dense retrieval, but still keep their tried-and-tested sparse
-retrieval systems. ↷
+retrieval systems.
 
 % TODO
+↷
+
+% Section 5.1: Fast and Reproducible Deployment of Math Information Retrieval
+%              Systems Using Docker and Continuous Integration
+
+% TODO (1 minute)
 
 * * *
 
@@ -609,19 +646,13 @@ retrieval systems. ↷
 % > professional standard. Notable exceptions are Figures 5.2 and 6.1, which are
 % > not adequately explained.
 
-## Search Engine Deployment {#deployment}
-
-% TODO (1 minute)
-
-* * *
-
 # Interpretability {#interpretability}
 
 % TODO
 
 ## Representation Learning of Words and Symbols {#interpretable-representations}
 
-% TODO (1 minute)
+% TODO (2 minutes)
 
 * * *
 
