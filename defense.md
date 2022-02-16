@@ -799,10 +799,11 @@ and one of them as the sole author. Furthermore, out of the twelve proceeding
 articles, two were published at a *CORE A* conference. The publication that I
 authored as the sole author in 2018 has already received 15 citations from
 other researchers, seven of them in 2021 and one in 2022 already, which
-indicates ongoing impact of my results on the research community. Furthermore,
-in 2021, my work on developing new learning-to-rank techniques for math
-information retrieval has been cited by *Clyde Lee Giles* a noted scholar
-who has created the academic search engine of *CiteSeer*. [@rohatgi2021ranked]
+indicates ongoing impact of my results on the breader research community.
+Furthermore, in 2021, my work on developing new learning-to-rank techniques for
+math information retrieval has been cited by professor *Clyde Lee Giles*, a
+noted scholar who has created the academic search engine of *CiteSeer*.
+[@rohatgi2021ranked]
 
 * * *
 
@@ -872,20 +873,28 @@ model. The question then asks whether and how does the first of these
 differences, that is using either the sum of similarities or the maximum
 of similarities, benefit the two techniques.
 
-% TODO:
-%
-% - Geometrical motivation for sum with global embeddings and how max breaks it.
-% - Empirical motivation for sum embeddings and how max breaks it: we want to
-%   award large "soft term frequency". ColBERT seems well-suited for short
-%   passages.
-% - Empirical motivation for max embeddings: speed. Compromise: kNN, similar to
-%   regularized Soft Cosine Measure 
+First, let's look at the mathematical perspective. Using the maximum operator
+is similar to the regularized soft cosine measure, where we only consider a
+single most similar token. However, one important difference is that the
+regularized soft cosine measure ensures symmetry, so if token $a$ is among the
+most similar tokens for $b$, then $b$ will also be among the most similar
+tokens for $a$ even though this is not generally true. By contrast, the maximum
+operator makes ColBERT asymmetric and in my work, I have shown
+[@novotny2020text, Table 2] that asymmetry reduces accuracy on text classification.
 
-In the regularized soft cosine measure, we only consider a small number of
-most similar document terms for each term. Therefore, the maximum operator
-of ColBERT is a special case of the regularized soft cosine measure, where
-we set the parameter $C=1$ and only consider a single most similar document
-term. ↷
+Next, let's look at some intuitive properties of the soft cosine measure and
+ColBERT. The soft cosine measure uses soft matches to estimate how many times
+a term from the query appears in the document if we disregard surface-level
+differences. Therefore, the soft cosine measure can distinguish between a
+document that only contains one instance of a term and a document that contains
+many instances of a term. By contrast, ColBERT would not be able to distinguish
+such two documents and therefore only seems suitable for short passages, which
+is also the task for which it was originally developed.
+
+Therefore, it seems that it might be useful to extend ColBERT, so that it
+considers not only the most similar term, but $k$ most similar terms, which
+would bring it closer to what the soft cosine measure does and which would
+make it suitable for longer documents. ↷
 
 The second question asks what challenges would arise if we were to use standard
 tools for fast approximate nearest neighbor search such as Facebook's Faiss or
