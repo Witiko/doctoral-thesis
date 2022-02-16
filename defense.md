@@ -361,8 +361,6 @@ this year.
 
 * * *
 
-% TODO
-
 ## Systems {#systems}
 
 Seven math-aware search engines achieved state-of-the-art results in the shared
@@ -386,19 +384,113 @@ in the last NTCIR workshop.
 
 * * *
 
-% TODO
-
 # Accuracy {#accuracy}
 
-% TODO
+Two out of my three research questions focus at the accuracy of semantic
+matching techniques and learning-to-rank techniques. Therefore, most of
+my experiments also focus at accuracy.
 
 ## Math Representations and Representation Learning {#accuracy-representations}
 
-% TODO (3 minutes)
+First, I will focus on my experiments, where I develop new representations
+that can be used in semantic matching techniques.
+
+In 2019, @lample2020deep tokenized content math representations using pre-order
+traversal, producing a topologically ordered sequence of tokens (also known as
+the *prefix notation* or the *normal Polish notation*). Using their representations,
+they trained a deep neural network language model to solve integrals,
+first-order differential equations, and second-order differential equations
+with significantly better results than commercial computer algebra systems such
+as Mathematica, MatLab, and Maple.
+
+Following their example, we developed two math representations based on the
+operator tree content math representation:
+
+1. The *prefix* notation, which was produced by pre-order traversal of the formulae, and
+2. The *infix* notation, which was produced by in-order traversal of the formulae.
+
+We used the representations in two math-aware search engines and we compared them
+against other commonly used representations such as \LaTeX, paths in syntax
+layout trees, and paths in operator trees at the ARQMath 2020 lab. In both
+search engines, our representations outperformed the other representations. ↷
+
+The accuracy of semantic matching techniques depends on accurate token embeddings
+that properly capture the relationship between different words and math symbols.
+
+The accuracy of token embeddings is often measured using the word analogy
+accuracy. In my work, I have shown that there are several hidden parameters in
+token embedding models and in the word analogy accuracy formula. These
+parameters are rarely reported in publications, but I have shown that they can
+cause up to 24\% difference in word analogy accuracy, which makes it difficult
+to compare and meaningfully reproduce published results. [@novotny2020art] ↷
+
+Token embedding models also contain a number of parameters that are reported in
+publications, but which are usually not tuned for different languages because of
+training costs. However, the language of mathematics is significantly different
+from natural languages, which makes it all the more important to tune these
+parameters when producing token embeddings for mathematical symbols.
+
+In my work, I have shown that tuning these parameters can result in up to 14\%
+improvement in word analogy accuracy. On top of that, I have developed a
+heuristic that can suggest the value of the parameters based on simple $n$-gram
+analysis that can replace costly parameter tuning and is within 2\% of the
+optimal word analogy accuracy. [@novotny2021one] ↷
+
+State-of-the-art token embedding models also produce embeddings for different
+positions in a sentence, which helps them better grasp the meaning of the
+training data and produce more accurate token embeddings. However, these
+positional embeddings affect all coordinates of the token embeddings as if
+the meaning of a token was fully determined by its position in a sentence,
+whereas in reality, a part of the meaning of a token is fixed and independent
+on its position in a sentence.
+
+In my work, I have shown that constraining the effect of positional embeddings
+can improve the word analogy accuracy by 6\% and allows the use of longer
+sentences in the training data. [@novotny2021when] ↷
+
+In natural languages and in the language of mathematics, words and symbols can
+have several possible meanings or senses. However, token embeddings only assign
+a single representation to a word or a symbol. Therefore, the accuracy of token
+embeddings can be improved by determining in which sense a word or a symbol is
+used and by assigning different representations to different senses. However,
+prior work in training sense embeddings relies on sense-annotated corpora,
+which are prohibitively small for natural languages and virtually non-existent
+for mathematical symbols.
+  
+In my work, I have helped develop an augmentation technique for enlarging
+sense-annotated corpora. The token embeddings trained on the enlarged
+sense-annotated corpora achieved state-of-the-art accuracy on five our of six
+sense disambiguation tasks. [@ayetiran2021eds] ↷
+
+Semantic matching techniques use so-called *global token embeddings*, which
+assign a single representation to a token or a sense. However, state-of-the-art
+deep neural network language models use so-called *contextual token
+embeddings*, which assign different representations to tokens depending on their
+surroundings. Contextual token embeddings cannot be directly used in semantic
+matching techniques.
+
+In my work, I converted contextual token embeddings into *decontextualized*
+global token embeddings by taking the average representation of a token across
+different contexts. I have shown that such decontextualized token embeddings
+achieved better accuracy than global token embeddings with two different
+semantic matching techniques on machine translation evaluation.
+[@stefanik2021regressive] In machine translation evaluation, the task is to
+determine whether a translation is close to a reference translation, which is a
+task that is closely related to semantic text similarity and information
+retrieval. ↷
+
+Both token embeddings and sentence embeddings can be trained on multimodal
+input data that contain both text and math. This allows the embeddings to
+capture the relationship between words and math symbols. However, prior work
+has trained embeddings on text and math separately.
+
+In my work, I have developed two search engines that used such *joint*
+embeddings of text and math and I placed among the three best search engines in
+the ARQMath 2020 lab.  In the ARQMath 2021 lab, @mansouri2021dprl [Section 3]
+also used joint sentence embeddings in two of their systems and achieved the
+second and third best accuracies in the lab.
 
 * * *
-
-% TODO
 
 % > There are also several instances in which I was not able to determine why the
 % > author had chosen to summarize specific work in this thesis. Sections 4.2.6
@@ -415,31 +507,95 @@ in the last NTCIR workshop.
 
 ## Learning to Rank {#accuracy-learning-to-rank}
 
-% TODO (1 minute)
+Next, I will focus on my experiments, where I develop new learning-to-rank
+techniques.
+
+Semantic matching techniques make naive assumptions about the syntax and the
+semantics of the natural language and the language of mathematics. They also
+often rely on token embeddings of language models, which contain human-like
+biases. [@caliskan2017semantics] These assumptions and biases cause systematic
+errors and can decrease accuracy.
+
+In my work, I have developed a score aggregation technique. I used my technique
+to combine the results of 16 structural and semantic matching techniques in
+order to avoid the systematic errors of any individual technique. My score
+aggregation technique achieved equal or better accuracy than any individual
+technique on machine translation evaluation. [@stefanik2021regressive] ↷
+
+The systematic errors of semantic matching techniques also affect the ranking
+of results in math-aware search engines. Therefore, although different search
+engines can agree on a small portion of the most relevant documents, any
+individual system will miss the great majority of relevant documents.
+
+In my work, I have developed three novel rank fusion techniques and adapted
+the rank fusion technique of @cormack2009reciprocal. I used my techniques
+to combine the results of the search engines of our research group and also the
+results of all primary search engines that participated in the ARQMath labs.
+My techniques achieved better accuracy than any individual system in both
+ARQMath labs.
 
 * * *
-
-% TODO
-
-% > P50 Does “significantly” mean statistically significantly? If so, by what
-% > test? If not, “substantially” might be the more appropriate claim.
 
 % > There are also several instances in which I was not able to determine why the
 % > author had chosen to summarize specific work in this thesis. Sections 4.2.6
 % > and 4.3 describe machine translation research, a task very different from
-% > information retrieval. \[...] A substantial portion of Section 4.5 describes
-% > experiments with giving more weight to early posts in threaded discussion
-% > lists; I don’t see how that work with (text only) discussion lists sheds any
-% > light on the question of how different fields of a single message should be
-% > weighted in math retrieval (which is the other focus of section 4.5).
+% > information retrieval.
 
 ## Approximate Nearest-Neighbor Search {#accuracy-approximate-search}
 
-% TODO (1 minute)
+Lastly, I will focus on my experiments, where I make information retrieval more
+accurate.
+
+In information retrieval, documents are usually structured and contain *zones*
+that are more important than the body text, such as the title, abstract, and
+keywords, and zones that are less important than the body text, such as the
+appendices, footnotes, and comments. *Weighted zone scoring* techniques can be
+used to inform a search engine about the importance of different zones and also
+to improve its accuracy.
+
+In my work, I have performed a statistical analysis of publicly available
+community question answering datasets and shown that earlier comments in online
+discussions were *significantly* more likely to be relevant than later comments.
+
+Then, I developed a search engine that assigned smaller weight to later comments
+in a discussion and achieved state-of-the-art accuracy on an information
+retrieval dataset, whereas the same search engine without the *weighted zone
+scoring* achieved worse-than-baseline accuracy on the same dataset.
+[@novotny2018weighting]
+
+Finally, I used weighted zone scoring in three out of nine math-aware search
+engines of our research group in the ARQMath 2021 lab. All three search engines
+achieved significantly better accuracy than the remaining six. ↷
+
+Recent results show that dense retrieval and semantic matching techniques can
+achieve higher accuracy than sparse retrieval on semantic text similarity and
+information retrieval tasks. [@charlet2017simbow; @lin2021batch] However,
+digital mathematical libraries are already using math-aware search engines that
+are based on industry-grade sparse retrieval systems such as Apache Lucene and
+ElasticSearch, which makes it difficult to make a switch.
+
+In my work, I have shown that dense embeddings can be encoded as sparse vector
+coordinates with almost no loss of accuracy. [@rygl2017semantic;
+@ruzicka2017flexible] I have also proven shown that semantic matching
+techniques such as the soft cosine measure can be regularized, so that they
+can be implemented into sparse retrieval systems [@novotny2018implementation]
+and also achieve higher accuracy on text classification [@novotny2020text]. My
+results shown that digital mathematical libraries can use semantic matching
+techniques and dense retrieval, but still keep their tried-and-tested sparse
+retrieval systems.
 
 * * *
 
-% TODO
+% > There are also several instances in which I was not able to determine why the
+% > author had chosen to summarize specific work in this thesis.  \[...] A
+% > substantial portion of Section 4.5 describes experiments with giving more
+% > weight to early posts in threaded discussion lists; I don’t see how that work
+% > with (text only) discussion lists sheds any light on the question of how
+% > different fields of a single message should be weighted in math retrieval
+% > (which is the other focus of section 4.5).
+
+% > P50 Does “significantly” mean statistically significantly? If so, by what
+% > test? If not, “substantially” might be the more appropriate claim.
 
 # Speed {#speed}
 
@@ -451,15 +607,11 @@ in the last NTCIR workshop.
 
 * * *
 
-% TODO
-
 ## Representation Learning of Words and Symbols {#speed-representations}
 
 % TODO (1 minute)
 
 * * *
-
-% TODO
 
 % > P59 The second paragraph of section 5.2.1 says “showed it was more accurate”
 % > and “the ... accuracy of these approximations have not been evaluated”. How
@@ -470,8 +622,6 @@ in the last NTCIR workshop.
 % TODO (1 minute)
 
 * * *
-
-% TODO
 
 % > The use of language and illustrations generally meet the expected
 % > professional standard. Notable exceptions are Figures 5.2 and 6.1, which are
@@ -486,8 +636,6 @@ in the last NTCIR workshop.
 % TODO (1 minute)
 
 * * *
-
-% TODO
 
 % > The use of language and illustrations generally meet the expected
 % > professional standard. Notable exceptions are Figures 5.2 and 6.1, which are
@@ -505,23 +653,17 @@ in the last NTCIR workshop.
 
 * * *
 
-% TODO
-
 ## Interactive Visualizations of Retrieval Collections {#interpretability-interactive-visualizations}
 
 % TODO (1 minute)
 
 * * *
 
-% TODO
-
 # Conclusion {#conclusion}
 
 % TODO (2 minutes)
 
 * * *
-
-% TODO
 
 # List of Author's Publications {#list-of-publications}
 
@@ -536,8 +678,6 @@ in the last NTCIR workshop.
 % @ayetiran2021eds is Q1 and @novotny2021when is Q2 by SCIMAGO.
 
 * * *
-
-% TODO
 
 # Response to the report of prof.\ Douglas W.\ Oard {#oard}
 
