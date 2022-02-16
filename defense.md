@@ -454,17 +454,27 @@ whereas in reality, a part of the meaning of a token is fixed and independent
 on its position in a sentence.
 
 In my work, I have shown that constraining the effect of positional embeddings
-can improve the word analogy accuracy by 6\% and allows the use of longer
-sentences in the training data. [@novotny2021when]
-
-% TODO
-↷
+can improve the word analogy accuracy by 6\% and trains twice as fast.
+[@novotny2021when] ↷
 
 % Section 4.2.4: Quantized Token Embeddings
 % Section 5.2.1: Quantized Token Embeddings with Fast Bitwise Arithmetic
 
-% TODO
-↷
+Semantic matching techniques based on token embeddings can decrease the speed
+of information retrieval. A common approach to increase the speed of machine
+learning models is to reduce the size of embeddings and to speed up vector
+arithmetic by converting the vector coordinates from double-precision floating
+point numbers, which contain 64 bits of information and use expensive floating
+point arithmetic, to binary zeros and ones, which contain just one bit of
+information and use fast bitwise arithmetic.
+
+I consulted the master's thesis of @stefanik2019semantic, where we have shown
+that *binary* token embeddings were as accurate as token embeddings that used
+floating point numbers. We have also shown that approximating vector addition
+as bitwise logical disjunction and vector subtraction as bitwise logical
+non-implication improved the speed more than 20× and was within 2\% of optimal
+word analogy accuracy, which is a novel result that extends beyond information
+retrieval. ↷
 
 % Section 4.2.5: Word Sense Disambiguation with Sense Embeddings
 
@@ -612,22 +622,34 @@ are based on industry-grade sparse retrieval systems such as Apache Lucene and
 ElasticSearch, which makes it difficult to make a switch.
 
 In my work, I have shown that dense embeddings can be encoded as sparse vector
-coordinates with almost no loss of accuracy. [@rygl2017semantic;
-@ruzicka2017flexible] I have also proven shown that semantic matching
-techniques such as the soft cosine measure can be regularized, so that they
-can be implemented into sparse retrieval systems [@novotny2018implementation]
-and also achieve higher accuracy on text classification [@novotny2020text]. My
-results shown that digital mathematical libraries can use semantic matching
-techniques and dense retrieval, but still keep their tried-and-tested sparse
-retrieval systems.
+coordinates with almost no loss of accuracy. I have also shown that our encoding
+can be tuned to trade off accuracy for speed and perform fast approximate dense
+retrieval. [@rygl2017semantic; @ruzicka2017flexible]
 
-% TODO
-↷
+Furthermore, I have proven that semantic matching techniques such as the soft
+cosine measure can be regularized, so that they are as fast as the hard vector
+space model, can be implemented into sparse retrieval systems
+[@novotny2018implementation] and also achieve higher accuracy on text
+classification [@novotny2020text].
+
+My results shown that digital mathematical libraries can use semantic matching
+techniques and dense retrieval, but still keep their tried-and-tested sparse
+retrieval systems. ↷
 
 % Section 5.1: Fast and Reproducible Deployment of Math Information Retrieval
 %              Systems Using Docker and Continuous Integration
 
-% TODO (1 minute)
+Surveys show that the research community surrounding math information retrieval
+is still small and most results originate from a few research groups.
+[@guidi2016survey] To improve the situation, it is crucial for further research
+in the area that the research groups can share code that is reproducible and
+easy to deploy. This will allow new research groups to take existing math-aware
+search engines and use them in their own work.
+
+In my work, I have used the example of the MIaS search engine to show how
+container virtualization with Docker and continuous integration can be used
+to create math-aware search engines that are not only more reproducible, but
+also easier to develop, maintain, and deploy. [@luptak2021webmias]
 
 * * *
 
@@ -794,7 +816,7 @@ the non-zero coordinates for most documents will be a fraction of a percent.
 This would be not only extremely time-inefficient, but also space-inefficient.
 Imagine a small corpus of 1 million documents. According to Heaps' law, the
 dictionary will contain approximately 100,000 terms, which amounts to a matrix
-of 1 million times 100,000 floats, which amounts to about 400GiB RAM.
+of 1 million times 100,000 floats, which amounts to about 1TiB of memory.
 
 Therefore, we would need a sparse vector database. These are much more rare,
 but in sparse retrieval, we typically use inverted indices such as Apache
