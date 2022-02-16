@@ -1111,10 +1111,13 @@ since math information retrieval has a small research community, I though it
 would be appropriate to write my thesis in a way that is approachable even to
 researchers outside math information retrieval.
 
-Therefore, I have used the technique of Richard Feynman which says that a
+Therefore, I have used the technique of Richard Feynman who says that a
 researcher should simplify what they have learned, so that they can explain it
 even to non-experts and draw useful connections, which would otherwise have
-been obscured by the details.
+been obscured by the details. However, I do agree that this high-level approach
+makes it difficult to determine whether research methods have been properly
+applied. Therefore, an amended version of my thesis will contain all 176 pages
+of my publications as an appendix.
 
 * * *
 
