@@ -384,13 +384,13 @@ in the last NTCIR workshop.
 
 * * *
 
-# Accuracy {#accuracy}
+# Accuracy and Speed {#accuracy-and-speed}
 
-Two out of my three research questions focus at the accuracy of semantic
-matching techniques and learning-to-rank techniques. Therefore, most of
-my experiments also focus at accuracy.
+All three research questions of my work focus at the quantitative evaluation of
+semantíc matching techniques and learning-to-rank techniques in terms of their
+accuracy and their speed. I will now describe my experiments in this area.
 
-## Math Representations and Representation Learning {#accuracy-representations}
+## Math Representations and Representation Learning {#representations}
 
 First, I will focus on my experiments, where I develop new representations
 that can be used in semantic matching techniques.
@@ -488,7 +488,9 @@ In my work, I have developed two search engines that used such *joint*
 embeddings of text and math and I placed among the three best search engines in
 the ARQMath 2020 lab.  In the ARQMath 2021 lab, @mansouri2021dprl [Section 3]
 also used joint sentence embeddings in two of their systems and achieved the
-second and third best accuracies in the lab.
+second and third best accuracies in the lab. ↷
+
+% TODO
 
 * * *
 
@@ -505,7 +507,11 @@ second and third best accuracies in the lab.
 % > evaluated cross-lingually? The same question arises in the caption for Table
 % > 4.2 on page 48.
 
-## Learning to Rank {#accuracy-learning-to-rank}
+% > P59 The second paragraph of section 5.2.1 says “showed it was more accurate”
+% > and “the ... accuracy of these approximations have not been evaluated”. How
+% > was it shown to be more accurate if accuracy was not evaluated?
+
+## Learning to Rank {#learning-to-rank}
 
 Next, I will focus on my experiments, where I develop new learning-to-rank
 techniques.
@@ -541,7 +547,7 @@ ARQMath labs.
 % > and 4.3 describe machine translation research, a task very different from
 % > information retrieval.
 
-## Approximate Nearest-Neighbor Search {#accuracy-approximate-search}
+## Approximate Nearest-Neighbor Search {#approximate-search}
 
 Lastly, I will focus on my experiments, where I make information retrieval more
 accurate.
@@ -582,7 +588,9 @@ can be implemented into sparse retrieval systems [@novotny2018implementation]
 and also achieve higher accuracy on text classification [@novotny2020text]. My
 results shown that digital mathematical libraries can use semantic matching
 techniques and dense retrieval, but still keep their tried-and-tested sparse
-retrieval systems.
+retrieval systems. ↷
+
+% TODO
 
 * * *
 
@@ -597,41 +605,21 @@ retrieval systems.
 % > P50 Does “significantly” mean statistically significantly? If so, by what
 % > test? If not, “substantially” might be the more appropriate claim.
 
-# Speed {#speed}
-
-% TODO
-
-## Search Engine Deployment {#speed-deployment}
-
-% TODO (1 minute)
-
-* * *
-
-## Representation Learning of Words and Symbols {#speed-representations}
-
-% TODO (1 minute)
-
-* * *
-
-% > P59 The second paragraph of section 5.2.1 says “showed it was more accurate”
-% > and “the ... accuracy of these approximations have not been evaluated”. How
-% > was it shown to be more accurate if accuracy was not evaluated?
-
-## Approximate Nearest-Neighbor Search {#speed-approximate-search}
-
-% TODO (1 minute)
-
-* * *
-
 % > The use of language and illustrations generally meet the expected
 % > professional standard. Notable exceptions are Figures 5.2 and 6.1, which are
 % > not adequately explained.
+
+## Search Engine Deployment {#deployment}
+
+% TODO (1 minute)
+
+* * *
 
 # Interpretability {#interpretability}
 
 % TODO
 
-## Representation Learning of Words and Symbols {#interpretability-representations}
+## Representation Learning of Words and Symbols {#interpretable-representations}
 
 % TODO (1 minute)
 
@@ -647,13 +635,13 @@ retrieval systems.
 % > author had chosen to summarize specific work in this thesis. \[...] Section
 % > 6.1.1 describes research on part of speech tagging.
 
-## Strengths and Weaknesses of Retrieval Systems {#interpretability-strengths-and-weaknesses}
+## Strengths and Weaknesses of Retrieval Systems {#strengths-and-weaknesses}
 
 % TODO (1 minute)
 
 * * *
 
-## Interactive Visualizations of Retrieval Collections {#interpretability-interactive-visualizations}
+## Interactive Visualizations of Retrieval Collections {#interactive-visualizations}
 
 % TODO (1 minute)
 
