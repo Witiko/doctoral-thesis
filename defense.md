@@ -14,7 +14,7 @@ Then, I will react to the reader's reports and answer any follow-up questions fr
 
 When Ptolemy the 1st Soter, the Ancient Macedonian general of Alexander the
 Great, found Euclid's seminal work, *the Elements*, too difficult to study,
-he asked the matematician, whether there was an easier way to master geometry.
+he asked the mathematician, whether there was an easier way to master geometry.
 According to historical accounts, Euclid famously responded: \`\`Sire, there
 is no royal road to mathematics.''
 
@@ -67,7 +67,7 @@ advanced math queries produced the results that they did.
 ## Research Questions {#research-questions}
 
 Therefore, in my thesis, I focus on representations and techniques that can
-make the results of math-aware search engines more interpretable to the users.
+make the results of math-aware search engines more *interpretable* to the users.
 Namely, I focus on *token embeddings*, which explain the semantic
 relationships between text words and math symbols and which can be used with
 *semantic matching techniques* to produce interpretable search results.
@@ -85,10 +85,10 @@ In my thesis, I aim to answer the following three research questions:
 
 2. User studies [@taylor2013situation] have shown that the speed of search
    engines is crucial to the user experience. Since semantic matching
-   techniques add complexity to a search engine, I figured that it would be
+   techniques add complexity to a search engine, it would be
    good to know whether they can still be reasonably fast.
 
-3. Learning to rank techniques and voting algorithms have been shown
+3. Learning to rank techniques have been shown
    [@cormack2009reciprocal] to consistently achieve better accuracy than
    individual text search engines. However, it was unclear whether this was
    also true of math-aware search engines.
@@ -105,19 +105,17 @@ In my thesis, I aim to answer the following three research questions:
 
 ## Thesis Structure {#thesis-structure}
 
-In my thesis, I first describe math information retrieval and information
-retrieval in general, including existing digital mathematical libraries,
-math representations, retrieval models, different kinds of token embeddings,
-semantic matching techniques, and fusion-based learning-to-rank techniques.
+In my thesis, I first describe the background of math information retrieval and information
+retrieval in general.
 Next, I describe past competitions of math-aware search engines and the search
 engines that achieved state-of-the-art accuracy in the competitions.
 
 Then, in the following two chapters, I describe the methods and the results of
-my research on representations that enable fast and accurate math-aware search.
+my research on fast and accurate math information retrieval.
 Here, I also answer all of my research questions.
 
 In the final chapter before the conclusion, I draw from the work of my
-undergraduate and graduate students to I showcase some tangible qualitative
+undergraduate and graduate students to showcase some tangible
 benefits of interpretability.
 
 I conclude by summarizing my results and outlining venues for future work.
@@ -138,7 +136,7 @@ I conclude by summarizing my results and outlining venues for future work.
 
 Math information can take many forms. Traditionally, it has been journal
 articles that are stored in conventional *digital libraries* such as
-Ar$\chi$iv, the European Digital Mathematical Library, or the ACM Digital
+ArXiv, the European Digital Mathematical Library, or the ACM Digital
 Library. ↷
 
 More recently, it has also been *community question answering forums*, such as
@@ -173,7 +171,7 @@ In the right picture, we represent the structural aspects of the formula
 using the *Content MathML* XML language. Notice how the two exclamation marks
 in Presentation MathML become the double factorial operator in Content
 MathML. In general, superficially different math formulae such as $a / b$
-and $\frac{a}{b}$ will be equivalent in Content MathML. This is especially
+and $\frac{a}{b}$ will be equivalent in Content MathML. This is
 useful in search engines, where we may want to ignore superficial differences
 between math formulae. Importantly, a structural representation of a formula
 can be automatically obtained from the written form.
@@ -187,7 +185,8 @@ useful in *computer algebra systems* and *proof assistants*, where we need
 to know the exact meaning of a math formula. However, a semantic
 representation of a formula cannot be automatically obtained from the written
 form and requires costly human annotations. Therefore, semantic math
-representations have seen limited adoption in math-aware search engines.
+representations have seen limited adoption in math-aware search engines
+and are outside the scope of my thesis.
 
 * * *
 
@@ -198,10 +197,10 @@ representations have seen limited adoption in math-aware search engines.
 Now that we have properly represented math information, we need to retrieve it.
 In the picture, you can see the general architecture of a math-aware search
 engine, where we first index the representations and then allow the user to
-search for answers using queries. This does not seem too different from
-information retrieval in general, but the devil is in the detail.
+search for answers using queries.
 
-Although math information retrieval also focuses on the retrieval of documents,
+This does not seem too different from information retrieval in general. However,
+although math information retrieval also focuses on the retrieval of documents,
 other *retrieval units* of interest include math formulae and math statements
 such as definitions, theorems, and proofs. Furthermore, the language of
 mathematics is inherently more structured than natural text, which brings
@@ -218,20 +217,18 @@ mathematical symbol from the document, as you can see in the left picture.
 Sparse retrieval is fast and interpretable, but it has several weaknesses that
 hurt its accuracy:
 
-1. It disregards *word order*. Therefore, it does not really represent the
-   meaning of the text. Instead, it reduces meaningful statements in human and
-   mathematical languages to an unintelligible salad of words and math symbols.
+1. It disregards *word order*. Therefore, it does not represent the precise
+   meaning of the text.
 
 2. It does not model *word relatedness*. Therefore, two words or math symbols are
    either the same, or they are different. This means that a slight difference
-   in terminology or math notation can make a big difference, which is not
-   always what we want. ↷
+   in terminology or math notation can make a big difference. ↷
 
 By contrast, in dense retrieval, we index documents as low-dimensional dense
 vector coordinates (so-called *sentence embeddings*) that have been produced by
 deep neural network language models such as *BERT*, which you can see in the
 picture. Producing the vectors is computationally demanding and they are not
-immediately interpretable. Additionally, BERT and similar language models can
+immediately interpretable. Additionally, BERT can
 only produce representations of short documents that contain at most hundreds
 of words. Despite these limitations, dense retrieval models achieve
 state-of-the-art performance on information retrieval.
@@ -241,7 +238,7 @@ advantage of additional techniques such a *semantic matching* and *learning to
 rank*. ↷
 
 In *semantic matching* techniques, we first compute the distance between
-different tokens such as words and math symbols using language models, as you
+different *tokens* such as words and math symbols using language models, as you
 can see in the middle picture. Then, we use these distances to improve the
 accuracy of the retrieval. For example, in the right picture, you can see the
 *soft vector space model*, also known as the *soft cosine measure*, which
@@ -251,10 +248,9 @@ robust against slight differences in terminology and math notation. ↷
 By contrast, in fusion-based learning-to-rank techniques, we don't improve the
 accuracy of individual search engine themselves. Instead, we combine the
 results of several search engines to produce more accurate results. *Rank-based
-fusion* techniques such as *the reciprocal rank fusion* only use the ranks of a
-document across the results, whereas *score aggregation* techniques such as
-*ScoreMNZ* also take into account the similarity scores produced by the search
-engines.
+fusion* techniques only use the ranks of a document across the results, whereas
+*score aggregation* techniques also take into account the similarity scores
+produced by the search engines.
 
 * * *
 
@@ -269,7 +265,7 @@ engines.
 Representations and retrieval techniques allow the math-aware search engines to
 fulfil three major objectives:
 
-1. the *accuracy* of their results for the information needs of the users,
+1. the *accuracy* of their results for the users,
 2. the *speed* at which they can be deployed, index new documents, and deliver
    results to the users, and
 3. the *interpretability*, which determines how well they can explain the
@@ -285,10 +281,10 @@ evaluation measures*, which focus on complex real-world applications and which
 may require human participants.
 
 An example of an intrinsic evaluation measure is the *word analogy accuracy*,
-which measures how well token embeddings produced by language models can be
+which measures how well token embeddings can be
 used for analogical reasoning, as you can see in the left picture. While the
 word analogy accuracy does not directly tell us how useful the token embeddings
-will be for semantic matching and math-aware search, it is fast and can be a
+will be for semantic matching and math information retrieval, it is fast and can be a
 useful proxy for extrinsic evaluation measures such as *the F₁-score*, *mean
 average precision*, or *nDCG'*, which measure the relevance of search results
 using costly human annotations.
@@ -343,42 +339,38 @@ of research has been conducted since the first workshop *Towards a Digital
 Mathematics Library* in 2008 [@sojka2008towards].
 
 In 2012, the *Math Information Retrieval workshop* included the historically
-first friendly competition of two research groups, one of which was build by my
-predecessor Martin Líška.
+first friendly competition between two research groups.
 
 In 2013, 2014, and 2016, three math information retrieval shared task
-evaluations were held at the *NTCIR* workshops hosted by the National Institute
-of Informatics in Tokyo. In the last workshop, six research groups entered the
-participated, including my research group, which has developed the *MIaS* search
-engine that has since been deployed in *the European Digital Mathematical Library*.
+evaluations were held at the *NTCIR* workshops. In the last workshop, six
+research groups participated, including my research group, which has developed
+the *MIaS* search engine that has since been deployed in *the European Digital
+Mathematical Library*.
 
 In 2020 and 2021, two math information retrieval shared task evaluations were
 held at the *Answer Retrieval for Questions on Math (ARQMath)* labs hosted by
 the CLEF conferences. In the last lab, as many as 11 research groups
 participated, and twelve research groups have already registered for the the
-third ARQMath lab, which I am co-organizing and which will take place later
-this year.
+third ARQMath lab, which will take place later this year.
 
 * * *
 
 ## Systems {#systems}
 
-Seven math-aware search engines achieved state-of-the-art results in the shared
-task evaluations at some point in time, as you can see in the table. The
-current state-of-the-art math-aware search engines are *Tangent-L* for
-full-text search and *Approach0* for formula search.
+Seven math-aware search engines achieved state-of-the-art results in the
+competitions at some point in time, as you can see in the table. The current
+state-of-the-art math-aware search engines are *Tangent-L* for full-text search
+and *Approach0* for formula search.
 
-*Tangent-L* was developed by the research group of the famous Canadian computer
-scientist Frank Tompa from the University of Waterloo. Tangent-L represents math
+*Tangent-L* represents math
 formulae using presentation math. It uses two separate sparse retrieval search
 engines, one for text and one for math formulae, and uses score aggregation to
 produce the final results. Tangent-L received state-of-the-art results in the
 ARQMath labs and also post-hoc in the last NTCIR workshop.
 
-*Approach0* was developed by Wei Zhong from the University of Waterloo and has
-been deployed on the Math StackExchange question answering forum. Approach0
-represents math using content math. It uses structural matching and sparse
-retrieval, and uses rank fusion to produce the final results. Approach0
+*Approach0*
+represents math formulae using content math. It uses structural matching and sparse
+retrieval followed rank fusion to produce the final results. Approach0
 received state-of-the-art results in the last ARQMath lab and also post-hoc
 in the last NTCIR workshop.
 
@@ -402,22 +394,21 @@ traversal, producing a topologically ordered sequence of tokens (also known as
 the *prefix notation* or the *normal Polish notation*). Using their representations,
 they trained a deep neural network language model to solve integrals,
 first-order differential equations, and second-order differential equations
-with significantly better results than commercial computer algebra systems such
-as Mathematica, MatLab, and Maple.
+with significantly better results than commercial computer algebra systems.
 
-Following their example, we developed two math representations based on the
-operator tree content math representation:
+Following their example, we developed two math representations based on
+content math representation:
 
-1. The *prefix* notation, which was produced by pre-order traversal of the formulae, and
-2. The *infix* notation, which was produced by in-order traversal of the formulae.
+1. The *prefix* notation, which was produced by pre-order traversal, and
+2. The *infix* notation, which was produced by in-order traversal.
 
 We used the representations in two math-aware search engines and we compared them
-against other commonly used representations such as \LaTeX, paths in syntax
-layout trees, and paths in operator trees at the ARQMath 2020 lab. In both
+against other commonly used representations such as \LaTeX and paths in presentation
+and content math representations at the ARQMath 2020 lab. With both
 search engines, our representations outperformed the other representations. ↷
 
 The accuracy of semantic matching techniques depends on accurate token embeddings
-that properly capture the relationship between different words and math symbols.
+that capture the relationship between different words and math symbols.
 
 % Section 4.2.1: Variable Control in Token Embedding Evaluation
 
@@ -433,13 +424,13 @@ to compare and meaningfully reproduce published results. [@novotny2020art] ↷
 Token embedding models also contain a number of parameters that are reported in
 publications, but which are usually not tuned for different languages because of
 training costs. However, the language of mathematics is significantly different
-from natural languages, which makes it all the more important to tune these
+from natural languages, which makes it important to tune these
 parameters when producing token embeddings for mathematical symbols.
 
-In my work, I have shown that tuning these parameters can result in up to 14\%
+In my work, I have shown that parameter tuning can result in up to 14\%
 improvement in word analogy accuracy. On top of that, I have developed a
-heuristic that can suggest the value of the parameters based on simple $n$-gram
-analysis that can replace costly parameter tuning and is within 2\% of the
+heuristic that can suggest the parameter values based on simple statistical
+analysis that can replace costly tuning and is within 2\% of the
 optimal word analogy accuracy. [@novotny2021one] ↷
 
 % Section 4.2.3: Position-Independent Token Embeddings
@@ -448,7 +439,7 @@ optimal word analogy accuracy. [@novotny2021one] ↷
 State-of-the-art token embedding models also produce embeddings for different
 positions in a sentence, which helps them better grasp the meaning of the
 training data and produce more accurate token embeddings. However, these
-positional embeddings affect all coordinates of the token embeddings as if
+*positional embeddings* affect all coordinates of the token embeddings as if
 the meaning of a token was fully determined by its position in a sentence,
 whereas in reality, a part of the meaning of a token is fixed and independent
 on its position in a sentence.
@@ -489,9 +480,9 @@ which are prohibitively small for natural languages and virtually non-existent
 for mathematical symbols.
   
 In my work, I have helped develop an augmentation technique for enlarging
-sense-annotated corpora. The token embeddings trained on the enlarged
-sense-annotated corpora achieved state-of-the-art accuracy on five our of six
-sense disambiguation tasks. [@ayetiran2021eds] ↷
+sense-annotated corpora. Token embeddings trained on the enlarged
+sense-annotated corpora achieved state-of-the-art accuracy on five out of six
+word sense disambiguation tasks. [@ayetiran2021eds] ↷
 
 % Section 4.2.6: Decontextualized Token Embeddings
 
@@ -504,13 +495,10 @@ matching techniques.
 
 In my work, I converted contextual token embeddings into *decontextualized*
 global token embeddings by taking the average representation of a token across
-different contexts. I have shown that such decontextualized token embeddings
+different contexts. I have shown that decontextualized token embeddings
 achieved better accuracy than global token embeddings with two different
 semantic matching techniques on machine translation evaluation.
-[@stefanik2021regressive] In machine translation evaluation, the task is to
-determine whether a translation is close to a reference translation, which is a
-task that is closely related to semantic text similarity and information
-retrieval. ↷
+[@stefanik2021regressive] ↷
 
 % Section 4.2.7: Joint Token and Sentence Embeddings of Text and Math
 
@@ -553,12 +541,12 @@ techniques.
 
 Semantic matching techniques make naive assumptions about the syntax and the
 semantics of the natural language and the language of mathematics. They also
-often rely on token embeddings of language models, which contain human-like
+rely on token embeddings of language models, which contain human-like
 biases. [@caliskan2017semantics] These assumptions and biases cause systematic
 errors and can decrease accuracy.
 
 In my work, I have developed a score aggregation technique. I used my technique
-to combine the results of 16 structural and semantic matching techniques in
+to combine the results of 16 semantic matching techniques in
 order to avoid the systematic errors of any individual technique. My score
 aggregation technique achieved equal or better accuracy than any individual
 technique on machine translation evaluation. [@stefanik2021regressive] ↷
@@ -568,12 +556,11 @@ technique on machine translation evaluation. [@stefanik2021regressive] ↷
 The systematic errors of semantic matching techniques also affect the ranking
 of results in math-aware search engines. Therefore, although different search
 engines can agree on a small portion of the most relevant documents, any
-individual system will miss the great majority of relevant documents.
+individual system will miss most relevant documents.
 
 In my work, I have developed three novel rank fusion techniques and adapted
 the rank fusion technique of @cormack2009reciprocal. I used my techniques
-to combine the results of the search engines of our research group and also the
-results of all primary search engines that participated in the ARQMath labs.
+to combine the results of all primary search engines that participated in the ARQMath labs.
 My techniques achieved better accuracy than any individual system in both
 ARQMath labs.
 
@@ -593,10 +580,9 @@ general more accurate and faster.
 
 In information retrieval, documents are usually structured and contain *zones*
 that are more important than the body text, such as the title, abstract, and
-keywords, and zones that are less important than the body text, such as the
-appendices, footnotes, and comments. *Weighted zone scoring* techniques can be
-used to inform a search engine about the importance of different zones and also
-to improve its accuracy.
+keywords. *Weighted zone scoring* techniques can be used to inform a search
+engine about the importance of different zones and also to improve its
+accuracy.
 
 In my work, I have performed a statistical analysis of publicly available
 community question answering datasets and shown that earlier comments in online
@@ -622,20 +608,16 @@ digital mathematical libraries are already using math-aware search engines that
 are based on industry-grade sparse retrieval systems such as Apache Lucene and
 ElasticSearch, which makes it difficult to make a switch.
 
-In my work, I have shown that dense embeddings can be encoded as sparse vector
+In my work, I have shown that dense embeddings can be *encoded* as sparse vector
 coordinates with almost no loss of accuracy. I have also shown that our encoding
-can be tuned to trade off accuracy for speed and perform fast approximate dense
-retrieval. [@rygl2017semantic; @ruzicka2017flexible]
+can be tuned to trade off retrieval accuracy for speed. [@rygl2017semantic;
+@ruzicka2017flexible]
 
 Furthermore, I have proven that semantic matching techniques such as the soft
 cosine measure can be regularized, so that they are as fast as the hard vector
 space model, can be implemented into sparse retrieval systems
 [@novotny2018implementation] and also achieve higher accuracy on text
-classification [@novotny2020text].
-
-My results shown that digital mathematical libraries can use semantic matching
-techniques and dense retrieval, but still keep their tried-and-tested sparse
-retrieval systems. ↷
+classification [@novotny2020text]. ↷
 
 % Section 5.1: Fast and Reproducible Deployment of Math Information Retrieval
 %              Systems Using Docker and Continuous Integration
@@ -650,7 +632,7 @@ search engines and use them in their own work.
 In my work, I have used the example of the MIaS search engine to show how
 *container virtualization with Docker* and *continuous integration* can be used
 to create math-aware search engines that are not only more reproducible, but
-also easier to develop, maintain, and deploy. [@luptak2021webmias]
+also easier to develop, maintain, and faster to deploy. [@luptak2021webmias]
 
 * * *
 
@@ -671,18 +653,11 @@ also easier to develop, maintain, and deploy. [@luptak2021webmias]
 
 # Interpretability {#interpretability}
 
-Although my research questions focus at accuracy and speed, they focus at the
-accuracy and speed of representations and techniques that are interpretable.
-In their book, @hall2018introduction define *interpretability* as ,,the ability
-to explain or to present in understandable terms to a human\`\`. To show the
-tangible benefits of interpretability, I will now describe my qualitative
-evaluation in this area.
+My research questions focus at accuracy and speed of representations and
+techniques that are *interpretable*.  To show the tangible benefits of
+interpretability, I will now describe my qualitative evaluation in this area.
 
 ## Representation Learning of Words and Symbols {#interpretable-representations}
-
-First, I will focus on my experiments, where I show that token embeddings can
-be used to produce explanations that would have been difficult to produce just
-from the surface forms of words and math symbols.
 
 In 1982, @wille1982restructuring proposed the *formal concept analysis* as a
 tool to study objects and their binary attributes. In 2015,
@@ -699,7 +674,7 @@ token embeddings faster to train and more accurate. However, whereas the
 properties of token embeddings have been studied in the literature,
 [@levy2014neural] the exact role of positional embeddings was unknown.
 
-In my work, I have shown the primary purpose of positional embeddings was
+In my work, I have shown that the primary purpose of positional embeddings was
 to attenuate the effect of distant tokens in the training data, which explained
 why positional embeddings make it possible to use longer sentences in the
 training data. I have also shown that there were three distinct clusters of
@@ -720,9 +695,6 @@ grammatical properties of tokens such as parts of speech.
 
 ## Strengths and Weaknesses of Retrieval Systems {#strengths-and-weaknesses}
 
-Next, I will focus on my experiments, where I show the role of *diversity* in
-learning-to-rank techniques.
-
 In my work, I have shown that we can improve the accuracy of learning-to-rank
 techniques at the ARQMath 2021 lab by first clustering the results of different
 search engines and then only combine those that are highly diverse. To explain
@@ -733,9 +705,6 @@ and math and how capable they were at answering queries of different lengths.
 * * *
 
 ## Interactive Visualizations of Retrieval Collections {#interactive-visualizations}
-
-Finally, will focus on my experiments, where I show how semantic matching
-techniques can be used to produce explanations for math-aware search engines.
 
 In 2021, I led the bachelor's thesis of @petr2021document, where we have
 developed an *interactive demo* of the soft cosine measure technique on data
@@ -748,27 +717,15 @@ result contributed to its final score.
 
 # Conclusion {#conclusion}
 
-To conclude, in my work, I aimed to answer three research questions:
-
-1. Can *semantic matching techniques* that use *token embeddings* improve the
-   *accuracy* of math-aware search engines?
-
-2. Can semantic matching techniques based on token embeddings be *reasonably
-   fast* for math-aware search?
-
-3. Can *learning-to-rank techniques* consistently improve accuracy compared to
-   *individual* math-aware search engines?
+In my work, I aimed to answer three research questions, which I repeat in the
+presentation slide. I will now summarize the results for each question.
 
 As for the first research question, the answer is yes. I have shown that
 semantic matching techniques based on token embeddings significantly improve
 accuracy on math information retrieval compared to the hard vector space model,
 especially in combination with *weighted zone scoring*. I have also shown how
-the accuracy of token embeddings can be further improved using *parameter
-optimization* in token embedding models, *constrained positional embeddings*,
-*token embedding regulazization* and *orthogonalization*, and *word sense
-disambiguation*. However, I have only evaluated these extensions on tasks that
-are related to math information retrieval and not directly on math information
-retrieval.
+the accuracy of token embeddings can be further improved using five additional
+techniques on tasks that are related to math information retrieval.
 
 As for the second question, the answer is also yes. I have proven that the
 *soft cosine measure* technique can be as fast as the *hard vector space
@@ -780,8 +737,7 @@ different *rank-based fusion* learning-to-rank techniques can always improve
 the accuracy compared to individual math-aware search engines. I have also
 shown that my *score aggregation* learning-to-rank technique can consistently
 improve the accuracy compared to individual systems on *machine learning
-evaluation* task, which is a close cousin to the semantic text similarity task
-an also information retrieval.
+evaluation*.
 
 * * *
 
@@ -794,22 +750,18 @@ according to SCIMAGO. The other is the *Journal of universal computer science*,
 which is among the 50\% most influential journals in the area of empirical
 computer science.
 
-I also twelve proceeding articles, six of them as the main author
-and one of them as the sole author. Furthermore, out of the twelve proceeding
+I also co-authored twelve proceeding articles, six of them as the main author
+and one of them as the sole author. Furthermore, out of the twelve
 articles, two were published at a *CORE A* conference. The publication that I
 authored as the sole author in 2018 has already received 15 citations from
-other researchers, seven of them in 2021 and one in 2022 already, which
-indicates ongoing impact of my results on the breader research community.
-Furthermore, in 2021, my work on developing new learning-to-rank techniques for
-math information retrieval has been cited by professor *Clyde Lee Giles*, a
-noted scholar who has created the academic search engine of *CiteSeer*.
-[@rohatgi2021ranked]
+other researchers, seven of them in the last year and one in this year, which
+shows the ongoing impact of my results.
 
 * * *
 
 # Common Remarks {#common-remarks}
 
-First, if I may, I would also like to briefly respond to remarks that have
+First, if I may, I would like to briefly respond to remarks that have
 appeared in both reports and that discuss the omission of technical details
 in my thesis.
 
@@ -832,10 +784,10 @@ researchers outside math information retrieval.
 Therefore, I have used the technique of Richard Feynman who says that a
 researcher should simplify what they have learned, so that they can explain it
 even to non-experts and draw useful connections, which would otherwise have
-been obscured by the details. However, I do agree that this high-level approach
-makes it difficult to determine whether research methods have been properly
-applied. Therefore, an amended version of my thesis will contain all 176 pages
-of my publications as an appendix.
+been obscured by the details. However, upon reflection, I do agree that this
+high-level approach makes it difficult to determine whether research methods
+have been properly applied. Therefore, an amended version of my thesis will
+contain all 176 pages of my publications as an appendix.
 
 * * *
 
@@ -858,7 +810,7 @@ of my publications as an appendix.
 # Response to the report of prof.\ Douglas W.\ Oard {#oard}
 
 Next, I would like to thank professor Oard for the many editorial comments
-in his report, most of which I have already incorporated into an amended
+in his report, most of which I have already incorporated into the amended
 version of my thesis. I will now respond to the questions from the report.
 
 ## Soft Cosine Measure Questions {#soft-cosine-measure-questions}
@@ -868,28 +820,28 @@ of similarities between the token embeddings of a query term and all document
 terms, the ColBERT technique of @khattab2020colbert uses the maximum of the
 similarities. Additionally, whereas the soft cosine measure uses global
 token embeddings that are independent on the context of a sentence, ColBERT
-uses contextual token embeddings produced by a deep neural network language
-model. The question then asks whether and how does the first of these
-differences, that is using either the sum of similarities or the maximum
-of similarities, benefit the two techniques.
+uses contextual token embeddings. The question then asks whether and how does
+the first of these differences, that is using either the sum of similarities or
+the maximum of similarities, benefit the two techniques.
 
 First, let's look at the mathematical perspective. Using the maximum operator
 is similar to the regularized soft cosine measure, where we only consider a
 single most similar token. However, one important difference is that the
 regularized soft cosine measure ensures symmetry, so if token $a$ is among the
-most similar tokens for $b$, then $b$ will also be among the most similar
-tokens for $a$ even though this is not generally true. By contrast, the maximum
-operator makes ColBERT asymmetric and in my work, I have shown
-[@novotny2020text, Table 2] that asymmetry reduces accuracy on text classification.
+most similar tokens for token $b$, then $b$ will also be among the most similar
+tokens for $a$ even though this is not generally true in metric spaces. By
+contrast, the maximum operator makes ColBERT asymmetric and in my work, I have
+shown [@novotny2020text, Table 2] that asymmetry reduces accuracy on text
+classification.
 
 Next, let's look at some intuitive properties of the soft cosine measure and
 ColBERT. The soft cosine measure uses soft matches to estimate how many times
 a term from the query appears in the document if we disregard surface-level
 differences. Therefore, the soft cosine measure can distinguish between a
-document that only contains one instance of a term and a document that contains
-many instances of a term. By contrast, ColBERT would not be able to distinguish
-such two documents and therefore only seems suitable for short passages, which
-is also the task for which it was originally developed.
+document that only contains one instance of a query term and a document that contains
+many instances of the term. By contrast, ColBERT would not be able to distinguish
+these two documents and therefore only seems suitable for short passages, which
+is also the task for which it was originally developed and where it was evaluated.
 
 Therefore, it seems that it might be useful to extend ColBERT, so that it
 considers not only the most similar term, but $k$ most similar terms, which
@@ -904,14 +856,14 @@ The answer is that whereas Faiss and Annoy are low-dimensional dense vector
 databases, the soft cosine measure is a sparse retrieval technique, where both
 the query and the documents are represented as high-dimensional sparse vector
 coordinates and every nonzero coordinate represents a single word or
-mathematical symbol from the query or the document. Now, there is a gray zone
-between about 1\% and 50\% non-zeros in the vector coordinates where it is not
-clear whether it is more efficient to handle them as sparse or dense, but here
-the non-zero coordinates for most documents will be a fraction of a percent.
-This would be not only extremely time-inefficient, but also space-inefficient.
-Imagine a small corpus of 1 million documents. According to Heaps' law, the
-dictionary will contain approximately 100,000 terms, which amounts to a matrix
-of 1 million times 100,000 floats, which amounts to about 1TiB of memory.
+symbol from the query or the document. Now, there is a gray zone between about
+1\% and 50\% non-zeros in the vector coordinates where it is not clear whether
+it is more efficient to handle them as sparse or dense, but here the non-zero
+coordinates for most documents will be a fraction of a percent.  This would be
+not only extremely time-inefficient, but also space-inefficient.  Imagine a
+small corpus of 1 million documents. According to Heaps' law, the dictionary
+will contain approximately 100,000 terms, which amounts to a matrix of 1
+million times 100,000 floats, which amounts to about 1TiB of memory.
 
 Therefore, we would need a sparse vector database. These are much more rare,
 but in sparse retrieval, we typically use inverted indices such as Apache
@@ -930,10 +882,10 @@ accuracy. ↷
 This should answer the question as stated, but if I may, I would like to
 address a related concern from the first section of your report. You remark
 that although I have proven in my CIKM 2018 paper that the soft cosine measure
-can be as fast as standard sparse retrieval techniques, it was much slower than
+can be as fast as sparse retrieval techniques, it was much slower than
 other search engines that used sparse and dense retrieval techniques at the
-ARQMath 2021 shared task evaluation, which seems to call into question the
-practical benefit of my asymptotic complexity analysis.
+ARQMath 2021 lab, which would seems to call into question the practical benefit
+of my complexity analysis.
 
 I should clarify that the implementation that I used for ARQMath 2021 was not
 asymptotically optimal. In the soft cosine measure, we perform two dot
@@ -996,7 +948,7 @@ programming effort.
 ## Sentence-BERT Questions {#sentence-bert-questions}
 
 The second set of questions concerns the Sentence-BERT dense retrieval model,
-which we used in the ARQMath shared task evaluations.
+which I used in the ARQMath labs.
 
 The first question asks whether there is any reason to believe that using a
 proxy objective such as word analogy accuracy or machine translation to perform
@@ -1004,13 +956,12 @@ model or parameter selection will improve performance on math information
 retrieval.
 
 Recent literature [@ghannay2016word; @chiu2016intrinsic; @rogers2018whats]
-indicates that the intrinsic word analogy accuracy does not always correlate
-with extrinsic natural language processing tasks such as part-of-speech
-tagging, named entity recognition, and chunking. Therefore, while the word
-analogy accuracy can be useful to detect undertrained token embeddings and also
-as an early stopping criterion for training token embeddings, prior work
-suggests that it should be combined with extrinsic evaluation measures for
-model and parameter selection.
+indicates that word analogy accuracy does not always correlate with extrinsic
+natural language processing tasks such as part-of-speech tagging, named entity
+recognition, and chunking. Therefore, while the word analogy accuracy can be
+useful to detect undertrained token embeddings and also as an early stopping
+criterion for training token embeddings, prior work suggests that it should be
+combined with extrinsic evaluation measures for model and parameter selection.
 
 As far as machine translation is concerned, I would like to emphasize that none
 of my experiments directly involved machine translation. In sections 4.2.6 and
@@ -1042,7 +993,7 @@ DPR uses different encoders for queries and documents. The question then asks
 whether and how do these differences benefit Sentence-BERT.
 
 In their work, @reimers2019sentencebert [Section 1] have experimented with
-Sentence BERT, using both pooling and CLS tokens on semantic text
+Sentence-BERT, using both pooling and CLS tokens on semantic text
 classification tasks. They concluded that both achieved comparable performance.
 
 The Siamese architecture of Sentence-BERT does not distinguish between
@@ -1062,12 +1013,12 @@ negatives that are difficult to distinguish from positive samples. The question
 then asks, whether I have experimented with any alternatives to simple random
 sampling of negatives.
 
-In our experiments for that ARQMath 2020 shared task evaluation, we have
-experimented with a number of adversarial strategies to negative sampling.
-For example, we have picked negative samples that had high lexical overlap
-with the accepted answer. We also picked negative samples that answered the
-same question, but had the least number of votes. However, we did not observe
-any improvements to accuracy on our development dataset.
+In our experiments at the ARQMath 2020 lab, we have experimented with a number
+of adversarial strategies to negative sampling.  For example, we have picked
+negative samples that had high lexical overlap with the accepted answer. We
+also picked negative samples that answered the same question, but had the least
+number of votes. However, we did not observe any improvements to accuracy on
+our development dataset.
 
 * * *
 
@@ -1106,8 +1057,8 @@ produced by different search engines, since they have different probability
 distributions, and in sparse retrieval, they are usually unbounded and depend
 on the lengths of the documents in the collection. Therefore, different score
 normalization would be required for community question answering collections
-such as ARQMath, where the average document is a short post contains hundreds
-of tokens at most and math understanding collection such as NTCIR-10, where the
+such as ARQMath, where the average document is a short *post* that contains hundreds
+of tokens *at most* and math understanding collections such as NTCIR-10, where the
 average document is a scientific article that contains thousands of tokens.
 After we have normalized the scores, we can directly use them in my IBC
 technique instead of inverse ranks.
@@ -1148,7 +1099,7 @@ be used to explain what they represent in understandable terms to a human.
 One example of an interpretable representation would be the soft vector space
 model, which allows us to explain which exact keywords but also which pairs of
 related words and symbols contributed to the final score of a result. In our
-demo application, we have used this information to produce rich snippets, but
+demo, we have used this information to produce rich snippets, but
 other kinds of explanations could be produced. This shows that interpretable
 representations can be used to produce interpretable search results.
 
@@ -1158,15 +1109,15 @@ scope of my thesis, where I focused on the qualitative, not quantitative,
 evaluation of the interpretable representations. ↷
 
 The second question asks whether and how are simple representations such as the
-surface forms such as words or math formulae less interpretable than the
+surface forms of words or math formulae less interpretable than the
 vectors used in sparse retrieval or even token embeddings, and in which sense
 are token embeddings interpretable.
 
-The surface forms such as word or math formulae seem interpretable, since any
-part of them can be explained to a human. By contrast, we may not be able to
-recover the surface form from token embeddings, but, as I show in Section 6.1,
-we can use them to determine the grammatical and other properties of the
-tokens, which may not be obvious from the surface forms.
+The surface forms of words and math formulae seem interpretable, since any part
+of them can be explained to a human. By contrast, we may not be able to recover
+the surface form from token embeddings. However, as I show in Section 6.1, we
+can use token embeddings to determine the grammatical and other properties of
+the tokens, which may not be obvious from the surface forms.
 
 In my thesis, I did not attempt to quantify the interpretability, but let
 us assume that the surface forms are more interpretable than token
@@ -1174,12 +1125,6 @@ embeddings. Should I also have studied them? As I state in my research
 questions, I am interested in interpretable representations that can improve
 the speed and the accuracy of search engines. Therefore, I don't think the
 surface forms would be too relevant to the research questions of my thesis.
-
-However, the point that my definition of *interpretability* is vague is
-well-taken and @hall2018introduction themselves admit that they use it as an
-umbrella term. I agree that this makes it less useful for scientific enquiry
-than other more restrictive and technical definitions that are sometimes used
-in machine learning literature.
 
 * * *
 
@@ -1214,61 +1159,62 @@ First, I would like to point out that there is a substantial body of work on
 presentation, content, and semantic math representations, which are referenced
 in Section 2.2 about math representations. Furthermore, Section 2 focuses on
 the most prominent techniques, which were either used in the state-of-the-art
-search engines that I list in Section 3 or which I encountered in my
-experiments that I list in sections 4 through 6. That is to say that the list
+search engines that I list in Chapter 3 or which I encountered in my
+experiments that I list in chapters 4 through 6. That is to say that the list
 is not exhaustive. For example, there is a large body of related work that
 focuses on computer algebra systems and proof assistants. This is its own
-branch of information retrieval, which is outside the scope of my thesis, but
+branch of math information retrieval, which is outside the scope of my thesis, but
 I point the readers to the proceedings of the *International Conference of
 Intelligent Computer Mathematics (CICM)*, which is the prime venue for new
 results in this area, in section 2.2.3 on semantic math.
 
 However, if we focus just on the subarea of math information retrieval that
-involves traditional user-facing math-aware search engines, it is the case
-that most recent results in the area were produced by a handful of research
-groups. In their survey of math information retrieval, @guidi2016survey reached
-a similar conclusion, stating that the progress in the field ,,is mostly due to
-the steady work of a very few groups that keep improving their own
-software.\`\`. However, I should note that the ARQMath shared task evaluations
-have reinvigorated interest in the field and whereas only six research groups
-have participated in ARQMath 2020, eleven groups have participated in ARQMath
-2021 and twelve have already registered for ARQMath 2022. ↷
+involves traditional user-facing math-aware search engines, it is the case that
+most recent results in the area were produced by a handful of research groups.
+In their survey of math information retrieval, @guidi2016survey state that the
+progress in the field ,,is mostly due to the steady work of a very few groups
+that keep improving their own software.\`\` However, I should note that the
+ARQMath labs have reinvigorated interest in the field and whereas only six
+research groups have participated in ARQMath 2020, eleven groups have
+participated in ARQMath 2021 and twelve have already registered for ARQMath
+2022. ↷
 
 The second question expands on the first question by asking what the impact
 of math-specific techniques is and whether the reader of the thesis can
 find a recommendation what techniques they should use in which retrieval
 scenario.
 
-In Section 3, I list the current state-of-the-art math-aware search engines,
+In Chapter 3, I list the current state-of-the-art math-aware search engines,
 which at the moment are Tangent-L for full-text search and Approach0 for
 formula search.
 
-Tangent-L uses the symbol layout tree presentation math representation and
-math normalization techniques, which I describe in Section 2.2, and sparse
+Tangent-L uses the *symbol layout tree* presentation math representation and
+*math normalization* techniques, which I describe in Section 2.2, and sparse
 retrieval with the hard vector space model and BM25⁺ weighting, which I
 describe in Section 2.3. Here, the math-specific ingredients include the math
 representations and math normalization. The remaining techniques used by
 Tengent-L are not math-specific.
 
-Approach0 uses the operator tree content math representation, which I describe
+Approach0 uses the *operator tree* content math representation, which I describe
 in Section 2.2, and structural matching, query expansion, and sparse retrieval
 with the hard vector space model and BM25 weighting, which I describe in
 Section 2.3. Then, it combines the results using rank fusion, which I also
-describe in Section 2.3. The math-specific ingredients include the math
+describe in Section 2.3. Here, the math-specific ingredients include the math
 representations and structural matching. The remaining techniques used by
 Approach0 are not math-specific.
 
 Many of the techniques that I have developed have only been evaluated on tasks
-that are related to information retrieval, such as semantic text similarity,
+that are related to math information retrieval, such as semantic text similarity,
 machine translation evaluation, and causal language modeling. However, for
 example, the soft cosine measure has received significantly better accuracy
-(nDCG', two-sample t-test, 90% confidence) than all the other math-aware search
+(nDCG', two-sample t-test, 90\% confidence) than all the other math-aware search
 engines that used the soft vector space model with the TF-IDF weighting on the
 ARQMath 2021 shared task evaluation, which indicates that the technique can
 be recommended for sparse math information retrieval. The two learning-to-rank
-techniques, which I have developed for ARQMath have also outperformed the
-reciprocal rank fusion, which is a standard fusion technique for information
-retrieval. Therefore, these techniques can also be recommended.
+techniques that I have developed for ARQMath have also outperformed the
+reciprocal rank fusion technique of @cormack2009reciprocal, which is a standard
+fusion technique for information retrieval. Therefore, these techniques can
+also be recommended.
 
 * * *
 
