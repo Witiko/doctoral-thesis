@@ -453,7 +453,7 @@ the meaning of a token was fully determined by its position in a sentence,
 whereas in reality, a part of the meaning of a token is fixed and independent
 on its position in a sentence.
 
-In my work, I have shown that constraining the effect of positional embeddings
+In my work, I have shown that *constraining* the effect of positional embeddings
 can improve the word analogy accuracy by 6\%, makes it possible to use longer
 sentences in the training data, and makes the embedding model twice as fast
 to train. [@novotny2021when] ↷
@@ -748,21 +748,61 @@ result contributed to its final score.
 
 # Conclusion {#conclusion}
 
-% TODO (2 minutes)
+To conclude, in my work, I aimed to answer three research questions:
+
+1. Can *semantic matching techniques* that use *token embeddings* improve the
+   *accuracy* of math-aware search engines?
+
+2. Can semantic matching techniques based on token embeddings be *reasonably
+   fast* for math-aware search?
+
+3. Can *learning-to-rank techniques* consistently improve accuracy compared to
+   *individual* math-aware search engines?
+
+As for the first research question, the answer is yes. I have shown that
+semantic matching techniques based on token embeddings significantly improve
+accuracy on math information retrieval compared to the hard vector space model,
+especially in combination with *weighted zone scoring*. I have also shown how
+the accuracy of token embeddings can be further improved using *parameter
+optimization* in token embedding models, *constrained positional embeddings*,
+*token embedding regulazization* and *orthogonalization*, and *word sense
+disambiguation*. However, I have only evaluated these extensions on tasks that
+are related to math information retrieval and not directly on math information
+retrieval.
+
+As for the second question, the answer is also yes. I have proven that the
+*soft cosine measure* technique can be as fast as the *hard vector space
+model*. I have also shown how the speed of token embeddings can be improved in
+terms of *vector arithmetic*, *training time*, and *query time*.
+
+As for the third question, the answer is again yes. I have shown that four
+different *rank-based fusion* learning-to-rank techniques can always improve
+the accuracy compared to individual math-aware search engines. I have also
+shown that my *score aggregation* learning-to-rank technique can consistently
+improve the accuracy compared to individual systems on *machine learning
+evaluation* task, which is a close cousin to the semantic text similarity task
+an also information retrieval.
 
 * * *
 
 # List of Author's Publications {#list-of-publications}
 
-% TODO
+In my work, I co-authored and published two journal articles, one of them as
+the main author. One of the journals is *Knowledge-based systems*, which is
+among 25\% most influential journals in the area of artificial intelligence
+according to SCIMAGO. The other is the *Journal of universal computer science*,
+which is among the 50\% most influential journals in the area of empirical
+computer science.
 
-% <https://digitalcommons.odu.edu/computerscience_fac_pubs/194/>, authored by Lee Giles (the author of Citeseer) cites @novotny2020three.
-% @novotny2018implementation has received many citations.
-
-% > One journal publication was in Q1 (Knowledge-based Systems), while the second
-% > in Q4 (J. of Universal Computer Science).
-
-% @ayetiran2021eds is Q1 and @novotny2021when is Q2 by SCIMAGO.
+I also twelve proceeding articles, six of them as the main author
+and one of them as the sole author. Furthermore, out of the twelve proceeding
+articles, two were published at a *CORE A* conference. The publication that I
+authored as the sole author in 2018 has already received 15 citations from
+other researchers, seven of them in 2021 and one in 2022 already, which
+indicates ongoing impact of my results on the research community. Furthermore,
+in 2021, my work on developing new learning-to-rank techniques for math
+information retrieval has been cited by *Clyde Lee Giles* a noted scholar
+who has created the academic search engine of *CiteSeer*. [@rohatgi2021ranked]
 
 * * *
 

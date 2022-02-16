@@ -3860,7 +3860,7 @@ questions and offer directions for future work:
     📖{query time}
 
     I have also shown how the speed of token embeddings can be improved in terms
-    their arithmetic, training time, and query time. See Section
+    of their arithmetic, training time, and query time. See Section
     \vref{sec:quantized-token-embeddings-with-fast-bitwise-arithmetic},
     Section \vref{sec:position-independent-token-embeddings-speed}, and
     Section \vref{sec:dense-retrieval-in-inverted-indices-speed}.↓
@@ -3873,10 +3873,10 @@ questions and offer directions for future work:
 
     📖{score aggregation}
    
-    I have also shown that the score aggregation learning-to-rank technique can
+    I have also shown that my score aggregation learning-to-rank technique can
     consistently improve the accuracy compared to individual systems on machine
-    translation tasks.  Future work should evaluate score aggregation on math
-    information retrieval. 
+    translation evaluation tasks.  Future work should evaluate score
+    aggregation on math information retrieval. 
     See Section \vref{sec:score-aggregation-of-structural-and-semantic-matching-techniques}.
 
 To make it easy for others to reproduce my work, I have publicly released more
