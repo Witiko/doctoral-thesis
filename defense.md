@@ -937,6 +937,9 @@ contain all 176 pages of my publications as an appendix.
 % If you can’t explain it to a six-year-old, you don't understand it yourself.
 % -- Richard Feynman
 
+- The text was written to be approachable and to draw connections research areas.
+- An amended version of my thesis will contain all my publications as an appendix.
+
 # Response to the report of prof.\ Douglas W.\ Oard {#oard}
 
 Next, I would like to thank professor Oard for the many editorial comments
@@ -1040,14 +1043,21 @@ programming effort.
 * * *
 
 > The Soft Cosine Measure (SCM) seems to me to have a structure similar to
-> CoIBERT (Khattab and Zaharia [@khattab2020colbert], SIGIR 2020), but with two differences: (1)
-> CoIBERT uses the maximum over the document terms of the similarity between
+> ColBERT (Khattab and Zaharia [@khattab2020colbert], SIGIR 2020), but with two differences:
+>
+> 1. ColBERT uses the maximum over the document terms of the similarity between
 > embeddings for each query term, whereas SCM uses the sum of those
-> similarities, and (2) CoIBERT uses a transformer to learn contextual
+> similarities, and
+>
+> 2. ColBERT uses a transformer to learn contextual
 > embeddings, whereas your implementation of SCM uses fastText to learn static.
+>
 > How consequential is the first of those differences: are there theoretical or
-> practical advantages or disadvantages to CoIBERT’s max-sim operator compared
+> practical advantages or disadvantages to ColBERT’s max-sim operator compared
 > with the inner product in SCM?
+
+- Unlike the soft cosine measure (SCM), ColBERT is asymmetrical.
+- ColBERT seems suitable mainly for passage retrieval.
 
 * * *
 
@@ -1055,6 +1065,13 @@ programming effort.
 > approximate nearest neighbor computation (e.g., Faiss) with SCM rather than
 > your regularization technique? Would there be a parameter similar to your
 > $C$ that would need to be set to bound compute time?
+
+- Standard tools such as Faiss retrieve low-dimensional dense vectors.
+- The soft cosine measure (SCM) is based on high-dimensional sparse vectors.
+- Inverted indices such as ElasticSearch retrieve high-dimensional sparse vectors.
+    - In my work, [@novotny2018implementation, Section 4] I show how SCM can be implemented into inverted indices.
+- Alternatively, we could use dimensionality reduction techniques:
+    - @atreya2011latent show that this reduces information retrieval accuracy.
 
 * * *
 
@@ -1122,7 +1139,7 @@ Sentence-BERT produces the same sentence embeddings for queries and documents,
 DPR uses different encoders for queries and documents. The question then asks
 whether and how do these differences benefit Sentence-BERT.
 
-In their work, @reimers2019sentencebert [Section 1] have experimented with
+In their work, @reimers2019sentencebert [Section 6] have experimented with
 Sentence-BERT, using both pooling and CLS tokens on semantic text
 classification tasks. They concluded that both achieved comparable performance.
 
@@ -1157,12 +1174,19 @@ our development dataset.
 > believe that the systems or parameters selected would be reasonable choices
 > for a math retrieval application?
 
+- Word analogy accuracy does not always correlate with extrinsic tasks. [@ghannay2016word; @chiu2016intrinsic; @rogers2018whats]
+- Machine translation evaluation is close cousin to semantic text similarity.
+
 * * *
 
 > Unlike Sentence-BERT, Dense Passage Retrieval (DPR, Karpukhin et al. [@karpukhin2020dense],
 > EMNLP 2020) models queries and documents differently, and it uses a prefix
 > (CLS) token as the representation rather than Sentence-BERT’s mean pooling.
 > What benefits does Sentence-BERT have over DPR?
+
+- @reimers2019sentencebert [Section 6] experiment with both pooling and CLS token.
+- In my work with Sentence-BERT, I prefix input sentences either with *Question:* or *Answer:*.
+- The Siamese architecture of Sentence-BERT converges faster.
 
 * * *
 
@@ -1172,6 +1196,11 @@ our development dataset.
 > Contrastive Estimation (ANCE, Xiong et al. [@xiong2020approximate], ICLR 2021), which
 > iteratively learns to select negative examples. Did you experiment with any
 > alternative to random selection of negative examples?
+
+- We experimented with a number of adversarial strategies to negative sampling:
+    - high lexical overlap with the accepted answer
+    - posts that answered the same question but had the least votes
+- We did not observe any improvements to accuracy on development dataset.
 
 ## System Combination Questions {#system-combination-questions}
 
@@ -1211,6 +1240,9 @@ score normalization that we would use.
 > indicate a weaker commitment to the generated rank order). How might you
 > adapt IBC to benefit from access to those document scores? Would you expect
 > improved results?
+
+- To use score aggregation, we would first need to normalize the scores.
+- Rank-based fusion can produce competitive results on TREC. [@renda2003web; @cormack2009reciprocal]
 
 ## Interpretable Representation Questions {#interpretable-representation-questions}
 
@@ -1263,6 +1295,11 @@ surface forms would be too relevant to the research questions of my thesis.
 > term you use in the title of the thesis. In general, what characteristics
 > would make a representation \`\`interpretable''?
 
+- Interpretable representations can be used to explain what they
+  represent in understandable terms to a human.
+- Quantitative evaliation of interpretability was outside the scope
+  of my work.
+
 * * *
 
 > In this thesis, you focus on embeddings as representations for text and math
@@ -1271,6 +1308,9 @@ surface forms would be too relevant to the research questions of my thesis.
 > model, and those vectors as more interpretable than the dense vectors that we
 > call embeddings. In what sense do you mean to claim that the embedding
 > representations studied in this thesis are \`\`interpretable''?
+
+- Surface forms are interpretable, perhaps moreso than token embeddings.
+- However, they are not necessarily useful for accurate and fast retrieval.
 
 # Response to the report of prof.\ RNDr.\ Tomáš Skopal, Ph.D. {#skopal}
 
@@ -1287,7 +1327,7 @@ information retrieval community.
 
 First, I would like to point out that there is a substantial body of work on
 presentation, content, and semantic math representations, which are referenced
-in Section 2.2 about math representations. Furthermore, Section 2 focuses on
+in Section 2.2 about math representations. Furthermore, Chapter 2 focuses on
 the most prominent techniques, which were either used in the state-of-the-art
 search engines that I list in Chapter 3 or which I encountered in my
 experiments that I list in chapters 4 through 6. That is to say that the list
@@ -1340,7 +1380,7 @@ example, the soft cosine measure has received significantly better accuracy
 (nDCG', two-sample t-test, 90\% confidence) than all the other math-aware search
 engines that used the soft vector space model with the TF-IDF weighting on the
 ARQMath 2021 shared task evaluation, which indicates that the technique can
-be recommended for sparse math information retrieval. The two learning-to-rank
+be recommended for sparse math information retrieval. Two learning-to-rank
 techniques that I have developed for ARQMath have also outperformed the
 reciprocal rank fusion technique of @cormack2009reciprocal, which is a standard
 fusion technique for information retrieval. Therefore, these techniques can
@@ -1354,9 +1394,20 @@ also be recommended.
 > general IR. Some other MIR-related works are mentioned in subsections 4.x. Is
 > this lack of math specific IR a sign of small research MIR community?
 
+- Section 2.2 about math representations also cites substantial body of work.
+- Chapter 2 focuses on most prominent techniques used in state-of-the-art systems.
+- Math information retrieval is under-researched. [@guidi2016survey]
+
 * * *
 
 > Could you describe and quantify the impact of math-specific extensions to IR
 > engines? In the thesis results for text-based and math-based retrieval are
 > mixed. Could a reader of the thesis (or the referenced papers) find a
 > recommendation of what MIR techniques to use in what retrieval scenario?
+
+- In Chapter 3, I list state-of-the-art systems together with
+  the techniques they use.
+- Soft cosine measure [@novotny2018implementation] consistently
+  improves accuracy. [@novotny2020text; @novotny2021ensembling]
+- Rank-based fusion techniques consistently improve accuracy.
+  [@novotny2021ensembling]
