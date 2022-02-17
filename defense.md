@@ -822,7 +822,7 @@ techniques on tasks that are related to math information retrieval.
 As for the second question, the answer is also yes. I have proven that the
 *soft cosine measure* technique can be as fast as the *hard vector space
 model*. I have also shown how the speed of token embeddings can be improved in
-terms of *vector arithmetic*, *training time*, and *query time*.
+terms of *training time* and *vector arithmetic*.
 
 As for the third question, the answer is again yes. I have shown that four
 different *rank-based fusion* learning-to-rank techniques can always improve
@@ -832,6 +832,26 @@ improve the accuracy compared to individual systems on *machine learning
 evaluation*.
 
 * * *
+
+In my work, I aimed to answer three research questions:
+
+1. Can semantic matching techniques that use token embeddings improve the
+   accuracy of math information retrieval systems?
+
+    - Yes, especially in combination with *weighted zone scoring*.
+    - Five additional techniques have been shown to improve accuracy on related tasks.
+
+2. Can semantic matching techniques based on token embeddings be reasonably
+   fast for math information retrieval systems?
+
+    - Yes, they can be as fast as sparse retrieval techniques.
+    - Six additional techniques have been shown to improve token embedding speed.
+
+3. Can learning-to-rank techniques consistently improve accuracy compared
+   to individual math information retrieval systems?
+
+    - Yes, rank-based-fusion techniques can consistently improve accuracy.
+    - Score aggregation also consistently improves accuracy on related tasks.
 
 # List of Author's Publications {#list-of-publications}
 
@@ -844,7 +864,7 @@ computer science.
 
 I also co-authored twelve proceeding articles, six of them as the main author
 and two of them as the sole author. Furthermore, out of the twelve
-articles, two were published at a *CORE A* conference. One publication that I
+articles, two were published at a *CORE A* conferences. One publication that I
 authored as the sole author in 2018 has already received 15 citations from
 other researchers, seven of them in the last year and one in this year, which
 shows the ongoing impact of my results.
@@ -852,6 +872,18 @@ shows the ongoing impact of my results.
 To make it easy for others to reproduce my work, I have publicly released more
 than twenty digital artifacts, including Docker images, Jupyter notebooks,
 pre-trained token embeddings, online demos, and Git repositories.
+
+* * *
+
+ /figures/scholar-top.png
+
+* * *
+
+ /figures/scholar-text.tex
+
+* * *
+
+ /figures/scholar-aside.tex
 
 * * *
 
@@ -892,7 +924,9 @@ contain all 176 pages of my publications as an appendix.
 > determine whether research methods had been properly applied and whether
 > results had been properly analyzed and interpreted. I therefore found it
 > necessary to refer to the published papers that I have mentioned as the basis
-> for my assessment in the preceding section. -- prof.\ Douglas W.\ Oard
+> for my assessment in the preceding section. -- prof.~Douglas W.\ Oard
+
+<!-- -->
 
 > Although the thesis is presented as a self-contained manuscript, it is actually
 > a commentary to the individual published works \[...] Such a “commentary” form
@@ -1006,7 +1040,7 @@ programming effort.
 * * *
 
 > The Soft Cosine Measure (SCM) seems to me to have a structure similar to
-> CoIBERT (@khattab2020colbert, SIGIR 2020), but with two differences: (1)
+> CoIBERT (Khattab and Zaharia [@khattab2020colbert], SIGIR 2020), but with two differences: (1)
 > CoIBERT uses the maximum over the document terms of the similarity between
 > embeddings for each query term, whereas SCM uses the sum of those
 > similarities, and (2) CoIBERT uses a transformer to learn contextual
@@ -1024,7 +1058,7 @@ programming effort.
 
 * * *
 
-> The CIKM2018 paper includes a theoretical analysis that indicates that the
+> The CIKM2018 paper [@novotny2018implementation] includes a theoretical analysis that indicates that the
 > asymptotic time complexity of search using regularized (and thus sparse)
 > vectors is linear in the product of the number of query terms and the number
 > of nonzero elements per regularized document vector, both of which can be
@@ -1125,7 +1159,7 @@ our development dataset.
 
 * * *
 
-> Unlike Sentence-BERT, Dense Passage Retrieval (DPR, @karpukhin2020dense,
+> Unlike Sentence-BERT, Dense Passage Retrieval (DPR, Karpukhin et al. [@karpukhin2020dense],
 > EMNLP 2020) models queries and documents differently, and it uses a prefix
 > (CLS) token as the representation rather than Sentence-BERT’s mean pooling.
 > What benefits does Sentence-BERT have over DPR?
@@ -1135,7 +1169,7 @@ our development dataset.
 > Unlike your random selection of training examples, selecting negative
 > examples that are highly confusable with positive examples has been shown to
 > be a better approach. One application of this idea to BERT is ANN Negative
-> Contrastive Estimation (ANCE, @xiong2020approximate, ICLR 2021), which
+> Contrastive Estimation (ANCE, Xiong et al. [@xiong2020approximate], ICLR 2021), which
 > iteratively learns to select negative examples. Did you experiment with any
 > alternative to random selection of negative examples?
 
@@ -1224,19 +1258,19 @@ surface forms would be too relevant to the research questions of my thesis.
 
 * * *
 
-> You cite Hall and Gill’s 2018 O’Reilly book as defining interpretability, but
-> they offer no specific definition of an “interpretable representation,” the
+> You cite Hall and Gill’s 2018 O’Reilly book [@hall2018introduction] as defining interpretability, but
+> they offer no specific definition of an \`\`interpretable representation,'' the
 > term you use in the title of the thesis. In general, what characteristics
-> would make a representation “interpretable”?
+> would make a representation \`\`interpretable''?
 
 * * *
 
 > In this thesis, you focus on embeddings as representations for text and math
-> content. | would think of surface forms (e.g., words or LaTeX) as being more
+> content. | would think of surface forms (e.g., words or \LaTeX) as being more
 > interpretable than the sparse vectors in what you call the hard vector space
 > model, and those vectors as more interpretable than the dense vectors that we
 > call embeddings. In what sense do you mean to claim that the embedding
-> representations studied in this thesis are “interpretable”?
+> representations studied in this thesis are \`\`interpretable''?
 
 # Response to the report of prof.\ RNDr.\ Tomáš Skopal, Ph.D. {#skopal}
 
