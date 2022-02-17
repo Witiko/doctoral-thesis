@@ -48,8 +48,8 @@ jobs:
       - name: Estimate the length of the thesis defense presentation notes
         run: |
           set -e
-          printf 'Summary length: %d minutes\n'  $(($(pdf2txt notes.pdf | sed -n '/^Summary$/,/^Rebuttal$/p' | wc -w) / 150))
-          printf 'Rebuttal length: %d minutes\n' $(($(pdf2txt notes.pdf | sed -n '/^Rebuttal$/,/^References$/p' | wc -w) / 150))
+          printf 'Summary length: %d minutes\n'  $(($(pdf2txt notes.pdf | sed -n '/^Summary$/,/^Rebuttal$/p' | wc -w) / 135))
+          printf 'Rebuttal length: %d minutes\n' $(($(pdf2txt notes.pdf | sed -n '/^Rebuttal$/,/^References$/p' | wc -w) / 135))
 
       - name: Upload the artifacts
         uses: actions/upload-artifact@v2
