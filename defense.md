@@ -402,10 +402,10 @@ content math representation:
 1. The *prefix* notation, which was produced by pre-order traversal, and
 2. The *infix* notation, which was produced by in-order traversal.
 
-We used the representations in two math-aware search engines and we compared them
-against other commonly used representations such as \LaTeX and paths in presentation
-and content math representations at the ARQMath 2020 lab. With both
-search engines, our representations outperformed the other representations. ↷
+We used the representations in our math-aware search engines and we compared
+them against other commonly used representations such as \LaTeX{} and paths in
+presentation and content math representations at the ARQMath 2020 lab. Both
+prefix and infix notations outperformed the other representations. ↷
 
 The accuracy of semantic matching techniques depends on accurate token embeddings
 that capture the relationship between different words and math symbols.
@@ -549,7 +549,7 @@ In my work, I have developed a score aggregation technique. I used my technique
 to combine the results of 16 semantic matching techniques in
 order to avoid the systematic errors of any individual technique. My score
 aggregation technique achieved equal or better accuracy than any individual
-technique on machine translation evaluation. [@stefanik2021regressive] ↷
+technique on machine translation evaluation. [@stefanik2021regressive] ↷ ↷ ↷
 
 % Section 4.4: Rank-Based Fusion of Math Information Retrieval Systems
 
@@ -586,13 +586,13 @@ accuracy.
 
 In my work, I have performed a statistical analysis of publicly available
 community question answering datasets and shown that earlier comments in online
-discussions were *significantly* more likely to be relevant than later comments.
+discussions were *significantly* more likely to be relevant than later comments. ↷
 
 Then, I developed a search engine that assigned smaller weight to later comments
 in a discussion and achieved state-of-the-art accuracy on an information
 retrieval dataset, whereas the same search engine without the *weighted zone
 scoring* achieved worse-than-baseline accuracy on the same dataset.
-[@novotny2018weighting]
+[@novotny2018weighting] ↷ ↷
 
 Finally, I used weighted zone scoring in three out of nine math-aware search
 engines of our research group in the ARQMath 2021 lab. All three search engines
@@ -611,7 +611,7 @@ ElasticSearch, which makes it difficult to make a switch.
 In my work, I have shown that dense embeddings can be *encoded* as sparse vector
 coordinates with almost no loss of accuracy. I have also shown that our encoding
 can be tuned to trade off retrieval accuracy for speed. [@rygl2017semantic;
-@ruzicka2017flexible]
+@ruzicka2017flexible] ↷
 
 Furthermore, I have proven that semantic matching techniques such as the soft
 cosine measure can be regularized, so that they are as fast as the hard vector
@@ -751,8 +751,8 @@ which is among the 50\% most influential journals in the area of empirical
 computer science.
 
 I also co-authored twelve proceeding articles, six of them as the main author
-and one of them as the sole author. Furthermore, out of the twelve
-articles, two were published at a *CORE A* conference. The publication that I
+and two of them as the sole author. Furthermore, out of the twelve
+articles, two were published at a *CORE A* conference. One publication that I
 authored as the sole author in 2018 has already received 15 citations from
 other researchers, seven of them in the last year and one in this year, which
 shows the ongoing impact of my results.
