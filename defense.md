@@ -540,11 +540,29 @@ second and third best accuracies in the lab.
 | Positional weighting, identity positional vectors$^\*$     |*75.02\%* | 4h 59m 27s    |
 | Positional weighting, same as word vectors (uniform)       | 74.31\%  | 4h 57m 25s    |
 | Positional weighting, same as word vectors (sq.-normal)    | 74.95\%  | 5h 01m 11s    |
-: English word analogy task accuracies and training times of word vectors without positional weighting and with different initializations for positional weighting. -- @novotny2020art [Table 3]
+%
+: English word analogy task accuracies and training times of word %
+  vectors without positional weighting and with different % initializations for positional weighting. %
+  -- @novotny2020art [Table 3]
 
 * * *
 
  /figures/suggested-subword-sizes.tex
+
+* * *
+
+ /figures/window-size-to-accuracy.tex
+ 
+| Model                  | $c$ | $D'$ | Training Time          |
+|:-----------------------|----:|-----:|:-----------------------|
+| Subword                |   5 |      | 1 hour  and 11 minutes |
+| Positional             |  15 |  300 | 4 hours and 12 minutes |
+| Constrained positional |  15 |   60 | 2 hours and  5 minutes |
+%
+: Optimal context window sizes $c$ and numbers of positional %
+  features $D'$, and training times for the subword, %
+  positional, and constrained positional models. %
+  -- @novotny2021when [Table 1]
 
 * * *
 
