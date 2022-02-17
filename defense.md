@@ -469,8 +469,7 @@ have shown that *binary* token embeddings were as accurate as token embeddings
 that used floating point numbers. We have also shown that approximating vector
 addition as bitwise logical disjunction and vector subtraction as bitwise
 logical non-implication improved the speed more than 20× and was within 2\% of
-optimal word analogy accuracy, which is a novel result that extends beyond
-information retrieval. ↷
+optimal word analogy accuracy. ↷
 
 % Section 4.2.5: Word Sense Disambiguation with Sense Embeddings
 
@@ -849,6 +848,10 @@ articles, two were published at a *CORE A* conference. One publication that I
 authored as the sole author in 2018 has already received 15 citations from
 other researchers, seven of them in the last year and one in this year, which
 shows the ongoing impact of my results.
+
+To make it easy for others to reproduce my work, I have publicly released more
+than twenty digital artifacts, including Docker images, Jupyter notebooks,
+pre-trained token embeddings, online demos, and Git repositories.
 
 * * *
 
