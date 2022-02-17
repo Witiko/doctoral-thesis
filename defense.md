@@ -311,7 +311,7 @@ user satisfaction.
 
 * * *
 
-/figures/word-analogy.pdf
+ /figures/word-analogy.pdf
 
 * * *
 
@@ -355,6 +355,8 @@ third ARQMath lab, which will take place later this year.
 
 * * *
 
+ /figures/competitions.tex
+
 ## Systems {#systems}
 
 Seven math-aware search engines achieved state-of-the-art results in the
@@ -375,6 +377,8 @@ received state-of-the-art results in the last ARQMath lab and also post-hoc
 in the last NTCIR workshop.
 
 * * *
+
+ /figures/systems.tex
 
 # Accuracy and Speed {#accuracy-and-speed}
 
@@ -515,22 +519,64 @@ second and third best accuracies in the lab.
 
 * * *
 
-% > There are also several instances in which I was not able to determine why the
-% > author had chosen to summarize specific work in this thesis. Sections 4.2.6
-% > and 4.3 describe machine translation research, a task very different from
-% > information retrieval. Section 4.2.5 evaluates the effect of data
-% > augmentation on word sense disambiguation.
+- @lample2020deep tokenized content math formulae into *normal Polish notation*.
+- They trained model to solve integrals and differential equations better than CAS.
+- We developed two math representations: *(Example formula: $x!! - y^2 = 0$)*
+    - *Prefix notation*: U!eq O!minus O!double-factorial V!x O!SUP V!y N!2 N!0.
+    - *Infix notation*: ( ( O!double-factorial ( V!x ) O!minus O!SUP ( V!y , N!2 ) ) U!eq N!0 ).
+- At ARQMath 2020, we showed that our representations outperformed other options:
 
-% > P4O what does it mean for some features to “interact with” positional
-% > embeddings?
+> \`\`In the first step, we selected the optimal representation
+> of math from removing math tokens (0.7600), \LaTeX{} (0.7602),
+> OPT (0.7606), SLT (0.7607), and prefix/infix (0.7612).
+> @novotny2020three [Section 4.3]
 
-% > P44 In the caption for Table 4.1, what does it mean for a language pair to be
-% > evaluated cross-lingually? The same question arises in the caption for Table
-% > 4.2 on page 48.
+* * *
 
-% > P59 The second paragraph of section 5.2.1 says “showed it was more accurate”
-% > and “the ... accuracy of these approximations have not been evaluated”. How
-% > was it shown to be more accurate if accuracy was not evaluated?
+|                                                            | Accuracy | Training time |
+|:-----------------------------------------------------------|:---------|:--------------|
+| No positional weighting                                    | 65.52\%  | 2h 06m 33s    |
+| No positional weighting (three epochs)                     | 70.94\%  | 4h 41m 17s    |
+| Positional weighting, same as vanilla word vectors         |*50.96\%* | 5h 01m 16s    |
+| Positional weighting, identity positional vectors$^\*$     |*75.02\%* | 4h 59m 27s    |
+| Positional weighting, same as word vectors (uniform)       | 74.31\%  | 4h 57m 25s    |
+| Positional weighting, same as word vectors (sq.-normal)    | 74.95\%  | 5h 01m 11s    |
+: English word analogy task accuracies and training times of word vectors without positional weighting and with different initializations for positional weighting. -- @novotny2020art [Table 3]
+
+* * *
+
+ /figures/suggested-subword-sizes.tex
+
+* * *
+
+ /figures/word2bits-speed.tex
+
+* * *
+
+ /figures/word-sense-disambiguation.tex
+
+* * *
+
+|              |         | SCM-tf | SCM-dec-tf | WMD    | WMD-dec |
+|--------------|---------|--------|------------|--------|---------|
+| MQM, ref     | zh→en   | *0.35* |  0.26      | *0.29* |  0.27   |
+| MQM, ref     | zh→en × | *0.35* |  0.25      | *0.29* |  0.27   |
+| MQM, ref     | en→de   |  0.14  | *0.18*     |  0.13  | *0.32*  |
+| MQM, ref     | en→de × |  0.14  | *0.17*     |  0.13  | *0.32*  |
+| DA 2016, src | cs→en   | *0.67* |  0.53      |  0.63  | *0.71*  |
+| DA 2016, src | de→en   |  0.40  | *0.45*     |  0.36  | *0.51*  |
+| DA 2016, src | fi→en   |  0.44  | *0.63*     |  0.45  | *0.58*  |
+| DA 2016, src | ru→en   |  0.30  | *0.43*     |  0.33  | *0.48*  |
+%
+: Accuracies of the soft cosine measure and the word mover's distance %
+  with and w/o decontextualized embeddings on machine %
+  translation evaluation. %
+  Language pairs marked with an × were evaluated cross-lingually. %
+  -- @stefanik2021regressive [Section 3.4]
+
+* * *
+
+ /figures/arqmath-2021-accuracies.tex
 
 ## Learning to Rank {#learning-to-rank}
 
@@ -566,10 +612,60 @@ ARQMath labs.
 
 * * *
 
-% > There are also several instances in which I was not able to determine why the
-% > author had chosen to summarize specific work in this thesis. Sections 4.2.6
-% > and 4.3 describe machine translation research, a task very different from
-% > information retrieval.
+|                   |         | RegEMT | Best individual technique  |
+|-------------------|---------|:------:|----------------------------|
+| MQM, src          | zh→en   | *0.59* |  0.44  (BERTScr, WMD-cont) |
+| MQM, src          | zh→en × | *0.49* |  0.44  (BERTScr, WMD-cont) |
+| MQM, src          | en→de   | *0.36* |  0.28  (Reg-base)          |
+| MQM, src          | en→de × | *0.31* |  0.28  (Reg-base)          |
+| MQM, ref          | zh→en   | *0.62* |  0.51  (Comet)             |
+| MQM, ref          | zh→en × | *0.62* |  0.51  (Comet)             |
+|                   |         |  ...   |                            |
+%                                              
+: Accuracies of our ensemble and the best individual techniques %
+  on twenty machine translation evaluation tasks. %
+  Language pairs marked with an × were evaluated cross-lingually. %
+  (continued on next slide) -- @stefanik2021regressive [Section 3.4]
+
+|                   |         | RegEMT | Best individual technique  |
+|-------------------|---------|:------:|----------------------------|
+|                   |         |  ...   |                            |
+| MQM, ref          | en→de   | *0.60* |  0.48  (Comet)             |
+| MQM, ref          | en→de × |  0.38  | *0.48  (Comet)*            |
+| DA 2016, src      | cs→en   |  0.86  | *0.89  (Comet)*            |
+| DA 2016, src      | de→en   | *0.84* |  0.80  (BLEUrt)            |
+| DA 2016, src      | fi→en   | *0.87* |  0.85  (Comet)             |
+| DA 2016, src      | ru→en   | *0.79* |  0.78  (Comet)             |
+| DA 2016, tgt      | cs→en   | *0.77* | *0.77  (Prism)*            |
+|                   |         |  ...   |                            |
+%
+: (continued from the previous slide) -- @stefanik2021regressive [Section 3.4]
+
+|                   |         | RegEMT | Best individual technique  |
+|-------------------|---------|:------:|----------------------------|
+|                   |         |  ...   |                            |
+| DA 2016, tgt      | de→en   |  0.45  | *0.58  (Prism)*            |
+| DA 2016, tgt      | fi→en   | *0.76* | *0.76  (Prism)*            |
+| DA 2016, tgt      | ru→en   | *0.74* |  0.70  (Prism)             |
+| Catastrophic, src | en→cs   | *0.45* |  0.35  (Prism)             |
+| Catastrophic, src | en→de   |  0.34  | *0.43  (Prism)*            |
+| Catastrophic, src | en→ja   | *0.20* |  0.18  (Reg-base)          |
+| Catastrophic, src | en→zh   |  0.16  | *0.27  (SCM-dec)*          |
+%
+: (continued from the previous slide) -- @stefanik2021regressive [Section 3.4]
+
+* * *
+
+> \`\`The ensemble of all non-baseline primary submissions received *the highest
+> accuracy in the competition (0.419)*, significantly better than the
+> alpha05noReRank alternative submission of the MathDowsers team (0.345).''
+> @novotny2020three [Section 7.3]
+
+<!-- -->
+
+> \`\`Ensembling all non-baseline primary submissions increased nDCG'
+from 0.309 to 0.556: *the best result reported in the ARQMath 2021
+competition*.'' @novotny2021ensembling [Section 4.1]
 
 ## Approximate Nearest-Neighbor Search {#approximate-search}
 
@@ -636,20 +732,23 @@ also easier to develop, maintain, and faster to deploy. [@luptak2021webmias]
 
 * * *
 
-% > There are also several instances in which I was not able to determine why the
-% > author had chosen to summarize specific work in this thesis.  \[...] A
-% > substantial portion of Section 4.5 describes experiments with giving more
-% > weight to early posts in threaded discussion lists; I don’t see how that work
-% > with (text only) discussion lists sheds any light on the question of how
-% > different fields of a single message should be weighted in math retrieval
-% > (which is the other focus of section 4.5).
+ /figures/godwins-law.tex
 
-% > P50 Does “significantly” mean statistically significantly? If so, by what
-% > test? If not, “substantially” might be the more appropriate claim.
+ /figures/godwins-law-semeval-2016.tex
 
-% > The use of language and illustrations generally meet the expected
-% > professional standard. Notable exceptions are Figures 5.2 and 6.1, which are
-% > not adequately explained.
+ /figures/godwins-law-semeval-2017.tex
+
+ /figures/arqmath-2021-accuracies.tex
+
+* * *
+
+ /figures/scaletext-speed.tex
+
+ /figures/text-classification-accuracies.tex
+
+* * *
+
+ /figures/continuous-integration-dependency-tree.tex
 
 # Interpretability {#interpretability}
 
@@ -683,15 +782,9 @@ grammatical properties of tokens such as parts of speech.
 
 * * *
 
-% > The use of language and illustrations generally meet the expected
-% > professional standard. Notable exceptions are Figures 5.2 and 6.1, which are
-% > not adequately explained.
-
-% > P69 What makes a property interesting?
-
-% > There are also several instances in which I was not able to determine why the
-% > author had chosen to summarize specific work in this thesis. \[...] Section
-% > 6.1.1 describes research on part of speech tagging.
+ /figures/word2bits-pos.tex
+ 
+ /figures/positional-features.tex
 
 ## Strengths and Weaknesses of Retrieval Systems {#strengths-and-weaknesses}
 
@@ -704,6 +797,8 @@ and math and how capable they were at answering queries of different lengths.
 
 * * *
 
+ /figures/strengths-and-weaknesses.tex
+
 ## Interactive Visualizations of Retrieval Collections {#interactive-visualizations}
 
 In 2021, I led the bachelor's thesis of @petr2021document, where we have
@@ -712,8 +807,6 @@ from the ARQMath 2021 lab. In the demo, users can explore a small set of
 queries and their nearest results. To explain the results, we produce rich
 snippets that show which pairs of words and symbols in the query and the
 result contributed to its final score.
-
-* * *
 
 # Conclusion {#conclusion}
 

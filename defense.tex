@@ -147,27 +147,26 @@
 \end{frame}
 
 \subsection{Systems}
-\begin{frame}[fragile, allowframebreaks]{\secname}
-  \markdownInput[slice=systems,
-                 snippet=horizontalRule/frameBreak]{defense.md}
+\begin{frame}[fragile]{\secname}
+  \markdownInput[slice=systems]{defense.md}
 \end{frame}
 
 \section{Accuracy and Speed}
 
 \subsection{Math Representations and Representation Learning}
-\begin{frame}[fragile, allowframebreaks]{\secname}
+\begin{frame}[fragile, allowframebreaks=1.2]{\secname}
   \markdownInput[slice=representations,
                  snippet=horizontalRule/frameBreak]{defense.md}
 \end{frame}
 
 \subsection{Learning to Rank}
-\begin{frame}[fragile, allowframebreaks]{\secname}
+\begin{frame}[fragile, allowframebreaks=1.2]{\secname}
   \markdownInput[slice=learning-to-rank,
                  snippet=horizontalRule/frameBreak]{defense.md}
 \end{frame}
 
 \subsection{Approximate Nearest-Neigbor Search}
-\begin{frame}[fragile, allowframebreaks]{\secname}
+\begin{frame}[fragile, allowframebreaks=1.2]{\secname}
   \markdownInput[slice=approximate-search,
                  snippet=horizontalRule/frameBreak]{defense.md}
 \end{frame}
@@ -175,32 +174,33 @@
 \section{Interpretability}
 
 \subsection{Representation Learning of Words and Symbols}
-\begin{frame}[fragile]{\secname}
-  \markdownInput[slice=interpretable-representations]{defense.md}
+\begin{frame}[fragile, allowframebreaks=1.2]{\secname}
+  \markdownInput[slice=interpretable-representations,
+                 snippet=horizontalRule/frameBreak]{defense.md}
 \end{frame}
 
 \subsection{Strengths and Weaknesses of Retrieval Systems}
-\begin{frame}[fragile, allowframebreaks]{\secname}
-  \markdownInput[slice=strengths-and-weaknesses,
-                 snippet=horizontalRule/frameBreak]{defense.md}
+\begin{frame}[fragile]{\secname}
+  \markdownInput[slice=strengths-and-weaknesses]{defense.md}
 \end{frame}
 
 \subsection{Interactive Visualizations of Retrieval Collections}
-\begin{frame}[fragile, allowframebreaks]{\secname}
-  \markdownInput[slice=interactive-visualizations,
-                 snippet=horizontalRule/frameBreak]{defense.md}
+\begingroup
+\usebackgroundtemplate{%
+  \includegraphics[width=\paperwidth, height=\paperheight]{document-maps}%
+}
+\begin{frame}[fragile, plain]
 \end{frame}
+\endgroup
 
 \section{Conclusion}
-\begin{frame}[fragile, allowframebreaks]
-  \markdownInput[slice=conclusion,
-                 snippet=horizontalRule/frameBreak]{defense.md}
+\begin{frame}[fragile]
+  \markdownInput[slice=conclusion]{defense.md}
 \end{frame}
 
 \section{List of Author's Publications}
-\begin{frame}[fragile, allowframebreaks]
-  \markdownInput[slice=list-of-publications,
-                 snippet=horizontalRule/frameBreak]{defense.md}
+\begin{frame}[fragile]
+  \markdownInput[slice=list-of-publications]{defense.md}
 \end{frame}
 
 \begin{frame}[plain]

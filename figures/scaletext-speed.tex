@@ -1,6 +1,12 @@
 \begin{figure}
+
+\mode
+<article>
+
 \includegraphics{scaletext-speed}
+
 \vspace{-0.5cm}
+
 \caption
   [The impact of removing unimportant features in our encoding and setting the
    number of results that are retrieved and reranked in our information
@@ -13,6 +19,24 @@
    the number of removed features from none (white) to all with value below 0.10
    (black). Reproduced with permission.
    \cite[Figure 2]{rygl2017semantic}}
+
 \protect\index[subject]{query time}
+
+\mode
+<presentation>
+
+\vspace*{-0.5cm}
+
+\scalebox{0.8}{\includegraphics{scaletext-speed}}
+
+\caption
+  {The $x$-axis shows accuracy, $y$-axis shows speed, the point size
+   shows the number of retrieved results (20, 80, and 320), and the color shows
+   the number of removed features from none (white) to all with value below 0.10
+   (black). -- \textcite[Figure 2]{rygl2017semantic}}
+
+\mode
+<all>
+
 \label{fig:dense-retrieval-in-inverted-indices-speed}
 \end{figure}
