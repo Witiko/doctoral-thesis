@@ -3883,7 +3883,7 @@ To make it easy for others to reproduce my work, I have publicly released more
 than twenty digital artifacts, including Docker images, Jupyter notebooks,
 pre-trained token embeddings, online demos, and Git repositories.
 
-# List of Author's Publications {#publications}
+# List of Author's Publications {#list-of-publications}
 
 ↑ In this appendix, I will list my international publications in journals and
 conference proceedings ordered by publication date. I will also state my
@@ -3995,3 +3995,54 @@ research roles using the [*CRediT* taxonomy][79] and my contributions in percent
     - *Author's roles:* Formal analysis, Validation, Writing -- review \& edit.
 
     - *Author's contribution:* 15\%
+
+# Author's Publications {#publications}
+
+In this appendix, I will include my international publications in journals and
+conference proceedings ordered by publication date.
+
+ /publications/novotny2021when.pdf
+ (When FastText Pays Attention: Efficient Estimation of Word Representations
+  using Constrained Positional Weighting)
+
+ /publications/ayetiran2021eds.pdf
+ (EDS-MEMBED: Multi-sense embeddings based on enhanced distributional semantic
+  structures via a graph walk over word senses)
+
+ /publications/stefanik2021regressive.pdf
+ (Regressive Ensemble for Machine Translation Quality Evaluation)
+
+ /publications/novotny2021ensembling.pdf
+ (Ensembling Ten Math Information Retrieval Systems: MIRMU and MSM at ARQMath 2021)
+
+ /publications/novotny2021one.pdf
+ (One Size Does Not Fit All: Finding the Optimal Subword Sizes for FastText
+  Models across Languages)
+
+ /publications/luptak2021webmias.pdf
+ (WebMIaS on Docker: Deploying Math-Aware Search in a Single Line of Code)
+
+ /publications/novotny2020art.pdf
+ (The Art of Reproducible Machine Learning: A Survey of Methodology in Word
+  Vector Experiments)
+
+ /publications/novotny2020three.pdf
+ (Three is Better than One: Ensembling Math Information Retrieval Systems)
+
+ /publications/sojka2019quo.pdf
+ (Quo vadis, Math Information Retrieval)
+
+ /publications/novotny2018implementation.pdf
+ (Implementation Notes for the Soft Cosine Measure)
+
+ /publications/sojka2018mias.pdf
+ (Math-Aware Retrieval in Digital Mathematical Libraries)
+
+ /publications/novotny2018weighting.pdf
+ (Weighting of Passages in Question Answering)
+
+ /publications/ruzicka2017flexible.pdf
+ (Flexible Similarity Search of Semantic Vectors Using Fulltext Search Engines)
+
+ /publications/rygl2017semantic.pdf
+ (Semantic Vector Encoding and Similarity Search Using Fulltext Search Engines)

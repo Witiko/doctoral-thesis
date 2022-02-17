@@ -160,9 +160,10 @@
   theme=witiko/fithesis,
   theme=witiko/dot,
 ]{markdown}
-\markdownSetupSnippet{publications}{snippet=witiko/fithesis/publications}
 \markdownSetupSnippet{thanks}{snippet=witiko/fithesis/thanks}
 \markdownSetupSnippet{abstract}{snippet=witiko/fithesis/abstract}
+\markdownSetupSnippet{list-of-publications}{snippet=witiko/fithesis/list-of-publications}
+\markdownSetupSnippet{publications}{snippet=witiko/fithesis/publications}
 
 %% Additional math operators
 \RequirePackage{amsmath}
@@ -195,15 +196,15 @@
 
 {\sloppy\printbibliography[heading=bibintoc]}
 
-\appendix
-\markdownInput[
-  slice=publications,
-  snippet=publications,
-]{main.md}
-\vfill
-
 \printindex[author]
 
 \printindex[subject]
+
+\appendix
+
+\markdownInput[slice=list-of-publications, snippet=list-of-publications]{main.md}
+\vfill
+
+\markdownInput[slice=publications, snippet=publications]{main.md}
 
 \end{document}

@@ -50,7 +50,7 @@
 \newcommand\markdownRendererTextCiteHelper[4]{%
   \fullcite{#4}%
 }
-\markdownSetupSnippet{publications}{
+\markdownSetupSnippet{list-of-publications}{
   renderers = {
     olItemEnd = {%
       \vspace{1em plus 0pt minus 1em}%
@@ -65,6 +65,18 @@
     },
     textCite = {%
       \markdownRendererTextCiteHelper
+    },
+  }
+}
+
+%% Publication
+\RequirePackage{pax, pdfpages}
+\markdownSetupSnippet{publications}{
+  renderers = {
+    contentBlock = {%
+      \cleardoublepage
+      \addcontentsline{toc}{section}{#4}%
+      \includepdf[pages=-]{#3}%
     },
   }
 }

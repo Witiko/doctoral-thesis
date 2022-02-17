@@ -5,6 +5,7 @@ on:
   workflow_dispatch:
 env:
   DEBIAN_FRONTEND: noninteractive
+  TEXMFVAR: /var/tmp/texmf-var
 jobs:
   test:
     name: Test and publish the doctoral thesis and the thesis defense presentation
@@ -32,6 +33,19 @@ jobs:
           set -e
           apt-get -qy update
           apt-get -qy install --no-install-recommends graphviz python3-pdfminer
+
+      - name: Install pdfannotextractor
+        run: |
+          set -e
+          mkdir -v -p /var/tmp/texmf-var
+          pdfannotextractor --install
+
+      - name: Extract annotations from publications
+        shell: bash {0}
+        run: |
+          set -e
+          shopt -s extglob
+          pdfannotextractor publications/!(novotny2018implementation|sojka2018mias).pdf
 
       - name: Typeset the doctoral thesis
         run: |
