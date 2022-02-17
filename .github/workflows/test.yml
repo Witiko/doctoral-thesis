@@ -40,7 +40,7 @@ jobs:
 
       - name: Typeset the thesis defense presentation slides
         run: |
-          latexmk -Werror presentation
+          latexmk presentation
 
       - name: Typeset the thesis defense presentation notes
         run: |
