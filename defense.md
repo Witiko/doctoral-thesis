@@ -569,7 +569,7 @@ second and third best accuracies in the lab.
 | DA 2016, src | ru→en   |  0.30  | *0.43*     |  0.33  | *0.48*  |
 %
 : Accuracies of the soft cosine measure and the word mover's distance %
-  with and w/o decontextualized embeddings on machine %
+  with and without decontextualized embeddings on machine %
   translation evaluation. %
   Language pairs marked with an × were evaluated cross-lingually. %
   -- @stefanik2021regressive [Section 3.4]
