@@ -11,7 +11,7 @@ jobs:
     name: Test and publish the doctoral thesis and the thesis defense presentation
     runs-on: ubuntu-latest
     container:
-      image: texlive/texlive:TL2020-historic
+      image: witiko/markdown:latest-with-cache
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v2
