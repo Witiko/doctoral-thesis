@@ -37,12 +37,6 @@ learning-to-rank techniques can improve the accuracy of math information
 retrieval systems and can achieve the same speed as non-interpretable systems.
 I also show the tangible benefits of interpretability.
 
-## Contents
-
- ![contents][]
-
- [contents]:      contents.png "Table of contents"
-
 ## Citing
 
 To cite my thesis in your work, you can use the following bibliographic entry:
