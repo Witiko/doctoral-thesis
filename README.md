@@ -5,7 +5,8 @@
 This repository contains [PDF][thesis.pdf] and [source][thesis.md] of the
 doctoral thesis *Interpretable Representations for Fast and Accurate Retrieval
 of Mathematical Information* by Vít Novotný as well as [PDF][presentation.pdf] and
-[source][presentation.md] of the thesis defense presentation.
+[source][presentation.md] of the thesis defense presentation. A recording of the
+thesis defense is available on [YouTube][presentation.mp4].
 
  [actions-badge]:    https://github.com/Witiko/doctoral-thesis/actions/workflows/test_and_publish.yml/badge.svg
  [actions]:          https://github.com/Witiko/doctoral-thesis/actions/workflows/test_and_publish.yml
@@ -13,6 +14,7 @@ of Mathematical Information* by Vít Novotný as well as [PDF][presentation.pdf]
  [thesis.pdf]:       https://github.com/Witiko/doctoral-thesis/releases/download/latest/thesis.pdf
  [presentation.md]:  defense.md
  [presentation.pdf]: https://github.com/Witiko/doctoral-thesis/releases/download/latest/defense.pdf
+ [presentation.mp4]: https://youtu.be/880twOfJYek
 
 ## Abstract
 
