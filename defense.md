@@ -451,7 +451,7 @@ on its position in a sentence.
 In my work, I have shown that *constraining* the effect of positional embeddings
 can improve the word analogy accuracy by 6\%, makes it possible to use longer
 sentences in the training data, and makes the embedding model twice as fast
-to train. [@novotny2021when] ↷
+to train. [@novotny2022when] ↷
 
 % Section 4.2.4: Quantized Token Embeddings
 % Section 5.2.1: Quantized Token Embeddings with Fast Bitwise Arithmetic
@@ -562,7 +562,7 @@ second and third best accuracies in the lab.
 : Optimal context window sizes $c$ and numbers of positional %
   features $D'$, and training times for the subword, %
   positional, and constrained positional models. %
-  -- @novotny2021when [Table 1]
+  -- @novotny2022when [Table 1]
 
 * * *
 

@@ -2171,7 +2171,7 @@ positional model less accurate.
 In 2021, we developed the fastText constrained positional model, which models
 the parts of the meaning that are dependent on the narrow context of a
 paragraph as well as the parts of the meaning that are fixed or dependent on
-the broader context. [@novotny2021when, Section 2.2.4] We achieved this by
+the broader context. [@novotny2022when, Section 2.2.4] We achieved this by
 dividing the $D = 300$ input vector features into $D'$ narrow-context-dependent
 features that would interact with positional embeddings, and the remaining $D -
 D'$ fixed and broader-context-dependent features that would not interact with
@@ -2181,10 +2181,10 @@ positional embeddings.
 📖{word analogy}
 
 We reported the optimal value of $D'$ on the English word analogy task
-[@novotny2021when, Table 1] and compared the subtoken, positional, and
+[@novotny2022when, Table 1] and compared the subtoken, positional, and
 constrained positional models on the English word analogy task
-[@novotny2021when, figures 2 and 3] and an English language modeling task
-[@novotny2021when, Section 4.4].
+[@novotny2022when, figures 2 and 3] and an English language modeling task
+[@novotny2022when, Section 4.4].
 
 #### Results
 
@@ -3249,7 +3249,7 @@ analogy task when we trained both models for an equal amount of time.
 In 2021, we developed the fastText constrained positional model,[^36] which was
 less complex than the positional model and achieved better accuracy than
 the positional model on word analogy and language modeling tasks.
-We compared the training time of both models. [@novotny2021when, Section 4]
+We compared the training time of both models. [@novotny2022when, Section 4]
 
  [^36]: See Section \vref{sec:position-independent-token-embeddings-accuracy}
         for a discussion about the development and accuracy of the constrained
@@ -3617,7 +3617,7 @@ of shallow log-bilinear language models. However, their exact function was uncle
 📖{constrained positional model}
 
 In 2021, we showed that the positional model could benefit from larger context
-sizes than the subtoken language model. [@novotny2021when, Table 1] However, the
+sizes than the subtoken language model. [@novotny2022when, Table 1] However, the
 reason for this was unclear.
 
 #### Experiments
@@ -3626,9 +3626,9 @@ reason for this was unclear.
 📖{positional model}
 
 In 2021, we developed two measures for the importance of positions and one
-measure for the importance of tokens. [@novotny2021when, Section 3.4]
+measure for the importance of tokens. [@novotny2022when, Section 3.4]
 We used our measures to explain the role of positional embeddings in the
-positional model. [@novotny2021when, Section 4.3]
+positional model. [@novotny2022when, Section 4.3]
 
  /figures/positional-features.tex
 
@@ -3639,7 +3639,7 @@ positional model. [@novotny2021when, Section 4.3]
 📖{positional model}
 
 We showed that the English positional model used the positional embeddings to
-attenuate distant context words. [@novotny2021when, Figure 4] This shows why
+attenuate distant context words. [@novotny2022when, Figure 4] This shows why
 the positional model could use larger context window sizes than the subtoken
 language model.
 
@@ -3893,7 +3893,7 @@ research roles using the [*CRediT* taxonomy][79] and my contributions in percent
 
 ## Journal Articles
 
-1. @novotny2021when
+1. @novotny2022when
 
     - *Author's roles:* Conceptualization, Data curation, Formal analysis,
       Investigation, Methodology, Software, Validation, Visualization,
@@ -4001,7 +4001,7 @@ research roles using the [*CRediT* taxonomy][79] and my contributions in percent
 In this appendix, I will include my international publications in journals and
 conference proceedings ordered by publication date.
 
- /publications/novotny2021when.pdf
+ /publications/novotny2022when.pdf
  (When FastText Pays Attention: Efficient Estimation of Word Representations
   using Constrained Positional Weighting)
 
