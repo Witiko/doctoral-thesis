@@ -52,9 +52,21 @@ jobs:
         run: |
           latexmk thesis
 
+      - name: Check the number of pages in the doctoral thesis
+        shell: bash {0}
+        run: |
+          set -e -o pipefail
+          [ $(pdfinfo thesis.pdf | grep -a  'Pages:' | awk '{print $2}') = 316 ]
+
       - name: Typeset the thesis defense presentation slides
         run: |
           latexmk presentation
+
+      - name: Check the number of pages in the presentation slides
+        shell: bash {0}
+        run: |
+          set -e -o pipefail
+          [ $(pdfinfo presentation.pdf | grep -a  'Pages:' | awk '{print $2}') = 71 ]
 
       - name: Typeset the thesis defense presentation notes
         run: |
