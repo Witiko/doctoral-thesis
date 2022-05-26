@@ -13,7 +13,7 @@ thesis defense is available on [YouTube][presentation.mp4].
  [thesis.md]:        main.md
  [thesis.pdf]:       https://github.com/Witiko/doctoral-thesis/releases/download/latest/thesis.pdf
  [presentation.md]:  defense.md
- [presentation.pdf]: https://github.com/Witiko/doctoral-thesis/releases/download/latest/defense.pdf
+ [presentation.pdf]: https://github.com/Witiko/doctoral-thesis/releases/download/latest/presentation.pdf
  [presentation.mp4]: https://youtu.be/880twOfJYek
 
 ## Abstract
